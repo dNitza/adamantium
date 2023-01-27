@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+ruby "3.2.0"
+
 gem "hanami", "~> 2.0.0"
 gem "hanami-router", "~> 2.0.0"
 gem "hanami-controller", "~> 2.0.0"
@@ -41,6 +43,7 @@ group :development do
   gem "guard-puma", "~> 0.8"
   gem "standardrb"
   gem "capistrano", "~> 3.17", require: false
+  gem "capistrano-bundler"
 end
 
 group :test do
