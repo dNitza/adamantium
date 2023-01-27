@@ -1,0 +1,15 @@
+.env
+public/key.pub
+public/media/**/*
+.idea/*
+log/*
+fly.toml
+*.sock
+publish.rb
+publish_bookmark.rb
+node_modules/*
+.DS_Store
+.bundle/
+.env.*
+.vimrc.local
+

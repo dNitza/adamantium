@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind typography;
+
+@font-face {
+    font-family: "Rubik";
+    src: url("/assets/Rubik-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "JetBrainsMono";
+    src: url("/assets/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+}
+
+* {
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+}
+
+.gist tr {
+    border-bottom: none;
+}
+
+.gist span {
+    font-family: "JetBrainsMono", Monaco, monospace;
+}
+

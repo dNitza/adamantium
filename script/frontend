@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# script/frontend: Launch the frontend asset server locally.
+
+set -e
+
+cd "$(dirname "$0")/../slices/main/assets/rental"
+
+yarn run dev

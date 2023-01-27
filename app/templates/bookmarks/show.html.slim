@@ -1,0 +1,17 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 = bookmark.name
+
+div class="mb-12 prose max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  a class="text-blue-600 no-underline hover:underline" href=bookmark.url
+    p class="text-xl"
+      = bookmark.url
+
+  == bookmark.content
+
+div class="mb-8 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
+
+div class="mb-2 max-w-prose mx-auto text-gray-800 dark:text-gray-200 flex"
+  = "Published #{bookmark.display_published_at}"
+  span class="text-right flex-1"
+    == render :tags, tags: bookmark.tags
+
