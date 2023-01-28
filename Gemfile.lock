@@ -10,6 +10,15 @@ GIT
       dry-inflector (~> 1.0, < 2)
       tilt (~> 2.0, >= 2.0.6)
 
+GIT
+  remote: https://github.com/seuros/capistrano-puma.git
+  revision: 2cc11846540489edda10d83e026c9bea04e6fab1
+  specs:
+    capistrano3-puma (6.0.0.beta.1)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (>= 5.1, < 7.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -300,6 +309,7 @@ DEPENDENCIES
   builder
   capistrano (~> 3.17)
   capistrano-bundler
+  capistrano3-puma!
   database_cleaner-sequel
   dotenv
   dry-matcher
