@@ -14,6 +14,8 @@ gem "hanami-view", github: "hanami/view", branch: "main"
 gem "rom-sql"
 gem "pg"
 
+gem "dotenv"
+
 gem "dry-types"
 gem "dry-matcher"
 gem "dry-monads"
@@ -26,10 +28,6 @@ gem "httparty"
 gem "redcarpet"
 gem "rexml"
 gem "babosa"
-
-group :development, :test do
-  gem "dotenv"
-end
 
 group :cli, :development do
   gem "hanami-reloader"
