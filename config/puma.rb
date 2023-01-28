@@ -12,4 +12,6 @@ on_worker_boot do
   Hanami.shutdown
 end
 
+pidfile ENV.fetch("PIDFILE") { "tmp/pids/puma.pid" }
+
 preload_app!

@@ -42,6 +42,7 @@ group :development do
   gem "standardrb"
   gem "capistrano", "~> 3.17", require: false
   gem "capistrano-bundler"
+  gem "capistrano-rbenv", "~> 2.2"
   gem 'capistrano3-puma', github: "seuros/capistrano-puma"
 end
 
