@@ -1,5 +1,3 @@
-require "pry"
-
 module Adamantium
   module Actions
     module Posts
