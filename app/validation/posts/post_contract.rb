@@ -9,6 +9,7 @@ module Adamantium
           required(:published_at).maybe(:time)
           required(:slug).filled(:string)
           required(:post_type).value(included_in?: %w[post])
+          required(:syndicate_to).array(:string)
         end
       end
     end

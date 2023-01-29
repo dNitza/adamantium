@@ -10,6 +10,7 @@ module Adamantium
           required(:url).filled(:string)
           required(:slug).filled(:string)
           required(:post_type).value(included_in?: %w[bookmark])
+          required(:syndicate_to).array(:string)
         end
       end
     end
