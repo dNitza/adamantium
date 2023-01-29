@@ -14,16 +14,17 @@ module Adamantium
           return Failure(:no_mastodon_credentials)
         end
 
-        text = (post[:name] != "") ? post[:name] : post[:content]
-        text_with_link = "#{text} — #{settings.micropub_site_url}/post/#{post[:slug]}"
-        tags = post[:category].map { |tag| "##{tag}" }.join(" ")
-        text_with_tags = "#{text_with_link} #{tags}"
+        content = if post[:name]
+          "#{post[:name]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
+        else
+          post[:content]
+        end
+
+        text_with_tags = "#{content} #{tags}"
 
         key = Digest::MD5.hexdigest text_with_tags
         mastodon_token = settings.mastodon_token
         mastodon_server = settings.mastodon_server.split("@").first
-
-        logger.info("Syndicating to: #{mastodon_server}api/v1/statuses")
 
         response = HTTParty.post("#{mastodon_server}api/v1/statuses", {
           headers: {
@@ -37,7 +38,6 @@ module Adamantium
 
         if response.code >= 200 && response.code < 300
           status = JSON.parse(response.body, symbolize_names: true)
-          logger.info("Syndicated to Mastodon: #{response.body}")
           Success("#{mastodon_server}/#{status[:id]}")
         else
           logger.info("Failed to syndicate to Mastodon: #{response.message}")
