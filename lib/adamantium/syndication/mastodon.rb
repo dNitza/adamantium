@@ -34,8 +34,8 @@ module Adamantium
         })
 
         if response.code >= 200 && response.code < 300
-          status = response.message
-          logger.info("Syndicated to Mastodon: #{response.message}")
+          status = response.body
+          logger.info("Syndicated to Mastodon: #{response.body}")
           Success("#{mastodon_server}/#{status[:id]}")
         else
           logger.info("Failed to syndicate to Mastodon: #{response.message}")
