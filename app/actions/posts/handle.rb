@@ -12,13 +12,15 @@ module Adamantium
           create_resolver: "commands.posts.creation_resolver",
           delete_post: "commands.posts.delete",
           undelete_post: "commands.posts.undelete",
-          update_post: "commands.posts.update"
+          update_post: "commands.posts.update",
+          syndicate: "commands.posts.syndicate"
         ]
 
         def handle(req, res)
           req_entity = post_param_parser.call(params: req.params.to_h)
           action = req.params[:action]
 
+          # delete, undelete, update
           if action
             operation, permission_check = resolve_operation(action)
 
@@ -28,13 +30,16 @@ module Adamantium
             else
               res.status = 401
             end
-          elsif req_entity
+          elsif req_entity # create
             halt 401 unless verify_scope(req: req, scope: :create)
 
             command, contract = create_resolver.call(entry_type: req_entity).values_at(:command, :validation)
 
             validation = contract.call(req_entity.to_h)
             if validation.success?
+
+              url = syndicate(validation.to_h) # TODO: set URL on post
+
               post = command.call(validation.to_h)
 
               res.status = 201
