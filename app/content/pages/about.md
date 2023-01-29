@@ -8,10 +8,11 @@ I currently live in Canberra with my partner and [our dogs](https://instagram.co
 
 In my spare time I like to tinker on various Ruby projects (including the software that powers this blog), make things with [Processing](https://processing.org), explore the various walking tracks around our house and potter around in the garden.
 
-### Contact me
+### Elsewhere
 
 - [Email](mailto:hello@dnitza.com)
-- [Mastodon](https://social.dnitza.com/@daniel)
 - [Github](https://github.com/dnitza)
-
+- [last.fm](https://www.last.fm/user/dNitza)
+- [Letterboxd](https://letterboxd.com/dnitza/)
+- [Mastodon](https://social.dnitza.com/@daniel)
 
