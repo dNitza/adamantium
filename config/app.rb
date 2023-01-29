@@ -7,5 +7,8 @@ module Adamantium
     config.actions.content_security_policy[:script_src] += " https://gist.github.com"
     config.actions.content_security_policy[:script_src] += " *.dnitza.com"
     config.actions.content_security_policy[:connect_src] += " https://stats.dnitza.com/api/event"
+
+    config.logger.level = :info
+    config.logger.stream = "log/hanami.log"
   end
 end
