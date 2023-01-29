@@ -51,7 +51,7 @@ module Adamantium
       new_params[:h] = "entry"
       new_params[:post_type] = post_type
       new_params[:action] = params[:action]
-      new_params[:syndicate_to] = params["mp-syndicate-to"].split(",") || []
+      new_params[:syndicate_to] = params[:"mp-syndicate-to"]&.split(",") || []
 
       publish_time = params[:published_at] || Time.now
 
