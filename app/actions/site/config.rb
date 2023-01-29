@@ -19,7 +19,12 @@ module Adamantium
                 {type: "photo", name: "Photo", properties: %w[name content category]},
                 {type: "bookmark", name: "Bookmark", properties: %w[name content category]}
               ],
-              "syndicate-to" => []
+              "syndicate-to" => [
+                {
+                  uid: "https://social.dnitza.com",
+                  name: "Mastodon"
+                }
+              ]
             }.to_json
           else
             res.render home
