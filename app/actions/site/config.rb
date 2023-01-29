@@ -26,6 +26,17 @@ module Adamantium
                 }
               ]
             }.to_json
+          elsif req.params[:q] == "syndicate-to"
+            res.status = 200
+            res.content_type = "Application/JSON"
+            res.body = {
+              "syndicate-to" => [
+                {
+                  uid: "https://social.dnitza.com",
+                  name: "Mastodon"
+                }
+              ]
+            }.to_json
           else
             res.render home
           end
