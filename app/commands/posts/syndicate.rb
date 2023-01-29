@@ -5,7 +5,7 @@ module Adamantium
         include Deps["settings", "syndication.mastodon"]
 
         def call(post)
-          if post[:syndicate_to].include? settings.mastodon_server
+          if post[:syndicate_to].any? { |url| settings.mastodon_server.match(/"#{url}"/) }
             mastodon.call(post: post)
           end
         end
