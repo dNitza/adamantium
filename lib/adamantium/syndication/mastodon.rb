@@ -6,14 +6,17 @@ module Adamantium
   module Syndication
     class Mastodon
       include Dry::Monads[:result]
-      include Deps["settings"]
+      include Deps["settings", "logger"]
 
       def call(post:)
-        return Failure(:no_mastodon_credentials) unless settings.mastodon_token && settings.mastodon_server
+        unless settings.mastodon_token && settings.mastodon_server
+          logger.info("No Mastodon credentials")
+          return Failure(:no_mastodon_credentials)
+        end
 
-        text = post.name
+        text = post[:name]
         text_with_link = "#{text} — #{settings.micropub_site_url}"
-        tags = post.category.map { |tag| "##{tag}" }.join(" ")
+        tags = post[:category].map { |tag| "##{tag}" }.join(" ")
         text_with_tags = "#{text_with_link} #{tags}"
 
         key = Digest::MD5.hexdigest text_with_tags
@@ -32,8 +35,10 @@ module Adamantium
 
         if response.code > 200
           status = response.message
+          logger.info("Syndicated to Mastodon")
           Success("#{mastodon_server}/#{status[:id]}")
         else
+          logger.info("Failed to syndicate to Mastodon: #{response.message}")
           Failure(response.message)
         end
       end
