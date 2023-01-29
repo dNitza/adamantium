@@ -15,7 +15,7 @@ module Adamantium
         end
 
         text = (post[:name] != "") ? post[:name] : post[:content]
-        text_with_link = "#{text} — #{settings.micropub_site_url}"
+        text_with_link = "#{text} — #{settings.micropub_site_url}/post/#{post[:slug]}"
         tags = post[:category].map { |tag| "##{tag}" }.join(" ")
         text_with_tags = "#{text_with_link} #{tags}"
 
@@ -36,7 +36,7 @@ module Adamantium
         })
 
         if response.code >= 200 && response.code < 300
-          status = response.body
+          status = JSON.parse(response.body, symbolize_names: true)
           logger.info("Syndicated to Mastodon: #{response.body}")
           Success("#{mastodon_server}/#{status[:id]}")
         else
