@@ -51,7 +51,7 @@ module Adamantium
       new_params[:h] = "entry"
       new_params[:post_type] = post_type
       new_params[:action] = params[:action]
-      new_params[:syndicate_to] = params["mp-syndicate-to"] || []
+      new_params[:syndicate_to] = params["mp-syndicate-to"].split(",") || []
 
       publish_time = params[:published_at] || Time.now
 
@@ -60,12 +60,13 @@ module Adamantium
         new_params[:category] = params[:properties][:category] || []
         new_params[:name] = params[:properties][:name] && params[:properties][:name].first
         new_params[:content] = params[:properties][:content]&.first&.tr("\n", " ")
-        new_params[:slug] = params[:slug]
+        new_params[:slug] = params[:slug] || params["mp-slug"]
 
       else
         new_params[:name] = params[:name]
+        new_params[:slug] = params[:slug] || params["mp-slug"]
         new_params[:published_at] = (params[:"post-status"] == "draft") ? nil : publish_time
-        new_params[:category] = params[:category] || []
+        new_params[:category] = params[:category].split(",") || []
 
         content = if params[:content]
           if params[:content].is_a?(Hash) && params[:content][:html]
