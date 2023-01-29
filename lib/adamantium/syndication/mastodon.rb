@@ -14,7 +14,7 @@ module Adamantium
           return Failure(:no_mastodon_credentials)
         end
 
-        text = post[:name]
+        text = (post[:name] != "") ? post[:name] : post[:content]
         text_with_link = "#{text} — #{settings.micropub_site_url}"
         tags = post[:category].map { |tag| "##{tag}" }.join(" ")
         text_with_tags = "#{text_with_link} #{tags}"
@@ -22,6 +22,8 @@ module Adamantium
         key = Digest::MD5.hexdigest text_with_tags
         mastodon_token = settings.mastodon_token
         mastodon_server = settings.mastodon_server.split("@").first
+
+        logger.info("Syndicating to: #{mastodon_server}api/v1/statuses")
 
         response = HTTParty.post("#{mastodon_server}api/v1/statuses", {
           headers: {
