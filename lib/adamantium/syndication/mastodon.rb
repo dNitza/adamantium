@@ -23,7 +23,7 @@ module Adamantium
         mastodon_token = settings.mastodon_token
         mastodon_server = settings.mastodon_server.split("@").first
 
-        response = HTTParty.post(mastodon_server, {
+        response = HTTParty.post("#{mastodon_server}api/v1/statuses", {
           headers: {
             "Idempotency-Key": key,
             Authorization: "Bearer #{mastodon_token}"
@@ -33,7 +33,7 @@ module Adamantium
           }
         })
 
-        if response.code > 200
+        if response.code >= 200 && response.code < 300
           status = response.message
           logger.info("Syndicated to Mastodon: #{response.message}")
           Success("#{mastodon_server}/#{status[:id]}")
