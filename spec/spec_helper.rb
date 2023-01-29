@@ -9,5 +9,4 @@ require "hanami/prepare"
 require "timecop"
 
 require_relative "support/rspec"
-require_relative "support/requests"
-require_relative "support/db"
+require_relative "support/feature_loader"

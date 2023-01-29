@@ -8,6 +8,19 @@ module Adamantium
   module Decorators
     module Posts
       class Decorator < SimpleDelegator
+        def syndicated?
+          !syndication_sources.empty?
+        end
+
+        def syndicated_to
+          syndication_sources.map do |source, url|
+            {
+              location: source,
+              url: url
+            }
+          end
+        end
+
         def prefix_emoji
           name ? "📝" : "📯"
         end

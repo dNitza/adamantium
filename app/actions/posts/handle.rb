@@ -11,7 +11,8 @@ module Adamantium
           delete_post: "commands.posts.delete",
           undelete_post: "commands.posts.undelete",
           update_post: "commands.posts.update",
-          syndicate: "commands.posts.syndicate"
+          syndicate: "commands.posts.syndicate",
+          add_post_syndication_source: "commands.posts.add_syndication_source"
         ]
 
         def handle(req, res)
@@ -36,9 +37,12 @@ module Adamantium
             validation = contract.call(req_entity.to_h)
             if validation.success?
 
-              url = syndicate.call(validation.to_h) # TODO: set URL on post
-
               post = command.call(validation.to_h)
+
+              syndicate.call(validation.to_h).bind do |result|
+                source, url = result
+                add_post_syndication_source.call(post.id, source, url)
+              end
 
               res.status = 201
               res.headers.merge!(

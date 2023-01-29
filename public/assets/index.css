@@ -1036,6 +1036,14 @@ video {
   width: 0.5rem;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
 .max-w-prose {
   max-width: 65ch;
 }
@@ -1116,6 +1124,10 @@ video {
 
 .bg-yellow-200\/60 {
   background-color: rgb(254 240 138 / 0.6);
+}
+
+.fill-blue-100 {
+  fill: #dbeafe;
 }
 
 .p-1 {
@@ -1329,6 +1341,14 @@ video {
 .hover\:bg-yellow-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(254 240 138 / var(--tw-bg-opacity));
+}
+
+.hover\:fill-blue-100:hover {
+  fill: #dbeafe;
+}
+
+.hover\:fill-blue-400:hover {
+  fill: #60a5fa;
 }
 
 .hover\:text-blue-100:hover {

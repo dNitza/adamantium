@@ -1,7 +1,7 @@
 module Adamantium
   module Repos
     class PostRepo < Adamantium::Repo[:posts]
-      commands :update
+      commands update: :by_pk
 
       def create(post_attrs)
         posts.transaction do
@@ -61,6 +61,12 @@ module Adamantium
           .published
           .combine(:tags)
           .where(slug: slug)
+          .one!
+      end
+
+      def find!(id)
+        posts
+          .by_pk(id)
           .one!
       end
 

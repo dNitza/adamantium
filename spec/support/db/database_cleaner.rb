@@ -5,6 +5,10 @@ require_relative "helpers"
 DatabaseCleaner[:sequel].strategy = :transaction
 
 RSpec.configure do |config|
+  config.before :suite do
+    DatabaseCleaner[:sequel].clean_with :truncation
+  end
+
   config.prepend_before :each, type: :db do |example|
     strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner[:sequel].strategy = strategy
