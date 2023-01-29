@@ -36,7 +36,7 @@ module Adamantium
             validation = contract.call(req_entity.to_h)
             if validation.success?
 
-              url = syndicate(validation.to_h) # TODO: set URL on post
+              url = syndicate.call(validation.to_h) # TODO: set URL on post
 
               post = command.call(validation.to_h)
 
