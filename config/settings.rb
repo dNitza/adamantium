@@ -25,5 +25,8 @@ module Adamantium
 
     setting :micropub_authorization_endpoint
     setting :micropub_token_endpoint
+
+    setting :mastodon_token, default: nil
+    setting :mastodon_server, default: nil
   end
 end
