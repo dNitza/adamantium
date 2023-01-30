@@ -14,9 +14,9 @@ module Adamantium
                 {uid: settings.micropub_site_id, name: settings.micropub_site_name}
               ],
               "post-types" => [
-                {type: "note", name: "Note", properties: %w[content category]},
+                {type: "note", name: "Note", properties: %w[content photo category]},
                 {type: "article", name: "Article", properties: %w[name content category]},
-                {type: "photo", name: "Photo", properties: %w[name content category]},
+                {type: "photo", name: "Photo", properties: %w[name photo content category]},
                 {type: "bookmark", name: "Bookmark", properties: %w[name content category]}
               ],
               "syndicate-to" => [
