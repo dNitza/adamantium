@@ -19,7 +19,7 @@ module Adamantium
             m.success do |v|
               res.status = 201
               res.headers["Location"] = v
-              res.body = v
+              res.body = "OK"
             end
           end
         end
