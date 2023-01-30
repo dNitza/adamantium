@@ -16,6 +16,7 @@ module Adamantium
 
             Success([:mastodon, url])
           end
+          Failure(:no_syndication_targets)
         end
       end
     end
