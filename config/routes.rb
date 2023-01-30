@@ -11,7 +11,7 @@ module Adamantium
     scope "micropub" do
       get "/", to: "site.config"
       post "/", to: "posts.handle"
-      post "/media", to: "media.create"
+      get "/media", to: "media.create"
     end
 
     get "/", to: "site.home"
