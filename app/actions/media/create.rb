@@ -11,7 +11,7 @@ module Adamantium
 
           halt 401 if verify_scope(req: req, scope: :media)
 
-          upload(file: data) do |m|
+          upload.call(file: data) do |m|
             m.failure do |v|
               res.status = 422
             end
