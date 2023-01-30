@@ -2,7 +2,7 @@ module Adamantium
   module Actions
     module Media
       class Create < Action
-        before :authenticate
+        before :authenticate!
 
         include Deps["commands.media.upload"]
 
