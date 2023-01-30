@@ -12,6 +12,7 @@ module Adamantium
       get "/", to: "site.config"
       post "/", to: "posts.handle"
       post "/media", to: "media.create"
+      get "/media", to: "media.show"
     end
 
     get "/", to: "site.home"
