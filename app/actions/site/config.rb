@@ -3,6 +3,7 @@ module Adamantium
     module Site
       class Config < Action
         include Deps["settings", "views.site.home"]
+        before :authenticate!
 
         def handle(req, res)
           if req.params[:q] == "config"
