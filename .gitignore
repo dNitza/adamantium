@@ -1,6 +1,5 @@
 .env
 public/key.pub
-public/media/**/*
 .idea/*
 log/*
 fly.toml
