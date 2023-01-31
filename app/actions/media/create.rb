@@ -18,7 +18,9 @@ module Adamantium
             m.success do |v|
               res.status = 201
               res.headers["Location"] = v
-              res.body = "OK"
+              res.body = {
+                url: v
+              }.to_json
             end
           end
         end
