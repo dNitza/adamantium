@@ -17,6 +17,7 @@ module Adamantium
             end
 
             m.success do |v|
+              logger.info("I have CREATED")
               res.status = 201
               res.headers["Location"] = v
               res.body = {
