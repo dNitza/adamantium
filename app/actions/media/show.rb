@@ -5,8 +5,6 @@ module Adamantium
         include Deps["settings"]
 
         def handle(req, res)
-          halt 401 unless verify_scope(req: req, scope: :media) || verify_scope(req: req, scope: :create)
-
           res.body = if req.params[:q] == "source"
             {
               items: media_url(params[:file])
