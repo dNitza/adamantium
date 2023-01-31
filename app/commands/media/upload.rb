@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "securerandom"
+
 module Adamantium
   module Commands
     module Media
@@ -9,7 +11,7 @@ module Adamantium
         def call(file:)
           pathname = Time.now.strftime("%m-%Y")
 
-          filename = file[:filename].split("/").last
+          filename = "#{SecureRandom.uuid}#{File.extname(file[:filename])}"
 
           dirname = File.join("public", "media", pathname)
 
