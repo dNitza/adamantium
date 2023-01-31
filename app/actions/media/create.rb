@@ -10,18 +10,16 @@ module Adamantium
 
           halt 401 unless verify_scope(req: req, scope: :media)
 
-          upload.call(file: data) do |m|
-            m.failure do |v|
-              res.status = 422
-            end
+          upload_result = upload.call(file: data)
 
-            m.success do |v|
-              res.status = 201
-              res.headers["Location"] = v
-              res.body = {
-                url: v
-              }.to_json
-            end
+          res.status = 422 if upload_result.failure?
+
+          if upload_result.success?
+            res.status = 201
+            res.headers["Location"] = upload_result.value!
+            res.body = {
+              url: upload_result.value!
+            }.to_json
           end
         end
       end
