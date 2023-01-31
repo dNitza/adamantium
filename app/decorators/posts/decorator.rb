@@ -21,6 +21,10 @@ module Adamantium
           end
         end
 
+        def photos?
+          photos.count > 0
+        end
+
         def prefix_emoji
           name ? "📝" : "📯"
         end

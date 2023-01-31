@@ -11,6 +11,7 @@ module Adamantium
       attribute :published_at, Types::Nominal::DateTime.optional
       attribute :post_type, Types::Coercible::String
       attribute :syndicate_to, Types::Array.of(Types::Coercible::String)
+      attribute :photos, Types::Array.of(Types::Hash)
     end
   end
 end

@@ -2,6 +2,9 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   h1 = post.display_title
 
 article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline"
+  - if post.photos?
+    - post.photos.each do |photo|
+      img src=photo["value"] alt=photo["alt"]
   == post.content
 
 div class="mb-4 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
