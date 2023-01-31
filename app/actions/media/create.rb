@@ -2,11 +2,10 @@ module Adamantium
   module Actions
     module Media
       class Create < Action
-        include Deps["commands.media.upload", "logger"]
+        include Deps["commands.media.upload"]
         before :authenticate!
 
         def handle(req, res)
-          logger.info("I am CREATE")
           data = req.params[:file]
 
           halt 401 unless verify_scope(req: req, scope: :media)
@@ -17,7 +16,6 @@ module Adamantium
             end
 
             m.success do |v|
-              logger.info("I have CREATED")
               res.status = 201
               res.headers["Location"] = v
               res.body = {

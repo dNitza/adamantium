@@ -2,11 +2,9 @@ module Adamantium
   module Actions
     module Media
       class Show < Action
-        include Deps["settings", "logger"]
+        include Deps["settings"]
 
         def handle(req, res)
-          logger.info("I am SHOW")
-
           res.body = if req.params[:q] == "source"
             {
               items: media_url(req.params[:file])
