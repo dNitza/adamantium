@@ -7,7 +7,7 @@ module Adamantium
         def handle(req, res)
           res.body = if req.params[:q] == "source"
             {
-              items: media_url(params[:file])
+              items: media_url(req.params[:file])
             }.to_json
           else
             "Micropub media endpoint"

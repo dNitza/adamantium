@@ -3,7 +3,7 @@ module Adamantium
     module Media
       class Create < Action
         include Deps["commands.media.upload"]
-        before :authorize!
+        before :authenticate!
 
         def handle(req, res)
           data = req.params[:file]
