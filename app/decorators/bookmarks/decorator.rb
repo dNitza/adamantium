@@ -9,6 +9,19 @@ module Adamantium
         def display_published_at
           published_at.strftime("%e %B, %Y")
         end
+
+        def syndicated?
+          !syndication_sources.empty?
+        end
+
+        def syndicated_to
+          syndication_sources.map do |source, url|
+            {
+              location: source,
+              url: url
+            }
+          end
+        end
       end
     end
   end
