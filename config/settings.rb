@@ -28,5 +28,7 @@ module Adamantium
 
     setting :mastodon_token, default: nil
     setting :mastodon_server, default: nil
+
+    setting :pinboard_api_key, default: nil
   end
 end

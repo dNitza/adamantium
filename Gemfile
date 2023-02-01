@@ -28,7 +28,7 @@ gem "httparty"
 gem "redcarpet"
 gem "rexml"
 gem "babosa"
-gem "pinboard"
+gem "pinboard", "~> 1.0.0"
 
 group :cli, :development do
   gem "hanami-reloader"

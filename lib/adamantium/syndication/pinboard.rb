@@ -8,7 +8,7 @@ module Adamantium
       include Dry::Monads[:result]
 
       def initialize(api_key:)
-        @pinboard = Pinboard::Client.new(token: api_key)
+        @pinboard = ::Pinboard::Client.new(token: api_key)
       end
 
       def call(post:)
