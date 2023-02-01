@@ -28,6 +28,7 @@ gem "httparty"
 gem "redcarpet"
 gem "rexml"
 gem "babosa"
+gem "pinboard"
 
 group :cli, :development do
   gem "hanami-reloader"
@@ -43,7 +44,7 @@ group :development do
   gem "capistrano", "~> 3.17", require: false
   gem "capistrano-bundler"
   gem "capistrano-rbenv", "~> 2.2"
-  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
+  gem "capistrano3-puma", github: "seuros/capistrano-puma"
 end
 
 group :test do
