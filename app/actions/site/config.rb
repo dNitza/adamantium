@@ -39,6 +39,10 @@ module Adamantium
                 {
                   uid: "https://social.dnitza.com",
                   name: "Mastodon"
+                },
+                {
+                  uid: "https://pinboard.in",
+                  name: "Pinboard"
                 }
               ]
             }.to_json
