@@ -67,7 +67,7 @@ module Adamantium
         new_params[:name] = params[:name]
         new_params[:slug] = params[:slug] || params["mp-slug"]
         new_params[:published_at] = (params[:"post-status"] == "draft") ? nil : publish_time
-        new_params[:category] = params[:category].split(",") || []
+        new_params[:category] = params[:category] || []
         new_params[:photos] = params[:photo] || []
 
         content = if params[:content]
