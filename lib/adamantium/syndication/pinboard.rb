@@ -13,7 +13,7 @@ module Adamantium
 
       def call(post:)
         if pinboard.add(url: post[:url], description: post[:content]) == "done"
-          href = pinboard.get(url: post[:url]).href
+          href = pinboard.get(url: post[:url]).first.href
           Success(href)
         else
           Failure(:failed_to_post_to_pinboard)
