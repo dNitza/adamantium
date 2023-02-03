@@ -32,7 +32,7 @@ module Adamantium
           next if tag_name == ""
 
           tag = posts.tags.where(label: tag_name).one ||
-            post
+            posts
               .tags
               .changeset(:create, {label: tag_name, slug: tag_name.downcase.strip.tr(" ", "-").gsub(/[^\w-]/, "")})
               .commit
