@@ -2,14 +2,14 @@ module Adamantium
   module Commands
     module Posts
       class Update < Command
-        include Deps["repos.post_repo"]
+        include Deps["repos.post_repo", "renderers.markdown"]
 
         def call(params:)
           slug = URI(params[:url]).path.split("/").last
           post = post_repo.fetch!(slug)
 
           if params.key? :replace
-            post_repo.update(post.id, params)
+            post_repo.update(post.id, {content: markdown.call(content: params[:content])})
           end
 
           if params.key? :add
