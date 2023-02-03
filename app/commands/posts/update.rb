@@ -7,7 +7,18 @@ module Adamantium
         def call(params:)
           slug = URI(params[:url]).path.split("/").last
           post = post_repo.fetch!(slug)
-          post_repo.update(post.id, params)
+
+          if prams.key? :replace
+            post_repo.update(post.id, params)
+          end
+
+          if params.key? :add
+
+          end
+
+          if params.key? :delete
+
+          end
         end
       end
     end

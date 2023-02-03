@@ -18,6 +18,7 @@ module Adamantium
               properties: {
                 published: [post.published_at],
                 content: [markdown_content],
+                photo: post.photos,
                 category: post.tags.map { |t| t.label.to_s }
               }
             }
@@ -27,6 +28,7 @@ module Adamantium
           result[:properties][:published] = [post.published_at] if properties.include? "published"
           result[:properties][:content] = [markdown_content] if properties.include? "content"
           result[:properties][:category] = post.tags.map { |t| t.label.to_s } if properties.include? "category"
+          result[:properties][:photos] = post.photos if properties.include? "photos"
           result
         end
       end
