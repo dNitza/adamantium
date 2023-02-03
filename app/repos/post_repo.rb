@@ -27,6 +27,24 @@ module Adamantium
         end
       end
 
+      def tag_post(post_id:, tags:)
+        tags.each do |tag_name|
+          next if tag_name == ""
+
+          tag = post.tags.where(label: tag_name).one ||
+            post
+              .tags
+              .changeset(:create, {label: tag_name, slug: tag_name.downcase.strip.tr(" ", "-").gsub(/[^\w-]/, "")})
+              .commit
+
+          posts.post_tags.changeset(:create, {
+            post_id: post_id,
+            tag_id: tag[:id]
+          })
+            .commit
+        end
+      end
+
       def post_listing(limit: nil)
         posts
           .where(post_type: "post")

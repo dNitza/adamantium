@@ -13,7 +13,7 @@ module Adamantium
           end
 
           if params.key? :add
-
+            post_repo.tag_post(post.id, params[:add][:category])
           end
 
           if params.key? :delete
