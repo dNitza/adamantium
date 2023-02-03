@@ -18,6 +18,7 @@ module Adamantium
                 {type: "note", name: "Note", properties: %w[content photo category]},
                 {type: "article", name: "Article", properties: %w[name content category]},
                 {type: "photo", name: "Photo", properties: %w[name photo content category]},
+                {type: "video", name: "Video", properties: %w[name video content category]},
                 {type: "bookmark", name: "Bookmark", properties: %w[name content category]}
               ],
               "syndicate-to" => [
