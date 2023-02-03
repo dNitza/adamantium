@@ -26,6 +26,7 @@ gem "builder"
 
 gem "httparty"
 gem "redcarpet"
+gem "reverse_markdown"
 gem "rexml"
 gem "babosa"
 gem "pinboard", github: "dnitza/pinboard", branch: "master"

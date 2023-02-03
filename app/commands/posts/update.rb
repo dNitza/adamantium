@@ -2,10 +2,12 @@ module Adamantium
   module Commands
     module Posts
       class Update < Command
-        def call(params)
-          slug = URI(params[:url]).path.split("/").last
+        include Deps["repos.post_repo"]
 
-          post_repo.update(slug, params)
+        def call(params:)
+          slug = URI(params[:url]).path.split("/").last
+          post = post_repo.fetch!(slug)
+          post_repo.update(post.id, params)
         end
       end
     end

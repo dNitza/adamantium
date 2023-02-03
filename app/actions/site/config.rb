@@ -2,7 +2,7 @@ module Adamantium
   module Actions
     module Site
       class Config < Action
-        include Deps["settings", "views.site.home"]
+        include Deps["settings", "views.site.home", "queries.posts.microformat_post"]
         before :authenticate!
 
         def handle(req, res)
@@ -46,6 +46,10 @@ module Adamantium
                 }
               ]
             }.to_json
+          elsif req.params[:q] == "source"
+            res.status = 200
+            res.content_type = "Application/JSON"
+            res.body = microformat_post.call(url: req.params[:url], properties: req.params[:properties]).to_json
           else
             res.render home
           end
