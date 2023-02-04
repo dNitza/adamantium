@@ -31,7 +31,7 @@ module Adamantium
 
         media_ids = post[:photos]&.map do |photo|
           file = Tempfile.new(SecureRandom.uuid)
-          file.write(URL.open(file[:value]).read)
+          file.write(URI.open(file[:value]).read)
           file.rewind
           response = HTTParty.post("#{mastodon_server}api/v2/media", {
             headers: {
