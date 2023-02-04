@@ -31,7 +31,7 @@ module Adamantium
         logger.info("Photos: #{post[:photos].inspect}")
         media_ids = post[:photos]&.map do |photo|
           file = Tempfile.new(SecureRandom.uuid)
-          file.write(URI.open(photo["value"]).read)
+          file.write(URI.open(photo[:value]).read)
           file.rewind
           response = HTTParty.post("#{mastodon_server}api/v2/media", {
             headers: {
@@ -39,7 +39,7 @@ module Adamantium
             },
             body: {
               file: file.read,
-              description: photo["alt"]
+              description: photo[:alt]
             }
           })
           file.close
