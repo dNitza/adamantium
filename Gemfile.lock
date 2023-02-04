@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/dnitza/pinboard.git
+  remote: https://github.com/dnitza/pinboard
   revision: a178662d901c768a6f76af7b94f7336484752e03
   branch: master
   specs:
@@ -7,7 +7,7 @@ GIT
       httparty (~> 0.21.0)
 
 GIT
-  remote: https://github.com/hanami/view.git
+  remote: https://github.com/hanami/view
   revision: c1a6f60a989f1face809a6d8d61652748aee19a7
   branch: main
   specs:
@@ -40,13 +40,13 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
-    capistrano-bundler (1.6.0)
+    capistrano-bundler (2.1.0)
       capistrano (~> 3.1)
     capistrano-rbenv (2.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
     coderay (1.1.3)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     database_cleaner-core (2.0.1)
     database_cleaner-sequel (2.0.2)
       database_cleaner-core (~> 2.0.0)
@@ -134,7 +134,7 @@ GEM
       guard (~> 2.14)
       guard-compat (~> 1.2)
       puma (>= 4.0, < 7)
-    hanami (2.0.2)
+    hanami (2.0.3)
       bundler (>= 1.16, < 3)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
@@ -145,14 +145,14 @@ GEM
       hanami-cli (~> 2.0)
       hanami-utils (~> 2.0)
       zeitwerk (~> 2.6)
-    hanami-cli (2.0.2)
+    hanami-cli (2.0.3)
       bundler (~> 2.1)
       dry-cli (~> 1.0, < 2)
       dry-files (~> 1.0, >= 1.0.1, < 2)
       dry-inflector (~> 1.0, < 2)
       rake (~> 13.0)
       zeitwerk (~> 2.6)
-    hanami-controller (2.0.1)
+    hanami-controller (2.0.2)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0)
       hanami-utils (~> 2.0)
@@ -170,7 +170,7 @@ GEM
       rake (~> 13.0)
       rspec (~> 3.12)
       zeitwerk (~> 2.6)
-    hanami-utils (2.0.2)
+    hanami-utils (2.0.3)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       dry-transformer (~> 1.0, < 2)
@@ -185,8 +185,8 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     json (2.6.3)
-    language_server-protocol (3.17.0.2)
-    listen (3.7.1)
+    language_server-protocol (3.17.0.3)
+    listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lumberjack (1.2.8)
@@ -214,13 +214,13 @@ GEM
     parser (3.2.0.0)
       ast (~> 2.4.1)
     pg (1.4.5)
-    pry (0.14.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (6.0.1)
+    puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.5)
+    rack (2.2.6.2)
     rack-test (2.0.2)
       rack (>= 1.3)
     rainbow (3.1.1)
@@ -228,8 +228,8 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redcarpet (3.5.1)
-    regexp_parser (2.6.1)
+    redcarpet (3.6.0)
+    regexp_parser (2.6.2)
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.5)
@@ -269,12 +269,12 @@ GEM
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
       rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.0)
+    rspec-core (3.12.1)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.1)
+    rspec-expectations (3.12.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.1)
+    rspec-mocks (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.0)
@@ -295,21 +295,21 @@ GEM
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
-    sequel (5.63.0)
+    sequel (5.65.0)
     shellany (0.0.1)
-    slim (4.1.0)
-      temple (>= 0.7.6, < 0.9)
+    slim (5.0.0)
+      temple (~> 0.10.0)
       tilt (>= 2.0.6, < 2.1)
     sshkit (1.21.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    standard (1.21.1)
+    standard (1.22.1)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.42.0)
       rubocop-performance (= 1.15.2)
     standardrb (1.0.1)
       standard
-    temple (0.8.2)
+    temple (0.10.0)
     thor (1.2.1)
     tilt (2.0.11)
     timecop (0.9.6)
@@ -318,7 +318,6 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
-  x86_64-darwin-20
   x86_64-darwin-22
   x86_64-linux
 
@@ -358,7 +357,7 @@ DEPENDENCIES
   timecop
 
 RUBY VERSION
-   ruby 3.2.0p0
+   ruby 3.2.0
 
 BUNDLED WITH
    2.3.22

@@ -9,7 +9,7 @@ gem "hanami-router", "~> 2.0.0"
 gem "hanami-controller", "~> 2.0.0"
 gem "hanami-validations", "~> 2.0.0"
 # gem "hanami-assets", github: "hanami/view", branch: "main"
-gem "hanami-view", github: "hanami/view", branch: "main"
+gem "hanami-view", git: "https://github.com/hanami/view", branch: "main"
 
 gem "rom-sql"
 gem "pg"
@@ -29,7 +29,7 @@ gem "redcarpet"
 gem "reverse_markdown"
 gem "rexml"
 gem "babosa"
-gem "pinboard", github: "dnitza/pinboard", branch: "master"
+gem "pinboard", git: "https://github.com/dnitza/pinboard", branch: "master"
 
 group :cli, :development do
   gem "hanami-reloader"
