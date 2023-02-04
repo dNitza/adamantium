@@ -28,8 +28,8 @@ module Adamantium
         key = Digest::MD5.hexdigest text_with_tags
         mastodon_token = settings.mastodon_token
         mastodon_server = settings.mastodon_server.split("@").first
-
-        media_ids = post[:photos]&.map do |photo|
+        logger.info(post[:photo])
+        media_ids = post[:photo]&.map do |photo|
           file = Tempfile.new(SecureRandom.uuid)
           file.write(URI.open(photo["value"]).read)
           file.rewind
