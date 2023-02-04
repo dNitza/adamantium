@@ -50,8 +50,6 @@ module Adamantium
           JSON.parse(response.body, symbolize_names: true).fetch(:id, nil)
         end&.compact
 
-        raise media_ids.inspect
-
         response = HTTParty.post("#{mastodon_server}api/v1/statuses", {
           headers: {
             "Idempotency-Key": key,
