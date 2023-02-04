@@ -37,6 +37,7 @@ module Adamantium
             headers: {
               Authorization: "Bearer #{mastodon_token}"
             },
+            multipart: true,
             body: {
               file: file,
               description: photo[:alt]
