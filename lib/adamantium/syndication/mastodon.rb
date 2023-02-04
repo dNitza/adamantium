@@ -28,7 +28,7 @@ module Adamantium
         key = Digest::MD5.hexdigest text_with_tags
         mastodon_token = settings.mastodon_token
         mastodon_server = settings.mastodon_server.split("@").first
-        logger.info(post[:photo])
+        logger.info("Photos: #{post[:photo].inspect}")
         media_ids = post[:photo]&.map do |photo|
           file = Tempfile.new(SecureRandom.uuid)
           file.write(URI.open(photo["value"]).read)
@@ -44,12 +44,12 @@ module Adamantium
           })
           file.close
           file.unlink
-          puts "*" * 88
-          puts response.inspect
+          logger.info(response.body)
 
-          puts "*" * 88
-          JSON.parse(response.body).fetch(:id, nil)
+          JSON.parse(response.body, symbolize_names: true).fetch(:id, nil)
         end&.compact
+
+        raise media_ids.inspect
 
         response = HTTParty.post("#{mastodon_server}api/v1/statuses", {
           headers: {
