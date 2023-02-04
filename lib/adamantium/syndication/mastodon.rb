@@ -44,6 +44,10 @@ module Adamantium
           })
           file.close
           file.unlink
+          puts "*" * 88
+          puts response.inspect
+
+          puts "*" * 88
           JSON.parse(response.body).fetch(:id, nil)
         end&.compact
 
