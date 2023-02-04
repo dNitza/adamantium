@@ -38,13 +38,13 @@ module Adamantium
               Authorization: "Bearer #{mastodon_token}"
             },
             body: {
-              file: file.read,
+              file: file,
               description: photo[:alt]
             }
           })
           file.close
           file.unlink
-          logger.info(response.body)
+          logger.info(response.code)
 
           JSON.parse(response.body, symbolize_names: true).fetch(:id, nil)
         end&.compact
