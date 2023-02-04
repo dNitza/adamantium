@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Root", type: :request do
+RSpec.describe "Root", :requests do
   it "is successful" do
     get "/"
 

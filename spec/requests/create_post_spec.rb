@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Post creation", type: [:request, :db] do
+RSpec.describe "Post creation", :db, :requests do
   let(:post_repo) { Adamantium::Repos::PostRepo.new }
 
   context "posts" do

@@ -13,7 +13,9 @@ RSpec.describe Adamantium::Syndication::Mastodon do
         slug: "my-post",
         category: ["ruby", "rspec"],
         published_at: Time.now,
-        post_type: "post"
+        post_type: "post",
+        syndicate_to: [],
+        photos: []
       )
     }
 

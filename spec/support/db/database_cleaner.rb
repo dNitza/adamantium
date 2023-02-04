@@ -9,14 +9,14 @@ RSpec.configure do |config|
     DatabaseCleaner[:sequel].clean_with :truncation
   end
 
-  config.prepend_before :each, type: :db do |example|
+  config.prepend_before :each, :db do |example|
     strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner[:sequel].strategy = strategy
 
     DatabaseCleaner[:sequel].start
   end
 
-  config.append_after :each, type: :db do
+  config.append_after :each, :db do
     DatabaseCleaner[:sequel].clean
   end
 end

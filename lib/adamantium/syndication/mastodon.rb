@@ -1,6 +1,8 @@
 require "digest"
 require "dry/monads"
 require "httparty"
+require "tempfile"
+require "open-uri"
 
 module Adamantium
   module Syndication
@@ -20,11 +22,30 @@ module Adamantium
           post[:content]
         end
 
+        tags = post[:category].map { |tag| "##{tag}" }.join(" ")
         text_with_tags = "#{content} #{tags}"
 
         key = Digest::MD5.hexdigest text_with_tags
         mastodon_token = settings.mastodon_token
         mastodon_server = settings.mastodon_server.split("@").first
+
+        media_ids = post[:photos]&.map do |photo|
+          file = Tempfile.new(SecureRandom.uuid)
+          file.write(URL.open(file[:value]).read)
+          file.rewind
+          response = HTTParty.post("#{mastodon_server}api/v2/media", {
+            headers: {
+              Authorization: "Bearer #{mastodon_token}"
+            },
+            body: {
+              file: file.read,
+              description: photo[:alt]
+            }
+          })
+          file.close
+          file.unlink
+          JSON.parse(response.body).fetch(:id, nil)
+        end&.compact
 
         response = HTTParty.post("#{mastodon_server}api/v1/statuses", {
           headers: {
@@ -32,7 +53,8 @@ module Adamantium
             Authorization: "Bearer #{mastodon_token}"
           },
           body: {
-            status: text_with_tags
+            status: text_with_tags,
+            media_ids: media_ids
           }
         })
 

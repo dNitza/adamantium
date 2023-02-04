@@ -1,3 +1,4 @@
+# require_with_metadata: true
 # frozen_string_literal: true
 
 require "rack/test"
@@ -7,6 +8,6 @@ RSpec.shared_context "Hanami app" do
 end
 
 RSpec.configure do |config|
-  config.include Rack::Test::Methods, type: :request
-  config.include_context "Hanami app", type: :request
+  config.include Rack::Test::Methods, :requests
+  config.include_context "Hanami app", :requests
 end
