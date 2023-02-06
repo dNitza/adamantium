@@ -11,7 +11,7 @@ xml.channel do |channel|
     channel.item do |item|
       item.title post.display_title
       item.description do |desc|
-        desc.cdata! post.content
+        desc.cdata! post.feed_content
       end
       item.guid(post.slug, isPermaLink: true)
       item.pubDate post.machine_published_at

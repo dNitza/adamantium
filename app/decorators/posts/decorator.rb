@@ -42,6 +42,10 @@ module Adamantium
           published_at.rfc2822
         end
 
+        def feed_content
+          photos? ? "<div>#{photos.map { |p| "<img src='#{p["value"]}'/>" }.join("")} #{content}</div>" : content
+        end
+
         def excerpt
           truncate_html(content, 140, true)
         end
