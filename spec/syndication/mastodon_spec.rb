@@ -1,7 +1,11 @@
 require "spec_helper"
+require "dry/monads"
 
 RSpec.describe Adamantium::Syndication::Mastodon do
-  subject { described_class.new }
+  include Dry::Monads[:result]
+
+  let(:client) { double("mastodon client", create_post: Success(), upload_media: Success()) }
+  subject { described_class.new(mastodon_client: client) }
 
   describe "syndication to mastodon" do
     let(:post) {

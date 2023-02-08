@@ -2,7 +2,7 @@ require "securerandom"
 
 module Adamantium
   class MicropubRequestParser
-    include Deps["logger", "post_utilities.slugify", "repos.post_repo"]
+    include Deps["post_utilities.slugify", "repos.post_repo"]
 
     def call(params:)
       return nil if params.key?(:action)
@@ -82,8 +82,6 @@ module Adamantium
       end
       new_params[:url] = params[:"bookmark-of"]
       new_params[:slug] = slug(name: new_params[:name], default_slug: params[:slug])
-
-      logger.info(new_params)
 
       new_params
     end
