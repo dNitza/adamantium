@@ -2,6 +2,7 @@
 
 require "securerandom"
 require "dry/monads"
+require "filemagic"
 
 module Adamantium
   module Commands
@@ -10,7 +11,15 @@ module Adamantium
         include Deps["settings"]
         include Dry::Monads[:result]
 
+        VALID_UPLOAD_TYPES = %i[jpeg jpg png gif]
+
         def call(file:)
+          mime = FileMagic.new
+
+          type = mime.file(file[:tempfile].path, true)
+
+          return Failure(:invalid_file_type) unless VALID_UPLOAD_TYPES.include? type.to_sym
+
           pathname = Time.now.strftime("%m-%Y")
 
           filename = "#{SecureRandom.uuid}#{File.extname(file[:filename])}"
