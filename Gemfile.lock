@@ -310,6 +310,7 @@ GEM
     rubocop-performance (1.15.2)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
+    ruby-filemagic (0.7.3)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     sequel (5.65.0)
@@ -373,6 +374,7 @@ DEPENDENCIES
   rexml
   rom-factory
   rom-sql
+  ruby-filemagic
   slim
   standardrb
   timecop
