@@ -10,9 +10,10 @@ In my spare time I like to tinker on various Ruby projects (including the softwa
 
 ### Elsewhere
 
+- [Apple Music](https://music.apple.com/profile/nitza)
 - [Email](mailto:hello@dnitza.com)
 - [Github](https://github.com/dnitza)
 - [last.fm](https://www.last.fm/user/dNitza)
 - [Letterboxd](https://letterboxd.com/dnitza/)
 - [Mastodon](https://social.dnitza.com/@daniel)
-
+- [Pinboard](https://pinboard.in/u:nitza)
