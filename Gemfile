@@ -30,6 +30,7 @@ gem "reverse_markdown"
 gem "rexml"
 gem "babosa"
 gem "pinboard", git: "https://github.com/dnitza/pinboard", branch: "master"
+gem "ogpr"
 
 group :cli, :development do
   gem "hanami-reloader"

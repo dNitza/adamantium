@@ -8,6 +8,8 @@ div class="mb-12 prose max-w-prose mx-auto text-gray-800 dark:text-gray-200"
 
   == bookmark.content
 
+div class="prose max-w-prose mx-auto text-gray-800 dark:text-gray-200 grid grid-cols-5 gap-2" hx-get="/bookmarks/metadata/#{bookmark.id}" hx-trigger="load"
+
 div class="mb-8 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
 div class="mb-2 max-w-prose mx-auto text-gray-800 dark:text-gray-200 flex"
