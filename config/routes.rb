@@ -6,7 +6,7 @@ require "adamantium/middleware/process_params"
 module Adamantium
   class Routes < Hanami::Routes
     use Hanami::Middleware::BodyParser, [:form, :json]
-    use Adamantium::Middleware::ProcessParams
+    # use Adamantium::Middleware::ProcessParams
 
     scope "micropub" do
       get "/", to: "site.config"
