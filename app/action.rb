@@ -40,6 +40,7 @@ module Adamantium
     end
 
     def not_found(_req, res, _exception)
+      res.status = 404
       res.render not_found_view
     end
 
