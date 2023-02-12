@@ -18,7 +18,12 @@ module Adamantium
     setting :micropub_site_url
     # Auth
     setting :micropub_pub_key, default: nil
-    # TODO: add other auth methods here
+    setting :github_url, default: nil
+    setting :mastodon_url, default: nil
+
+    setting :webmention_url, default: nil
+    setting :pingback_url, default: nil
+    setting :webmention_token, default: nil
 
     # Micropub endpoints
     setting :micropub_media_endpoint, default: "", constructor: Types::Params::String
