@@ -6,12 +6,13 @@ module Adamantium
 
         include Deps[
           "settings",
+          "post_utilities.slugify",
+          "repos.post_repo",
           post_param_parser: "param_parser.micropub_post",
           create_resolver: "commands.posts.creation_resolver",
           delete_post: "commands.posts.delete",
           undelete_post: "commands.posts.undelete",
           update_post: "commands.posts.update",
-          syndicate: "commands.posts.syndicate",
           add_post_syndication_source: "commands.posts.add_syndication_source"
         ]
 
@@ -33,21 +34,14 @@ module Adamantium
             halt 401 unless verify_scope(req: req, scope: :create)
 
             command, contract = create_resolver.call(entry_type: req_entity).values_at(:command, :validation)
+            post_params = prepare_params(req_entity.to_h)
+            validation = contract.call(post_params)
 
-            validation = contract.call(req_entity.to_h)
             if validation.success?
-
-              post = command.call(validation.to_h)
-
-              syndicate.call(validation.to_h).bind do |result|
-                source, url = result
-                add_post_syndication_source.call(post.id, source, url)
+              command.call(validation.to_h).bind do |post|
+                res.status = 201
+                res.headers["Location"] = "#{settings.micropub_site_url}/#{post.post_type}/#{post.slug}"
               end
-
-              res.status = 201
-              res.headers.merge!(
-                "Location" => "#{settings.micropub_site_url}/#{post.post_type}/#{post.slug}"
-              )
             else
               res.body = {error: validation.errors.to_h}.to_json
               res.status = 422
@@ -56,6 +50,12 @@ module Adamantium
         end
 
         private
+
+        def prepare_params(post_params)
+          post = post_params.to_h
+          post[:slug] = post[:slug].empty? ? slugify.call(text: post[:name], checker: post_repo.method(:slug_exists?)) : post[:slug]
+          post
+        end
 
         def resolve_operation(action)
           case action

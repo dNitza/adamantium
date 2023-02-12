@@ -9,7 +9,9 @@ module Adamantium
           post = post_repo.fetch!(slug)
 
           if params.key? :replace
-            post_repo.update(post.id, {content: markdown.call(content: params[:replace][:content].first)})
+            post_repo.update(post.id, {
+              content: markdown.call(content: params[:replace][:content].first)
+            })
           end
 
           if params.key? :add
@@ -17,7 +19,6 @@ module Adamantium
           end
 
           if params.key? :delete
-
           end
         end
       end
