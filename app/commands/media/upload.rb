@@ -15,7 +15,6 @@ module Adamantium
 
         def call(file:)
           mime = FileMagic.new
-
           type = mime.file(file[:tempfile].path, true)
 
           return Failure(:invalid_file_type) unless VALID_UPLOAD_TYPES.include? type.to_sym
