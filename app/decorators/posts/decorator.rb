@@ -50,6 +50,10 @@ module Adamantium
           truncate_html(content, 140, true)
         end
 
+        def permalink
+          "#{Hanami.app.settings.micropub_site_url}/post/#{slug}"
+        end
+
         private
 
         def truncate_html(content, len = 30, at_end = nil)

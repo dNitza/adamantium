@@ -1,25 +1,33 @@
-div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
-  h1 = post.display_title
+article class="h-entry"
+  div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+    a class="u-url" href=post.permalink
+      h1 class="p-name" = post.display_title
 
-article class="h-entry mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
-  - if post.photos?
-    - post.photos.each do |photo|
-      figure
-        img src=photo["value"] alt=photo["alt"]
-        figcaption
-          = photo["alt"]
-  == post.content
+    article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
+      - if post.photos?
+        - post.photos.each do |photo|
+          figure
+            img src=photo["value"] alt=photo["alt"]
+            figcaption
+              = photo["alt"]
+      div class="e-content"
+        == post.content
 
-div class="mb-4 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
+  div class="mb-4 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
-div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
-  div class=""
-    = "Published #{post.display_published_at}"
-  span class="text-right flex-1"
-    == render :tags, tags: post.tags
-div class="mb-2 max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
-  - if post.syndicated?
-    span Also on:&nbsp;
-    - post.syndicated_to.each do |loc|
-      a href=loc[:url]
-        == render loc[:location]
+  div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
+    div class=""
+      = "Published "
+      time class="dt-published" datetime=post.published_at
+        = post.display_published_at
+      p
+        a class="p-author h-card" href=Hanami.app.settings.micropub_site_url
+          = "by #{Hanami.app.settings.site_name}"
+    span class="text-right flex-1"
+      == render :tags, tags: post.tags
+  div class="mb-2 max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
+    - if post.syndicated?
+      span Also on:&nbsp;
+      - post.syndicated_to.each do |loc|
+        a rel="syndication" class="u-syndication" href=loc[:url]
+          == render loc[:location]
