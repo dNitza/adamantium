@@ -48,6 +48,7 @@ module Adamantium
 
       def upload_media(photo:)
         mastodon_server = settings.mastodon_server.split("@").first
+        mastodon_token = settings.mastodon_token
         file = Tempfile.new(SecureRandom.uuid)
         file.write(URI.open(photo[:value]).read)
         file.rewind
