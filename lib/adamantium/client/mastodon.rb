@@ -18,7 +18,7 @@ module Adamantium
         content = if post[:name]
           "#{post[:name]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
         else
-          post[:content]
+          "#{post[:content]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
         end
 
         tags = post[:category].map { |tag| "##{tag}" }.join(" ")
@@ -47,6 +47,7 @@ module Adamantium
       end
 
       def upload_media(photo:)
+        mastodon_server = settings.mastodon_server.split("@").first
         file = Tempfile.new(SecureRandom.uuid)
         file.write(URI.open(photo[:value]).read)
         file.rewind
