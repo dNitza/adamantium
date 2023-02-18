@@ -13,8 +13,26 @@
     src: url("/assets/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "Karla";
+    src: url("/assets/Karla-VariableFont_wght.ttf") format("truetype");
+}
+
 * {
+    font-family: "Karla", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     font-family: "Rubik", Helvetica, Arial, sans-serif;
+}
+
+.prose h1 a {
+    border-bottom: none;
+    text-decoration: none;
+}
+
+.prose h1 a:hover {
+    opacity: 0.8;
 }
 
 .gist tr {

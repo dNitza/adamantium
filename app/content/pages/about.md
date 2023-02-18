@@ -1,6 +1,6 @@
 # About
 
-Hi, I'm _Daniel_. 
+Hi, I'm _Dan!_ 
 
 I've been in the software / web industry for around 10 years. I'm currently a technical lead at [Culture Amp](https://cultureamp.com), where I lead a small team working in a Rails monolith and across many microservices. Previously I worked with the wonderful humans of [Icelab](https://icelab.com.au) on a wide range of interesting and valuable projects.
 

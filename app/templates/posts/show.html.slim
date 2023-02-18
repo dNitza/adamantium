@@ -1,13 +1,14 @@
 article class="h-entry"
   div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
-    a class="u-url" href=post.permalink
-      h1 class="p-name" = post.display_title
+    h1 class="p-name" 
+      a class="u-url" href=post.permalink
+        = post.display_title
 
     article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
       - if post.photos?
         - post.photos.each do |photo|
           figure
-            img class="u-photo shadow-solid mb-4" src=photo["value"] alt=photo["alt"]
+            img class="u-photo shadow-solid shadow-pink-100 dark:shadow-pink-200 mb-4" src=photo["value"] alt=photo["alt"]
             figcaption
               = photo["alt"]
       div class="e-content"
