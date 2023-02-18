@@ -23,6 +23,9 @@ module Adamantium
       end
 
       # Pull out and verify the authorization header or access_token
+
+      halt 400 if req.env["HTTP_AUTHORIZATION"] && req.params["access_token"]
+
       if req.env["HTTP_AUTHORIZATION"]
         header = req.env["HTTP_AUTHORIZATION"].match(/Bearer (.*)$/)
         access_token = header[1] unless header.nil?
