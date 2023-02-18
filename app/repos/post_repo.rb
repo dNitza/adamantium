@@ -45,6 +45,12 @@ module Adamantium
         end
       end
 
+      def remove_tag(post_id:, tag:)
+        tag = posts.tags.where(label: tag).one
+
+        posts.post_tags.where(post_id: post_id, tag_id: tag[:id]).changeset(:delete).commit if tag
+      end
+
       def post_listing(limit: nil)
         posts
           .where(post_type: "post")
