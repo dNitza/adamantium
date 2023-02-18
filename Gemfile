@@ -31,7 +31,8 @@ gem "rexml"
 gem "babosa"
 gem "pinboard", git: "https://github.com/dnitza/pinboard", branch: "master"
 gem "ogpr"
-gem "ruby-filemagic"
+gem "ruby-filemagic", git: "https://github.com/dnitza/ruby-filemagic", branch: "master"
+gem "webmention"
 
 group :cli, :development do
   gem "hanami-reloader"

@@ -7,6 +7,13 @@ GIT
       httparty (~> 0.21.0)
 
 GIT
+  remote: https://github.com/dnitza/ruby-filemagic
+  revision: 9699941ae5b9d53ce685f2b9808890596fe1334f
+  branch: master
+  specs:
+    ruby-filemagic (0.7.3)
+
+GIT
   remote: https://github.com/hanami/view
   revision: c1a6f60a989f1face809a6d8d61652748aee19a7
   branch: main
@@ -30,6 +37,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     airbrussh (1.4.1)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.2)
@@ -121,6 +130,9 @@ GEM
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     formatador (1.1.0)
     guard (2.18.0)
       formatador (>= 0.2.4)
@@ -180,20 +192,34 @@ GEM
       dry-validation (>= 1.10, < 2)
       zeitwerk (~> 2.6.0)
     hansi (0.2.1)
+    http (5.1.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.4.0)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
+    http-form_data (2.3.0)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
+    indieweb-endpoints (8.0.0)
+      http (~> 5.0)
+      link-header-parser (~> 5.0)
+      nokogiri (>= 1.13)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
+    link-header-parser (5.0.0)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    llhttp-ffi (0.4.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
     lumberjack (1.2.8)
     method_source (1.0.0)
     mime-types (3.4.1)
@@ -229,6 +255,7 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.2)
@@ -310,7 +337,6 @@ GEM
     rubocop-performance (1.15.2)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    ruby-filemagic (0.7.3)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     sequel (5.65.0)
@@ -336,6 +362,10 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
+    webmention (7.0.0)
+      http (~> 5.0)
+      indieweb-endpoints (~> 8.0)
+      nokogiri (>= 1.13)
     zeitwerk (2.6.6)
 
 PLATFORMS
@@ -374,10 +404,11 @@ DEPENDENCIES
   rexml
   rom-factory
   rom-sql
-  ruby-filemagic
+  ruby-filemagic!
   slim
   standardrb
   timecop
+  webmention
 
 RUBY VERSION
    ruby 3.2.0
