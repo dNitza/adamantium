@@ -15,23 +15,29 @@ module Adamantium
         include Dry::Monads[:result]
 
         def call(post)
-          attrs = post.to_h
-          attrs[:content] = renderer.call(content: attrs[:content])
+          post_params = prepare_params(params: post)
+          created_post = post_repo.create(post_params)
 
-          created_post = post_repo.create(attrs)
-
-          syndicate.call(attrs).bind do |results|
+          syndicate.call(post).bind do |results|
             results.each do |result|
               source, url = result
               add_post_syndication_source.call(created_post.id, source, url)
             end
           end
 
-          decorated_post = Decorators::Posts::Decorator.new(created_post)
+          # decorated_post = Decorators::Posts::Decorator.new(created_post)
 
           # send_webmentions.call(post_content: attrs[:content], post_url: decorated_post.permalink)
 
           Success(created_post)
+        end
+
+        private
+
+        def prepare_params(params:)
+          attrs = params.to_h
+          attrs[:content] = renderer.call(content: attrs[:content])
+          attrs
         end
       end
     end
