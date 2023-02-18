@@ -15,17 +15,20 @@ module Adamantium
 
         def call(post)
           syndicate_to = syndication_targets(post[:syndicate_to])
+          syndicated_to = []
           if syndicate_to.include? :mastodon
-            url = yield mastodon.call(post: post)
+            res = mastodon.call(post: post)
 
-            Success([:mastodon, url])
+            syndicated_to << [:mastodon, res.value!] if res.success?
           end
 
           if syndicate_to.include? :pinboard
-            url = yield pinboard.call(post: post)
+            res = pinboard.call(post: post)
 
-            Success([:pinboard, url])
+            syndicated_to << [:pinboard, res.value!] if res.success?
           end
+
+          return Success(syndicated_to) unless syndicated_to.empty?
 
           Failure(:no_syndication_targets)
         end
