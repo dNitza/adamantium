@@ -4,7 +4,10 @@ module Adamantium
   module Commands
     module Posts
       class CreateBookmark < Command
-        include Deps["repos.post_repo", syndicate: "commands.posts.syndicate"]
+        include Deps["repos.post_repo",
+          add_post_syndication_source: "commands.posts.add_syndication_source",
+          syndicate: "commands.posts.syndicate"
+        ]
 
         include Dry::Monads[:result]
 
