@@ -16,6 +16,9 @@ module.exports = {
       '5xl': '3.052rem',
     },
     extend: {
+      boxShadow: {
+        'solid': '10px 10px 1px 2px #fce7f3'
+      },
       typograpgy: {
         emphasis: {
           css: {
