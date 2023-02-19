@@ -11,6 +11,7 @@ module Adamantium
           required(:post_type).value(included_in?: %w[post])
           required(:syndicate_to).array(:string)
           required(:photos).array(:hash)
+          required(:location).maybe(:string)
         end
       end
     end
