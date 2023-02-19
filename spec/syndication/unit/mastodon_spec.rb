@@ -19,7 +19,8 @@ RSpec.describe Adamantium::Syndication::Mastodon do
         published_at: Time.now,
         post_type: "post",
         syndicate_to: [],
-        photos: []
+        photos: [],
+        location: nil
       )
     }
 

@@ -4,6 +4,8 @@ div class="mb-8 h-entry"
       = post.display_title
   div class="e-content p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0  text-gray-800 dark:text-gray-200"
     == post.excerpt
+    -if post.location
+      img src="https://api.mapbox.com/styles/v1/dnitza/cleb2o734000k01pbifls5620/static/#{post.lat},#{post.lon},14,0/50x50@2x?access_token=pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIzOHFmazBkODIzdm9kZHgxdDF4ajQifQ.mSneE-1SKeju8AOz5gp4BQ"
   == render :tags, tags: post.tags
 
   p class="text-sm text-blue-400"

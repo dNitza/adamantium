@@ -14,6 +14,9 @@ article class="h-entry"
       div class="e-content"
         == post.content
 
+      - if post.location
+          img class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src="https://api.mapbox.com/styles/v1/dnitza/cleb2o734000k01pbifls5620/static/#{post.lat},#{post.lon},14,0/300x400@2x?access_token=pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIzOHFmazBkODIzdm9kZHgxdDF4ajQifQ.mSneE-1SKeju8AOz5gp4BQ"
+
   div class="mb-4 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
   div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"

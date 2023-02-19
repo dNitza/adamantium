@@ -26,7 +26,8 @@ module Adamantium
         end
 
         def prefix_emoji
-          name ? "" : "📯"
+          prefix = name ? "" : "📯"
+          location ? "🗺️" : prefix
         end
 
         def display_title
@@ -54,7 +55,23 @@ module Adamantium
           "#{Hanami.app.settings.micropub_site_url}/post/#{slug}"
         end
 
+        def lat
+          geo[0]
+        end
+
+        def lon
+          geo[1]
+        end
+
         private
+
+        # e.g. geo:-37.75188,144.90417;u=35
+        def geo
+          loc = location.split(":")[1]
+          p = loc.split(";")[0]
+
+          p.split(",")
+        end
 
         def truncate_html(content, len = 30, at_end = nil)
           p = REXML::Parsers::PullParser.new(content)

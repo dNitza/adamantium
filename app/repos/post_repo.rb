@@ -1,6 +1,7 @@
 module Adamantium
   module Repos
     class PostRepo < Adamantium::Repo[:posts]
+      Sequel.extension :pg_json_ops
       commands update: :by_pk
 
       def create(post_attrs)
@@ -53,7 +54,29 @@ module Adamantium
 
       def post_listing(limit: nil)
         posts
+          .where(post_type: "post", location: nil)
+          .published
+          .combine(:tags)
+          .order(Sequel.desc(:published_at))
+          .limit(limit)
+          .to_a
+      end
+
+      def photo_listing(limit: nil)
+        posts
           .where(post_type: "post")
+          .where(Sequel[:photos].pg_json.array_length > 0)
+          .published
+          .combine(:tags)
+          .order(Sequel.desc(:published_at))
+          .limit(limit)
+          .to_a
+      end
+
+      def places_listing(limit: nil)
+        posts
+          .where(post_type: "post")
+          .exclude(location: nil)
           .published
           .combine(:tags)
           .order(Sequel.desc(:published_at))
@@ -73,7 +96,7 @@ module Adamantium
 
       def for_rss
         posts
-          .where(post_type: "post")
+          .where(post_type: "post", location: nil)
           .published
           .combine(:tags)
           .order(Sequel.desc(:published_at))

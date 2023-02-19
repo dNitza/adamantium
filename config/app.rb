@@ -6,6 +6,7 @@ module Adamantium
   class App < Hanami::App
     config.actions.content_security_policy[:script_src] += " https://gist.github.com"
     config.actions.content_security_policy[:script_src] += " *.dnitza.com"
+    config.actions.content_security_policy[:media_src] += " https://dnitza.com"
     config.actions.content_security_policy[:script_src] += " https://unpkg.com/htmx.org@1.8.4"
     config.actions.content_security_policy[:connect_src] += " https://stats.dnitza.com/api/event"
 

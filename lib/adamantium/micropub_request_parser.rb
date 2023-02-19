@@ -49,6 +49,7 @@ module Adamantium
         new_params[:slug] = params[:slug] || params["mp-slug"]
         new_params[:syndicate_to] = params[:properties][:"mp-syndicate-to"] || []
         new_params[:photos] = params[:properties][:photo] || []
+        new_params[:location] = params[:properties][:location]
       else
         new_params[:syndicate_to] = params[:"mp-syndicate-to"] || []
         new_params[:name] = params[:name]
@@ -56,6 +57,7 @@ module Adamantium
         new_params[:published_at] = (params[:"post-status"] == "draft") ? nil : publish_time
         new_params[:category] = params[:category] || []
         new_params[:photos] = params[:photo] || []
+        new_params[:location] = params[:location]
 
         content = if params[:content]
           if params[:content].is_a?(Hash) && params[:content][:html]

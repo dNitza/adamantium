@@ -12,6 +12,7 @@ module Adamantium
       attribute :post_type, Types::Coercible::String
       attribute :syndicate_to, Types::Array.of(Types::Coercible::String)
       attribute :photos, Types::Array.of(Types::Hash)
+      attribute :location, Types::Coercible::String.optional
     end
   end
 end

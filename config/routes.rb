@@ -23,6 +23,8 @@ module Adamantium
     get "/bookmarks/metadata/:id", to: "bookmarks.metadata"
     get "/bookmark/:slug", to: "bookmarks.show"
 
+    get "/places", to: "places.index"
+
     get "/tagged/:slug", to: "tags.show"
 
     get "/key", to: "key.show" if Hanami.app.settings.micropub_pub_key
