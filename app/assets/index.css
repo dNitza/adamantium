@@ -6,16 +6,19 @@
 @font-face {
     font-family: "Rubik";
     src: url("/assets/Rubik-VariableFont_wght.ttf") format("truetype");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "JetBrainsMono";
     src: url("/assets/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Karla";
     src: url("/assets/Karla-VariableFont_wght.ttf") format("truetype");
+    font-display: swap;
 }
 
 * {

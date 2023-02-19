@@ -1127,6 +1127,10 @@ video {
   border-top-width: 4px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -1139,6 +1143,10 @@ video {
 .border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.border-transparent {
+  border-color: transparent;
 }
 
 .bg-blue-400 {
@@ -1212,6 +1220,10 @@ video {
 
 .font-bold {
   font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .uppercase {
@@ -1288,18 +1300,24 @@ video {
   font-family: "Rubik";
 
   src: url("/assets/Rubik-VariableFont_wght.ttf") format("truetype");
+
+  font-display: swap;
 }
 
 @font-face {
   font-family: "JetBrainsMono";
 
   src: url("/assets/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Karla";
 
   src: url("/assets/Karla-VariableFont_wght.ttf") format("truetype");
+
+  font-display: swap;
 }
 
 * {
@@ -1367,9 +1385,18 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: rgb(30 58 138 / var(--tw-text-opacity));
 }
 
+.hover\:border-b-2:hover {
+  border-bottom-width: 2px;
+}
+
 .hover\:border-blue-800:hover {
   --tw-border-opacity: 1;
   border-color: rgb(30 64 175 / var(--tw-border-opacity));
+}
+
+.hover\:border-blue-600:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(37 99 235 / var(--tw-border-opacity));
 }
 
 .hover\:bg-blue-800:hover {
