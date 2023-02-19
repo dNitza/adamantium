@@ -1520,10 +1520,6 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: rgb(219 234 254 / var(--tw-text-opacity));
 }
 
-.prose-ul\:ml-0 :is(:where(ul):not(:where([class~="not-prose"] *))) {
-  margin-left: 0px;
-}
-
 .prose-ul\:list-none :is(:where(ul):not(:where([class~="not-prose"] *))) {
   list-style-type: none;
 }
