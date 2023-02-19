@@ -11,7 +11,7 @@ module Adamantium
         include Deps["settings"]
         include Dry::Monads[:result]
 
-        VALID_UPLOAD_TYPES = %i[jpeg jpg png gif]
+        VALID_UPLOAD_TYPES = %i[jpeg jpg png gif mp4]
 
         def call(file:)
           mime = FileMagic.new
