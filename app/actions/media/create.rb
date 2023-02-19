@@ -8,7 +8,7 @@ module Adamantium
         def handle(req, res)
           data = req.params[:file]
 
-          halt 401 unless verify_scope(req: req, scope: :media)
+          halt 401 unless verify_scope(req: req, scope: :create) || verify_scope(req: req, scope: :media)
 
           upload_result = upload.call(file: data)
 
