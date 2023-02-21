@@ -97,6 +97,7 @@ module Adamantium
       def for_rss
         posts
           .where(post_type: "post", location: nil)
+          .exclude(name: nil)
           .published
           .combine(:tags)
           .order(Sequel.desc(:published_at))
