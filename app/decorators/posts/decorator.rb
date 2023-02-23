@@ -63,6 +63,14 @@ module Adamantium
           geo[1]
         end
 
+        def small_map
+          "https://api.mapbox.com/styles/v1/dnitza/cleb2o734000k01pbifls5620/static/pin-s+555555(#{lon},#{lat})/#{lon},#{lat},14,0/200x100@2x?access_token=pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIzOHFmazBkODIzdm9kZHgxdDF4ajQifQ.mSneE-1SKeju8AOz5gp4BQ"
+        end
+
+        def large_map
+          "https://api.mapbox.com/styles/v1/dnitza/cleb2o734000k01pbifls5620/static/pin-s+555555(#{lon},#{lat})/#{lon},#{lat},14,0/620x310@2x?access_token=pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIzOHFmazBkODIzdm9kZHgxdDF4ajQifQ.mSneE-1SKeju8AOz5gp4BQ"
+        end
+
         private
 
         # e.g. geo:-37.75188,144.90417;u=35
@@ -74,6 +82,8 @@ module Adamantium
         end
 
         def truncate_html(content, len = 30, at_end = nil)
+          return content if content.to_s.length <= len
+
           p = REXML::Parsers::PullParser.new(content)
           tags = []
           new_len = len
