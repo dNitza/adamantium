@@ -22,7 +22,7 @@ article class="h-entry"
   div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
     div class=""
       = "Published "
-      time class="dt-published" datetime=post.published_at
+      time class="dt-published" datetime=post.machine_published_at
         = post.display_published_at
       p
         a class="p-author h-card" href=Hanami.app.settings.micropub_site_url

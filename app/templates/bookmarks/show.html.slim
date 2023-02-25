@@ -12,8 +12,13 @@ div class="prose max-w-prose mx-auto text-gray-800 dark:text-gray-200 grid grid-
 
 div class="mb-8 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
-div class="mb-2 max-w-prose mx-auto text-gray-800 dark:text-gray-200 flex"
-  = "Published #{bookmark.display_published_at}"
+
+div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
+  div class=""
+    = "Published "
+    time class="dt-published" datetime=bookmark.machine_published_at
+      = bookmark.display_published_at
+
   span class="text-right flex-1"
     == render :tags, tags: bookmark.tags
 
