@@ -16,7 +16,7 @@ module Adamantium
           post_params = prepare_params(params: post)
           created_post = post_repo.create(post_params)
 
-          post.syndication_sources.each do |url|
+          post[:syndication_sources].each do |url|
             add_post_syndication_source.call(created_post.id, :swarm, url)
           end
 
