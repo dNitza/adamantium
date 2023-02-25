@@ -4,7 +4,7 @@ module Adamantium
       class CheckinContract < Dry::Validation::Contract
         params do
           required(:name).maybe(:string)
-          required(:content).filled(:string)
+          required(:content).maybe(:string)
           required(:category).array(:string)
           required(:published_at).maybe(:time)
           required(:slug).filled(:string)
