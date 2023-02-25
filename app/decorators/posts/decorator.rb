@@ -26,8 +26,7 @@ module Adamantium
         end
 
         def prefix_emoji
-          prefix = name ? "" : "💬"
-          location ? "🗺️" : prefix
+          name ? "" : "💬"
         end
 
         def display_title
