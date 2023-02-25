@@ -95,7 +95,7 @@ module Adamantium
       new_params[:h] = "entry"
       new_params[:syndication_sources] = params.dig(:properties, :syndication)
       new_params[:name] = checkin.dig(:properties, :name).first
-      new_params[:content] = params.dig(:properties, :content)&.first
+      new_params[:content] = params.dig(:properties, :content)&.first || ""
       new_params[:url] = checkin.dig(:properties, :url)&.first
       new_params[:slug] = SecureRandom.uuid
       new_params[:category] = params.dig(:properties, :category)
