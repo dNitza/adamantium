@@ -6,6 +6,7 @@ module Adamantium
       class CreateCheckin < Command
         include Deps["repos.post_repo",
           "post_utilities.slugify",
+          "logger",
           renderer: "renderers.markdown",
           add_post_syndication_source: "commands.posts.add_syndication_source"
                     ]
@@ -16,6 +17,8 @@ module Adamantium
           syndication_sources = post.delete(:syndication_sources)
           post_params = prepare_params(params: post)
           created_post = post_repo.create(post_params)
+
+          logger.info("CREATED: #{created_post.inspect}")
 
           syndication_sources.each do |url|
             add_post_syndication_source.call(created_post.id, :swarm, url)
