@@ -15,6 +15,12 @@ module Adamantium
             Decorators::Posts::Decorator.new(post)
           end
         end
+
+        expose :photo_posts do
+          post_repo.photo_listing(limit: 12).map do |post|
+            Decorators::Posts::Decorator.new(post)
+          end
+        end
       end
     end
   end

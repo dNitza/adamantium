@@ -43,13 +43,7 @@ html
             a class="p-1 rounded text-gray-400 hover:bg-blue-100 hover:text-blue-400 dark:hover:bg-blue-200" href="/posts" Writing
             span class="text-gray-400 dark:text-gray-600"
               = "/"
-            a class="p-1 rounded text-gray-400 hover:bg-yellow-100 hover:text-yellow-600 dark:hover:bg-yellow-200 #{link_active?('bookmarks') ? 'text-yellow-600 dark:text-yellow-600' : ''}" href="/bookmarks" Bookmarks
-            span class="text-gray-400 dark:text-gray-600"
-              = "/"
             a class="p-1 rounded text-gray-400 hover:bg-orange-100 hover:text-orange-400 dark:hover:bg-orange-200" href="#{Hanami.app.settings.micropub_site_url}/feeds/rss" RSS
-            // span class="text-gray-400 dark:text-gray-600"
-              = "/"
-            // a class="text-green-600 hover:text-gray-800 dark:hover:text-gray-200" href="/art-things" Art things
       == yield
     div class="px-4 max-w-screen-md mx-auto pb-10"
       p class="text-gray-200 dark:text-gray-600" © 2023 Daniel Nitsikopoulos. All rights reserved.
