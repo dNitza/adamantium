@@ -5,15 +5,24 @@ div class="h-card prose dark:prose-invert mb-12 max-w-prose mx-auto text-gray-80
 div class="mb-8 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
 div class="mb-4 flex max-w-prose mx-auto"
-  h2 class="text-xl text-gray-600 dark:text-gray-200" Recent
+  h2 class="text-l text-gray-600 dark:text-gray-200" Recent posts
   a class="text-right flex-1 text-blue-400" href="/posts" See all &rarr;
 
 div class="mb-12 max-w-prose mx-auto"
   - posts.each do |post|
     == render :post, post: post
 
+div class="flex max-w-prose mx-auto"
+  h2 class="text-l text-gray-600 dark:text-gray-200" Photos
+  a class="text-right flex-1 text-blue-400" href="/photos" See all &rarr;
+
 div class="grid grid-cols-3 gap-4 mb-4 max-w-prose mx-auto"
   - photo_posts.each do |post|
     == render :photo_post, post: post
 
+div class="mb-12 max-w-prose mx-auto"
+  p
+    = "🌏 Last seen at "
+    a class="text-blue-400" href=last_location.permalink
+      = last_location.display_title
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

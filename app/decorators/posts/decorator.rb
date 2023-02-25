@@ -26,12 +26,12 @@ module Adamantium
         end
 
         def prefix_emoji
-          prefix = name ? "" : "📯"
+          prefix = name ? "" : "💬"
           location ? "🗺️" : prefix
         end
 
         def display_title
-          title = name || published_at.strftime("%D")
+          title = name
           "#{prefix_emoji} #{title}"
         end
 

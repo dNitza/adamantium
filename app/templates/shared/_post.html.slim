@@ -7,5 +7,6 @@ div class="mb-8 h-entry"
   == render :tags, tags: post.tags
 
   p class="text-sm text-blue-400"
-    time class="dt-published" datetime=post.machine_published_at
-      = post.display_published_at
+    a href="#{post.permalink}"
+      time class="dt-published" datetime=post.machine_published_at
+        = post.display_published_at

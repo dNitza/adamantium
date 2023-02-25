@@ -93,6 +93,15 @@ module Adamantium
         query ? base.where(Sequel.ilike(:name, "%#{query}%")).to_a : base.to_a
       end
 
+      def last_location
+        posts
+          .where(post_type: "checkin")
+          .published
+          .order(Sequel.desc(:published_at))
+          .limit(1)
+          .one
+      end
+
       def for_rss
         posts
           .where(post_type: "post", location: nil)
