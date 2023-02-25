@@ -13,10 +13,11 @@ module Adamantium
         include Dry::Monads[:result]
 
         def call(post)
+          syndication_sources = post.delete(:syndication_sources)
           post_params = prepare_params(params: post)
           created_post = post_repo.create(post_params)
 
-          post[:syndication_sources].each do |url|
+          syndication_sources.each do |url|
             add_post_syndication_source.call(created_post.id, :swarm, url)
           end
 
