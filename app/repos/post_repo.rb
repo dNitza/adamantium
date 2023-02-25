@@ -64,7 +64,7 @@ module Adamantium
 
       def photo_listing(limit: nil)
         posts
-          .where(post_type: "post")
+          .where(post_type: ["post", "checkin"])
           .where(Sequel[:photos].pg_json.array_length > 0)
           .published
           .combine(:tags)
