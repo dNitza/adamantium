@@ -71,6 +71,10 @@ module Adamantium
           "https://api.mapbox.com/styles/v1/dnitza/cleb2o734000k01pbifls5620/static/pin-s+555555(#{lon},#{lat})/#{lon},#{lat},14,0/620x310@2x?access_token=pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIzOHFmazBkODIzdm9kZHgxdDF4ajQifQ.mSneE-1SKeju8AOz5gp4BQ"
         end
 
+        def template_type
+          :post
+        end
+
         private
 
         # e.g. geo:-37.75188,144.90417;u=35

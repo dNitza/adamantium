@@ -76,7 +76,6 @@ module Adamantium
       def places_listing(limit: nil)
         posts
           .where(post_type: "checkin")
-          .exclude(location: nil)
           .published
           .combine(:tags)
           .order(Sequel.desc(:published_at))

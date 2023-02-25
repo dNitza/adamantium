@@ -3,6 +3,6 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
 
 div class="mb-12 max-w-prose mx-auto"
   - posts.each do |post|
-    == render post.post_type.to_sym, post.post_type.to_sym => post
+    == render post.template_type.to_sym, post.template_type.to_sym => post
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
