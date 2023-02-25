@@ -4,8 +4,6 @@ div class="mb-8 h-entry"
       = post.display_title
   div class="e-content p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100"
     == post.excerpt
-    -if post.location
-      img class="rounded" src=post.small_map
   == render :tags, tags: post.tags
 
   p class="text-sm text-blue-400"
