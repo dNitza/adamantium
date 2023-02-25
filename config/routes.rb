@@ -23,6 +23,7 @@ module Adamantium
     get "/bookmarks/metadata/:id", to: "bookmarks.metadata"
     get "/bookmark/:slug", to: "bookmarks.show"
 
+    get "/photos", to: "photos.index"
     get "/places", to: "places.index"
 
     get "/tagged/:slug", to: "tags.show"
