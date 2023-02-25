@@ -10,6 +10,10 @@ module Adamantium
           published_at.strftime("%e %B, %Y")
         end
 
+        def machine_published_at
+          published_at.rfc2822
+        end
+
         def syndicated?
           !syndication_sources.empty?
         end
