@@ -7,8 +7,10 @@ article class="h-entry"
     article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
       - if post.videos?
         - post.videos.each do |video|
-          video loop=true muted=true controls=true
-            source type="video/mp4" src="#{video["value"]}"
+          figure
+            video loop=true muted=true controls=true
+              source type="video/mp4" src="#{video["value"]}"
+            figcaption= video["alt"]
       - if post.photos?
         - post.photos.each do |photo|
           figure
