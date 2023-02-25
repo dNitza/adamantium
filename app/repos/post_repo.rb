@@ -75,7 +75,6 @@ module Adamantium
 
       def places_listing(limit: nil)
         posts
-          .where(post_type: "post")
           .exclude(location: nil)
           .published
           .combine(:tags)
