@@ -33,7 +33,7 @@ module Adamantium
 
         def prepare_params(params:)
           attrs = params.to_h
-          attrs[:content] = renderer.call(content: attrs[:content])
+          attrs[:content] = renderer.call(content: attrs[:content]) if attrs[:content]
           attrs
         end
       end
