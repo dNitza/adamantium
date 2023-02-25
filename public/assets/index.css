@@ -1191,6 +1191,10 @@ video {
   fill: #dbeafe;
 }
 
+.fill-pink-100 {
+  fill: #fce7f3;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1445,6 +1449,10 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 .hover\:fill-blue-400:hover {
   fill: #60a5fa;
+}
+
+.hover\:fill-pink-400:hover {
+  fill: #f472b6;
 }
 
 .hover\:text-blue-100:hover {
