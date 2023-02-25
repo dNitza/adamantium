@@ -22,7 +22,19 @@ module Adamantium
         end
 
         def photos?
-          photos.count > 0
+          __getobj__.photos.count { |p| !p["value"].end_with?("mp4") } > 0
+        end
+
+        def photos
+          __getobj__.photos.select { |p| !p["value"].end_with?("mp4") }
+        end
+
+        def videos?
+          __getobj__.photos.count { |p| p["value"].end_with?("mp4") } > 0
+        end
+
+        def videos
+          __getobj__.photos.select { |p| p["value"].end_with?("mp4") }
         end
 
         def prefix_emoji

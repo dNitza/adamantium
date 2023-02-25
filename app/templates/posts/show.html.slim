@@ -5,6 +5,10 @@ article class="h-entry"
         = post.display_title
 
     article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
+      - if post.videos?
+        - post.videos.each do |video|
+          video loop muted controls
+            source type="video/mp4" src=video["value"]
       - if post.photos?
         - post.photos.each do |photo|
           figure
