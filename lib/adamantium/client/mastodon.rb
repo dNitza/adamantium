@@ -18,7 +18,7 @@ module Adamantium
         content = if post[:name]
           "#{post[:name]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
         else
-          "#{post[:content]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
+          post[:content]
         end
 
         tags = post[:category].map { |tag| "##{tag}" }.join(" ")
