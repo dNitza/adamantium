@@ -99,7 +99,7 @@ module Adamantium
       new_params[:url] = checkin.dig(:properties, :url)&.first
       new_params[:slug] = SecureRandom.uuid
       new_params[:category] = params.dig(:properties, :category)
-      published = DateTime.parse(params.dig(:properties, :published)&.first)
+      published = DateTime.parse(params.dig(:properties, :published)&.first).new_offset(0)
       new_params[:published_at] = published.to_s
       new_params[:post_type] = :checkin
       location = params.dig(:properties, :location).first[:properties]
