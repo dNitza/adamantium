@@ -57,7 +57,7 @@ module Adamantium
         file_size = file.size.to_f / 2**20
         formatted_file_size = "%.2f" % file_size
 
-        next if formatted_file_size > 2.0
+        return if formatted_file_size > 2.0
 
         response = HTTParty.post("#{mastodon_server}api/v2/media", {
           headers: {
