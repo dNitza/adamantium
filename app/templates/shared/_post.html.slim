@@ -1,12 +1,12 @@
 div class="mb-8 h-entry"
   h3 class="text-xl font-semibold text-blue-600 mb-2"
-    a class="u-url border-b-2 border-transparent hover:border-blue-600 hover:border-b-2" href="/post/#{post.slug}"
+    a class="border-b-2 border-transparent hover:border-blue-600 hover:border-b-2" href="/post/#{post.slug}"
       = post.display_title
   div class="e-content p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100"
     == post.excerpt
   == render :tags, tags: post.tags
 
   p class="text-sm text-blue-400"
-    a href="#{post.permalink}"
+    a class="u-url" href="#{post.permalink}"
       time class="dt-published" datetime=post.machine_published_at
         = post.display_published_at
