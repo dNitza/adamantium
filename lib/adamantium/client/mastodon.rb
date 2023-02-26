@@ -34,7 +34,7 @@ module Adamantium
           },
           body: {
             status: text_with_tags,
-            media_ids: media_ids
+            media_ids: media_ids.compact
           }
         })
 
@@ -50,8 +50,15 @@ module Adamantium
         mastodon_server = settings.mastodon_server.split("@").first
         mastodon_token = settings.mastodon_token
         file = Tempfile.new(SecureRandom.uuid)
-        file.write(URI.open(photo[:value]).read)
+
+        file.write(URI.open(photo["value"]).read)
         file.rewind
+
+        file_size = file.size.to_f / 2**20
+        formatted_file_size = "%.2f" % file_size
+
+        next if formatted_file_size > 2.0
+
         response = HTTParty.post("#{mastodon_server}api/v2/media", {
           headers: {
             Authorization: "Bearer #{mastodon_token}"
@@ -59,7 +66,7 @@ module Adamantium
           multipart: true,
           body: {
             file: file,
-            description: photo[:alt]
+            description: photo["alt"]
           }
         })
         file.close
