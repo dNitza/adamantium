@@ -40,7 +40,7 @@ module Adamantium
 
         if response.code >= 200 && response.code < 300
           status = JSON.parse(response.body, symbolize_names: true)
-          Success("#{mastodon_server}/#{status[:id]}")
+          Success("#{settings.mastodon_server}/#{status[:id]}")
         else
           Failure(response.message)
         end
