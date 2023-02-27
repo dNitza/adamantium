@@ -33,6 +33,7 @@ gem "pinboard", git: "https://github.com/dnitza/pinboard", branch: "master"
 gem "ogpr"
 gem "ruby-filemagic", git: "https://github.com/dnitza/ruby-filemagic", branch: "master"
 gem "webmention"
+gem "sanitize"
 
 group :cli, :development do
   gem "hanami-reloader"

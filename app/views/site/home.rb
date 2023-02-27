@@ -22,6 +22,10 @@ module Adamantium
           end
         end
 
+        expose :latest_status do
+          Decorators::Posts::Decorator.new(post_repo.latest_status)
+        end
+
         expose :last_location do
           Decorators::Posts::Decorator.new(post_repo.last_location)
         end

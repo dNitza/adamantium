@@ -25,6 +25,7 @@ module Adamantium
 
     get "/photos", to: "photos.index"
     get "/places", to: "places.index"
+    get "/statuses", to: "statuses.index"
 
     get "/tagged/:slug", to: "tags.show"
 

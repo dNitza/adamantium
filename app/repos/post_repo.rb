@@ -55,6 +55,7 @@ module Adamantium
       def post_listing(limit: nil)
         posts
           .where(post_type: "post", location: nil)
+          .exclude(name: nil)
           .published
           .combine(:tags)
           .order(Sequel.desc(:published_at))
@@ -91,6 +92,25 @@ module Adamantium
           .order(Sequel.desc(:published_at))
 
         query ? base.where(Sequel.ilike(:name, "%#{query}%")).to_a : base.to_a
+      end
+
+      def statuses_listing(limit: nil)
+        posts
+          .where(post_type: "post", name: nil)
+          .published
+          .combine(:tags)
+          .order(Sequel.desc(:published_at))
+          .limit(limit)
+          .to_a
+      end
+
+      def latest_status
+        posts
+          .where(name: nil)
+          .published
+          .order(Sequel.desc(:published_at))
+          .limit(1)
+          .one
       end
 
       def last_location

@@ -3,6 +3,7 @@
 # auto_register: false
 
 require "rexml/parsers/pullparser"
+require "sanitize"
 
 module Adamantium
   module Decorators
@@ -56,6 +57,10 @@ module Adamantium
 
         def feed_content
           photos? ? "<div>#{photos.map { |p| "<img src='#{p["value"]}'/>" }.join("")} #{content}</div>" : content
+        end
+
+        def raw_content
+          Sanitize.fragment(content)
         end
 
         def excerpt
