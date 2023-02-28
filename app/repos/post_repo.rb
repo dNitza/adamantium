@@ -1,6 +1,7 @@
 module Adamantium
   module Repos
     class PostRepo < Adamantium::Repo[:posts]
+      Sequel.extension :pg_json
       Sequel.extension :pg_json_ops
       commands update: :by_pk
 
@@ -97,6 +98,7 @@ module Adamantium
       def statuses_listing(limit: nil)
         posts
           .where(post_type: "post", name: nil)
+          .exclude(Sequel.pg_jsonb_op(:syndication_sources).has_key?("instagram"))
           .published
           .combine(:tags)
           .order(Sequel.desc(:published_at))
