@@ -28,8 +28,8 @@ div class="grid grid-cols-3 gap-4 max-w-prose mx-auto"
   - photo_posts.each do |post|
     == render :photo_post, post: post
 
-div class="mb-12 max-w-prose mx-auto text-gray-600 dark:text-gray-200"
-  p
+div class="mb-12 mt-6 max-w-prose mx-auto text-gray-600 dark:text-gray-200 rounded p-2 bg-blue-50 dark:bg-blue-900"
+  div
     = "🗺️ Last seen at "
     a class="text-blue-400 hover:text-blue-600" href=last_location.permalink
       = last_location.display_title
