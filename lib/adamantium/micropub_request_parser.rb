@@ -103,7 +103,7 @@ module Adamantium
       new_params[:published_at] = published.to_s
       new_params[:post_type] = :checkin
       location = params.dig(:properties, :location).first[:properties]
-      new_params[:photos] = params.dig(:properties, :photo)&.map { |p| {value: v, alt: new_params[:name]} } || []
+      new_params[:photos] = params.dig(:properties, :photo)&.map { |p| {value: p, alt: new_params[:name]} } || []
       new_params[:location] = "geo:#{location.dig(:latitude).first},#{location.dig(:longitude).first};u=0"
       new_params
     end
