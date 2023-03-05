@@ -24,6 +24,10 @@ article class="h-entry"
       - if post.location
         img class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
 
+  - if post.tags.map(&:label).include? "weekly"
+    div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
+      div class="mx-auto" hx-get="/post/top_tracks/#{post.slug}" hx-trigger="load"
+    
   div class="mb-4 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
   div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"

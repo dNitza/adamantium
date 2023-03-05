@@ -34,6 +34,8 @@ gem "ogpr"
 gem "ruby-filemagic", git: "https://github.com/dnitza/ruby-filemagic", branch: "master"
 gem "webmention"
 gem "sanitize"
+gem "time_math2", require: "time_math"
+gem "lastfm", "~> 1.27"
 
 group :cli, :development do
   gem "hanami-reloader"

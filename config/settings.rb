@@ -25,6 +25,9 @@ module Adamantium
     setting :pingback_url, default: nil
     setting :webmention_token, default: nil
 
+    setting :lastfm_api_key, default: nil
+    setting :lastfm_secret, default: nil
+
     # Micropub endpoints
     setting :micropub_media_endpoint, default: "", constructor: Types::Params::String
 

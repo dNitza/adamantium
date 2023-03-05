@@ -214,6 +214,9 @@ GEM
       nokogiri (>= 1.13)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
+    lastfm (1.27.4)
+      httparty
+      xml-simple
     link-header-parser (5.0.0)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -360,6 +363,7 @@ GEM
     temple (0.10.0)
     thor (1.2.1)
     tilt (2.0.11)
+    time_math2 (0.1.1)
     timecop (0.9.6)
     transproc (1.1.1)
     unf (0.1.4)
@@ -370,6 +374,8 @@ GEM
       http (~> 5.0)
       indieweb-endpoints (~> 8.0)
       nokogiri (>= 1.13)
+    xml-simple (1.1.9)
+      rexml
     zeitwerk (2.6.7)
 
 PLATFORMS
@@ -397,6 +403,7 @@ DEPENDENCIES
   hanami-validations (~> 2.0.0)
   hanami-view!
   httparty
+  lastfm (~> 1.27)
   ogpr
   pg
   pinboard!
@@ -412,6 +419,7 @@ DEPENDENCIES
   sanitize
   slim
   standardrb
+  time_math2
   timecop
   webmention
 
