@@ -64,7 +64,7 @@ module Adamantium
         end
 
         def excerpt
-          truncate_html(content, 140, true)
+          name ? truncate_html(content, 140, true) : content
         end
 
         def permalink
