@@ -1081,6 +1081,10 @@ video {
   height: 12rem;
 }
 
+.h-44 {
+  height: 11rem;
+}
+
 .max-h-12 {
   max-height: 3rem;
 }
@@ -1107,6 +1111,10 @@ video {
 
 .w-4 {
   width: 1rem;
+}
+
+.w-44 {
+  width: 11rem;
 }
 
 .max-w-prose {
@@ -1146,6 +1154,10 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
@@ -1154,8 +1166,16 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
 }
 
 .content-center {
@@ -1614,6 +1634,10 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   opacity: 0.8;
 }
 
+.prose-p\:mb-0 :is(:where(p):not(:where([class~="not-prose"] *))) {
+  margin-bottom: 0px;
+}
+
 .prose-a\:rounded-sm :is(:where(a):not(:where([class~="not-prose"] *))) {
   border-radius: 0.125rem;
 }
@@ -1681,6 +1705,11 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 .prose-li\:pl-0 :is(:where(li):not(:where([class~="not-prose"] *))) {
   padding-left: 0px;
+}
+
+.prose-img\:my-2 :is(:where(img):not(:where([class~="not-prose"] *))) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .prose-img\:rounded :is(:where(img):not(:where([class~="not-prose"] *))) {
