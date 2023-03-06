@@ -38,8 +38,8 @@ RSpec.describe "Post creation", :db, :requests do
       post "/micropub", params
 
       expect(last_response).to be_successful
-      expect(post_repo.post_listing.count).to eq 1
-      expect(post_repo.post_listing.first.tags.map(&:label)).to eq ["ruby", "rspec"]
+      expect(post_repo.statuses_listing.count).to eq 1
+      expect(post_repo.statuses_listing.first.tags.map(&:label)).to eq ["ruby", "rspec"]
     end
   end
 

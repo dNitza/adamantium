@@ -23,11 +23,11 @@ module Adamantium
         end
 
         expose :latest_status do
-          Decorators::Posts::Decorator.new(post_repo.latest_status)
+          post_repo.latest_status ? Decorators::Posts::Decorator.new(post_repo.latest_status) : nil
         end
 
         expose :last_location do
-          Decorators::Posts::Decorator.new(post_repo.last_location)
+          post_repo.last_location ? Decorators::Posts::Decorator.new(post_repo.last_location) : nil
         end
       end
     end

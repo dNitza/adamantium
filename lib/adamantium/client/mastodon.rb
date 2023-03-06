@@ -3,6 +3,7 @@ require "digest"
 require "tempfile"
 require "open-uri"
 require "dry/monads"
+require "sanitize"
 
 module Adamantium
   module Client
@@ -18,7 +19,7 @@ module Adamantium
         content = if post[:name]
           "#{post[:name]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
         else
-          post[:content]
+          sanitze_post(post[:content])
         end
 
         tags = post[:category].map { |tag| "##{tag}" }.join(" ")
@@ -73,6 +74,19 @@ module Adamantium
         file.unlink
 
         JSON.parse(response.body, symbolize_names: true).fetch(:id, nil)
+      end
+
+      private
+
+      def sanitze_post(content)
+        replace_links = lambda { |env|
+          return unless env[:node_name] == "a"
+          node = env[:node]
+          url = node[:href]
+          env[:node].replace(url)
+        }
+
+        Sanitize.fragment(content, transformers: [replace_links]).strip
       end
     end
   end
