@@ -124,6 +124,25 @@ module Adamantium
           .one
       end
 
+      def from_the_archives(start_date:, end_date:)
+        # SELECT * FROM posts
+        # WHERE EXTRACT(month FROM "published_at") >= 2
+        # WHERE EXTRACT(month FROM "published_at") <= 2+
+        # AND EXTRACT(day FROM "published_at") > 20
+        # AND EXTRACT(day FROM "published_at") < 27
+        # AND post_type = 'post';
+
+        posts
+          .where(post_type: "post")
+          .published
+          .where { Sequel.extract(:year, :published_at) < start_date.year }
+          .where { Sequel.extract(:month, :published_at) >= start_date.month }
+          .where { Sequel.extract(:month, :published_at) <= end_date.month }
+          .where { Sequel.extract(:day, :published_at) >= start_date.day }
+          .where { Sequel.extract(:day, :published_at) <= end_date.day }
+          .to_a
+      end
+
       def for_rss
         posts
           .where(post_type: "post", location: nil)
