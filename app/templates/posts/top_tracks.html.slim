@@ -1,7 +1,11 @@
 a href=url class="block flex bg-pink-100 dark:bg-pink-600 rounded px-4 py-2 mb-12"
-  div class="mr-4 my-auto" 
-    img class="rounded h-34 w-34 my-auto" src=image
+  div class="mr-4 my-auto"
+    div class="w-34 h-34 my-auto text-[2.041rem] block dark:hidden" 👩🏼‍🎤
+    div class="w-34 h-34 my-auto text-[2.041rem] hidden dark:block" 👨🏽‍🎤
   div
-    p class="text-lg" Top track this week
-    p class="text-xl"= "#{name} by #{artist}"
+    p class="text-sm" Top track this week
+    p class=""
+      span class="font-semibold"=  name
+      span  by 
+      span class="font-semibold"= artist
 

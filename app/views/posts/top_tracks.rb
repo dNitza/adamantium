@@ -12,10 +12,6 @@ module Adamantium
           track.dig("artist", "content")
         end
 
-        expose :image do |track:|
-          track["image"].detect { |i| i["size"] == "small" }["content"]
-        end
-
         expose :url do |track:|
           track["url"]
         end
