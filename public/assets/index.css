@@ -1061,6 +1061,10 @@ video {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-16 {
   height: 4rem;
 }
@@ -1317,6 +1321,10 @@ video {
   font-size: 0.8rem;
 }
 
+.text-\[2\.041rem\] {
+  font-size: 2.041rem;
+}
+
 .text-base {
   font-size: 1rem;
 }
@@ -1325,12 +1333,12 @@ video {
   font-size: 0.75rem;
 }
 
-.font-bold {
-  font-weight: 700;
-}
-
 .font-semibold {
   font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .uppercase {
@@ -1610,6 +1618,15 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   text-decoration-line: none;
 }
 
+.prose-a\:decoration-wavy :is(:where(a):not(:where([class~="not-prose"] *))) {
+  text-decoration-style: wavy;
+}
+
+.hover\:prose-a\:text-blue-400 :is(:where(a):not(:where([class~="not-prose"] *))):hover {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
+
 .hover\:prose-a\:underline :is(:where(a):not(:where([class~="not-prose"] *))):hover {
   text-decoration-line: underline;
 }
@@ -1654,6 +1671,14 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 @media (prefers-color-scheme: dark) {
+  .dark\:block {
+    display: block;
+  }
+
+  .dark\:hidden {
+    display: none;
+  }
+
   .dark\:border-gray-600 {
     --tw-border-opacity: 1;
     border-color: rgb(75 85 99 / var(--tw-border-opacity));
