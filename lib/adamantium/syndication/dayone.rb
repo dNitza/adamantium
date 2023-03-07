@@ -3,9 +3,11 @@ require "mail"
 module Adamantium
   module Syndication
     class Dayone
-      def initialize(username:, password:)
+      def initialize(username:, password:, to:, from:)
         @username = username
         @password = password
+        @to = to
+        @from = from
       end
 
       def call(name:, content:)
@@ -22,8 +24,8 @@ module Adamantium
         end
 
         Mail.deliver do
-          to settings.dayone_email
-          from settings.from_email
+          to @to
+          from @from
           subject name
           body content
         end
