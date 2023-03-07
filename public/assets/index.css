@@ -983,8 +983,8 @@ video {
   grid-column: span 5 / span 5;
 }
 
-.col-span-3 {
-  grid-column: span 3 / span 3;
+.col-span-7 {
+  grid-column: span 7 / span 7;
 }
 
 .m-0 {
