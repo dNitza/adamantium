@@ -28,6 +28,9 @@ module Adamantium
     setting :lastfm_api_key, default: nil
     setting :lastfm_secret, default: nil
 
+    setting :from_email, default: nil
+    setting :dayone_email, default: nil
+
     # Micropub endpoints
     setting :micropub_media_endpoint, default: "", constructor: Types::Params::String
 

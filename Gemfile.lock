@@ -61,6 +61,7 @@ GEM
     database_cleaner-sequel (2.0.2)
       database_cleaner-core (~> 2.0.0)
       sequel
+    date (3.3.3)
     diff-lcs (1.5.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -225,6 +226,11 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     lumberjack (1.2.8)
+    mail (2.8.1)
+      mini_mime (>= 0.1.1)
+      net-imap
+      net-pop
+      net-smtp
     method_source (1.0.0)
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
@@ -237,8 +243,17 @@ GEM
       hansi (~> 0.2.0)
       mustermann (= 3.0.0)
     nenv (0.3.0)
+    net-imap (0.3.4)
+      date
+      net-protocol
+    net-pop (0.1.2)
+      net-protocol
+    net-protocol (0.2.1)
+      timeout
     net-scp (4.0.0)
       net-ssh (>= 2.6.5, < 8.0.0)
+    net-smtp (0.3.3)
+      net-protocol
     net-ssh (7.0.1)
     netrc (0.11.0)
     nio4r (2.5.8)
@@ -365,6 +380,7 @@ GEM
     tilt (2.0.11)
     time_math2 (0.1.1)
     timecop (0.9.6)
+    timeout (0.3.2)
     transproc (1.1.1)
     unf (0.1.4)
       unf_ext
@@ -404,6 +420,7 @@ DEPENDENCIES
   hanami-view!
   httparty
   lastfm (~> 1.27)
+  mail
   ogpr
   pg
   pinboard!

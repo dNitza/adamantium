@@ -36,6 +36,7 @@ gem "webmention"
 gem "sanitize"
 gem "time_math2", require: "time_math"
 gem "lastfm", "~> 1.27"
+gem "mail"
 
 group :cli, :development do
   gem "hanami-reloader"
