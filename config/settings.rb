@@ -31,6 +31,8 @@ module Adamantium
     setting :from_email, default: nil
     setting :dayone_email, default: nil
 
+    setting :smtp_password, default: nil
+    setting :smtp_username, default: nil
     # Micropub endpoints
     setting :micropub_media_endpoint, default: "", constructor: Types::Params::String
 
