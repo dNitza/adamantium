@@ -987,6 +987,14 @@ video {
   grid-column: span 7 / span 7;
 }
 
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
 .m-0 {
   margin: 0px;
 }
