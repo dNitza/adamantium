@@ -25,7 +25,7 @@ module Adamantium
 
         Mail.deliver do
           to @to
-          from @from
+          from @username
           subject name
           body content
         end
