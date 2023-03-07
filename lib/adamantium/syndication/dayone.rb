@@ -3,15 +3,18 @@ require "mail"
 module Adamantium
   module Syndication
     class Dayone
-      include Deps["settings"]
+      def initialize(username:, password:)
+        @username = username
+        @password = password
+      end
 
       def call(name:, content:)
         Mail.defaults do
           delivery_method :smtp, {
             address: "smtp.fastmail.com",
             port: 465,
-            user_name: settings.smtp_username,
-            password: settings.smtp_password,
+            user_name: @username,
+            password: @password,
             authentication: "plain",
             tls: true,
             openssl_verify_mode: "peer"
