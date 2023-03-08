@@ -23,12 +23,15 @@ module Adamantium
           }
         end
 
-        Mail.deliver do
-          to @to
-          from @username
+        mail = Mail.new do
           subject name
           body content
         end
+
+        mail[:to] = @to
+        mail[:from] = @from
+
+        mail.deliver
       end
     end
   end
