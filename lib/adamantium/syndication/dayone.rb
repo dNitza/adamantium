@@ -29,7 +29,7 @@ module Adamantium
         end
 
         mail[:to] = @to
-        mail[:from] = @from
+        mail[:from] = @username
 
         mail.deliver
       end
