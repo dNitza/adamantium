@@ -10,26 +10,29 @@ module Adamantium
         @from = from
       end
 
+      attr_reader :username, :password, :to, :from
+
       def call(name:, content:)
         Mail.defaults do
           delivery_method :smtp, {
             address: "smtp.fastmail.com",
             port: 465,
-            user_name: @username,
-            password: @password,
             authentication: "plain",
             tls: true,
             openssl_verify_mode: "peer"
           }
         end
 
+        Mail.delivery_method.settings[:user_name] = username
+        Mail.delivery_method.settings[:password] = password
+
         mail = Mail.new do
           subject name
           body content
         end
 
-        mail[:to] = @to
-        mail[:from] = @username
+        mail[:to] = to
+        mail[:from] = username
 
         mail.deliver
       end
