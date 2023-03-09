@@ -20,11 +20,11 @@ div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
       = bookmark.display_published_at
 
   span class="text-right flex-1"
-    == render :tags, tags: bookmark.tags
+    == render "shared/tags", tags: bookmark.tags
 
 div class="mb-2 max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
   - if bookmark.syndicated?
     span Also on: &nbsp;
     - bookmark.syndicated_to.each do |loc|
       a href=loc[:url]
-        == render loc[:location]
+        == "shared/#{render loc[:location]}"

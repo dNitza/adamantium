@@ -20,7 +20,7 @@ div class="mb-4 flex max-w-prose mx-auto"
 
 div class="mb-12 max-w-prose mx-auto"
   - posts.each do |post|
-    == render :post, post: post
+    == render "shared/post", post: post
 
 div class="flex max-w-prose mx-auto"
   h2 class="text-l text-gray-600 dark:text-gray-200" Photos
@@ -28,7 +28,7 @@ div class="flex max-w-prose mx-auto"
 
 div class="grid grid-cols-3 gap-4 max-w-prose mx-auto"
   - photo_posts.each do |post|
-    == render :photo_post, post: post
+    == render "shared/photo_post", post: post
 
 - if last_location
   div class="mb-12 mt-6 max-w-prose mx-auto text-gray-600 dark:text-gray-200 rounded p-2 bg-blue-50 dark:bg-blue-900/60"
