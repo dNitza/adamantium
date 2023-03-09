@@ -11,4 +11,9 @@ node_modules/*
 .bundle/
 .env.*
 .vimrc.local
+*.dump
+Capfile
+config/deploy.rb
+config/deploy/production.rb
+tags
 
