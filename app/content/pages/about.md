@@ -16,4 +16,4 @@ In my spare time I like to tinker on various Ruby projects (including the softwa
 - [last.fm](https://www.last.fm/user/dNitza)
 - [Letterboxd](https://letterboxd.com/dnitza/)
 - [Mastodon](https://social.dnitza.com/@daniel)
-- [Pinboard](https://pinboard.in/u:nitza)
+- [Raindrop](https://raindrop.io/nitza/public-32480451)

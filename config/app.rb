@@ -9,6 +9,7 @@ module Adamantium
     config.actions.content_security_policy[:media_src] += " https://dnitza.com"
     config.actions.content_security_policy[:script_src] += " https://unpkg.com/htmx.org@1.8.4"
     config.actions.content_security_policy[:connect_src] += " https://stats.dnitza.com/api/event"
+    config.actions.content_security_policy[:frame_src] += " https://embed.music.apple.com"
 
     config.logger.level = :debug
     config.logger.stream = "log/hanami.log"
