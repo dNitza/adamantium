@@ -161,6 +161,13 @@ module Adamantium
           .one!
       end
 
+      def fetch_unpublished!(slug)
+        posts
+          .combine(:tags)
+          .where(slug: slug)
+          .one!
+      end
+
       def find!(id)
         posts
           .by_pk(id)
