@@ -26,9 +26,9 @@ module Adamantium
           if params.key? :add
             attrs_to_add = {}
 
-            syndication = params[:add].delete(:syndication).first
+            syndication = params[:add].delete(:syndication)&.first
             tags = params[:add].delete(:category)
-            content = params[:add].delete(:content).first
+            content = params[:add].delete(:content)&.first
             name = params[:add].delete(:name)
 
             attrs_to_add[:name] = name if post.name.empty?
