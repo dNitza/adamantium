@@ -10,7 +10,7 @@ module Adamantium
           slug = URI(url).path.split("/").last
 
           post = post_repo.fetch!(slug)
-          markdown_content = ReverseMarkdown.convert(post.content, unknown_tags: :raise, github_flavored: true).to_s
+          markdown_content = ReverseMarkdown.convert(post.content, unknown_tags: :pass_through, github_flavored: true).to_s
 
           if properties.nil? || properties.empty?
             return {
