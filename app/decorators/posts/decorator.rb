@@ -39,7 +39,13 @@ module Adamantium
         end
 
         def prefix_emoji
-          name ? "" : "💬"
+          if name
+            ""
+          elsif photos? && content == ""
+            "📷"
+          else
+            "💬"
+          end
         end
 
         def display_title
