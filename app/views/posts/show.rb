@@ -16,6 +16,14 @@ module Adamantium
           posts = post_repo.from_the_archives(start_date: start_date, end_date: end_date)
           posts.map { |p| Decorators::Posts::Decorator.new(p) }
         end
+
+        expose :text_posts do |past_posts|
+          past_posts.reject(&:photos?)
+        end
+
+        expose :photo_posts do |past_posts|
+          past_posts.select(&:photos?)
+        end
       end
     end
   end

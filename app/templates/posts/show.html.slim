@@ -25,17 +25,26 @@ article class="h-entry"
         img class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
 
   - if post.tags.map(&:label).include? "weekly"
-    div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
-      div hx-get="/post/top_tracks/#{post.slug}" hx-trigger="load"
+    div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex gap-4"
+      div class="grow" hx-get="/post/top_tracks/#{post.slug}" hx-trigger="load"
 
-      - if past_posts.count > 0
+      - if text_posts.count > 0
         div class="block grow bg-blue-100 dark:bg-blue-600 rounded px-4 py-2 mb-12"
           p class="text-sm mb-0" This week, years ago
           ul class="mt-0"
-            - past_posts.each do |past_post|
+            - text_posts.each do |past_post|
               li class="m-0"
                 a class="hover:underline" href=past_post.permalink
                   = "#{past_post.display_title} (#{past_post.published_at.year})"
+
+    div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
+    - photo_posts.group_by{ |p| p.published_at.year }.each do |year, posts|
+      div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200"
+        div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200"
+          = year
+        div class="grid grid-cols-3 gap-4 mb-4 max-w-prose mx-auto"
+          -posts.each do |post|
+            == render "shared/photo_post", post: post
   div class="mb-4 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
   div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
