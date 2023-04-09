@@ -6,18 +6,17 @@ module Adamantium
       cont_type = content_type(params)
       req_type = request_type(params)
 
-      if cont_type == :bookmark
+      case cont_type
+      when :bookmark
         req_params = parse_post_params(req_type, cont_type, params)
-        return Entities::BookmarkRequest.new(req_params)
-      end
-
-      if cont_type == :checkin
+        Entities::BookmarkRequest.new(req_params)
+      when :checkin
         checkin_params = parse_checkin_params(params)
-        return Entities::CheckinRequest.new(checkin_params)
+        Entities::CheckinRequest.new(checkin_params)
+      else
+        req_params = parse_post_params(req_type, cont_type, params)
+        Entities::PostRequest.new(req_params)
       end
-
-      req_params = parse_post_params(req_type, cont_type, params)
-      Entities::PostRequest.new(req_params)
     end
 
     private
@@ -48,29 +47,25 @@ module Adamantium
 
       publish_time = params[:published_at] || Time.now
 
-      if req_type == :json
-        new_params[:published_at] = (params[:"post-status"] == "draft") ? nil : publish_time
-        new_params[:category] = params[:properties][:category] || []
-        new_params[:name] = params[:properties][:name] && params[:properties][:name].first
-        new_params[:content] = params[:properties][:content]&.first&.tr("\n", " ")
-        new_params[:slug] = params[:slug] || params["mp-slug"]
-        new_params[:syndicate_to] = Array(params[:properties][:"mp-syndicate-to"]) || []
-        new_params[:photos] = params[:properties][:photo] || []
-        new_params[:location] = params[:properties][:location]
+      new_params = if req_type == :json
+        new_params.merge({
+          published_at: (params[:"post-status"] == "draft") ? nil : publish_time,
+          category: params[:properties][:category] || [],
+          name: params[:properties][:name]&.first,
+          content: params[:properties][:content]&.first&.tr("\n", " "),
+          slug: params[:slug] || params[:"mp-slug"],
+          syndicate_to: Array(params[:properties][:"mp-syndicate-to"]) || [],
+          photos: params[:properties][:photo] || [],
+          location: params[:properties][:location]
+        })
       else
-        new_params[:syndicate_to] = Array(params[:"mp-syndicate-to"]) || []
-        new_params[:name] = params[:name]
-        new_params[:slug] = params[:slug] || params["mp-slug"]
-        new_params[:published_at] = (params[:"post-status"] == "draft") ? nil : publish_time
-        new_params[:category] = params[:category] || []
-        new_params[:photos] = if params[:photo].is_a?(String)
+        photos = if params[:photo].is_a?(String)
           {value: params[:photo], alt: ""}
         elsif params[:photo].nil?
           []
         else
           params[:photo]
         end
-        new_params[:location] = params[:location]
 
         content = if params[:content]
           if params[:content].is_a?(Hash) && params[:content][:html]
@@ -80,10 +75,18 @@ module Adamantium
           end
         end
 
-        new_params[:content] = content
+        new_params.merge({
+          syndicate_to: Array(params[:"mp-syndicate-to"]) || [],
+          name: params[:name],
+          slug: params[:slug] || params[:"mp-slug"],
+          published_at: (params[:"post-status"] == "draft") ? nil : publish_time,
+          category: params[:category] || [],
+          photos: photos,
+          location: params[:location],
+          content: content
+        })
       end
       new_params[:url] = params[:"bookmark-of"]
-      new_params[:slug] = params[:slug]
 
       new_params
     end

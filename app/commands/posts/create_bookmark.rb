@@ -5,7 +5,6 @@ module Adamantium
     module Posts
       class CreateBookmark < Command
         include Deps["repos.post_repo",
-          add_post_syndication_source: "commands.posts.add_syndication_source",
           syndicate: "commands.posts.syndicate"
         ]
 
@@ -14,10 +13,7 @@ module Adamantium
         def call(bookmark)
           created_bookmark = post_repo.create(bookmark)
 
-          syndicate.call(bookmark).bind do |result|
-            source, url = result
-            add_post_syndication_source.call(created_bookmark.id, source, url)
-          end
+          syndicate.call(created_bookmark.id, bookmark)
 
           Success(created_bookmark)
         end

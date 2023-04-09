@@ -22,34 +22,40 @@ module Adamantium
 
           # delete, undelete, update
           if action
-            operation, permission_check = resolve_operation(action)
-
-            if permission_check.call(req)
-              operation.call(params: req.params.to_h)
-              res.status = 200
-            else
-              res.status = 401
-            end
+            perform_action(req: req, res: res, action: action)
           elsif req_entity # create
-            halt 401 unless verify_scope(req: req, scope: :create)
-
-            command, contract = create_resolver.call(entry_type: req_entity).values_at(:command, :validation)
-            post_params = prepare_params(req_entity.to_h)
-            validation = contract.call(post_params)
-
-            if validation.success?
-              command.call(validation.to_h).bind do |post|
-                res.status = 201
-                res.headers["Location"] = "#{settings.micropub_site_url}/#{post.post_type}/#{post.slug}"
-              end
-            else
-              res.body = {error: validation.errors.to_h}.to_json
-              res.status = 422
-            end
+            create_entry(req: req, res: res, req_entity: req_entity)
           end
         end
 
         private
+
+        def create_entry(req:, res:, req_entity:)
+          halt 401 unless verify_scope(req: req, scope: :create)
+
+          command, contract = create_resolver.call(entry_type: req_entity).values_at(:command, :validation)
+          post_params = prepare_params(req_entity.to_h)
+          validation = contract.call(post_params)
+
+          if validation.success?
+            command.call(validation.to_h).bind do |post|
+              res.status = 201
+              res.headers["Location"] = "#{settings.micropub_site_url}/#{post.post_type}/#{post.slug}"
+            end
+          else
+            res.body = {error: validation.errors.to_h}.to_json
+            res.status = 422
+          end
+        end
+
+        def perform_action(req:, res:, action:)
+          operation, permission_check = resolve_operation(action)
+
+          halt 401 unless permission_check.call(req)
+
+          operation.call(params: req.params.to_h)
+          res.status = 200
+        end
 
         def prepare_params(post_params)
           post = post_params.to_h

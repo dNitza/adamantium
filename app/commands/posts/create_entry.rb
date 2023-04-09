@@ -9,7 +9,6 @@ module Adamantium
           renderer: "renderers.markdown",
           syndicate: "commands.posts.syndicate",
           send_to_dayone: "syndication.dayone",
-          add_post_syndication_source: "commands.posts.add_syndication_source",
           send_webmentions: "commands.posts.send_webmentions",
                     ]
 
@@ -20,13 +19,7 @@ module Adamantium
           created_post = post_repo.create(post_params)
 
           send_to_dayone.call(name: post.name, content: post.content) if post[:category].include? "weekly"
-
-          syndicate.call(post).bind do |results|
-            results.each do |result|
-              source, url = result
-              add_post_syndication_source.call(created_post.id, source, url)
-            end
-          end
+          syndicate.call(created_post.id, post)
 
           # decorated_post = Decorators::Posts::Decorator.new(created_post)
 

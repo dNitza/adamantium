@@ -9,7 +9,7 @@ gem "hanami-router", "~> 2.0.0"
 gem "hanami-controller", "~> 2.0.0"
 gem "hanami-validations", "~> 2.0.0"
 # gem "hanami-assets", github: "hanami/view", branch: "main"
-gem "hanami-view", git: "https://github.com/hanami/view", branch: "main"
+gem "hanami-view", github: "hanami/view", branch: "main"
 
 gem "rom-sql"
 gem "pg"

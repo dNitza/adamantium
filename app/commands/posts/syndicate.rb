@@ -10,27 +10,24 @@ module Adamantium
 
         include Deps["settings",
           "syndication.mastodon",
-          "syndication.pinboard"
+          add_post_syndication_source: "commands.posts.add_syndication_source",
+          send_to_dayone: "syndication.dayone",
         ]
 
-        def call(post)
+        def call(post_id, post)
           syndicate_to = syndication_targets(post[:syndicate_to])
-          syndicated_to = []
+
           if syndicate_to.include? :mastodon
             res = mastodon.call(post: post)
 
-            syndicated_to << [:mastodon, res.value!] if res.success?
+            add_post_syndication_source.call(post_id, :mastodon, res.value!) if res.success?
           end
 
-          if syndicate_to.include? :pinboard
-            res = pinboard.call(post: post)
-
-            syndicated_to << [:pinboard, res.value!] if res.success?
+          if post[:category].include? "weekly"
+            send_to_dayone.call(name: post.name, content: post.content)
           end
 
-          return Success(syndicated_to) unless syndicated_to.empty?
-
-          Failure(:no_syndication_targets)
+          Success()
         end
 
         private
@@ -38,7 +35,6 @@ module Adamantium
         def syndication_targets(syndicate_to)
           targets = []
           targets << :mastodon if syndicate_to.any? { |url| settings.mastodon_server.match(/#{url}/) }
-          targets << :pinboard if syndicate_to.any? { |url| "https://pinboard.in".match(/#{url}/) }
           targets
         end
       end
