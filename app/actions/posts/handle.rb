@@ -6,6 +6,7 @@ module Adamantium
 
         include Deps[
           "settings",
+          "logger",
           "post_utilities.slugify",
           "repos.post_repo",
           post_param_parser: "param_parser.micropub_post",
@@ -36,6 +37,8 @@ module Adamantium
           command, contract = create_resolver.call(entry_type: req_entity).values_at(:command, :validation)
           post_params = prepare_params(req_entity.to_h)
           validation = contract.call(post_params)
+
+          logger.info(req.params.inspect)
 
           if validation.success?
             command.call(validation.to_h).bind do |post|

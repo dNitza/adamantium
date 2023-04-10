@@ -52,7 +52,7 @@ module Adamantium
           published_at: (params[:"post-status"] == "draft") ? nil : publish_time,
           category: params[:properties][:category] || [],
           name: params[:properties][:name]&.first,
-          content: params[:properties][:content]&.first&.tr("\n", " ") || "",
+          content: params[:properties][:content]&.first&.tr("\n", " "),
           slug: params[:slug] || params[:"mp-slug"],
           syndicate_to: Array(params[:properties][:"mp-syndicate-to"]) || [],
           photos: params[:properties][:photo] || [],
