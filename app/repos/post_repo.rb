@@ -153,6 +153,15 @@ module Adamantium
           .to_a
       end
 
+      def statuses_for_rss
+        posts
+          .where(post_type: "post", name: nil, location: nil)
+          .published
+          .combine(:tags)
+          .order(Sequel.desc(:published_at))
+          .to_a
+      end
+
       def fetch!(slug)
         posts
           .published

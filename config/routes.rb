@@ -33,6 +33,7 @@ module Adamantium
     get "/key", to: "key.show" if Hanami.app.settings.micropub_pub_key
 
     get "/feeds/rss", to: "feeds.rss"
+    get "/feeds/statuses_rss", to: "feeds.statuses_rss"
 
     get "/:slug", to: "pages.show"
 
