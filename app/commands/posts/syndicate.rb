@@ -24,7 +24,7 @@ module Adamantium
           end
 
           if post[:category].include? "weekly"
-            send_to_dayone.call(name: post.name, content: post.content)
+            send_to_dayone.call(name: post[:name], content: post[:content])
           end
 
           Success()

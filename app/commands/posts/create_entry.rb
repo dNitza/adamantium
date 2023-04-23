@@ -18,7 +18,6 @@ module Adamantium
           post_params = prepare_params(params: post)
           created_post = post_repo.create(post_params)
 
-          send_to_dayone.call(name: post[:name], content: post[:content]) if post[:category].include? "weekly"
           syndicate.call(created_post.id, post)
 
           # decorated_post = Decorators::Posts::Decorator.new(created_post)
