@@ -1,3 +1,4 @@
+require "pry"
 module Adamantium
   module Actions
     module Workouts
@@ -6,10 +7,17 @@ module Adamantium
 
         def handle(req, res)
           tempfile = Tempfile.new(%w/path .gpx/)
-          tempfile.write req.params[:file][:tempfile]
+
+          if req.params.to_h.dig(:file, :tempfile) != nil
+            tempfile.write req.params[:file][:tempfile].read
+          else
+            tempfile.write req.params[:file]
+          end
+
           tempfile.rewind
 
-          gpxfile = gpx_parser.call(file: tempfile)
+
+          gpxfile = gpx_parser.call(path: tempfile.path)
 
           if gpxfile.success?
             create.call(**gpxfile.value!)

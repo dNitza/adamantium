@@ -9,9 +9,9 @@ module Adamantium
     class GpxParser
       include Dry::Monads[:result]
 
-      def call(file:)
-        gpxfile = GeoRuby::Gpx4r::GpxFile.open(file.path)
-        gpx =  GPX::GPXFile.new(gpx_file: file.path)
+      def call(path:)
+        gpxfile = GeoRuby::Gpx4r::GpxFile.open(path)
+        gpx = GPX::GPXFile.new(gpx_file: path)
 
         x = gpxfile.as_line_string.points.flat_map { |p| p.x }
         y = gpxfile.as_line_string.points.flat_map { |p| p.y }
