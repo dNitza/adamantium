@@ -19,7 +19,7 @@ module Adamantium
     get "/post/top_tracks/:slug", to: "posts.top_tracks"
     get "/post/:slug", to: "posts.show"
     get "/posts", to: "posts.index"
-    get "/posts/archive/:year", to: "posts.archive"
+    # get "/posts/archive/:year", to: "posts.archive"
 
     get "/bookmarks", to: "bookmarks.index"
     get "/bookmarks/metadata/:id", to: "bookmarks.metadata"
@@ -37,7 +37,7 @@ module Adamantium
     get "/feeds/rss", to: "feeds.rss"
     get "/feeds/statuses_rss", to: "feeds.statuses_rss"
 
-    get "/more", to: "more.index"
+    # get "/more", to: "more.index"
 
     get "/hikes", to: "workouts.index"
     post "/workouts", to: "workouts.create"
