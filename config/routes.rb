@@ -29,7 +29,7 @@ module Adamantium
     get "/places", to: "places.index"
     get "/statuses", to: "statuses.index"
 
-    get "/tags", to: "tags.index"
+    # get "/tags", to: "tags.index"
     get "/tagged/:slug", to: "tags.show"
 
     get "/key", to: "key.show" if Hanami.app.settings.micropub_pub_key
