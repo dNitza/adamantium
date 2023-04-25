@@ -10,8 +10,8 @@ module Adamantium
         include Deps["repos.workout_repo"]
         include Dry::Monads[:result]
 
-        def call(svg:, distance:)
-          workout_repo.create(path: svg, distance: distance, published_at: Time.now)
+        def call(svg:, distance:, duration:)
+          workout_repo.create(path: svg, distance: distance, duration: duration, published_at: Time.now)
         end
       end
     end

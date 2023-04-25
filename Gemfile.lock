@@ -139,6 +139,9 @@ GEM
     formatador (1.1.0)
     georuby (2.5.2)
     gnuplot (2.6.2)
+    gpx (0.8.3)
+      nokogiri
+      rake
     guard (2.18.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -416,6 +419,7 @@ DEPENDENCIES
   dry-types
   georuby
   gnuplot
+  gpx
   guard-puma (~> 0.8)
   hanami (~> 2.0.0)
   hanami-controller (~> 2.0.0)

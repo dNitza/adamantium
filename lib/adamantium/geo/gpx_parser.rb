@@ -2,6 +2,7 @@ require "geo_ruby"
 require "geo_ruby/gpx"
 require "gnuplot"
 require "dry/monads"
+require "gpx"
 
 module Adamantium
   module Geo
@@ -10,6 +11,7 @@ module Adamantium
 
       def call(file:)
         gpxfile = GeoRuby::Gpx4r::GpxFile.open(file.path)
+        gpx =  GPX::GPXFile.new(gpx_file: file.path)
 
         x = gpxfile.as_line_string.points.flat_map { |p| p.x }
         y = gpxfile.as_line_string.points.flat_map { |p| p.y }
@@ -42,9 +44,8 @@ module Adamantium
         end
 
         svg.gsub!('width="600" height="480"', 'width="100%" height="100%"')
-        # svg.gsub!('viewBox="0 0 600 480"', 'viewBox="0 0 100% 100%"')
 
-        Success({svg: svg, distance: gpxfile.as_line_string.spherical_distance})
+        Success({svg: svg, distance: gpx.distance(units: "kilometers"), duration: gpx.duration})
       end
     end
   end

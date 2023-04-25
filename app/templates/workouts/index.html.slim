@@ -4,7 +4,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
 div class="max-w-prose mx-auto"
   - workouts_by_year.each do |year, workouts|
     h3= year
-    h1= "#{(workouts.map{|w| w.distance }.sum / 1000).round} km"
+    h1= "#{workouts.map{|w| w.distance }.sum.round} km — #{workouts.map{|w| w.duration / 60 / 60 }.sum.round} hours"
     div class="grid grid-cols-3 gap-4 mb-4 max-w-prose mx-auto"
       - workouts.each do |workout|
         == workout.path

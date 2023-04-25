@@ -24,6 +24,7 @@ gem "rake"
 gem "slim"
 gem "builder"
 gem "georuby"
+gem "gpx"
 gem "gnuplot"
 gem "matrix"
 
