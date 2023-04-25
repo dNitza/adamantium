@@ -1,7 +1,7 @@
 div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
   h1 Hikes
 
-div class="max-w-prose mx-auto"
+div class="prose dark:prose-invert max-w-prose mx-auto"
   - workouts_by_year.each do |year, workouts|
     h3= year
     h1= "#{workouts.map{|w| w.distance }.sum.round} km — #{workouts.map{|w| w.duration / 60 / 60 }.sum.round} hours"
