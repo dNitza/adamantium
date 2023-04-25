@@ -6,7 +6,7 @@ module Adamantium
 
         def handle(req, res)
           tempfile = Tempfile.new(%w/path .gpx/)
-          tempfile.write req.params["file"]["tempfile"]
+          tempfile.write req.params[:file][:tempfile]
           tempfile.rewind
 
           gpxfile = gpx_parser.call(file: tempfile)
