@@ -1,9 +1,15 @@
 article class="h-entry"
   div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
-    h1 class="p-name" 
+    h1 class="p-name mb-2"
       a class="u-url" href=post.permalink
         = post.display_title
-
+    nav class="space-x-1 text-sm md:text-sm md:block"
+      - if post.location || post.photos? || post.videos?
+        span See more:
+      - if post.location
+        a href="/places" places
+      - if post.photos? || post.videos?
+        a href="/photos" photos
     article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
       div class="e-content"
         == post.content

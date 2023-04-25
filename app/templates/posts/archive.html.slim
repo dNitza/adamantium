@@ -1,15 +1,16 @@
 div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
-  h1 Writing
+  h1 Archive: #{year}
 
 div class="mb-12 max-w-prose mx-auto text-gray-800 dark:text-gray-200"
   nav class="space-x-1 text-sm md:text-sm uppercase md:block"
     span Archive:
-    - post_years.each do |year|
-      a href="/posts/archive/#{year}" class="text-sm hover:text-gray-400"= year
-      - if year != post_years.last
+    - post_years.each do |y|
+      a href="/posts/archive/#{y}" class="text-sm hover:text-gray-400 #{year.to_s == y.to_s ? 'underline decoration-wavy' : ''}"= y
+      - if y != post_years.last
         span &middot;
 div class="h-feed mb-12 max-w-prose mx-auto"
   - posts.each do |post|
     == render "shared/post", post: post
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
+

@@ -1,13 +1,15 @@
 module Adamantium
   module Views
     module Posts
-      class Index < Adamantium::View
+      class Archive < View
         include Deps["repos.post_repo"]
 
-        expose :posts do
-          post_repo.post_listing.map do |post|
-            Decorators::Posts::Decorator.new(post)
-          end
+        expose :year do |year:|
+          year
+        end
+
+        expose :posts do |year:|
+          post_repo.by_year(year: year).map { |post| Decorators::Posts::Decorator.new(post) }
         end
 
         expose :post_years do

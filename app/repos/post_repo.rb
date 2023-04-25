@@ -53,6 +53,16 @@ module Adamantium
         posts.post_tags.where(post_id: post_id, tag_id: tag[:id]).changeset(:delete).commit if tag
       end
 
+      def by_year(year:)
+        posts
+          .where(post_type: "post", location: nil)
+          .exclude(name: nil)
+          .published
+          .where { Sequel.&(Sequel.extract(:year, :published_at) =~ year) }
+          .combine(:tags)
+          .to_a
+      end
+
       def post_listing(limit: nil)
         posts
           .where(post_type: "post", location: nil)
@@ -197,6 +207,17 @@ module Adamantium
       def restore!(slug)
         delete_post = posts.where(slug: slug).command(:update)
         delete_post.call(published_at: Time.now)
+      end
+
+      def post_years
+        posts
+          .where(post_type: "post", location: nil)
+          .exclude(name: nil)
+          .published
+          .dataset
+          .group_and_count(Sequel.extract(:year, :published_at).as(:year))
+          .order(:year)
+          .to_a
       end
     end
   end
