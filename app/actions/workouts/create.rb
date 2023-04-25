@@ -1,4 +1,3 @@
-require "pry"
 module Adamantium
   module Actions
     module Workouts
