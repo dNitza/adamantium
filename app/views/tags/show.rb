@@ -9,7 +9,9 @@ module Adamantium
 
         expose :posts do |slug:|
           post_tag_repo.posts_tagged(tag: slug).map do |post|
-            Decorators::Posts::Decorator.new(post)
+            post.url ?
+              Decorators::Bookmarks::Decorator.new(post) :
+              Decorators::Posts::Decorator.new(post)
           end
         end
 

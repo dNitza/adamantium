@@ -18,6 +18,10 @@ module Adamantium
           !syndication_sources.empty?
         end
 
+        def template_type
+          :bookmark
+        end
+
         def syndicated_to
           syndication_sources.map do |source, url|
             {
