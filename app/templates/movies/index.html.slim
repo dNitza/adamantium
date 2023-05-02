@@ -1,0 +1,18 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Movies
+
+  div class="mb-12 max-w-prose mx-auto"
+    table class="prose dark:prose-invert table-auto"
+      thead
+        tr
+          td Title
+          td Year
+      - movies.each do |movie|
+        tr
+          td
+            a href="#{movie.url}"
+              = movie.title
+          td
+            = movie.year
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

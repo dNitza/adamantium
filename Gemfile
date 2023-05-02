@@ -13,6 +13,7 @@ gem "hanami-view", github: "hanami/view", branch: "main"
 
 gem "rom-sql"
 gem "pg"
+gem "scraperd", github: "dNitza/scraperd", branch: "master"
 
 gem "dotenv"
 

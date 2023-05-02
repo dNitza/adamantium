@@ -42,6 +42,8 @@ module Adamantium
     get "/hikes", to: "workouts.index"
     post "/workouts", to: "workouts.create"
 
+    get "/movies", to: "movies.index"
+
     get "/:slug", to: "pages.show"
 
     redirect "deploying-a-hanami-app-to-fly-io", to: "/post/deploying-a-hanami-20-app-to-flyio"
