@@ -1080,6 +1080,10 @@ video {
   display: flex;
 }
 
+.table {
+  display: table;
+}
+
 .grid {
   display: grid;
 }
@@ -1162,6 +1166,10 @@ video {
 
 .basis-2\/5 {
   flex-basis: 40%;
+}
+
+.table-auto {
+  table-layout: auto;
 }
 
 .-rotate-45 {
