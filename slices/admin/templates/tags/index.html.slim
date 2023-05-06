@@ -1,0 +1,17 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Tags
+
+div class="max-w-prose mx-auto"
+  ul
+    - unused_tags.each do |tag|
+      == render "shared/tag", tag: tag
+    li class="py-2"
+      hr
+    - used_tags.each do |tag|
+      == render "shared/tag", tag: tag
+
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
+
+
+

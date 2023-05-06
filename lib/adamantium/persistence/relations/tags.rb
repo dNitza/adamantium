@@ -6,8 +6,8 @@ module Adamantium
       class Tags < ROM::Relation[:sql]
         schema :tags, infer: true do
           associations do
-            belongs_to :post_tag
-            belongs_to :post, through: :post_tag
+            has_many :post_tags
+            has_many :posts, through: :post_tags
           end
         end
 

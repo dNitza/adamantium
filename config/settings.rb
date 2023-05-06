@@ -43,5 +43,8 @@ module Adamantium
     setting :mastodon_server, default: nil
 
     setting :raindrop_api_key, default: nil
+
+    setting :basic_auth_username, default: nil
+    setting :basic_auth_password, default: nil
   end
 end

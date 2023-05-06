@@ -1,12 +1,18 @@
 # frozen_string_literal: true
 
 require "hanami/middleware/body_parser"
-require "adamantium/middleware/process_params"
+require "adamantium/middleware/basic_auth"
 
 module Adamantium
   class Routes < Hanami::Routes
     use Hanami::Middleware::BodyParser, [:form, :json]
     # use Adamantium::Middleware::ProcessParams
+    if Hanami.app.settings.basic_auth_username && Hanami.app.settings.basic_auth_password
+      use Adamantium::Middleware::BasicAuth do |username, password|
+        username == Hanami.app.settings.basic_auth_username &&
+          password == Hanami.app.settings.basic_auth_password
+      end
+    end
 
     scope "micropub" do
       get "/", to: "site.config"
@@ -48,5 +54,12 @@ module Adamantium
 
     redirect "deploying-a-hanami-app-to-fly-io", to: "/post/deploying-a-hanami-20-app-to-flyio"
     redirect "deploying-a-hanami-app-to-fly-io/", to: "/post/deploying-a-hanami-20-app-to-flyio"
+
+    slice :admin, at: "/admin" do
+      get "/", to: "index"
+
+      get "/tags", to: "tags.index"
+      delete "/tags/:id", to: "tags.delete"
+    end
   end
 end
