@@ -6,7 +6,7 @@ module Admin
         include Deps[new_view: "views.auto_tagging.new"]
 
         def handle(req, res)
-          res.render new_view
+          res.render new_view, errors: {}
         end
       end
     end
