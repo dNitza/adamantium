@@ -3,22 +3,6 @@
 require "hanami/rake_tasks"
 
 namespace :blog do
-  task :import_movies do
-    require "hanami/prepare"
-    require "csv"
-
-    repo = Adamantium::Container["repos.movie_repo"]
-
-    csv = CSV.parse(File.read("tmp/watched.csv"), headers: true)
-    csv.each do |row|
-      repo.create({
-                    title: row["Name"],
-                    year: row["Year"],
-                    url: row["Letterboxd URI"]
-                  })
-    end
-  end
-
   task :load_from_letterboxd do
     require "hanami/prepare"
     require "scraperd"
