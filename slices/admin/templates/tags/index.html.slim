@@ -5,8 +5,9 @@ div class="max-w-prose mx-auto"
   ul
     - unused_tags.each do |tag|
       == render "shared/tag", tag: tag
-    li class="py-2"
-      hr
+    - if !unused_tags.empty?
+      li class="py-2"
+        hr
     - used_tags.each do |tag|
       == render "shared/tag", tag: tag
 

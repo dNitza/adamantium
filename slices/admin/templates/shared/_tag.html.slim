@@ -1,4 +1,4 @@
-li id="tag-#{tag.id}"
+li id="tag-#{tag.id}" class="text-gray-800 dark:text-gray-200"
   = "#{tag.label} (#{tag.posts.count})"
   = " — "
   button hx-delete="/admin/tags/#{tag.id}" hx-target="#tag-#{tag.id}" delete
