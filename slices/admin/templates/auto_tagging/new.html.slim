@@ -1,0 +1,23 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Auto tagging
+
+div class="max-w-prose mx-auto"
+  form method="POST" action="/admin/tags/auto_tagging"
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200" for="title_contains" Title contains:&nbsp;
+      input class="text-gray-800 p-1" type="text" id="title_contains" name="title_contains"
+
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200" for="body_contains" ... or body contains:&nbsp;
+      input class="text-gray-800 p-1" type="text" id="body_contains" name="body_contains"
+
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200" for="tags" Tag with:&nbsp;
+      select class="text-gray-800" id="tags" name="tag_id"
+        - tags.each do |tag|
+          option value=tag.id
+            = tag.label
+    div class="mb-4"
+      button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"
+        = "Create"
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

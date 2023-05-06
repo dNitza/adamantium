@@ -6,7 +6,7 @@ module Admin
         include Deps["repos.tag_repo"]
 
         expose :tags do
-          tag_repo.list.to_a
+          tag_repo.list_with_posts.to_a
         end
 
         expose :unused_tags do |tags|

@@ -10,6 +10,7 @@ module Adamantium
           syndicate: "commands.posts.syndicate",
           send_to_dayone: "syndication.dayone",
           send_webmentions: "commands.posts.send_webmentions",
+          auto_tag: "commands.auto_tagging.tag",
                     ]
 
         include Dry::Monads[:result]
@@ -19,6 +20,8 @@ module Adamantium
           created_post = post_repo.create(post_params)
 
           syndicate.call(created_post.id, post)
+
+          auto_tag.call()
 
           # decorated_post = Decorators::Posts::Decorator.new(created_post)
 

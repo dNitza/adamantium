@@ -47,6 +47,38 @@ module Adamantium
         end
       end
 
+      def auto_tag_post(post_id:, tag_id:)
+
+        return if posts
+                    .post_tags
+                    .where(
+                      post_id: post_id,
+                      tag_id: tag_id
+                    ).count > 0
+
+        posts
+          .post_tags
+          .changeset(:create, {
+            post_id: post_id,
+            tag_id: tag_id
+          })
+          .commit
+      end
+
+      def by_title(title_contains:)
+        posts
+          .where(post_type: "post")
+          .published
+          .where(Sequel.ilike(:name, "%#{title_contains}%")).to_a
+      end
+
+      def by_content(body_contains:)
+        posts
+          .where(post_type: "post")
+          .published
+          .where(Sequel.ilike(:content, "%#{body_contains}%")).to_a
+      end
+
       def remove_tag(post_id:, tag:)
         tag = posts.tags.where(label: tag).one
 

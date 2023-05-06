@@ -1,0 +1,10 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Auto tagging
+
+div class="prose dark:prose-invert max-w-prose mx-auto"
+  - auto_taggings.each do |auto_tagging|
+    div id="auto-tag-#{auto_tagging.id}"
+      == "Tag post with <strong>#{auto_tagging.tag.label}</strong> when <strong>#{auto_tagging.title_only? ? "title" : "content"}</strong> contains <strong>#{auto_tagging.term}</strong>"
+      = " — "
+      button hx-delete="/admin/tags/auto_taggings/#{auto_tagging.id}" hx-target="#auto-tag-#{auto_tagging.id}" delete
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

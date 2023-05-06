@@ -60,6 +60,11 @@ module Adamantium
 
       get "/tags", to: "tags.index"
       delete "/tags/:id", to: "tags.delete"
+
+      get "/tags/auto_tagging", to: "auto_tagging.index"
+      get "/tags/auto_tagging/new", to: "auto_tagging.new"
+      post "/tags/auto_tagging", to: "auto_tagging.create"
+      delete "/tags/auto_taggings/:id", to: "auto_tagging.delete"
     end
   end
 end
