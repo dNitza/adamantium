@@ -1,10 +1,15 @@
 (function() {
-  document.addEventListener("DOMContentLoaded", function () {
-    const times = document.querySelectorAll('time');
-    times.forEach((time) => {
-     const oldDtime = Date.parse(time.dateTime);
-     time.innerHTML = new Date(oldDtime).toLocaleDateString(navigator.language, { weekday:"long", year:"numeric", month:"short", day:"numeric"});
-    });
+    document.addEventListener('alpine:init', () => {
+        Alpine.magic('clipboard', () => {
+            return subject => navigator.clipboard.writeText(subject)
+        })
+    })
+    document.addEventListener("DOMContentLoaded", function () {
+        const times = document.querySelectorAll('time');
+        times.forEach((time) => {
+         const oldDtime = Date.parse(time.dateTime);
+         time.innerHTML = new Date(oldDtime).toLocaleDateString(navigator.language, { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+        });
 
     // mapboxgl.accessToken = 'pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIyY3ZzaTE0cjUzdm4xdnZ6czRlYjUifQ.FRETOXYRID6T2IoB7qqRLg';
     // var map = new mapboxgl.Map({
@@ -19,5 +24,5 @@
     //         .setLngLat(marker)
     //         .addTo(map);
     // }
-  });
+    });
 })();

@@ -74,6 +74,8 @@ module Adamantium
       get "/posts", to: "posts.index"
       delete "/posts/:id", to: "posts.delete"
       post "/posts/:id/archive", to: "posts.archive"
+
+      get "/media", to: "photos.index"
     end
   end
 end
