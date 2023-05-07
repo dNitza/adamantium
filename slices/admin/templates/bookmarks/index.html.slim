@@ -24,6 +24,7 @@ div class="max-w-prose mx-auto"
             = bookmark.published_at&.strftime("%d %b %Y")
           td
             button hx-delete="/admin/bookmarks/#{bookmark.id}" hx-target="#bookmark-#{bookmark.id}" delete
+            button hx-post="/admin/bookmarks/#{bookmark.id}/archive" archive
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
