@@ -70,6 +70,10 @@ module Adamantium
       delete "/bookmarks/:id", to: "bookmarks.delete"
       post "/bookmarks/cache/:id", to: "bookmarks.cache"
       post "/bookmarks/:id/archive", to: "bookmarks.archive"
+
+      get "/posts", to: "posts.index"
+      delete "/posts/:id", to: "posts.delete"
+      post "/posts/:id/archive", to: "posts.archive"
     end
   end
 end

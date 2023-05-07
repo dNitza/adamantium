@@ -1,0 +1,29 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Posts
+
+div class="max-w-prose mx-auto"
+  table class="prose dark:prose-invert table-auto prose-a:text-blue-600 prose-a:no-underline"
+    thead
+      th Details
+      th Date
+      th Actions
+    tbody
+      - posts.each do |post|
+        tr id="post-#{post.id}"
+          td
+            div
+              = post.name
+            a class="no-underline" href=post.slug
+              small class="text-gray-400 dark:text-gray-600" = post.slug
+          td
+            = post.published_at&.strftime("%d %b %Y")
+          td
+            div
+              button hx-delete="/admin/bookmarks/#{post.id}" hx-target="#post-#{post.id}" delete
+            div
+              button hx-post="/admin/bookmarks/#{post.id}/archive" archive
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
+
+
+

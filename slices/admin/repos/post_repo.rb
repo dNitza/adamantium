@@ -32,6 +32,20 @@ module Admin
           .published
           .where(Sequel.ilike(:content, "%#{body_contains}%")).to_a
       end
+
+      def list
+        posts
+          .where(post_type: "post")
+          .to_a
+      end
+
+      def delete(id:)
+        posts.where(id: id).delete
+      end
+
+      def archive(id:)
+        posts.where(id: id).update(published_at: nil)
+      end
     end
   end
 end
