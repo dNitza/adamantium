@@ -10,19 +10,22 @@ div class="max-w-prose mx-auto"
 
   form method="POST" action="/admin/tags/auto_tagging"
     div class="mb-4"
-      label class="text-gray-800 dark:text-gray-200" for="title_contains" Title contains:&nbsp;
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="title_contains" Title contains:
       input class="text-gray-800 p-1 border border-gray-400" type="text" id="title_contains" name="title_contains"
 
     div class="mb-4"
-      label class="text-gray-800 dark:text-gray-200" for="body_contains" ... or body contains:&nbsp;
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="body_contains" ... or body contains:
       input class="text-gray-800 p-1  border border-gray-400" type="text" id="body_contains" name="body_contains"
 
     div class="mb-4"
-      label class="text-gray-800 dark:text-gray-200" for="tags" Tag with:&nbsp;
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="tags" Tag with:
       select class="text-gray-800" id="tags" name="tag_id"
         - tags.each do |tag|
           option value=tag.id
             = tag.label
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="tag_now" Tag all now?
+      input type="checkbox" name="tag_now" id="tag_now"
     div class="mb-4"
       button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"
         = "Create"

@@ -1,0 +1,11 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Merge Tags
+
+div class="max-w-prose mx-auto"
+  ul
+    - tags.each do |tag|
+      li id="tag-#{tag.id}" class="text-gray-800 dark:text-gray-200"
+        a href="/admin/tags/merge/#{tag.id}"
+          = "#{tag.label} (#{tag.posts.count})"
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

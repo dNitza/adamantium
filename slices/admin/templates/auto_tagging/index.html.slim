@@ -6,6 +6,6 @@ div class="prose dark:prose-invert max-w-prose mx-auto mb-12"
     div id="auto-tag-#{auto_tagging.id}" class="mb-2"
       == "Tag post with <strong>#{auto_tagging.tag.label}</strong> when <strong>#{auto_tagging.title_only? ? "title" : "content"}</strong> contains <strong>#{auto_tagging.term}</strong>"
       = " — "
-      button hx-delete="/admin/tags/auto_taggings/#{auto_tagging.id}" hx-target="#auto-tag-#{auto_tagging.id}" delete
+      button class="text-red-600 hover:text-red-400" hx-delete="/admin/tags/auto_taggings/#{auto_tagging.id}" hx-target="#auto-tag-#{auto_tagging.id}" delete
   a class="bg-blue-100 text-blue-600 p-1 rounded no-underline" href="/admin/tags/auto_tagging/new" New
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
