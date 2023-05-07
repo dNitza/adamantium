@@ -18,6 +18,8 @@ div class="max-w-prose mx-auto"
             div
               - if bookmark.cached_content
                 a href="/bookmark/#{bookmark.slug}" View cached version
+                span &nbsp; — &nbsp;
+                button hx-post="/admin/bookmarks/cache/#{bookmark.id}" Re-cache
               - else
                 button hx-post="/admin/bookmarks/cache/#{bookmark.id}" No cached content, cache now?
           td
