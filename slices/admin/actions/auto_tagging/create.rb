@@ -13,6 +13,7 @@ module Admin
           title_contains = req.params[:title_contains]
           body_contains = req.params[:body_contains]
           tag_id = req.params[:tag_id]
+          tag_now = req.params[:tag_now]
 
           validation = auto_tagging_contract.call(title_contains: title_contains,
                                      body_contains: body_contains,
@@ -23,7 +24,7 @@ module Admin
                     body_contains: body_contains,
                     tag_id: tag_id)
 
-            if result.success?
+            if result.success? && tag_now
               auto_tag.(auto_tag_id: result.value!)
             end
 

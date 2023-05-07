@@ -1,5 +1,3 @@
-require 'pry'
-
 module Admin
   module Repos
     class PostTagRepo < Adamantium::Repo[:post_tags]
