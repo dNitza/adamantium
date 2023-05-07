@@ -13,7 +13,7 @@ module Admin
           bookmark.url
 
           tempfile = Down.download(bookmark.url)
-          content = Readability::Document.new(tempfile.read, tags: %w[div section header p h1 h2 h3 h4 h5 h6 ol ul li table td tr thead tbody a]).content
+          content = Readability::Document.new(tempfile.read, tags: %w[div section header p h1 h2 h3 h4 h5 h6 ol ul li table td tr thead tbody a code pre]).content
 
           bookmark_repo.update(id: bookmark_id, cached_content: content)
 
