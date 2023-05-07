@@ -2,7 +2,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   h1 Admin // Media
 
 div class="mb-4 max-w-prose mx-auto prose dark:prose-invert"
-  - photos_buckets.each do |year, photos|
+  - photos_buckets.reverse.each do |year, photos|
     - next unless photos.count > 0
     h2 = Date.parse(year).strftime("%m %b %Y")
     div class="grid grid-cols-3 gap-4"
