@@ -1,0 +1,31 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Bookmarks
+
+div class="max-w-prose mx-auto"
+  table class="prose dark:prose-invert table-auto prose-a:text-blue-600 prose-a:no-underline"
+    thead
+      th Details
+      th Date
+      th Actions
+    tbody
+      - bookmarks.each do |bookmark|
+        tr id="bookmark-#{bookmark.id}"
+          td
+            div
+              = bookmark.name
+            a class="no-underline" href=bookmark.url
+              small class="text-gray-400 dark:text-gray-600" = bookmark.url
+            div
+              - if bookmark.cached_content
+                a href="/bookmark/#{bookmark.slug}" View cached version
+              - else
+                button hx-post="/admin/bookmarks/cache/#{bookmark.id}" No cached content, cache now?
+          td
+            = bookmark.published_at&.strftime("%d %b %Y")
+          td
+            button hx-delete="/admin/bookmarks/#{bookmark.id}" hx-target="#bookmark-#{bookmark.id}" delete
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
+
+
+

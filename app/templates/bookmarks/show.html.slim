@@ -1,12 +1,19 @@
 div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
   h1 = bookmark.name
 
-div class="mb-12 prose max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200" x-data="{ open: false }"
   a class="text-blue-600 no-underline hover:underline" href=bookmark.url
     p class="text-xl"
       = bookmark.url
 
   == bookmark.content
+
+  - unless bookmark.cached_content.nil?
+    button @click="open = ! open" Toggle cached version
+
+    span x-show="open"
+      div class="rounded bg-blue-50 px-4 py-2"
+        == bookmark.cached_content
 
 div class="prose max-w-prose mx-auto text-gray-800 dark:text-gray-200 grid grid-cols-5 gap-2" hx-get="/bookmarks/metadata/#{bookmark.id}" hx-trigger="load"
 

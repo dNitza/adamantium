@@ -76,6 +76,8 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
+    down (5.4.0)
+      addressable (~> 2.8)
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
       zeitwerk (~> 2.6)
@@ -165,6 +167,7 @@ GEM
       guard (~> 2.14)
       guard-compat (~> 1.2)
       puma (>= 4.0, < 7)
+    guess_html_encoding (0.0.11)
     hanami (2.0.3)
       bundler (>= 1.16, < 3)
       dry-configurable (~> 1.0, < 2)
@@ -375,6 +378,9 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.13.0)
+    ruby-readability (0.7.0)
+      guess_html_encoding (>= 0.0.4)
+      nokogiri (>= 1.6.0)
     ruby2_keywords (0.0.5)
     sanitize (6.0.1)
       crass (~> 1.0.2)
@@ -433,6 +439,7 @@ DEPENDENCIES
   capistrano3-puma!
   database_cleaner-sequel
   dotenv
+  down
   dry-matcher
   dry-monads
   dry-types
@@ -463,6 +470,7 @@ DEPENDENCIES
   rom-factory
   rom-sql
   ruby-filemagic!
+  ruby-readability
   sanitize
   scraperd!
   slim

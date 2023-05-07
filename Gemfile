@@ -29,6 +29,8 @@ gem "gpx"
 gem "gnuplot"
 gem "matrix"
 
+gem "ruby-readability", :require => "readability"
+gem "down"
 gem "httparty"
 gem "redcarpet"
 gem "reverse_markdown"

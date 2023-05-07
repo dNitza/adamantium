@@ -65,6 +65,10 @@ module Adamantium
       get "/tags/auto_tagging/new", to: "auto_tagging.new"
       post "/tags/auto_tagging", to: "auto_tagging.create"
       delete "/tags/auto_taggings/:id", to: "auto_tagging.delete"
+
+      get "/bookmarks", to: "bookmarks.index"
+      delete "/bookmarks/:id", to: "bookmarks.delete"
+      post "/bookmarks/cache/:id", to: "bookmarks.cache"
     end
   end
 end
