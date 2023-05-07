@@ -6,7 +6,7 @@ div class="max-w-prose mx-auto"
     thead
       th Details
       th Date
-      th Actions
+      th colspan="2" Actions
     tbody
       - bookmarks.each do |bookmark|
         tr id="bookmark-#{bookmark.id}"
@@ -25,7 +25,8 @@ div class="max-w-prose mx-auto"
           td
             = bookmark.published_at&.strftime("%d %b %Y")
           td
-            button hx-delete="/admin/bookmarks/#{bookmark.id}" hx-target="#bookmark-#{bookmark.id}" delete
+            button class="text-red-600" hx-delete="/admin/bookmarks/#{bookmark.id}" hx-target="#bookmark-#{bookmark.id}" delete
+          td
             button hx-post="/admin/bookmarks/#{bookmark.id}/archive" archive
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

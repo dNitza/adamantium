@@ -6,22 +6,21 @@ div class="max-w-prose mx-auto"
     thead
       th Details
       th Date
-      th Actions
+      th colspan="2" Actions
     tbody
       - posts.each do |post|
         tr id="post-#{post.id}"
           td
             div
               = post.name
-            a class="no-underline" href=post.slug
+            a class="no-underline" href="/post/#{post.slug}"
               small class="text-gray-400 dark:text-gray-600" = post.slug
           td
             = post.published_at&.strftime("%d %b %Y")
           td
-            div
-              button hx-delete="/admin/bookmarks/#{post.id}" hx-target="#post-#{post.id}" delete
-            div
-              button hx-post="/admin/bookmarks/#{post.id}/archive" archive
+            button class="text-red-600" hx-delete="/admin/bookmarks/#{post.id}" hx-target="#post-#{post.id}" delete
+          td
+            button hx-post="/admin/bookmarks/#{post.id}/archive" unpublish
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 
