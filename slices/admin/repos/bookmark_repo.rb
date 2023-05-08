@@ -7,6 +7,13 @@ module Admin
           .to_a
       end
 
+      def list_published
+        posts
+          .published
+          .where(post_type: "bookmark")
+          .to_a
+      end
+
       def fetch(id:)
         posts.where(id: id).one
       end

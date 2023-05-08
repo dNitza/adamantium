@@ -2,6 +2,9 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   h1 Admin // Bookmarks
 
 div class="max-w-prose mx-auto"
+
+  button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" hx-post="/admin/bookmarks/clean" Check for dead links
+
   table class="prose dark:prose-invert table-auto prose-a:text-blue-600 prose-a:no-underline"
     thead
       th Details

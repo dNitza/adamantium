@@ -72,6 +72,7 @@ module Adamantium
 
       get "/bookmarks", to: "bookmarks.index"
       delete "/bookmarks/:id", to: "bookmarks.delete"
+      post "/bookmarks/clean", to: "bookmarks.clean"
       post "/bookmarks/cache/:id", to: "bookmarks.cache"
       post "/bookmarks/:id/archive", to: "bookmarks.archive"
 
