@@ -24,6 +24,10 @@ module Adamantium
         expose :photo_posts do |past_posts|
           past_posts.select(&:photos?)
         end
+
+        expose :trip do |post|
+          post.trips.first
+        end
       end
     end
   end

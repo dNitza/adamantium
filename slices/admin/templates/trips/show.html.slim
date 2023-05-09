@@ -1,0 +1,8 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Trips // #{trip.name}
+
+div class="max-w-prose mx-auto"
+  - posts.each do |post|
+    == render "shared/post", post: post, trip_id: trip.id, added: post.trips.map(&:id).include?(trip.id)
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

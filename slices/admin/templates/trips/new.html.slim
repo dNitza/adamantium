@@ -1,0 +1,27 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Trips
+
+div class="max-w-prose mx-auto"
+  - if errors
+    div class="text-gray-100 dark:text-gray-100 bg-pink-100 dark:bg-pink-600 rounded px-4 py-2 mb-12"
+      p Errors:
+      - errors.each do |error|
+        li = "#{error[1].join(",")}"
+
+  form method="POST" action="/admin/trips"
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="name" Name:
+      input class="text-gray-800 p-1 border border-gray-400" type="text" id="name" name="trip[name]"
+
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="start_date" Start date:
+      input class="text-gray-800 p-1 border border-gray-400" type="date" id="start_date" name="trip[start_date]"
+
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="end_date" End date:
+      input class="text-gray-800 p-1 border border-gray-400" type="date" id="end_date" name="trip[end_date]"
+
+    div class="mb-4"
+      button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"
+        = "Create"
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

@@ -52,6 +52,9 @@ module Adamantium
 
     get "/:slug", to: "pages.show"
 
+    get "/trips", to: "trips.index"
+    get "/trips/:id", to: "trips.show"
+
     redirect "deploying-a-hanami-app-to-fly-io", to: "/post/deploying-a-hanami-20-app-to-flyio"
     redirect "deploying-a-hanami-app-to-fly-io/", to: "/post/deploying-a-hanami-20-app-to-flyio"
 
@@ -81,6 +84,12 @@ module Adamantium
       post "/posts/:id/archive", to: "posts.archive"
 
       get "/media", to: "photos.index"
+
+      get "/trips", to: "trips.index"
+      get "/trips/:id", to: "trips.show"
+      post "/trips", to: "trips.create"
+      post "/trips/add_post", to: "trips.add_post"
+      get "/trips/new", to: "trips.new"
     end
   end
 end

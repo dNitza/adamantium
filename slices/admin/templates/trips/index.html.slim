@@ -1,0 +1,17 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Trips
+
+div class="max-w-prose mx-auto"
+
+  a class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" href="/admin/trips/new" Add trip
+
+  ul class="mt-4 mb-12"
+    - trips.each do |trip|
+      li class="dark:text-gray-200 text-gray-600"
+        a href="/admin/trips/#{trip.id}"
+          = "#{trip.name} (#{trip.start_date} - #{trip.end_date})"
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
+
+
+

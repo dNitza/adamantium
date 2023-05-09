@@ -46,6 +46,12 @@ module Admin
       def archive(id:)
         posts.where(id: id).update(published_at: nil)
       end
+
+      def created_between(start_date, end_date)
+        posts
+          .combine(:trips)
+          .published_between(start_date, end_date)
+      end
     end
   end
 end

@@ -1,0 +1,15 @@
+div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Trips
+
+div class="h-feed mb-12 max-w-prose mx-auto"
+  - trips.each do |trip|
+    div class="mb-8 h-entry"
+      h3 class="text-xl font-semibold text-blue-600 mb-2"
+        a class="border-b-2 border-transparent hover:border-blue-600 hover:border-b-2" href="/trips/#{trip.id}"
+          = trip.name
+      p class="text-sm text-blue-400"
+        a class="u-url" href="/trips/#{trip.id}"
+            = "#{trip.start_date} - #{trip.end_date}"
+
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
