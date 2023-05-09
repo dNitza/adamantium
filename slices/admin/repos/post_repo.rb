@@ -1,3 +1,5 @@
+require "time_math"
+
 module Admin
   module Repos
     class PostRepo < Adamantium::Repo[:posts]
@@ -48,8 +50,11 @@ module Admin
       end
 
       def created_between(start_date, end_date)
+        end_date = TimeMath.month.advance(end_date, +2)
+
         posts
           .combine(:trips)
+          .where(post_type: %w[post check-in])
           .published_between(start_date, end_date)
       end
     end
