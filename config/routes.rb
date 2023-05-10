@@ -90,6 +90,7 @@ module Adamantium
       post "/trips", to: "trips.create"
       post "/trips/add_post", to: "trips.add_post"
       get "/trips/new", to: "trips.new"
+      post "/trips/:id", to: "trips.update"
     end
   end
 end

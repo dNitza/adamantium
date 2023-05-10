@@ -4,8 +4,10 @@ module Adamantium
       class Index < View
         include Deps["repos.trip_repo"]
 
-        expose :trips do
-          trip_repo.list
+        expose :trip_years do
+          trip_repo
+            .list
+            .group_by { |trip| trip.start_date.year }
         end
       end
     end

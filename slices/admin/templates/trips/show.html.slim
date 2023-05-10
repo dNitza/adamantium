@@ -1,6 +1,22 @@
 div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
   h1 Admin // Trips // #{trip.name}
 
+div class="max-w-prose mx-auto mb-8 border-gray-400 border-b-4"
+  form action="/admin/trips/#{trip.id}" method="POST"
+    input type="hidden" name="method" value="_put"
+
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="name" Name:
+      input class="text-gray-800 p-1 border border-gray-400" type="text" id="name" name="trip[name]" value=trip.name
+
+    div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="subtitle" Subtitle:
+      input class="text-gray-800 p-1 border border-gray-400" type="text" id="subtitle" name="trip[subtitle]" value=trip.subtitle
+
+    div class="mb-4"
+      button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"
+        = "Update"
+
 div class="max-w-prose mx-auto"
   - posts.each do |post|
     == render "shared/post", post: post, trip_id: trip.id, added: post.trips.map(&:id).include?(trip.id)
