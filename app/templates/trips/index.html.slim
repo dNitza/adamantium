@@ -5,7 +5,7 @@ div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:t
     table class="prose dark:prose-invert table-auto"
       - trip_years.each do |year, trips|
         thead
-          tr colspan=5
+          tr colspan=3
             td class="text-xl" = year
         - trips.each do |trip|
           tr
@@ -14,7 +14,7 @@ div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:t
                 = trip.name
             td
               = trip.subtitle
-            td colspan=2 class="text-right text-gray-400 dark:text-gray-600 break-normal"
+            td class="text-right text-gray-400 dark:text-gray-600 break-normal"
               = "#{trip.start_date.strftime("%m %b")}"
               == " &rarr; "
               = "#{trip.end_date.strftime("%m %b")}"

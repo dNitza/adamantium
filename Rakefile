@@ -21,7 +21,8 @@ namespace :blog do
       repo.create({
                     title: title,
                     year: activity.year,
-                    url: activity.film_link
+                    url: activity.film_link,
+                    watched_at: activity.watched_at
                   })
     end
   end
