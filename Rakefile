@@ -4,7 +4,7 @@ require "hanami/rake_tasks"
 
 namespace :blog do
   task :load_from_letterboxd do
-    require "hanami/prepare"
+    require "hanami/boot"
     require "scraperd"
 
     client = Scraperd::Base.new
