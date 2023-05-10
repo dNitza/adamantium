@@ -4,11 +4,11 @@ require "dotenv"
 require "hanami/rake_tasks"
 
 namespace :blog do
-  task :load_from_letterboxd do
-    Dotenv::Parser.call(`cat /home/blog/current/.env.production`)
+  task :load_environment do
+    Dotenv.load("/home/blog/current/.env.production")
+  end
 
-    puts ENV["MICROPUB_SITE_NAME"]
-
+  task :load_from_letterboxd => ["blog:load_environment"] do
     require "hanami/prepare"
     require "scraperd"
 
