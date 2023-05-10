@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
+require "dotenv"
 require "hanami/rake_tasks"
 
 namespace :blog do
   task :load_from_letterboxd do
-    require "hanami/boot"
+    Dotenv::Parser.call(`cat .env.production`)
+
+    require "hanami/prepare"
     require "scraperd"
 
     client = Scraperd::Base.new
