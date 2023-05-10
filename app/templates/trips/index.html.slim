@@ -17,8 +17,8 @@ div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:t
             td
               = "#{trip.posts.count} entries"
             td class="text-right text-gray-400 dark:text-gray-600"
-              = "#{trip.start_date}"
+              = "#{trip.start_date.strftime("%m %b")}"
               == " &rarr; "
-              = "#{trip.end_date}"
+              = "#{trip.end_date.strftime("%m %b")}"
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
