@@ -10,7 +10,6 @@ module Adamantium
 
       def list
         trips
-          .combine(:posts)
           .order(:start_date)
           .reverse
           .to_a
