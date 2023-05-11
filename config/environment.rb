@@ -4,6 +4,8 @@ require "connection_pool"
 require "que"
 require "hanami/boot"
 
+Dotenv.load("/home/blog/current/.env.production")
+
 uri = URI.parse(ENV['DATABASE_URL'])
 
 Que.connection = ConnectionPool.new(size: 10) do
