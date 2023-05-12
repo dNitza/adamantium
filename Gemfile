@@ -58,8 +58,9 @@ end
 group :development do
   gem "guard-puma", "~> 0.8"
   gem "standardrb"
-  gem "capistrano", "~> 3.17", require: false
+  gem "capistrano", "~> 3.7", require: false
   gem "capistrano-bundler"
+  gem "capistrano-systemd-multiservice"
   gem "capistrano-rbenv", "~> 2.2"
   gem "capistrano3-puma", github: "seuros/capistrano-puma"
 end
