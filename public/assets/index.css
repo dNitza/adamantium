@@ -1726,6 +1726,11 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   background-color: rgb(255 237 213 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-pink-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 207 232 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-red-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
@@ -2038,6 +2043,11 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
   .dark\:hover\:bg-yellow-400\/80:hover {
     background-color: rgb(250 204 21 / 0.8);
+  }
+
+  .hover\:dark\:bg-pink-900:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(131 24 67 / var(--tw-bg-opacity));
   }
 
   .dark\:hover\:text-yellow-100:hover {
