@@ -7,6 +7,10 @@ module Admin
         movies.where(title: title, year: year).one
       end
 
+      def by_url(url:)
+        movies.where(url: url).one
+      end
+
       def listing
         movies.order(Sequel.lit("year desc")).to_a
       end

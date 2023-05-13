@@ -17,8 +17,15 @@ namespace :blog do
     movies = movie_repo.listing
 
     movies.each do |movie|
+      record = movie_repo.by_url(url: movie.url)
+
+      next unless record.imdb_id.nil?
+
       page = Down.download(movie.url)
       match = page.read.match(/href=".+title\/(tt\d+)\/maindetails"/)
+
+      next unless match
+
       imdb_id = match[1]
 
       movie_repo.update(movie.id, {imdb_id: imdb_id})
