@@ -3,7 +3,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  content: ["./app/templates/**/*.slim"],
+  content: ["./app/templates/**/*.slim", "./public/assets/index.js"],
   theme: {
     fontSize: {
       xsm: '0.75rem',
