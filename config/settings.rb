@@ -30,6 +30,8 @@ module Adamantium
 
     setting :omdb_api_key, default: nil
 
+    setting :shortcut_key, default: nil
+
     setting :from_email, default: nil
     setting :dayone_email, default: nil
 

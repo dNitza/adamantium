@@ -54,6 +54,7 @@ module Adamantium
     private
 
     def verify_token(access_token)
+      return %i[create update delete undelete media] if settings.shortcut_key == access_token
       return %i[create update delete undelete media] if Hanami.env == :development || Hanami.env == :test
 
       resp = HTTParty.get(settings.micropub_token_endpoint, {
