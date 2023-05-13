@@ -9,29 +9,6 @@ namespace :blog do
     Dotenv.load("/home/blog/current/.env.production")
   end
 
-  task :backfill_movie_imdb_ids => ["blog:load_environment"] do
-    require "hanami/prepare"
-
-    movie_repo = Admin::Container["repos.movie_repo"]
-
-    movies = movie_repo.listing
-
-    movies.each do |movie|
-      record = movie_repo.by_url(url: movie.url)
-
-      next unless record.imdb_id.nil?
-
-      page = Down.download(movie.url)
-      match = page.read.match(/href=".+title\/(tt\d+)\/maindetails"/)
-
-      next unless match
-
-      imdb_id = match[1]
-
-      movie_repo.update(movie.id, {imdb_id: imdb_id})
-    end
-  end
-
   task :load_from_letterboxd => ["blog:load_environment"] do
     require "hanami/prepare"
     require "scraperd"

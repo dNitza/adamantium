@@ -28,6 +28,8 @@ module Adamantium
     setting :lastfm_api_key, default: nil
     setting :lastfm_secret, default: nil
 
+    setting :omdb_api_key, default: nil
+
     setting :from_email, default: nil
     setting :dayone_email, default: nil
 

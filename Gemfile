@@ -46,6 +46,7 @@ gem "lastfm", "~> 1.27"
 gem "mail"
 gem "que"
 gem "connection_pool"
+gem "omdb-api", require: false
 
 group :cli, :development do
   gem "hanami-reloader"

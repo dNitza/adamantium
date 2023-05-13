@@ -48,6 +48,11 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (7.0.4.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     airbrussh (1.4.1)
@@ -261,6 +266,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.0218.1)
     mini_mime (1.1.2)
+    minitest (5.18.0)
     multi_xml (0.6.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
@@ -292,6 +298,9 @@ GEM
     ogpr (1.1.0)
       nokogiri (~> 1.8)
       rest-client (~> 2.1.0)
+    omdb-api (1.4.3)
+      activesupport
+      httparty
     parallel (1.23.0)
     parser (3.2.2.1)
       ast (~> 2.4.1)
@@ -419,6 +428,8 @@ GEM
     timecop (0.9.6)
     timeout (0.3.2)
     transproc (1.1.1)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -466,6 +477,7 @@ DEPENDENCIES
   mail
   matrix
   ogpr
+  omdb-api
   pg
   pinboard!
   puma

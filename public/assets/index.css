@@ -1172,6 +1172,10 @@ video {
   width: 1.5rem;
 }
 
+.w-3 {
+  width: 0.75rem;
+}
+
 .max-w-prose {
   max-width: 65ch;
 }
@@ -1442,6 +1446,10 @@ video {
   padding-top: 1rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1476,6 +1484,10 @@ video {
 
 .text-xsm {
   font-size: 0.75rem;
+}
+
+.text-2xl {
+  font-size: 1.563rem;
 }
 
 .font-bold {
