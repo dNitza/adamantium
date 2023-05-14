@@ -56,7 +56,7 @@ article class="h-entry"
         div class="flex gap-4 pb-4 mt-4"
           - past_movies.map do |movie|
             a href=movie.url
-              figure
+              figure class="w-24"
                 img class="rounded hover:opacity-80" src=movie.poster
                 figcaption= movie.title
         hr
