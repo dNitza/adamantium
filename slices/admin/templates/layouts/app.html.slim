@@ -8,10 +8,10 @@ html
 
     title Admin // Daniel Nitsikopoulos
 
-    link rel="stylesheet" href="/assets/index.css"
+    link rel="stylesheet" href=asset_from_manifest("index.css")
     link rel="icon" type="image/x-icon" href="/assets/favicon.ico"
 
-    script src="/assets/index.js"
+    script src=asset_from_manifest("index.js")
 
     script src="https://unpkg.com/htmx.org@1.9.2" integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h" crossorigin="anonymous"
     script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer="true"
