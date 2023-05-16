@@ -48,7 +48,7 @@ module Adamantium
             return Failure(e.message)
           end
 
-          upload_path = File.join(settings.micropub_site_url, "/media/", "/#{pathname}/", filename).to_s
+          upload_path = File.join(settings.micropub_site_url, "/media/", "/#{pathname}/", fullsize_filename).to_s
           Success(upload_path)
         end
       end
