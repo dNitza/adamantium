@@ -21,9 +21,10 @@ module Adamantium
           return Failure(:invalid_file_type) unless VALID_UPLOAD_TYPES.include? type.to_sym
 
           pathname = Time.now.strftime("%m-%Y")
+          uuid = SecureRandom.uuid
 
-          fullsize_filename = "#{SecureRandom.uuid}#{File.extname(file[:filename])}"
-          thumbnail_filename = "#{SecureRandom.uuid}-small#{File.extname(file[:filename])}"
+          fullsize_filename = "#{uuid}#{File.extname(file[:filename])}"
+          thumbnail_filename = "#{uuid}-small#{File.extname(file[:filename])}"
 
           dirname = File.join("public", "media", pathname)
 
