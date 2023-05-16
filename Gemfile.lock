@@ -237,6 +237,9 @@ GEM
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     indieweb-endpoints (8.0.0)
       http (~> 5.0)
       link-header-parser (~> 5.0)
@@ -265,6 +268,7 @@ GEM
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.0218.1)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
     multi_xml (0.6.0)
@@ -395,6 +399,8 @@ GEM
     ruby-readability (0.7.0)
       guess_html_encoding (>= 0.0.4)
       nokogiri (>= 1.6.0)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     sanitize (6.0.1)
       crass (~> 1.0.2)
@@ -473,6 +479,7 @@ DEPENDENCIES
   hanami-validations (~> 2.0.0)
   hanami-view!
   httparty
+  image_processing (~> 1.0)
   lastfm (~> 1.27)
   mail
   matrix

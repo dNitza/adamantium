@@ -3,6 +3,7 @@
 require "securerandom"
 require "dry/monads"
 require "filemagic"
+require "image_processing/vips"
 
 module Adamantium
   module Commands
@@ -11,7 +12,7 @@ module Adamantium
         include Deps["settings"]
         include Dry::Monads[:result]
 
-        VALID_UPLOAD_TYPES = %i[jpeg jpg png gif mp4 iso]
+        VALID_UPLOAD_TYPES = %i[jpeg jpg png gif]
 
         def call(file:)
           mime = FileMagic.new
@@ -21,16 +22,28 @@ module Adamantium
 
           pathname = Time.now.strftime("%m-%Y")
 
-          filename = "#{SecureRandom.uuid}#{File.extname(file[:filename])}"
+          fullsize_filename = "#{SecureRandom.uuid}#{File.extname(file[:filename])}"
+          thumbnail_filename = "#{SecureRandom.uuid}-small#{File.extname(file[:filename])}"
 
           dirname = File.join("public", "media", pathname)
+
+          fullsize_pipeline = ImageProcessing::Vips.source(file[:tempfile])
+            .resize_to_limit(1024, nil)
+            .saver(quality: 100)
+            .call(save: false)
+
+          thumbnail_pipeline = ImageProcessing::Vips.source(file[:tempfile])
+            .resize_to_limit(300, 300, crop: :attention)
+            .saver(quality: 100)
+            .call(save: false)
 
           unless File.directory?(dirname)
             FileUtils.mkdir_p(dirname)
           end
 
           begin
-            File.write(File.join(dirname, filename), file[:tempfile].read)
+            fullsize_pipeline.write_to_file(File.join(dirname, fullsize_filename))
+            thumbnail_pipeline.write_to_file(File.join(dirname, thumbnail_filename))
           rescue Errno::ENOENT, NoMethodError => e
             return Failure(e.message)
           end

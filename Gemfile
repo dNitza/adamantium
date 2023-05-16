@@ -29,7 +29,7 @@ gem "gpx"
 gem "gnuplot"
 gem "matrix"
 
-gem "ruby-readability", :require => "readability"
+gem "ruby-readability", require: "readability"
 gem "down"
 gem "httparty"
 gem "redcarpet"
@@ -47,6 +47,7 @@ gem "mail"
 gem "que"
 gem "connection_pool"
 gem "omdb-api", require: false
+gem "image_processing", "~> 1.0"
 
 group :cli, :development do
   gem "hanami-reloader"
