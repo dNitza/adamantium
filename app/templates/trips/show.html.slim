@@ -1,3 +1,5 @@
+- context.content_for(:title, "#{trip.name} | ")
+
 div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
   h1 class="mb-0" #{trip.name}
   / p class="mt-2" class="text-gray-600 dark:text-gray-200 text-sm" (#{trip.start_date} - #{trip.end_date})

@@ -14,6 +14,7 @@ Where possible, I will try and post as much as I can here, and then syndicate ou
 
 - [Apple Music](https://music.apple.com/profile/nitza)
 - [Email](mailto:hello@dnitza.com)
+- [Discogs](https://www.discogs.com/user/dnitza)
 - [Github](https://github.com/dnitza)
 - [last.fm](https://www.last.fm/user/dNitza)
 - [Letterboxd](https://letterboxd.com/dnitza/)

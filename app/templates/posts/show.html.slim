@@ -1,3 +1,5 @@
+- context.content_for(:title, "#{post.display_title} | ")
+
 article class="h-entry"
   template @img-modal.window="imgModal = true; imgModalSrc = $event.detail.imgModalSrc; imgModalDesc = $event.detail.imgModalDesc;" x-if="imgModal"
     div @mousedown.outside="imgModalSrc = ''" class="p-2 fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center bg-black bg-opacity-75"

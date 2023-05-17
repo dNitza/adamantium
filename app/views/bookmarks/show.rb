@@ -1,7 +1,7 @@
 module Adamantium
   module Views
     module Bookmarks
-      class Show < Adamantium::View
+      class Show < View
         include Deps["repos.post_repo"]
 
         expose :bookmark do |slug:|

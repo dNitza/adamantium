@@ -1,3 +1,5 @@
+- context.content_for(:title, "Places | ")
+
 div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
   h1 Places
 / div id='map' data-markers="#{JSON.generate(places.map{|p| [p.lon,p.lat]})}" style='width: 400px; height: 300px;'

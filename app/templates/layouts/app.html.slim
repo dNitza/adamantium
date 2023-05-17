@@ -6,7 +6,7 @@ html
 
     meta name="theme-color" content="rgb(37, 99, 235)"
 
-    title Daniel Nitsikopoulos
+    title #{context.content_for(:title)} Daniel Nitsikopoulos
 
     link rel="authorization_endpoint" href=Hanami.app.settings.micropub_authorization_endpoint
     link rel="token_endpoint" href=Hanami.app.settings.micropub_token_endpoint
