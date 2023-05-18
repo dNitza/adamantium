@@ -1030,8 +1030,17 @@ video {
   inset: 0px;
 }
 
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px;
+}
+
 .-top-4 {
   top: -1rem;
+}
+
+.right-0 {
+  right: 0px;
 }
 
 .z-50 {
@@ -1392,6 +1401,10 @@ video {
   border-top-width: 4px;
 }
 
+.border-t-2 {
+  border-top-width: 2px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -1542,6 +1555,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1580,6 +1598,10 @@ video {
 
 .text-right {
   text-align: right;
+}
+
+.align-baseline {
+  vertical-align: baseline;
 }
 
 .text-4xl {
@@ -1888,6 +1910,11 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   background-color: rgb(190 242 100 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-blue-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
 .hover\:fill-blue-400:hover {
   fill: #60a5fa;
 }
@@ -2110,6 +2137,14 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     background-color: rgb(250 204 21 / 0.8);
   }
 
+  .dark\:bg-blue-900\/80 {
+    background-color: rgb(30 58 138 / 0.8);
+  }
+
+  .dark\:bg-blue-900\/30 {
+    background-color: rgb(30 58 138 / 0.3);
+  }
+
   .dark\:text-blue-200 {
     --tw-text-opacity: 1;
     color: rgb(191 219 254 / var(--tw-text-opacity));
@@ -2244,9 +2279,29 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     background-color: rgb(131 24 67 / var(--tw-bg-opacity));
   }
 
+  .hover\:dark\:bg-blue-800:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(30 64 175 / var(--tw-bg-opacity));
+  }
+
   .dark\:hover\:text-yellow-100:hover {
     --tw-text-opacity: 1;
     color: rgb(254 249 195 / var(--tw-text-opacity));
+  }
+
+  .hover\:dark\:text-blue-600:hover {
+    --tw-text-opacity: 1;
+    color: rgb(37 99 235 / var(--tw-text-opacity));
+  }
+
+  .hover\:dark\:text-blue-200:hover {
+    --tw-text-opacity: 1;
+    color: rgb(191 219 254 / var(--tw-text-opacity));
+  }
+
+  .hover\:dark\:text-blue-100:hover {
+    --tw-text-opacity: 1;
+    color: rgb(219 234 254 / var(--tw-text-opacity));
   }
 
   .prose-a\:dark\:text-gray-100 :is(:where(a):not(:where([class~="not-prose"] *))) {
