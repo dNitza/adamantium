@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo "Building assets:"
+
+npx tailwindcss -i ./app/assets/index.css -o ./public/assets/index.css
+
+git add public/assets/index.css
+git commit -m "Rebuild assets"
+git push origin main
+
+echo "Deploying:"
+
+bundle exec cap production deploy
+
+echo "Purging cache:"
+
+curl --request POST \
+  --url https://api.cloudflare.com/client/v4/zones/c32ce0cd2aebb2807e22809e0fb7fa95/purge_cache \
+  --header 'Content-Type: application/json' \
+  --header 'X-Auth-Key: ddd5f7271559811be78fded5bb113546493f6' \
+  --header 'X-Auth-Email: dnitza@gmail.com'\
+  --data '{"purge_everything": true}'
+
+echo "Done!"
