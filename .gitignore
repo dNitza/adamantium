@@ -6,6 +6,8 @@ fly.toml
 *.sock
 publish.rb
 publish_bookmark.rb
+publish_photo.rb
+instagram_import.rb
 node_modules/*
 .DS_Store
 .bundle/
@@ -15,5 +17,6 @@ node_modules/*
 Capfile
 config/deploy.rb
 config/deploy/production.rb
-tags
-
+config/systemd/que.service.erb
+script/deploy
+tmp/*
