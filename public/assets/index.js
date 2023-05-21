@@ -13,6 +13,10 @@
         md_gallery({
             "class_name": "grid gap-4 grid-cols-2 prose-img:m-0"
         });
+
+        htmx.on('#media_form', 'htmx:xhr:progress', function(evt) {
+            htmx.find('#progress').setAttribute('value', evt.detail.loaded/evt.detail.total * 100)
+        });
     });
     // mapboxgl.accessToken = 'pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIyY3ZzaTE0cjUzdm4xdnZ6czRlYjUifQ.FRETOXYRID6T2IoB7qqRLg';
     // var map = new mapboxgl.Map({

@@ -2,11 +2,18 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   h1 Admin // Media
 
 div class="mb-4 max-w-prose mx-auto prose dark:prose-invert"
+  form id='media_form' hx-encoding='multipart/form-data' hx-post='/micropub/media'
+    fieldset class="mb-6"
+      input type='file' name='file'
+    fieldset
+      button class="hover:text-blue-400 p-2 bg-blue-100 rounded text-blue-600 mr-4 no-underline" Upload
+      progress id='progress' class="bg-blue-100 rounded" value='0' max='100'
   - photos_buckets.each do |year, photos|
     - next unless photos.count > 0
     h2 = Date.parse(year).strftime("%m %b %Y")
     div class="grid grid-cols-3 gap-4"
       - photos.each do |photo|
+        - next if photo.match(/small/)
         div class="rounded max-w-xs" x-data=""
           img class="rounded object-cover hover:opacity-80 h-48 w-48" src="/#{photo.gsub("public/", "")}"
           button class="hover:text-blue-400 p-2 bg-blue-100 rounded text-blue-600 mr-4 no-underline" @click="$clipboard('#{Hanami.app.settings.micropub_site_url}/#{photo.gsub("public/", "")}')" Copy URL
