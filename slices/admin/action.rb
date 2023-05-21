@@ -3,5 +3,8 @@
 
 module Admin
   class Action < Adamantium::Action
+    config.default_headers = {
+      "Cache-Control" => "no-cache"
+    }
   end
 end
