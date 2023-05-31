@@ -1,3 +1,5 @@
+require "que"
+
 module Admin
   module Views
     module Bookmarks
@@ -5,8 +7,21 @@ module Admin
 
         include Deps["repos.bookmark_repo"]
 
+        expose :published_bookmarks do |bookmarks|
+          bookmarks[0]
+        end
+
+        expose :unpublished_bookmarks do |bookmarks|
+          bookmarks[1]
+        end
+
         expose :bookmarks do
-          bookmark_repo.list
+          bookmark_repo.list.partition{|p|  p.published_at }
+        end
+
+        expose :running_jobs do
+          Que.connection = Adamantium::Container["persistence.db"]
+          Que.job_stats.any? { |job| job[:job_class] == Adamantium::Jobs::RemoveDeadBookmarks.name }
         end
       end
     end

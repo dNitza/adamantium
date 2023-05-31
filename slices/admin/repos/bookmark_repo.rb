@@ -4,6 +4,7 @@ module Admin
       def list
         posts
           .where(post_type: "bookmark")
+          .order(Sequel.lit("published_at desc"))
           .to_a
       end
 

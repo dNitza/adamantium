@@ -38,11 +38,16 @@ module Admin
       def list
         posts
           .where(post_type: "post")
+          .order(Sequel.lit("published_at desc"))
           .to_a
       end
 
       def delete(id:)
         posts.where(id: id).delete
+      end
+
+      def publish(id:)
+        posts.where(id: id).update(published_at: Time.now)
       end
 
       def archive(id:)

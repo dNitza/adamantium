@@ -89,6 +89,14 @@ article class="h-entry"
       p
         a class="p-author h-card" href=Hanami.app.settings.micropub_site_url
           = "by #{Hanami.app.settings.site_name}"
+      p
+        span in&nbsp;
+        - if post.posted_in == :posts
+          a class="hover:underline" href="/posts" posts
+        - if post.posted_in == :places
+          a class="hover:underline" href="/places" places
+        - if post.posted_in == :statuses
+          a class="hover:underline" href="/statuses" statuses
     span class="text-right flex-1 leading-6"
       == render "shared/tags", tags: post.tags
   div class="mb-2 max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"

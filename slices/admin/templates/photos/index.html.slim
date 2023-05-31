@@ -18,4 +18,4 @@ div class="mb-4 max-w-prose mx-auto prose dark:prose-invert"
         div class="rounded max-w-xs" x-data=""
           img class="rounded object-cover hover:opacity-80 h-48 w-48" src="/#{photo.gsub("public/", "")}"
           button class="hover:text-blue-400 p-2 bg-blue-100 rounded text-blue-600 mr-4 no-underline" @click="$clipboard('#{Hanami.app.settings.micropub_site_url}/#{photo.gsub("public/", "")}')" Copy URL
-          button class="text-red-600 hover:text-red-400" Delete
+          button class="text-red-600 hover:text-red-400" hx-delete="/admin/media/#{photo}" hx-target="#post-#{photo}" Delete

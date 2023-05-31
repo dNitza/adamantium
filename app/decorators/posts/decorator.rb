@@ -97,6 +97,16 @@ module Adamantium
           :post
         end
 
+        def posted_in
+          if name.nil?
+            :statuses
+          elsif location.nil?
+            :posts
+          else
+            :places
+          end
+        end
+
         private
 
         # e.g. geo:-37.75188,144.90417;u=35

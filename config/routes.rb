@@ -25,6 +25,7 @@ module Adamantium
     get "/post/top_tracks/:slug", to: "posts.top_tracks"
     get "/post/:slug", to: "posts.show"
     get "/posts", to: "posts.index"
+    # get "/posts/archive", to: "posts.archive"
     get "/posts/archive/:year", to: "posts.archive"
 
     get "/bookmarks", to: "bookmarks.index"
@@ -82,6 +83,7 @@ module Adamantium
       get "/posts", to: "posts.index"
       delete "/posts/:id", to: "posts.delete"
       post "/posts/:id/archive", to: "posts.archive"
+      post "/posts/:id/publish", to: "posts.publish"
 
       get "/media", to: "photos.index"
 

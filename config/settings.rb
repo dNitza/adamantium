@@ -50,5 +50,8 @@ module Adamantium
 
     setting :basic_auth_username, default: nil
     setting :basic_auth_password, default: nil
+
+    setting :sentry_dsn, default: nil
+    setting :raise_exceptions, default: true
   end
 end

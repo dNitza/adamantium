@@ -49,6 +49,8 @@ gem "connection_pool"
 gem "omdb-api", require: false
 gem "image_processing", "~> 1.0"
 
+gem "sentry-ruby"
+
 group :cli, :development do
   gem "hanami-reloader"
 end

@@ -27,6 +27,9 @@ div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
     = "Published "
     time class="dt-published" datetime=bookmark.machine_published_at
       = bookmark.display_published_at
+    p
+      span in&nbsp;
+      a class="hover:underline" href="/bookmarks" bookmarks
 
   span class="text-right flex-1"
     == render "shared/tags", tags: bookmark.tags
