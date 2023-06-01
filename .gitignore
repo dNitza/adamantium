@@ -20,3 +20,4 @@ config/deploy/production.rb
 config/systemd/que.service.erb
 script/deploy
 tmp/*
+public/media
