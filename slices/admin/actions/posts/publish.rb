@@ -4,7 +4,6 @@ module Admin
       class Publish < Action
 
         include Deps["repos.post_repo"]
-
         def handle(req, res)
           post_id = req.params[:id]
 
