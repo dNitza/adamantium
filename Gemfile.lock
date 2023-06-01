@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/view.git
-  revision: bc231ce090f7ce805f88ce9cc32959f647cdf6e9
+  revision: 6ced3a632ea3d859efd01a6fdd317a8cc3104732
   branch: main
   specs:
     hanami-view (2.0.0.alpha8)
@@ -48,7 +48,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.4.3)
+    activesupport (7.0.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -74,7 +74,7 @@ GEM
       capistrano (>= 3.7.0, < 3.17.0)
     coderay (1.1.3)
     concurrent-ruby (1.2.2)
-    connection_pool (2.4.0)
+    connection_pool (2.4.1)
     crass (1.0.6)
     database_cleaner-core (2.0.1)
     database_cleaner-sequel (2.0.2)
@@ -85,7 +85,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
-    down (5.4.0)
+    down (5.4.1)
       addressable (~> 2.8)
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
@@ -118,7 +118,7 @@ GEM
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
       dry-events (~> 1.0, < 2)
-    dry-schema (1.13.1)
+    dry-schema (1.13.2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0, >= 1.0.1)
       dry-core (~> 1.0, < 2)
@@ -159,8 +159,8 @@ GEM
     formatador (1.1.0)
     georuby (2.5.2)
     gnuplot (2.6.2)
-    gpx (0.8.3)
-      nokogiri
+    gpx (1.1.1)
+      nokogiri (~> 1.7)
       rake
     guard (2.18.0)
       formatador (>= 0.2.4)
@@ -292,9 +292,9 @@ GEM
     net-ssh (7.1.0)
     netrc (0.11.0)
     nio4r (2.5.9)
-    nokogiri (1.14.4-x86_64-darwin)
+    nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.4-x86_64-linux)
+    nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -313,7 +313,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     que (2.2.1)
     racc (1.6.2)
@@ -410,13 +410,13 @@ GEM
     sequel (5.68.0)
     shellany (0.0.1)
     simple-rss (1.3.3)
-    slim (5.1.0)
+    slim (5.1.1)
       temple (~> 0.10.0)
-      tilt (>= 2.0.6, < 2.2)
+      tilt (>= 2.1.0)
     sshkit (1.21.4)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    standard (1.28.2)
+    standard (1.28.5)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.50.2)
@@ -429,7 +429,7 @@ GEM
       rubocop-performance (~> 1.16.0)
     standardrb (1.0.1)
       standard
-    temple (0.10.0)
+    temple (0.10.2)
     thor (1.2.2)
     tilt (2.1.0)
     time_math2 (0.1.1)
