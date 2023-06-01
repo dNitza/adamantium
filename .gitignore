@@ -4,9 +4,9 @@ public/key.pub
 log/*
 fly.toml
 *.sock
-publish.rb
-publish_bookmark.rb
-publish_photo.rb
+/publish.rb
+/publish_bookmark.rb
+/publish_photo.rb
 instagram_import.rb
 node_modules/*
 .DS_Store
