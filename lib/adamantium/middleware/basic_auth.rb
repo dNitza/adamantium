@@ -3,7 +3,7 @@ module Adamantium
     class BasicAuth < Rack::Auth::Basic
       def call(env)
         request = Rack::Request.new(env)
-        if request.path.match(/^\/admin*/)
+        if /^\/admin*/.match?(request.path)
           # Execute basic authentication
           super(env)
         else

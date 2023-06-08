@@ -2,7 +2,6 @@ module Admin
   module Views
     module Photos
       class Index < Admin::View
-
         MEDIA_DIR = "public/media/".freeze
 
         expose :photos_buckets do

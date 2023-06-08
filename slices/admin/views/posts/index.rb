@@ -2,7 +2,6 @@ module Admin
   module Views
     module Posts
       class Index < Admin::View
-
         include Deps["repos.post_repo"]
 
         expose :published_posts do |posts|
@@ -14,7 +13,7 @@ module Admin
         end
 
         expose :posts do
-          post_repo.list.partition{|p|  p.published_at }
+          post_repo.list.partition { |p| p.published_at }
         end
       end
     end

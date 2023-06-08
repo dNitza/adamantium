@@ -1,4 +1,3 @@
-
 require "securerandom"
 require "dry/monads"
 require "filemagic"

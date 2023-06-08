@@ -6,6 +6,7 @@ module Admin
           .order(Sequel.function(:lower, :label))
           .to_a
       end
+
       def list_with_posts
         tags
           .combine(:posts)

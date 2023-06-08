@@ -4,7 +4,6 @@ module Adamantium
   module Actions
     module Trips
       class Show < Adamantium::Action
-
         include Deps["views.trips.show"]
 
         def handle(req, res)

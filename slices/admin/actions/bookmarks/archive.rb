@@ -2,7 +2,6 @@ module Admin
   module Actions
     module Bookmarks
       class Archive < Action
-
         include Deps["repos.bookmark_repo"]
 
         def handle(req, res)

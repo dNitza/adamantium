@@ -2,7 +2,6 @@ module Admin
   module Actions
     module Tags
       class Delete < Action
-
         include Deps["repos.post_tag_repo", "repos.tag_repo"]
 
         def handle(req, res)

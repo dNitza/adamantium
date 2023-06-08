@@ -6,7 +6,6 @@ module Adamantium
   module Decorators
     module Movies
       class Decorator < SimpleDelegator
-
         include Deps["clients.omdb"]
 
         def poster

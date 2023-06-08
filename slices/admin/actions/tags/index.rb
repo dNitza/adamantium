@@ -2,7 +2,6 @@ module Admin
   module Actions
     module Tags
       class Index < Action
-
         include Deps["views.tags.index"]
 
         def handle(req, res)

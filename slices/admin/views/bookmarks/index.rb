@@ -4,7 +4,6 @@ module Admin
   module Views
     module Bookmarks
       class Index < Admin::View
-
         include Deps["repos.bookmark_repo"]
 
         expose :published_bookmarks do |bookmarks|
@@ -16,7 +15,7 @@ module Admin
         end
 
         expose :bookmarks do
-          bookmark_repo.list.partition{|p|  p.published_at }
+          bookmark_repo.list.partition { |p| p.published_at }
         end
 
         expose :running_jobs do

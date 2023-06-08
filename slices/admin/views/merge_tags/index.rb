@@ -2,7 +2,6 @@ module Admin
   module Views
     module MergeTags
       class Index < Admin::View
-
         include Deps["repos.tag_repo"]
 
         expose :tags do

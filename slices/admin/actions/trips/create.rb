@@ -4,7 +4,6 @@ module Admin
   module Actions
     module Trips
       class Create < Admin::Action
-
         include Deps["commands.trips.create"]
 
         def handle(req, res)

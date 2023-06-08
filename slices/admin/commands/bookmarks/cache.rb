@@ -8,7 +8,7 @@ module Admin
         include Dry::Monads[:result]
         include Deps["repos.bookmark_repo"]
 
-        def call(bookmark_id: )
+        def call(bookmark_id:)
           bookmark = bookmark_repo.fetch(id: bookmark_id)
           bookmark.url
 

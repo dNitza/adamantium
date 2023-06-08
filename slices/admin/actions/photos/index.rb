@@ -2,7 +2,6 @@ module Admin
   module Actions
     module Photos
       class Index < Action
-
         include Deps["views.photos.index"]
 
         def handle(req, res)

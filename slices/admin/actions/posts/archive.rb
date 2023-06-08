@@ -2,7 +2,6 @@ module Admin
   module Actions
     module Posts
       class Archive < Action
-
         include Deps["repos.post_repo"]
 
         def handle(req, res)

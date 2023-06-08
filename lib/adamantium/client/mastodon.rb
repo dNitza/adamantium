@@ -52,8 +52,10 @@ module Adamantium
         mastodon_token = settings.mastodon_token
         file = Tempfile.new(SecureRandom.uuid)
 
+        # rubocop:disable Security/Open
         file.write(URI.open(photo["value"]).read)
         file.rewind
+        # rubocop:enable Security/Open
 
         file_size = file.size.to_f / 2**20
         formatted_file_size = "%.2f" % file_size

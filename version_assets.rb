@@ -24,4 +24,4 @@ Dir.glob(dist_path + "/*.{js,css}").each_with_object(filenames) do |f, memo|
   File.rename(f, dist_path + "/" + filename + "-" + hash + File.extname(f))
 end
 
-File.open(folder_path + "/asset-manifest.json", "wb") {|f| f.write(JSON.generate(filenames)) }
+File.binwrite(folder_path + "/asset-manifest.json", JSON.generate(filenames))

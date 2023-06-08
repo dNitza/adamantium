@@ -2,7 +2,6 @@ module Admin
   module Actions
     module Bookmarks
       class Index < Action
-
         include Deps["views.bookmarks.index"]
 
         def handle(req, res)

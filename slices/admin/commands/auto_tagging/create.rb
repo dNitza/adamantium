@@ -9,8 +9,8 @@ module Admin
           Failure() if !title_contains.empty? && !body_contains.empty?
 
           result = auto_tagging_repo.create(title_contains: title_contains,
-                                            body_contains: body_contains,
-                                            tag_id: tag_id)
+            body_contains: body_contains,
+            tag_id: tag_id)
 
           Success(result.id)
         end

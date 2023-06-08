@@ -2,7 +2,6 @@ module Admin
   module Actions
     module Bookmarks
       class Delete < Action
-
         include Deps["repos.bookmark_repo", "repos.post_tag_repo"]
 
         def handle(req, res)

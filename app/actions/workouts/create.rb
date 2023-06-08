@@ -5,16 +5,15 @@ module Adamantium
         include Deps["geo.gpx_parser", "commands.workouts.create"]
 
         def handle(req, res)
-          tempfile = Tempfile.new(%w/path .gpx/)
+          tempfile = Tempfile.new(%w[path .gpx])
 
-          if req.params.to_h.dig(:file, :tempfile) != nil
+          if !req.params.to_h.dig(:file, :tempfile).nil?
             tempfile.write req.params[:file][:tempfile].read
           else
             tempfile.write req.params[:file]
           end
 
           tempfile.rewind
-
 
           gpxfile = gpx_parser.call(path: tempfile.path)
 

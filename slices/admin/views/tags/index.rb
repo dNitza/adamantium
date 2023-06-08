@@ -2,7 +2,6 @@ module Admin
   module Views
     module Tags
       class Index < Admin::View
-
         include Deps["repos.tag_repo"]
 
         expose :tags do
@@ -10,11 +9,11 @@ module Admin
         end
 
         expose :unused_tags do |tags|
-          tags.partition {|t| t.posts.count == 0}.first
+          tags.partition { |t| t.posts.count == 0 }.first
         end
 
         expose :used_tags do |tags|
-          tags.partition {|t| t.posts.count == 0}.last
+          tags.partition { |t| t.posts.count == 0 }.last
         end
       end
     end

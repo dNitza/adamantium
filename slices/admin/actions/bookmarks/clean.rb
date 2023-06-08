@@ -4,7 +4,6 @@ module Admin
   module Actions
     module Bookmarks
       class Clean < Action
-
         def handle(req, res)
           Que.connection = Adamantium::Container["persistence.db"]
 

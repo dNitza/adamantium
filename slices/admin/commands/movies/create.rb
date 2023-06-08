@@ -4,7 +4,6 @@ module Admin
   module Commands
     module Movies
       class Create
-
         include Deps["repos.movie_repo"]
 
         def call(movie)
@@ -19,7 +18,6 @@ module Admin
           movie = movie.merge(imdb_id: imdb_id) if imdb_id
 
           repo.create(movie)
-        end
         end
       end
     end

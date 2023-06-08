@@ -2,7 +2,6 @@ module Admin
   module Actions
     module MergeTags
       class New < Action
-
         include Deps[new_view: "views.merge_tags.new"]
 
         def handle(req, res)

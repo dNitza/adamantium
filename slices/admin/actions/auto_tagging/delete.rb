@@ -2,7 +2,6 @@ module Admin
   module Actions
     module AutoTagging
       class Delete < Action
-
         include Deps["repos.auto_tagging_repo"]
 
         def handle(req, res)

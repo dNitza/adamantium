@@ -4,7 +4,6 @@ module Admin
   module Actions
     module Trips
       class Update < Admin::Action
-
         include Deps["commands.trips.update"]
 
         def handle(req, res)

@@ -48,13 +48,12 @@ module Adamantium
       end
 
       def auto_tag_post(post_id:, tag_id:)
-
         return if posts
-                    .post_tags
-                    .where(
-                      post_id: post_id,
-                      tag_id: tag_id
-                    ).count > 0
+          .post_tags
+          .where(
+            post_id: post_id,
+            tag_id: tag_id
+          ).count > 0
 
         posts
           .post_tags
