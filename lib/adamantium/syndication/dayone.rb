@@ -16,7 +16,7 @@ module Adamantium
         Mail.defaults do
           delivery_method :smtp, {
             address: "smtp.fastmail.com",
-            port: 465,
+            port: 587,
             authentication: "plain",
             tls: true,
             openssl_verify_mode: "peer"
