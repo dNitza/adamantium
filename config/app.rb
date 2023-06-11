@@ -17,5 +17,9 @@ module Adamantium
 
     config.logger.level = :debug
     config.logger.stream = "log/hanami.log"
+
+    config.shared_app_component_keys += [
+      "syndication.dayone"
+    ]
   end
 end

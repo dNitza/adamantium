@@ -1,0 +1,12 @@
+
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 bg-red-100"
+  h3 Syndicated to
+  ul
+    - post.syndication_sources.to_a.each do |name, url|
+     li
+      a href=url
+        = name
+  button hx-post="/admin/posts/#{post.id}/syndicate/day_one" Send to Day One
+article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
+  h1= post.name
+  == post.content

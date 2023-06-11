@@ -21,6 +21,8 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
             td
               = post.published_at&.strftime("%d %b %Y")
             td
+              a href="/admin/posts/#{post.id}" edit
+            td
               button class="text-red-600" hx-delete="/admin/posts/#{post.id}" hx-target="#post-#{post.id}" delete
             td
               button hx-post="/admin/posts/#{post.id}/archive" unpublish
@@ -34,6 +36,8 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
                 small class="text-gray-400 dark:text-gray-600" = post.slug
             td
               = post.published_at&.strftime("%d %b %Y")
+            td
+              a href="/admin/posts/#{post.id}" edit
             td
               button class="text-red-600" hx-delete="/admin/posts/#{post.id}" hx-target="#post-#{post.id}" delete
             td

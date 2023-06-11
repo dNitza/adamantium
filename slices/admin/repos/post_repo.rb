@@ -41,6 +41,10 @@ module Admin
           .to_a
       end
 
+      def find(id:)
+        posts.where(id: id).one!
+      end
+
       def delete(id:)
         posts.where(id: id).delete
       end

@@ -84,6 +84,8 @@ module Adamantium
       delete "/posts/:id", to: "posts.delete"
       post "/posts/:id/archive", to: "posts.archive"
       post "/posts/:id/publish", to: "posts.publish"
+      get "/posts/:id", to: "posts.show"
+      post "/posts/:id/syndicate/:target", to: "posts.syndicate"
 
       get "/media", to: "photos.index"
 
