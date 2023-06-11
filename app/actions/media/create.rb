@@ -17,6 +17,7 @@ module Adamantium
           if upload_result.success?
             res.status = 201
             res.headers["Location"] = upload_result.value!
+            res.headers["HX-Refresh"] = true
             res.body = {
               url: upload_result.value!
             }.to_json
