@@ -18,8 +18,8 @@ module Adamantium
             address: "smtp.fastmail.com",
             port: 587,
             authentication: "plain",
-            tls: true,
-            openssl_verify_mode: "peer"
+            openssl_verify_mode: "peer",
+            enable_starttls_auto: true
           }
         end
 
