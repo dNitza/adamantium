@@ -10,6 +10,7 @@ module Adamantium
 
       def list
         trips
+          .published
           .order(:start_date)
           .reverse
           .to_a

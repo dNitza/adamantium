@@ -12,6 +12,10 @@ module Adamantium
         end
 
         auto_struct(true)
+
+        def published
+          where(self[:start_date] <= Time.now)
+        end
       end
     end
   end
