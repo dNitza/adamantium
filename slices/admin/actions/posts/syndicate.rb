@@ -7,7 +7,7 @@ module Admin
         include Deps["commands.posts.syndicate"]
 
         def handle(req, res)
-          syndicate.(post_id: req.params[:id], target: req.params[:target])
+          syndicate.call(post_id: req.params[:id], target: req.params[:target])
         end
       end
     end

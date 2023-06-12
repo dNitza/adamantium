@@ -5,15 +5,15 @@ module Adamantium
         config.layout = false
 
         expose :name do |track:|
-          track["name"]
+          track.name
         end
 
         expose :artist do |track:|
-          track.dig("artist", "content")
+          track.artist
         end
 
         expose :url do |track:|
-          track["url"]
+          track.url
         end
       end
     end

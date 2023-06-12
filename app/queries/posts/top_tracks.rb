@@ -5,14 +5,26 @@ module Adamantium
   module Queries
     module Posts
       class TopTracks
-        include Deps["settings", "repos.post_repo"]
+        include Deps["settings", "repos.post_repo", "repos.top_track_repo"]
 
         def call(slug:)
           post = post_repo.fetch!(slug)
+          start_date = TimeMath.week.floor(post.published_at).to_i
+          end_date = TimeMath.week.ceil(post.published_at).to_i
+
+          top_tracks = top_track_repo.for_post(id: post.id)
+
+          return top_tracks unless top_tracks.empty?
 
           lastfm = Lastfm.new(settings.lastfm_api_key, settings.lastfm_secret)
 
-          lastfm.user.get_weekly_track_chart(user: "dNitza", from: TimeMath.week.floor(post.published_at).to_i, to: TimeMath.week.ceil(post.published_at).to_i)
+          tracks = lastfm.user.get_weekly_track_chart(user: "dNitza", from: start_date, to: end_date)
+
+          if track = tracks.first
+            top_track_repo.upsert(post_id: post.id, name: track["name"], artist: track.dig("artist", "content"), url: track["url"], mb_id: track["mbid"])
+          end
+
+          top_track_repo.for_post(id: post.id)
         end
       end
     end

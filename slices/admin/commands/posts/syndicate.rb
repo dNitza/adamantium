@@ -11,7 +11,7 @@ module Admin
         def call(post_id:, target:)
           post = post_repo.find(id: post_id)
 
-          dayone.(name: post[:name], content: post[:content]) if target.to_sym == :day_one
+          dayone.call(name: post[:name], content: post[:content]) if target.to_sym == :day_one
           Success()
         end
       end
