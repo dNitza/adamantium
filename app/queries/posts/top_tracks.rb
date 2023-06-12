@@ -21,7 +21,8 @@ module Adamantium
           tracks = lastfm.user.get_weekly_track_chart(user: "dNitza", from: start_date, to: end_date)
 
           if track = tracks.first
-            top_track_repo.upsert(post_id: post.id, name: track["name"], artist: track.dig("artist", "content"), url: track["url"], mb_id: track["mbid"])
+            mb_id = track["mbid"] == {} ? "unknown" : track["mbid"]
+            top_track_repo.upsert(post_id: post.id, name: track["name"], artist: track.dig("artist", "content"), url: track["url"], mb_id: mb_id)
           end
 
           top_track_repo.for_post(id: post.id)
