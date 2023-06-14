@@ -51,6 +51,8 @@ gem "image_processing", "~> 1.0"
 
 gem "sentry-ruby"
 
+gem "warning"
+
 group :cli, :development do
   gem "hanami-reloader"
 end

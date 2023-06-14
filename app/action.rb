@@ -6,7 +6,7 @@ require "httparty"
 require "dry-monads"
 require "dry-matcher"
 require "dry/matcher/result_matcher"
-
+require "pry"
 module Adamantium
   class Action < Hanami::Action
     include Deps["logger",
@@ -22,14 +22,14 @@ module Adamantium
     handle_exception StandardError => :handle_error
 
     def authenticate!(req, res)
+      halt 400 if req.env["HTTP_AUTHORIZATION"] && req.params[:access_token]
+
       if Hanami.env == :development || Hanami.env == :test
         req.env[:scopes] = verify_token(nil)
         return true
       end
 
       # Pull out and verify the authorization header or access_token
-
-      halt 400 if req.env["HTTP_AUTHORIZATION"] && req.params["access_token"]
 
       if req.env["HTTP_AUTHORIZATION"]
         header = req.env["HTTP_AUTHORIZATION"].match(/Bearer (.*)$/)

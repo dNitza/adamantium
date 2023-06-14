@@ -159,17 +159,12 @@ RSpec.describe "Post creation", :db, :requests do
   end
 
   context "auth" do
-    xit "does not allow multiple auth methods" do
+    it "does not allow multiple auth methods" do
       params = {
         access_token: "foo"
       }
 
-      headers = {
-        HTTP_AUTHORIZATION: "Bearer foo",
-        CONTENT_TYPE: "application/json"
-      }
-
-      post "/micropub", params.to_json, headers
+      post "/micropub", params, "HTTP_AUTHORIZATION" => "Bearer foo"
 
       expect(last_response.status).to eq 400
     end
