@@ -9,7 +9,7 @@ module Admin
         def call(movie)
           repo = Adamantium::Container["repos.movie_repo"]
 
-          next if repo.by_title_and_year(title: title, year: activity.year)
+          return if repo.by_title_and_year(title: title, year: activity.year)
 
           page = Down.download(activity.film_link)
           match = page.read.match(/href=".+title\/(tt\d+)\/maindetails"/)
