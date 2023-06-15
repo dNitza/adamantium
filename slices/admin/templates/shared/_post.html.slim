@@ -1,15 +1,20 @@
 div class="mb-8 h-entry"
-  - if !added
-    button class="text-blue-600" hx-post="/admin/trips/add_post" hx-vals='{"trip_id": "#{trip_id}", "post_id": "#{post.id}"}'
-      = "Add to trip"
-  h3 class="text-xl font-semibold text-blue-600 mb-2"
-    a class="border-b-2 border-transparent hover:border-blue-600 hover:border-b-2" href="/post/#{post.slug}"
-      == post.content
-  div class="e-content prose-p:mb-0 prose-img:my-2 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100"
-    div class="grid gap-4 grid-flow-row grid-cols-4 grid-rows-1"
-      -post.photos.each do |photo|
-        img class="w-44 h-44 object-cover rounded" src=photo["value"]
+  td
+    - if added
+      button class="text-red-200 bg-red-400 hover:bg-red-100 rounded p-2 dark:text-red-900" hx-post="/admin/trips/remove_post" hx-vals='{"trip_id": "#{trip_id}", "post_id": "#{post.id}"}'
+        = "Remove"
+    - else
+      button class="text-blue-200 bg-blue-400 hover:bg-blue-100 rounded p-2 dark:text-blue-900" hx-post="/admin/trips/add_post" hx-vals='{"trip_id": "#{trip_id}", "post_id": "#{post.id}"}'
+        = "Add"
+  td
+    h3 class="text-xl font-semibold text-blue-600 mb-2"
+      a class="border-b-2 border-transparent hover:border-blue-600 hover:border-b-2" href="/post/#{post.slug}"
+        == post.content
+    div class="e-content prose-p:mb-0 prose-img:my-2 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100"
+      div class="grid gap-4 grid-flow-row grid-cols-4 grid-rows-1"
+        -post.photos.each do |photo|
+          img class="w-44 h-44 object-cover rounded" src=photo["value"]
 
-  p class="text-sm text-blue-400"
-    a href="/post/#{post.slug}"
-      = post.published_at
+    p class="text-sm text-blue-400"
+      a href="/post/#{post.slug}"
+        = post.published_at

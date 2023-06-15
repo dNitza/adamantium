@@ -93,6 +93,7 @@ module Adamantium
       get "/trips/:id", to: "trips.show"
       post "/trips", to: "trips.create"
       post "/trips/add_post", to: "trips.add_post"
+      post "/trips/remove_post", to: "trips.remove_post"
       get "/trips/new", to: "trips.new"
       post "/trips/:id", to: "trips.update"
     end
