@@ -1,0 +1,15 @@
+module Adamantium
+  module Repos
+    class PodcastRepo < Adamantium::Repo[:podcasts]
+      commands :create
+
+      def listing
+        podcasts.order(:name).to_a
+      end
+
+      def delete_all
+        podcasts.delete
+      end
+    end
+  end
+end

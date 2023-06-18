@@ -29,4 +29,27 @@ namespace :blog do
       })
     end
   end
+
+  task load_from_overcast: ["blog:load_environment"] do
+    require "nokogiri"
+    require "hanami/prepare"
+    require "down"
+
+    podcast_repo = Adamantium::Container["repos.podcast_repo"]
+    settings = Adamantium::Container["settings"]
+
+    doc = File.open("tmp/overcast.opml") { |f| Nokogiri::XML(f) }
+    doc.xpath("//outline[@type='rss']").each do |outline|
+      overcast_id = outline.get_attribute("overcastId")
+      url = "https://public.overcast-cdn.com/art/#{overcast_id}_thumb"
+      destination = File.join("public", "media", "podcast_art", "#{overcast_id}.jpg")
+      Down.download(url, destination: destination)
+
+      podcast_repo.create(
+        name: outline.get_attribute("title"),
+        url: outline.get_attribute("htmlUrl"),
+        overcast_id: outline.get_attribute("overcastId")
+      )
+    end
+  end
 end

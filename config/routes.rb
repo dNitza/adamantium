@@ -34,6 +34,7 @@ module Adamantium
 
     get "/photos", to: "photos.index"
     get "/places", to: "places.index"
+    get "/places/map", to: "places.map_page"
     get "/statuses", to: "statuses.index"
 
     get "/tags", to: "tags.index"
@@ -55,6 +56,8 @@ module Adamantium
 
     get "/trips", to: "trips.index"
     get "/trips/:id", to: "trips.show"
+
+    get "/podcasts", to: "podcasts.index"
 
     redirect "deploying-a-hanami-app-to-fly-io", to: "/post/deploying-a-hanami-20-app-to-flyio"
     redirect "deploying-a-hanami-app-to-fly-io/", to: "/post/deploying-a-hanami-20-app-to-flyio"

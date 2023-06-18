@@ -1,0 +1,34 @@
+html
+  head
+    meta charest="utf-8"
+
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    meta name="theme-color" content="rgb(37, 99, 235)"
+
+    title #{context.content_for(:title)} Daniel Nitsikopoulos
+
+    link rel="authorization_endpoint" href=Hanami.app.settings.micropub_authorization_endpoint
+    link rel="token_endpoint" href=Hanami.app.settings.micropub_token_endpoint
+    link rel="micropub" href="#{URI.join(Hanami.app.settings.micropub_site_url, "micropub")}"
+
+    link rel="webmention" href=Hanami.app.settings.webmention_url
+    link rel="pingback" href=Hanami.app.settings.pingback_url
+    link rel="feed" type="text/html" href="/posts"
+    link rel="feed alternate" type="application/rss+xml" href="/feeds/rss"
+    link rel="feed alternate" type="application/rss+xml" href="/feeds/statuses_rss"
+
+    link rel="me" href=Hanami.app.settings.mastodon_url
+    link rel="me" href=Hanami.app.settings.github_url
+
+    link rel="stylesheet" href=asset_from_manifest("index.css")
+    link rel="icon" type="image/x-icon" href="/assets/favicon.ico"
+
+    script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'
+    link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet'
+
+    script data-domain="dnitza.com" src="https://stats.dnitza.com/js/script.js" defer="true"
+    script src=asset_from_manifest("index.js")
+
+  body class="bg-white dark:bg-black selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-600 dark:selection:text-blue-100"
+    == yield

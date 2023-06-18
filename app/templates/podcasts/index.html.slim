@@ -1,0 +1,20 @@
+- context.content_for(:title, "Podcasts | ")
+
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Podcasts
+
+  div class="mb-12 max-w-prose mx-auto"
+    table class="prose dark:prose-invert table-auto"
+      thead
+        tr
+          td
+          td Name
+      - podcasts.each do |podcast|
+        tr
+          td
+            img class="w-14 m-0 p-0 rounded" src="/media/podcast_art/#{podcast.overcast_id}.jpg"
+          td class="p-0 align-middle"
+            a class="block" href="#{podcast.url}"
+              = podcast.name
+
+div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
