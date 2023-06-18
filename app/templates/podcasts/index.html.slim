@@ -12,7 +12,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
       - podcasts.each do |podcast|
         tr
           td
-            img class="w-14 m-0 p-0 rounded" src="/media/podcast_art/#{podcast.overcast_id}.jpg"
+            img class="w-14 m-0 p-0 rounded" src="#{Hanami.app.settings.micropub_site_url}/media/podcast_art/#{podcast.overcast_id}.jpg"
           td class="p-0 align-middle"
             a class="block" href="#{podcast.url}"
               = podcast.name

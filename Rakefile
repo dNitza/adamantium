@@ -38,6 +38,8 @@ namespace :blog do
     podcast_repo = Adamantium::Container["repos.podcast_repo"]
     settings = Adamantium::Container["settings"]
 
+    podcast_repo.delete_all
+
     doc = File.open("tmp/overcast.opml") { |f| Nokogiri::XML(f) }
     doc.xpath("//outline[@type='rss']").each do |outline|
       overcast_id = outline.get_attribute("overcastId")
