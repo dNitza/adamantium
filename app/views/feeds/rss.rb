@@ -12,7 +12,7 @@ module Adamantium
           end
         end
 
-        expose :xml, decorate: false, layout: true
+        expose :xml, decorate: false
 
         def xml
           Builder::XmlMarkup.new(indent: 2)
