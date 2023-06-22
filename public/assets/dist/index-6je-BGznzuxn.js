@@ -14,13 +14,16 @@
                 "class_name": "grid gap-4 grid-cols-2 prose-img:m-0"
             });
 
-            htmx.on('#media_form', 'htmx:xhr:progress', function(evt) {
-                htmx.find('#progress').setAttribute('value', evt.detail.loaded/evt.detail.total * 100)
-            });
+            const mediaForm = document.getElementById("media_form");
+            if (mediaForm !== null) {
+                htmx.on('#media_form', 'htmx:xhr:progress', function (evt) {
+                    htmx.find('#progress').setAttribute('value', evt.detail.loaded / evt.detail.total * 100)
+                });
+            }
         });
 
     const mapContainer = document.getElementById("map");
-    if (mapContainer !== undefined) {
+    if (mapContainer !== null) {
         document.getElementById("go-back").addEventListener("click", () => {
           history.back();
         });
