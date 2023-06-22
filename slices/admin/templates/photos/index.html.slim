@@ -2,13 +2,11 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   h1 Admin // Media
 
 div class="mb-4 max-w-prose mx-auto prose dark:prose-invert"
-  form id='media_form' hx-headers='{"authorization": "Bearer #{Hanami.app.settings.shortcut_key}"}' hx-encoding='multipart/form-data' hx-target='#result' hx-swap='innerHTML' hx-post='/micropub/media'
+  form id='media_form' hx-headers='{"authorization": "Bearer #{Hanami.app.settings.shortcut_key}"}' hx-encoding='multipart/form-data' hx-post='/micropub/media'
     fieldset class="mb-6"
       input type='file' name='file'
     fieldset
       button class="hover:text-blue-400 p-2 bg-blue-100 rounded text-blue-600 mr-4 no-underline" Upload
-      progress id='progress' class="bg-blue-100 rounded" value='0' max='100'
-    code id="result"
   - photos_buckets.each do |year, photos|
     - next unless photos.count > 0
     h2 = year
