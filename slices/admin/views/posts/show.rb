@@ -1,3 +1,5 @@
+require "reverse_markdown"
+
 module Admin
   module Views
     module Posts
@@ -6,6 +8,10 @@ module Admin
 
         expose :post do |id:|
           post_repo.find(id: id)
+        end
+
+        expose :markdown_body do |post|
+          ReverseMarkdown.convert(post.content, unknown_tags: :pass_through, github_flavored: true).to_s
         end
       end
     end

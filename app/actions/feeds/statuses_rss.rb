@@ -5,7 +5,7 @@ module Adamantium
         include Deps["views.feeds.statuses_rss"]
 
         def handle(req, res)
-          res.content_type = "application/rss+xml"
+          res.content_type = "text/xml; charset=utf-8"
           res.render statuses_rss, format: :xml
         end
       end
