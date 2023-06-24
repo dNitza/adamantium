@@ -91,6 +91,7 @@ module Adamantium
       post "/posts/:id/syndicate/:target", to: "posts.syndicate"
 
       get "/media", to: "photos.index"
+      delete "/media/public/media/:year/:path", to: "photos.delete"
 
       get "/trips", to: "trips.index"
       get "/trips/:id", to: "trips.show"
