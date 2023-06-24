@@ -24,15 +24,15 @@ GIT
 
 GIT
   remote: https://github.com/hanami/view.git
-  revision: 6ced3a632ea3d859efd01a6fdd317a8cc3104732
+  revision: 50677420bd439cad226f04011e6c41fb0afc14b8
   branch: main
   specs:
-    hanami-view (2.0.0.alpha8)
+    hanami-view (2.1.0.beta1)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0)
       dry-core (~> 1.0)
       dry-inflector (~> 1.0, < 2)
-      temple (~> 0.10.0)
+      temple (~> 0.10.0, >= 0.10.2)
       tilt (~> 2.0, >= 2.0.6)
       zeitwerk (~> 2.6)
 
@@ -60,7 +60,7 @@ GEM
     ast (2.4.2)
     babosa (2.0.0)
     builder (3.2.4)
-    capistrano (3.16.0)
+    capistrano (3.17.3)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -70,8 +70,8 @@ GEM
     capistrano-rbenv (2.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
-    capistrano-systemd-multiservice (0.1.0.beta12)
-      capistrano (>= 3.7.0, < 3.17.0)
+    capistrano-systemd-multiservice (0.1.0.beta13)
+      capistrano (~> 3.7)
     coderay (1.1.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
@@ -270,7 +270,7 @@ GEM
     mime-types-data (3.2023.0218.1)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
-    minitest (5.18.0)
+    minitest (5.18.1)
     multi_xml (0.6.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
@@ -435,7 +435,7 @@ GEM
     tilt (2.2.0)
     time_math2 (0.1.1)
     timecop (0.9.6)
-    timeout (0.3.2)
+    timeout (0.4.0)
     transproc (1.1.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
