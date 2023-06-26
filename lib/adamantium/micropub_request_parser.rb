@@ -13,6 +13,9 @@ module Adamantium
       when :checkin
         checkin_params = parse_checkin_params(params)
         Entities::CheckinRequest.new(checkin_params)
+      when :book
+        book_params = parse_book_params(params)
+        Entities::BookRequest.new(book_params)
       else
         req_params = parse_post_params(req_type, cont_type, params)
         Entities::PostRequest.new(req_params)
@@ -23,6 +26,7 @@ module Adamantium
 
     def content_type(params)
       return :bookmark if params[:"bookmark-of"]
+      return :book if params.dig(:properties, :"read-of")
       return :checkin if params.dig(:properties, :checkin)
       :post
     end
@@ -108,6 +112,24 @@ module Adamantium
       location = params.dig(:properties, :location).first[:properties]
       new_params[:photos] = params.dig(:properties, :photo)&.map { |p| {value: p, alt: new_params[:name]} } || []
       new_params[:location] = "geo:#{location.dig(:latitude).first},#{location.dig(:longitude).first};u=0"
+      new_params
+    end
+
+    def parse_book_params(params)
+      new_params = {}
+      new_params[:post_type] = "book"
+
+      entry = params[:properties]
+      new_params[:h] = "entry"
+      new_params[:content] = entry[:summary].first
+      new_params[:book_status] = entry[:"read-status"].first
+
+      book = params.dig(:properties, :"read-of").first[:properties]
+      new_params[:name] = book[:name].first
+      new_params[:book_author] = book[:author].first
+      new_params[:slug] = book[:uid].first
+      new_params[:category] = []
+      new_params[:published_at] = Time.now
       new_params
     end
   end

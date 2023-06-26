@@ -127,6 +127,15 @@ module Adamantium
           .to_a
       end
 
+      def books_listing(limit: nil)
+        posts
+          .where(post_type: "book")
+          .published
+          .order(Sequel.desc(:published_at))
+          .limit(limit)
+          .to_a
+      end
+
       def bookmark_listing(query: nil)
         base = posts
           .where(post_type: "bookmark")
