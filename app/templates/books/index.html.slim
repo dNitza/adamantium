@@ -3,39 +3,39 @@
 div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
   h1 📚 Bookshelf
 
-  div class="mb-12 max-w-prose mx-auto"
-    table class="prose dark:prose-invert table-auto"
-      thead
-        tr
-          td
-          td class="p-2" Title
-          td class="p-2" Author(s)
-      - reading.each do |book|
-        tr
-          td
-            div class="rounded-md text-xs #{book.status_colour} px-2 w-full text-center"
-              = book.book_status
-          td
-            = book.name
-          td
-            = book.authors
-      - to_read.each do |book|
-        tr
-          td
-            div class="rounded-md text-xs #{book.status_colour} px-2 w-full text-center"
-              = book.book_status
-          td
-            = book.name
-          td
-            = book.authors
-      - read.each do |book|
-        tr
-          td
-            div class="rounded-md text-xs #{book.status_colour} px-2 w-full text-center"
-              = book.book_status
-          td
-            = book.name
-          td
-            = book.authors
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto"
+  table class="text-gray-800 dark:text-white table-auto"
+    thead
+      tr
+        td
+        td class="p-2" Title
+        td class="p-2" Author(s)
+    - reading.each do |book|
+      tr
+        td
+          div class="rounded-md uppercase text-xs #{book.status_colour} px-2 w-full text-center"
+            = book.status_label
+        td
+          = book.name
+        td
+          = book.authors
+    - to_read.each do |book|
+      tr
+        td
+          div class="rounded-md uppercase text-xs #{book.status_colour} px-2 w-full text-center"
+            = book.status_label
+        td
+          = book.name
+        td
+          = book.authors
+    - read.each do |book|
+      tr
+        td
+          div class="rounded-md uppercase text-xs #{book.status_colour} px-2 w-full text-center"
+            = book.status_label
+        td
+          = book.name
+        td
+          = book.authors
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
