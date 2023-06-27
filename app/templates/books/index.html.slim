@@ -13,7 +13,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
       - reading.each do |book|
         tr
           td
-            span class="rounded-md text-xs #{book.status_colour} p-1"
+            div class="rounded-md text-xs #{book.status_colour} px-2 w-full text-center"
               = book.book_status
           td
             = book.name
@@ -22,7 +22,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
       - to_read.each do |book|
         tr
           td
-            span class="rounded-md text-xs #{book.status_colour} p-1"
+            div class="rounded-md text-xs #{book.status_colour} px-2 w-full text-center"
               = book.book_status
           td
             = book.name
@@ -31,7 +31,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
       - read.each do |book|
         tr
           td
-            span class="rounded-md text-xs #{book.status_colour} p-1"
+            div class="rounded-md text-xs #{book.status_colour} px-2 w-full text-center"
               = book.book_status
           td
             = book.name
