@@ -1,8 +1,6 @@
-# Colophon
+# 🧱 Colophon
 
 Hello! Welcome to dnitza.com 👋
-
-
 
 This site is made from:
 

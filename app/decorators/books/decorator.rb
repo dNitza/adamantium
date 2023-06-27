@@ -21,6 +21,21 @@ module Adamantium
         def template_type
           :book
         end
+
+        def authors
+          self.book_author.split(";").join(" ")
+        end
+
+        def status_colour
+          case book_status
+          when "read"
+            "text-green-100 bg-green-500"
+          when "to-read"
+            "text-blue-100 bg-blue-500"
+          when "reading"
+            "text-orange-100 bg-orange-500"
+          end
+        end
       end
     end
   end

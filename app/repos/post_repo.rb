@@ -131,7 +131,7 @@ module Adamantium
         posts
           .where(post_type: "book")
           .published
-          .order(Sequel.desc(:published_at))
+          .order(Sequel.asc(:name))
           .limit(limit)
           .to_a
       end

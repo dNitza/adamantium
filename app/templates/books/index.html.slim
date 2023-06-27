@@ -1,23 +1,41 @@
 - context.content_for(:title, "Books | ")
 
 div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
-  h1 Books
+  h1 📚 Bookshelf
 
   div class="mb-12 max-w-prose mx-auto"
     table class="prose dark:prose-invert table-auto"
       thead
         tr
-          td Title
-          td Author
-          td Status
-      - books.each do |book|
+          td
+          td class="p-2" Title
+          td class="p-2" Author(s)
+      - reading.each do |book|
         tr
           td
-            / a href="/books/#{book.slug}"
+            span class="rounded-md text-xs #{book.status_colour} p-1"
+              = book.book_status
+          td
             = book.name
           td
-            = book.book_author
+            = book.authors
+      - to_read.each do |book|
+        tr
           td
-            = book.book_status
+            span class="rounded-md text-xs #{book.status_colour} p-1"
+              = book.book_status
+          td
+            = book.name
+          td
+            = book.authors
+      - read.each do |book|
+        tr
+          td
+            span class="rounded-md text-xs #{book.status_colour} p-1"
+              = book.book_status
+          td
+            = book.name
+          td
+            = book.authors
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

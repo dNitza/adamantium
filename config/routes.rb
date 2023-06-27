@@ -59,7 +59,7 @@ module Adamantium
 
     get "/podcasts", to: "podcasts.index"
 
-    get "/books", to: "books.index"
+    get "/bookshelf", to: "books.index"
 
     redirect "deploying-a-hanami-app-to-fly-io", to: "/post/deploying-a-hanami-20-app-to-flyio"
     redirect "deploying-a-hanami-app-to-fly-io/", to: "/post/deploying-a-hanami-20-app-to-flyio"

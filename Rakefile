@@ -30,27 +30,24 @@ namespace :blog do
     end
   end
 
-  task load_from_overcast: ["blog:load_environment"] do
-    require "nokogiri"
+  task load_from_bookshelf: ["blog:load_environment"] do
     require "hanami/prepare"
-    require "down"
+    require "csv"
+    require "sequel"
 
-    podcast_repo = Adamantium::Container["repos.podcast_repo"]
-    settings = Adamantium::Container["settings"]
+    post_repo = Adamantium::Container["repos.post_repo"]
 
-    podcast_repo.delete_all
-
-    doc = File.open("tmp/overcast.opml") { |f| Nokogiri::XML(f) }
-    doc.xpath("//outline[@type='rss']").each do |outline|
-      overcast_id = outline.get_attribute("overcastId")
-      url = "https://public.overcast-cdn.com/art/#{overcast_id}_thumb"
-      destination = File.join("public", "media", "podcast_art", "#{overcast_id}.jpg")
-      Down.download(url, destination: destination)
-
-      podcast_repo.create(
-        name: outline.get_attribute("title"),
-        url: outline.get_attribute("htmlUrl"),
-        overcast_id: outline.get_attribute("overcastId")
+    CSV.open("tmp/books.csv", headers: true).each do |book|
+      next if book["isbn13"].nil?
+      post_repo.create(
+        name: book["title"],
+        post_type: "book",
+        book_status: book["readingStatus"],
+        slug: "isbn:#{book["isbn13"]}",
+        book_author: book["authors"],
+        content: book["description"],
+        category: [],
+        published_at: Time.now
       )
     end
   end
