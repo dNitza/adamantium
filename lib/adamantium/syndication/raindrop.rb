@@ -11,7 +11,7 @@ module Adamantium
       end
 
       def call(post:)
-        uri = URI('https://api.raindrop.io/rest/v1/raindrop')
+        uri = URI("https://api.raindrop.io/rest/v1/raindrop")
 
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
@@ -21,14 +21,20 @@ module Adamantium
           "link" => post[:url]
         }
         body = JSON.dump(dict)
-        req =  Net::HTTP::Post.new(uri)
+        req = Net::HTTP::Post.new(uri)
         req.add_field "Authorization", api_key
         req.add_field "Content-Type", "application/json; charset=utf-8"
         req.body = body
 
-        response = http.request(req)
+        response = nil
 
-        if response.code.to_s == "200"
+        begin
+          response = http.request(req)
+        rescue
+          # NOOP
+        end
+
+        if response && response.code.to_s == "200"
           Success()
         else
           Failure(:failed_to_post_to_raindrop)

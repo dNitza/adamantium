@@ -9,6 +9,8 @@ module Adamantium
 
       def call(imdb_id:)
         @client.find_by_id(imdb_id)
+      rescue
+        nil
       end
     end
   end
