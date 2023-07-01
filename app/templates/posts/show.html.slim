@@ -41,7 +41,7 @@ article class="h-entry"
 
       - if post.location
         img class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
-  div class="mb-12"      
+  div class="mb-12"
     - if trip
       div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex gap-4"
         a href="/trips/#{trip.id}" class="block grow bg-orange-100 hover:bg-orange-200 dark:bg-orange-600 hover:dark:bg-orange-900 rounded px-4 py-2 mb-2"
@@ -99,6 +99,8 @@ article class="h-entry"
           a class="hover:underline" href="/places" places
         - if post.posted_in == :statuses
           a class="hover:underline" href="/statuses" statuses
+        - if post.posted_in == :bookshelf
+          a class="hover:underline" href="/bookshelf" bookshelf
     span class="text-right flex-1 leading-6"
       == render "shared/tags", tags: post.tags
   div class="mb-2 max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"

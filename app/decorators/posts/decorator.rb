@@ -70,7 +70,7 @@ module Adamantium
         end
 
         def excerpt
-          name ? truncate_html(content, 140, true) : content
+          name ? truncate_html(content, 240, true) : content
         end
 
         def permalink
@@ -100,6 +100,8 @@ module Adamantium
         def posted_in
           if name.nil?
             :statuses
+          elsif post_type.to_sym == :book
+            :bookshelf
           elsif location.nil?
             :posts
           else

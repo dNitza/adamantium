@@ -9,7 +9,7 @@ module Adamantium
         include Deps["clients.omdb"]
 
         def poster
-          omdb_record.poster
+          omdb_record&.poster
         end
 
         def omdb_record
