@@ -1,4 +1,4 @@
-xml.instruct! "xml-stylesheet", {:href=>"/assets/style.xslt", :type=>"text/xsl"}
+xml.instruct! "xml-stylesheet", {href: "/assets/style.xslt", type: "text/xsl"}
 
 xml.channel do |channel|
   channel.title "Daniel Nitsikopoulos"

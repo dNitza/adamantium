@@ -1,2 +1,2 @@
 xml.instruct!
-  xml << yield
+xml << yield

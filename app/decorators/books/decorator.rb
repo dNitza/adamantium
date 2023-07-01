@@ -23,7 +23,7 @@ module Adamantium
         end
 
         def authors
-          self.book_author.split(";").join(" ")
+          book_author.split(";").join(" ")
         end
 
         def status_colour

@@ -15,7 +15,7 @@ module Admin
           Dir["#{MEDIA_DIR}*"]
             .reverse
             .reject do |path|
-              IGNORE_PATHS.any?{|ip| path.match(ip) }
+            IGNORE_PATHS.any? { |ip| path.match(ip) }
           end
         end
       end
