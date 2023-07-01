@@ -23,8 +23,14 @@ module Adamantium
 
           return Failure(:invalid_file_type) unless VALID_UPLOAD_TYPES.include? type
 
-          save_image(file: file) if IMAGE_TYPES.include? type
-          save_video(file: file) if VIDEO_TYPES.include? type
+          result = save_image(file: file) if IMAGE_TYPES.include? type
+          result = save_video(file: file) if VIDEO_TYPES.include? type
+
+          if result.success?
+            Success(result.value!)
+          else
+            Failure()
+          end
         end
 
         private
