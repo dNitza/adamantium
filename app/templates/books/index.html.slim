@@ -16,7 +16,8 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto"
           div class="rounded-md uppercase text-xs #{book.status_colour} px-2 w-full text-center"
             = book.status_label
         td
-          = book.name
+          a href="/post/#{book.slug}"
+            = book.name
         td
           = book.authors
     - to_read.each do |book|
@@ -25,7 +26,8 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto"
           div class="rounded-md uppercase text-xs #{book.status_colour} px-2 w-full text-center"
             = book.status_label
         td
-          = book.name
+          a href="/post/#{book.slug}"
+            = book.name
         td
           = book.authors
     - read.each do |book|
@@ -34,7 +36,8 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto"
           div class="rounded-md uppercase text-xs #{book.status_colour} px-2 w-full text-center"
             = book.status_label
         td
-          = book.name
+          a href="/post/#{book.slug}"
+            = book.name
         td
           = book.authors
 
