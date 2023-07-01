@@ -9,7 +9,9 @@ module Admin
         end
 
         expose :posts do |trip|
-          post_repo.created_between(trip.start_date, trip.end_date)
+          post_repo.created_between(trip.start_date, trip.end_date).map do |post|
+            Adamantium::Decorators::Posts::Decorator.new(post)
+          end
         end
       end
     end

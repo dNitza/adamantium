@@ -17,10 +17,9 @@ div class="max-w-prose mx-auto mb-8 border-gray-400 border-b-4"
       button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"
         = "Update"
 
-div class="max-w-prose mx-auto"
-  table
-    - posts.each do |post|
-      tr
-        == render "shared/post", post: post, trip_id: trip.id, added: post.trips.map(&:id).include?(trip.id)
+div class="mb-12 max-w-prose mx-auto"
+  - posts.each do |post|
+    div class="flex flex-row"
+      == render "shared/post", post: post, trip_id: trip.id, added: post.trips.map(&:id).include?(trip.id)
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"

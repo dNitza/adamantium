@@ -62,8 +62,8 @@ module Admin
 
         posts
           .combine(:trips)
-          .where(post_type: %w[post check-in])
           .published_between(start_date, end_date)
+          .to_a
       end
     end
   end

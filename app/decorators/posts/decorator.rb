@@ -107,6 +107,10 @@ module Adamantium
           end
         end
 
+        def trips
+          __getobj__.trips
+        end
+
         private
 
         # e.g. geo:-37.75188,144.90417;u=35
