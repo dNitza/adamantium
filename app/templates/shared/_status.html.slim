@@ -1,4 +1,4 @@
-div class="mb-8 h-entry border border-gray-200 m-2 p-4 bg-gray-50 hover:bg-gray-100 rounded"
+div class="mb-8 h-entry border border-gray-200 m-2 p-4 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-900 hover:dark:border-gray-800 rounded"
   a class="border-b-2 border-transparent hover:border-blue-600 hover:border-b-2" href="/post/#{post.slug}"
     div class="e-content prose-p:mb-0 prose-img:my-2 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100 mb-4"
       = " 💬 #{post.raw_content}"
@@ -7,7 +7,11 @@ div class="mb-8 h-entry border border-gray-200 m-2 p-4 bg-gray-50 hover:bg-gray-
           img class="w-32 h-32 object-cover rounded" src=photo["value"]
     == render "shared/tags", tags: post.tags
 
+  div class="mb-8"
     p class="text-sm text-blue-400"
-      a class="u-url" href="#{post.permalink}"
+      a class="u-url float-left mr-2" href="#{post.permalink}"
         time class="dt-published" datetime=post.machine_published_at
           = post.display_published_at
+      - post.syndicated_to.each do |loc|
+        a rel="syndication" class="u-syndication float-left" href=loc[:url]
+          == render "shared/#{loc[:location]}", width: "w-4"
