@@ -216,7 +216,7 @@ module Adamantium
       def fetch!(slug)
         posts
           .published
-          .combine(:tags, :trips)
+          .combine(:tags, :trips, :webmentions)
           .where(slug: slug)
           .one!
       end

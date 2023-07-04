@@ -41,6 +41,20 @@ article class="h-entry"
 
       - if post.location
         img class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
+      -if post.webmentions && post.webmentions.count > 0
+        div class="mt-12"
+          h3 #{post.webmentions.count} Comment(s)
+          - post.webmentions.each do |mention|
+            div class="prose-p:m-1"
+              div class="flex h-6"
+                img class="w-6 m-0 mr-2" src=mention.author_photo
+                a class="block" href=mention.author_url
+                  = mention.author_name
+              div
+                == mention.content_html
+              div class="text-sm"
+                a href=mention.source_url
+                  = mention.published_at.strftime("%e %B, %Y")
   div class="mb-12"
     - if trip
       div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex gap-4"

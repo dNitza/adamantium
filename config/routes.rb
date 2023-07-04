@@ -19,6 +19,8 @@ module Adamantium
       post "/", to: "posts.handle"
       post "/media", to: "media.create"
       get "/media", to: "media.show"
+
+      post "/webmentions", to: "webmentions.create"
     end
 
     get "/", to: "site.home"
