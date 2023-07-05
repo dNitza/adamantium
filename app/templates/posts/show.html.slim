@@ -15,13 +15,13 @@ article class="h-entry"
     h1 class="p-name mb-2"
       a class="u-url" href=post.permalink
         = post.display_title
-    nav class="space-x-1 text-sm md:text-sm md:block"
+    nav class="space-x-1 text-sm md:text-sm md:block dark:text-gray-600"
       - if post.location || post.photos? || post.videos?
         span See more:
       - if post.location
-        a href="/places" places
+        a class="dark:text-gray-400" href="/places" places
       - if post.photos? || post.videos?
-        a href="/photos" photos
+        a class="dark:text-gray-400" href="/photos" photos
     article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
       div class="e-content"
         == post.content
@@ -41,20 +41,20 @@ article class="h-entry"
 
       - if post.location
         img class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
-      -if post.webmentions && post.webmentions.count > 0
-        div class="mt-12"
-          h3 #{post.webmentions.count} Comment(s)
-          - post.webmentions.each do |mention|
-            div class="prose-p:m-1"
-              div class="flex h-6"
-                img class="w-6 m-0 mr-2" src=mention.author_photo
-                a class="block" href=mention.author_url
-                  = mention.author_name
-              div
-                == mention.content_html
-              div class="text-sm"
-                a href=mention.source_url
-                  = mention.published_at.strftime("%e %B, %Y")
+    -if post.webmentions && post.webmentions.count > 0
+      div class="mt-12"
+        h3 #{post.webmentions.count} Comment(s)
+        - post.webmentions.each do |mention|
+          div class="prose-p:m-1 mb-6 p-4 bg-gray-100 border border-gray-200 dark:bg-gray-900 dark:border-gray-800 rounded"
+            div class="flex h-8"
+              img class="w-8 rounded-full m-0 mr-2" src=mention.author_photo
+              a class="block text-blue-400 dark:text-blue-600 no-underline hover:underline" href=mention.author_url
+                = mention.author_name
+            div class="prose dark:prose-invert prose-a:text-blue-400 dark:prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline"
+              == mention.content_html
+            div class="text-sm"
+              a class="no-underline hover:underline text-blue-400 dark:text-blue-600" href=mention.source_url
+                = mention.published_at.strftime("%e %B, %Y")
   div class="mb-12"
     - if trip
       div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex gap-4"
@@ -108,13 +108,13 @@ article class="h-entry"
       p
         span in&nbsp;
         - if post.posted_in == :posts
-          a class="hover:underline" href="/posts" posts
+          a class="hover:underline text-blue-400 dark:text-blue-600" href="/posts" posts
         - if post.posted_in == :places
-          a class="hover:underline" href="/places" places
+          a class="hover:underline text-blue-400 dark:text-blue-600" href="/places" places
         - if post.posted_in == :statuses
-          a class="hover:underline" href="/statuses" statuses
+          a class="hover:underline text-blue-400 dark:text-blue-600" href="/statuses" statuses
         - if post.posted_in == :bookshelf
-          a class="hover:underline" href="/bookshelf" bookshelf
+          a class="hover:underline text-blue-400 dark:text-blue-600" href="/bookshelf" bookshelf
     span class="text-right flex-1 leading-6"
       == render "shared/tags", tags: post.tags
   div class="mb-2 max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
