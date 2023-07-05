@@ -8,27 +8,25 @@ module Adamantium
         include Deps["repos.webmentions_repo", "repos.post_repo"]
 
         def handle(req, res)
-          req.params[:children].each do |child|
-            if child[:"wm-property"] == "in-reply-to"
+          if req.params[:"wm-property"] == "in-reply-to"
 
-              slug = child[:"in-reply-to"].split("/").last
-              post = post_repo.fetch!(slug)
+            slug = req.params[:"in-reply-to"].split("/").last
+            post = post_repo.fetch!(slug)
 
-              attrs = {
-                type: "reply",
-                author_name: child[:author][:name],
-                author_photo: child[:author][:photo],
-                author_url: child[:author][:url],
-                published_at: child[:published],
-                content_html: child[:content][:html],
-                content_text: child[:content][:text],
-                source_url: child[:url],
-                target_url: child[:"in-reply-to"],
-                post_id: post.id
-              }
+            attrs = {
+              type: "reply",
+              author_name: req.params[:author][:name],
+              author_photo: req.params[:author][:photo],
+              author_url: req.params[:author][:url],
+              published_at: req.params[:published],
+              content_html: req.params[:content][:html],
+              content_text: req.params[:content][:text],
+              source_url: req.params[:url],
+              target_url: req.params[:"in-reply-to"],
+              post_id: post.id
+            }
 
-              webmentions_repo.create(attrs)
-            end
+            webmentions_repo.create(attrs)
           end
         end
       end
