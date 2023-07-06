@@ -9,9 +9,13 @@ div class="mb-8 h-entry border border-gray-200 m-2 p-4 bg-gray-50 hover:bg-gray-
 
   div class="mb-8"
     p class="text-sm text-blue-400"
-      a class="u-url float-left mr-2" href="#{post.permalink}"
+      a class="u-url float-left mr-0" href="#{post.permalink}"
         time class="dt-published" datetime=post.machine_published_at
           = post.display_published_at
-      - post.syndicated_to.each do |loc|
-        a rel="syndication" class="u-syndication float-left" href=loc[:url]
-          == render "shared/#{loc[:location]}", width: "w-4"
+        - if post.webmentions.count > 0
+          == " &middot; #{post.webmentions.count} comment(s)"
+
+        - post.syndicated_to.each do |loc|
+          == " &middot;"
+          a rel="syndication" class="u-syndication inline-block ml-1 float-left" href=loc[:url]
+            == render "shared/#{loc[:location]}", width: "w-4"

@@ -151,7 +151,7 @@ module Adamantium
           .where(post_type: "post", name: nil)
           .exclude(Sequel.pg_jsonb_op(:syndication_sources).has_key?("instagram"))
           .published
-          .combine(:tags)
+          .combine(:tags, :webmentions)
           .order(Sequel.desc(:published_at))
           .limit(limit)
           .to_a
