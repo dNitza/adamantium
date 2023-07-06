@@ -22,6 +22,8 @@ module Adamantium
             res.status = 201
           in Failure(:invalid_request)
             res.status = 429
+          in Failure(:not_implemented)
+            res.status = 429
           end
         end
       end

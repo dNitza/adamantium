@@ -2,11 +2,11 @@ require "dry/monads"
 
 module Adamantium
   class WebmentionRequestParser
-
     include Dry::Monads[:result]
 
     def call(params:)
-      if params[:"wm-property"] == "in-reply-to"
+      case params[:"wm-property"]
+      when "in-reply-to"
         Success[:reply, {
           type: "reply",
           author_name: params[:author][:name],
@@ -18,6 +18,16 @@ module Adamantium
           source_url: params[:url],
           target_url: params[:"in-reply-to"]
         }]
+      when "like-of"
+        Failure(:not_implemented)
+      when "repost-of"
+        Failure(:not_implemented)
+      when "bookmark-of"
+        Failure(:not_implemented)
+      when "mention-of"
+        Failure(:not_implemented)
+      when "rsvp"
+        Failure(:not_implemented)
       else
         Failure(:invalid_request)
       end

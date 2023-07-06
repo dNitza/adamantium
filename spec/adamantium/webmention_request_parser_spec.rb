@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 RSpec.describe Adamantium::WebmentionRequestParser do
   include Dry::Monads[:result]
   subject { described_class.new }
@@ -39,4 +39,3 @@ RSpec.describe Adamantium::WebmentionRequestParser do
     end
   end
 end
-
