@@ -152,6 +152,9 @@ module Adamantium
           .exclude(Sequel.pg_jsonb_op(:syndication_sources).has_key?("instagram"))
           .published
           .combine(:tags, :webmentions)
+          .node(:webmentions) { |webmention|
+            webmention.where(type: "reply")
+          }
           .order(Sequel.desc(:published_at))
           .limit(limit)
           .to_a
@@ -217,6 +220,9 @@ module Adamantium
         posts
           .published
           .combine(:tags, :trips, :webmentions)
+          .node(:webmentions) { |webmention|
+            webmention.where(type: "reply")
+          }
           .where(slug: slug)
           .one!
       end
