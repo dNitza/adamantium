@@ -4,21 +4,20 @@ div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:t
   h1 🛫 Trips
 
   div class="mb-12 max-w-prose mx-auto"
-    table class="prose dark:prose-invert table-auto"
+    table class="prose dark:prose-invert table-fixed"
       - trip_years.each do |year, trips|
         thead
-          tr colspan=3
+          tr colspan=2
             td class="text-xl" = year
         - trips.each do |trip|
           tr
             td
-              a href="/trips/#{trip.id}"
+              a class="block" href="/trips/#{trip.id}"
                 = trip.name
+              span class="text-right text-sm text-gray-400 dark:text-gray-600 break-normal"
+                = "#{trip.start_date.strftime("%d %b")} — #{trip.end_date.strftime("%d %b")}"
             td
               = trip.subtitle
-            td class="text-right text-gray-400 dark:text-gray-600 break-normal"
-              = "#{trip.start_date.strftime("%m %b")}"
-              == " &rarr; "
-              = "#{trip.end_date.strftime("%m %b")}"
+
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
