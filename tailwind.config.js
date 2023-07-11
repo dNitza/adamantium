@@ -19,7 +19,7 @@ module.exports = {
       boxShadow: {
         'solid': `10px 10px 1px 2px`
       },
-      typograpgy: {
+      typography: {
         emphasis: {
           css: {
             em: {

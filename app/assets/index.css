@@ -54,3 +54,29 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     height: 14px;
 }
 
+.prose pre code::before {
+    padding-left: unset
+}
+
+.prose pre code:after {
+    padding-right: unset
+}
+
+.prose code {
+    font-weight: 400;
+    border-radius: 0.25rem;
+}
+
+.prose code:before {
+    content: "";
+    padding: 0 0 0 0.25rem;
+}
+
+.prose pre {
+    padding: 0;
+}
+
+.prose code:after {
+    content: "";
+    padding: 0 0.25rem 0 0;
+}

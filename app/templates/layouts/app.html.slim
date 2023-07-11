@@ -31,6 +31,9 @@ html
     script src="https://unpkg.com/htmx.org@1.9.2/dist/htmx.min.js" integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h" crossorigin="anonymous"
     script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer="true"
 
+    link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/github-dark.min.css"
+    script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js" defer="true"
+
     - if Hanami.app.settings.micropub_pub_key
       link rel="pgpkey" href="/key"
   body class="bg-white dark:bg-black selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-600 dark:selection:text-blue-100" x-data="{ imgModal : false, imgModalSrc : '', imgModalDesc : '' }" x-on:keydown.escape="imgModal=false"
