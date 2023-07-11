@@ -5,6 +5,10 @@
         })
     })
     document.addEventListener("DOMContentLoaded", function () {
+        if (window.hljs !== undefined) {
+            window.hljs.highlightAll();
+        }
+
         const times = document.querySelectorAll('time');
         times.forEach((time) => {
             const oldDtime = Date.parse(time.dateTime);
