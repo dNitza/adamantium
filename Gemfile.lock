@@ -454,6 +454,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -513,7 +514,7 @@ DEPENDENCIES
   webmention
 
 RUBY VERSION
-   ruby 3.2.0
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.3.22
