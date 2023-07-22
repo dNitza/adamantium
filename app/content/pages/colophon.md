@@ -16,6 +16,7 @@ This site is made from:
 - [Karla](https://fonts.google.com/specimen/Karla?query=KARLA) — for everything else.
 
 Some other stuff I like to use:
+
 - [Das Keyboard 4](https://www.daskeyboard.com/daskeyboard-4-professional/) — for typing words in to computers.
 - [Chrome's Barrage Cargo backpack](https://chromeindustries.com/products/barrage-cargo-backpack?variant=40554886496316) — My backpack of choice for almost 10 years.
 - [Steelcase Think](https://www.steelcase.com/products/office-chairs/think/) — For sitting.
