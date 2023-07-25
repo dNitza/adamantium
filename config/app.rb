@@ -17,7 +17,7 @@ module Adamantium
     config.actions.content_security_policy[:style_src] += " https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/github-dark.min.css"
     config.actions.content_security_policy[:child_src] = " blob:"
 
-    config.logger.level = :debug
+    config.logger.level = :info
     config.logger.stream = "log/hanami.log"
 
     config.shared_app_component_keys += [
