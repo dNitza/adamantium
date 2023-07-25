@@ -451,7 +451,7 @@ GEM
       nokogiri (>= 1.13)
     xml-simple (1.1.9)
       rexml
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.9)
 
 PLATFORMS
   x86_64-darwin-22
