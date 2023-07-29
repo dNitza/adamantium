@@ -91,6 +91,7 @@ module Adamantium
         })
       end
       new_params[:url] = params[:"bookmark-of"]
+      new_params[:cache] = params[:cache] || false
 
       new_params
     end

@@ -1,21 +1,16 @@
-require "readability"
-require "down"
-
 module Admin
   module Commands
     module Bookmarks
       class Cache
         include Dry::Monads[:result]
-        include Deps["repos.bookmark_repo"]
+        include Deps["repos.bookmark_repo", "post_utilities.page_cacher"]
 
         def call(bookmark_id:)
           bookmark = bookmark_repo.fetch(id: bookmark_id)
-          bookmark.url
 
-          tempfile = Down.download(bookmark.url)
-          content = Readability::Document.new(tempfile.read, tags: %w[div section header p h1 h2 h3 h4 h5 h6 ol ul li table td tr thead tbody a code pre], attributes: %w[href]).content
-
-          bookmark_repo.update(id: bookmark_id, cached_content: content)
+          page_cacher.call(url: bookmark.url) do |content|
+            bookmark_repo.update(id: bookmark_id, cached_content: content)
+          end
 
           Success()
         end

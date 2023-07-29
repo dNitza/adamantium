@@ -1,8 +1,7 @@
 module Adamantium
   class AuthenticatedAdminAction
     def self.call(action:)
-
-      action_proc = ->(env) { Admin::Container["actions.#{action}"].(env) }
+      action_proc = ->(env) { Admin::Container["actions.#{action}"].call(env) }
 
       if Hanami.app.settings.basic_auth_username && Hanami.app.settings.basic_auth_password
         Rack::Auth::Basic.new(action_proc) do |username, password|
