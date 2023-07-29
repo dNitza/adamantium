@@ -4,7 +4,7 @@ module Adamantium
       attribute :h, Types::Coercible::String
       attribute :action, Types::Coercible::String.optional
       attribute :name, Types::Coercible::String
-      attribute :cache, Types::Bool.optional
+      attribute :cache, Types::Params::Bool.optional
       attribute :content, Types::Coercible::String.optional
       attribute :url, Types::Coercible::String
       attribute :slug, Types::Coercible::String
