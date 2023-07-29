@@ -12,6 +12,7 @@ module Adamantium
           required(:post_type).value(included_in?: %w[bookmark])
           required(:syndicate_to).array(:string)
           required(:photos).array(:hash)
+          required(:cache).filled(:bool)
         end
       end
     end

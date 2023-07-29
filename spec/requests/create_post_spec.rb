@@ -49,13 +49,15 @@ RSpec.describe "Post creation", :db, :requests do
         h: "entry",
         "bookmark-of": "http://example.com",
         name: "Name",
-        content: "Content of theh post"
+        content: "Content of the post",
+        cache: "true"
       }
 
       post "/micropub", params
 
       expect(last_response).to be_successful
       expect(post_repo.bookmark_listing.count).to eq 1
+      expect(post_repo.bookmark_listing.last.cached_content).to_not eq nil
     end
   end
 

@@ -20,7 +20,7 @@ module Adamantium
 
           if bookmark[:cache]
             page_cacher.call(url: created_bookmark.url) do |content|
-              post_repo.update(id: created_bookmark.id, cached_content: content)
+              post_repo.update(created_bookmark.id, cached_content: content)
             end
           end
 
