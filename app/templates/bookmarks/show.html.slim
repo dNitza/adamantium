@@ -11,7 +11,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   == bookmark.content
 
   - unless bookmark.cached_content.nil?
-    button class="hover:text-gray-400" @click="open = ! open" Toggle cached version
+    button class="hover:text-gray-400" @click="open = ! open" Toggle reader version
 
     span x-show="open"
       div class="mt-4 rounded bg-blue-50 dark:bg-blue-900 px-4 py-2"

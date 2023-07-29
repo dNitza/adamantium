@@ -9,10 +9,13 @@ div class="mb-8 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 
 - if latest_status
   div class="mb-2 flex max-w-prose mx-auto text-gray-600 dark:text-gray-200"
     p Latest status
-  div class="mb-12 p-2 grid grid-cols-7 gap-4 min-h-16 max-w-prose mx-auto bg-fuchsia-100 dark:bg-fuchsia-800 dark:text-gray-200 rounded"
+  div class="h-entry mb-12 p-2 grid grid-cols-7 gap-4 min-h-16 max-w-prose mx-auto bg-fuchsia-100 dark:bg-fuchsia-800 dark:text-gray-200 rounded"
     div class="col-span-7 sm:col-span-6 text-left"
       a class="u-url block my-auto hover:underline decoration-wavy" href=latest_status.permalink
         == latest_status.content
+      - latest_status.syndicated_to.each do |loc|
+        small class="text-fuchsia-50 dark:text-fuchsia-500"
+          a rel="syndication" class="u-syndication" href=loc[:url] Read on #{loc[:location]}
     a class="col-span-7 sm:col-span-1 px-2 text-center transition-colors rounded bg-fuchsia-50 hover:bg-fuchsia-200 dark:bg-fuchsia-900 dark:hover:bg-fuchsia-700 inline-block grid content-center max-h-12 my-auto" href="/statuses"
         p See all
 
