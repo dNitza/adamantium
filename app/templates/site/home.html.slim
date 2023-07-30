@@ -14,7 +14,7 @@ div class="mb-8 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 
       a class="u-url block my-auto hover:underline decoration-wavy" href=latest_status.permalink
         == latest_status.content
       - latest_status.syndicated_to.each do |loc|
-        small class="text-fuchsia-50 dark:text-fuchsia-500"
+        small class="text-fuchsia-200 dark:text-fuchsia-500"
           a rel="syndication" class="u-syndication" href=loc[:url] Read on #{loc[:location]}
     a class="col-span-7 sm:col-span-1 px-2 text-center transition-colors rounded bg-fuchsia-50 hover:bg-fuchsia-200 dark:bg-fuchsia-900 dark:hover:bg-fuchsia-700 inline-block grid content-center max-h-12 my-auto" href="/statuses"
         p See all
