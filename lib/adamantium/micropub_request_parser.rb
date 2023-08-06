@@ -84,7 +84,7 @@ module Adamantium
           name: params[:name],
           slug: params[:slug] || params[:"mp-slug"],
           published_at: (params[:"post-status"] == "draft") ? nil : publish_time,
-          category: params[:category] || [],
+          category: params[:category].split(",") || [],
           photos: photos,
           location: params[:location],
           content: content
