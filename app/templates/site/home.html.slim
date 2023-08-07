@@ -20,6 +20,16 @@ div class="mb-8 max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 
         p See all
 
 div class="flex justify-between max-w-prose mx-auto mb-2"
+  h2 class="text-l text-gray-600 dark:text-gray-200" Weekly posts
+  a class="rounded px-2 text-blue-600 bg-blue-100 dark:bg-blue-900/60 hover:dark:bg-blue-800 hover:dark:text-blue-100 dark:text-blue-200 hover:text-blue-600 hover:bg-blue-200" href="/tagged/weekly" See all &rarr;
+
+div class="mb-12 max-w-prose mx-auto bg-gray-100 rounded p-2 dark:bg-gray-900 dark:text-gray-100"
+  ul class="columns-2"
+    - week_posts.each do |post|
+      li
+        a class="hover:underline decoration-wavy" href="/post/#{post.slug}" = post.name
+
+div class="flex justify-between max-w-prose mx-auto mb-2"
   h2 class="text-l text-gray-600 dark:text-gray-200" 📯 Posts
   a class="rounded px-2 text-blue-600 bg-blue-100 dark:bg-blue-900/60 hover:dark:bg-blue-800 hover:dark:text-blue-100 dark:text-blue-200 hover:text-blue-600 hover:bg-blue-200" href="/posts" See all &rarr;
 

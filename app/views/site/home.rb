@@ -10,8 +10,14 @@ module Adamantium
           renderer.call(content: markdown_content)
         end
 
+        expose :week_posts do
+          post_repo.week_posts(limit: 10).map do |post|
+            Decorators::Posts::Decorator.new(post)
+          end
+        end
+
         expose :posts do
-          post_repo.post_listing(limit: 5).map do |post|
+          post_repo.home_post_listing(limit: 5).map do |post|
             Decorators::Posts::Decorator.new(post)
           end
         end

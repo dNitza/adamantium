@@ -94,10 +94,34 @@ module Adamantium
           .to_a
       end
 
+      def week_posts(limit: nil)
+        posts
+          .where(post_type: "post", location: nil)
+          .exclude(name: nil)
+          .weekly
+          .published
+          .combine(:tags)
+          .order(Sequel.desc(:published_at))
+          .limit(limit)
+          .to_a
+      end
+
       def post_listing(limit: nil)
         posts
           .where(post_type: "post", location: nil)
           .exclude(name: nil)
+          .published
+          .combine(:tags)
+          .order(Sequel.desc(:published_at))
+          .limit(limit)
+          .to_a
+      end
+
+      def home_post_listing(limit: nil)
+        posts
+          .where(post_type: "post", location: nil)
+          .exclude(name: nil)
+          .non_weekly
           .published
           .combine(:tags)
           .order(Sequel.desc(:published_at))
