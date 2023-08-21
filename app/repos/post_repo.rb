@@ -96,8 +96,7 @@ module Adamantium
 
       def week_posts(limit: nil)
         posts
-          .where(post_type: "post", location: nil)
-          .exclude(name: nil)
+          .where(post_type: "post")
           .weekly
           .published
           .combine(:tags)
