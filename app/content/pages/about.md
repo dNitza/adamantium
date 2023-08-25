@@ -38,4 +38,4 @@ In my spare time I like to tinker on various Ruby projects (including the softwa
   - Add a way to syndicate after a post is published.
   - Add places visited to weekly posts.
   - Add weather history to weekly posts.
-- Take a holiday overseas
+- ✅ [Take a holiday overseas](https://dnitza.com/trips/5)
