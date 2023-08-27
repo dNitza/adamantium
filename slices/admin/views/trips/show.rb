@@ -1,3 +1,5 @@
+require "reverse_markdown"
+
 module Admin
   module Views
     module Trips
@@ -5,7 +7,11 @@ module Admin
         include Deps["repos.trip_repo", "repos.post_repo"]
 
         expose :trip do |id:|
-          trip_repo.fetch(id)
+          trip = trip_repo.fetch(id)
+        end
+
+        expose :trip_summary do |trip|
+          ReverseMarkdown.convert(trip.summary, unknown_tags: :pass_through, github_flavored: true).to_s
         end
 
         expose :posts do |trip|

@@ -14,6 +14,11 @@ div class="max-w-prose mx-auto mb-8 border-gray-400 border-b-4"
       input class="text-gray-800 p-1 border border-gray-400" type="text" id="subtitle" name="trip[subtitle]" value=trip.subtitle
 
     div class="mb-4"
+      label class="text-gray-800 dark:text-gray-200 mr-2" for="subtitle" Summary:
+      textarea id="summary" name="trip[summary]" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"
+        == trip_summary
+
+    div class="mb-4"
       button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"
         = "Update"
 

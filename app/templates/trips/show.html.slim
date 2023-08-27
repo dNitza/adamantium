@@ -4,6 +4,9 @@ div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:t
   h1 class="mb-0" #{trip.name}
   / p class="mt-2" class="text-gray-600 dark:text-gray-200 text-sm" (#{trip.start_date} - #{trip.end_date})
 
+div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 bg-gray-100 p-2 rounded prose-p:mb-0 prose-ul:mt-0"
+  == trip.summary
+
 div class="h-feed mb-12 max-w-prose mx-auto"
   - posts.each do |post|
     == render "shared/compact_post", post: post, trip: trip, first: post.id == posts.first.id, last: post.id == posts.last.id

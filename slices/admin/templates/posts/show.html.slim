@@ -7,6 +7,8 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
       a href=url
         = name
   button hx-post="/admin/posts/#{post.id}/syndicate/day_one" Send to Day One
+
+// TODO: Add preview, save post, fix sending to DayOne
 article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
   h1= post.name
   textarea class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"

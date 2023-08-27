@@ -21,7 +21,8 @@ module Adamantium
     config.logger.stream = "log/hanami.log"
 
     config.shared_app_component_keys += [
-      "syndication.dayone"
+      "syndication.dayone",
+      "renderers.markdown"
     ]
   end
 end
