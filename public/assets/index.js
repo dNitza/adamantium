@@ -27,10 +27,13 @@
         });
 
     const mapContainer = document.getElementById("map");
+    const goBack = document.getElementById("go-back");
     if (mapContainer !== null) {
-        document.getElementById("go-back").addEventListener("click", () => {
-          history.back();
-        });
+        if (goBack !== null) {
+            document.getElementById("go-back").addEventListener("click", () => {
+            history.back();
+            });
+        }
 
         mapboxgl.accessToken = 'pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIyY3ZzaTE0cjUzdm4xdnZ6czRlYjUifQ.FRETOXYRID6T2IoB7qqRLg';
         var map = new mapboxgl.Map({

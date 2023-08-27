@@ -12,6 +12,14 @@ module Adamantium
           end
         end
 
+        expose :places do |posts|
+          posts.map do |post|
+            next if post.location.nil?
+            p = Decorators::Posts::Decorator.new(post)
+            [p.lon, p.lat]
+          end.compact
+        end
+
         expose :trip do |id:|
           trip_repo.fetch!(id)
         end
