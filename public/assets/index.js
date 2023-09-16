@@ -26,41 +26,50 @@
             }
         });
 
-    const mapContainer = document.getElementById("map");
-    const goBack = document.getElementById("go-back");
-    if (mapContainer !== null) {
-        if (goBack !== null) {
-            document.getElementById("go-back").addEventListener("click", () => {
-            history.back();
+        const videos = document.querySelectorAll('video');
+        videos.forEach((video) => {
+            video.addEventListener("click", () => {
+              const isPaused = video.paused;
+              video[isPaused ? "play" : "pause"]();
+              video.classList.toggle("u-none", !isPaused);
             });
-        }
-
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIyY3ZzaTE0cjUzdm4xdnZ6czRlYjUifQ.FRETOXYRID6T2IoB7qqRLg';
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            maxZoom: 8
         });
 
-        const markers = JSON.parse(mapContainer.dataset["markers"]);
+        const mapContainer = document.getElementById("map");
+        const goBack = document.getElementById("go-back");
+        if (mapContainer !== null) {
+            if (goBack !== null) {
+                document.getElementById("go-back").addEventListener("click", () => {
+                history.back();
+                });
+            }
 
-        const bounds = new mapboxgl.LngLatBounds(markers[0], markers[0]);
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZG5pdHphIiwiYSI6ImNsZWIyY3ZzaTE0cjUzdm4xdnZ6czRlYjUifQ.FRETOXYRID6T2IoB7qqRLg';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                maxZoom: 8
+            });
 
-        for (var i = 0; i < markers.length; i++) {
-            bounds.extend(markers[i]);
+            const markers = JSON.parse(mapContainer.dataset["markers"]);
+
+            const bounds = new mapboxgl.LngLatBounds(markers[0], markers[0]);
+
+            for (var i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i]);
+            }
+
+            map.fitBounds(bounds, { padding: 60 });
+
+            for (var i = 0; i < markers.length; i++) {
+                const marker = markers[i];
+                const el = document.createElement("div");
+                el.className = "map-marker";
+
+                new mapboxgl.Marker(el)
+                    .setLngLat(marker)
+                    .addTo(map);
+            }
         }
-
-        map.fitBounds(bounds, { padding: 60 });
-
-        for (var i = 0; i < markers.length; i++) {
-            const marker = markers[i];
-            const el = document.createElement("div");
-            el.className = "map-marker";
-
-            new mapboxgl.Marker(el)
-                .setLngLat(marker)
-                .addTo(map);
-        }
-    }
     });
 })();
