@@ -7,7 +7,7 @@ module Admin
 
         expose :photos_buckets do |available_paths|
           available_paths.each_with_object({}) do |root, memo|
-            memo[root.gsub(MEDIA_DIR, "")] = Dir["#{root}/**"]
+            memo[root.gsub(MEDIA_DIR, "")] = Dir["#{root}/**"].sort {|a,b| File.ctime(a) <=> File.ctime(b) }
           end
         end
 
