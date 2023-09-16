@@ -14,7 +14,7 @@ module Adamantium
         include Dry::Monads[:result]
 
         IMAGE_TYPES = %i[jpeg jpg png].freeze
-        VIDEO_TYPES = %i[gif].freeze
+        VIDEO_TYPES = %i[gif iso].freeze
         VALID_UPLOAD_TYPES = IMAGE_TYPES + VIDEO_TYPES
 
         def call(file:)
@@ -24,7 +24,7 @@ module Adamantium
           return Failure(:invalid_file_type) unless VALID_UPLOAD_TYPES.include? type
 
           result = save_image(file: file) if IMAGE_TYPES.include? type
-          result = save_video(file: file) if VIDEO_TYPES.include? type
+          result = save_video(file: file, type: type) if VIDEO_TYPES.include? type
 
           if result.success?
             Success(result.value!)
@@ -43,7 +43,7 @@ module Adamantium
           SecureRandom.uuid
         end
 
-        def save_video(file:)
+        def save_video(file:, type:)
           fullsize_filename = "#{uuid}.mp4"
 
           dirname = File.join("public", "media", pathname)
@@ -53,7 +53,12 @@ module Adamantium
           end
 
           begin
-            Open3.popen3("ffmpeg -i #{file[:tempfile].path} -movflags faststart -pix_fmt yuv420p -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' #{File.join(dirname, fullsize_filename)}")
+            case type
+            when :gif
+              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -movflags faststart -pix_fmt yuv420p -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' #{File.join(dirname, fullsize_filename)}")
+            when :iso
+              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -vcodec libx264 -crf 28 #{File.join(dirname, fullsize_filename)}")
+            end
           rescue Errno::ENOENT, NoMethodError => e
             return Failure(e.message)
           end
