@@ -36,6 +36,7 @@ module Admin
     post "/posts/:id/publish", to: Auth.call(action: "posts.publish")
     get "/posts/:id", to: Auth.call(action: "posts.show")
     post "/posts/:id/syndicate/:target", to: Auth.call(action: "posts.syndicate")
+    post "/post/:id/update", to: Auth.call(action: "posts.update")
 
     get "/media", to: Auth.call(action: "photos.index")
     delete "/media/public/media/:year/:path", to: Auth.call(action: "photos.delete")

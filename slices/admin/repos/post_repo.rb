@@ -3,6 +3,8 @@ require "time_math"
 module Admin
   module Repos
     class PostRepo < Adamantium::Repo[:posts]
+      commands update: :by_pk
+
       def tag_post(post_id:, tag_id:)
         return if posts
           .post_tags
