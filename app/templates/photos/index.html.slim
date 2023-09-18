@@ -5,6 +5,6 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
 
 div class="grid grid-cols-3 gap-4 mb-4 max-w-prose mx-auto"
   - photos.each do |post|
-    == render "shared/photo_post", post: post
+    == render "shared/photo_post", post: post, extended: true
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
