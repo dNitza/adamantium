@@ -46,7 +46,7 @@ html
               a href="/" rel="me" class="u-url u-uid"
                 h1 class="p-name uppercase text-sm md:text-sm text-gray-400 dark:text-gray-400" = Hanami.app.settings.site_name
           nav class="space-x-1 text-sm md:text-sm uppercase md:block"
-            a class="p-1 rounded hover:bg-pink-100 hover:text-pink-400 dark:text-pink-100 dark:hover:bg-pink-200 #{context.current_path.start_with?('/about') ? 'text-pink-600 bg-pink-50 dark:bg-pink-900 dark:text-pink-400' : 'text-gray-400'}" href="/about" About
+            a class="p-1 rounded hover:bg-pink-100 hover:text-pink-400 dark:hover:bg-pink-200 #{context.current_path.start_with?('/about') ? 'text-pink-600 bg-pink-50 dark:bg-pink-900 dark:text-pink-400' : 'text-gray-400'}" href="/about" About
             span class="text-gray-400 dark:text-gray-600"
               = "/"
             a class="p-1 rounded hover:bg-blue-100 hover:text-blue-400 dark:hover:bg-blue-200 #{context.current_path.start_with?('/post') ? 'text-blue-400 bg-blue-50 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-400'}" href="/posts" Writing
