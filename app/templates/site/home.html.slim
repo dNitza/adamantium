@@ -33,7 +33,7 @@ div class="flex justify-between max-w-prose mx-auto mb-2"
   h2 class="text-l text-gray-600 dark:text-gray-200" 📯 Posts
   a class="rounded px-2 text-blue-600 bg-blue-100 dark:bg-blue-900/60 hover:dark:bg-blue-800 hover:dark:text-blue-100 dark:text-blue-200 hover:text-blue-600 hover:bg-blue-200" href="/posts" See all &rarr;
 
-div class="mb-12 max-w-prose mx-auto"
+div class="h-feed mb-12 max-w-prose mx-auto"
   - posts.each do |post|
     == render "shared/post", post: post
 
