@@ -43,7 +43,7 @@ div class="flex justify-between max-w-prose mx-auto mb-2"
 
 div class="grid grid-cols-3 gap-4 max-w-prose mx-auto"
   - photo_posts.each do |post|
-    == render "shared/photo_post", post: post
+    == render "shared/photo_post", post: post, extended: false
 
 - if last_location
   div class="mb-12 mt-6 max-w-prose mx-auto text-gray-600 dark:text-gray-200 rounded p-2 bg-blue-50 dark:bg-blue-900/60"

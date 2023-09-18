@@ -15,7 +15,7 @@ module Adamantium
           end
         end
 
-        expose :tag do |slug:|
+        expose :post_tag do |slug:|
           tag_repo.fetch!(slug)
         end
       end

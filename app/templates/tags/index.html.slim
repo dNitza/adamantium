@@ -7,9 +7,9 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
     div
       h3 class="text-xl mt-6 mb-2 font-bold text-gray-800 dark:text-gray-200" = group.upcase
 
-      - tags.each do |tag|
+      - tags.each do |post_tag|
         span class="inline-block mb-2"
-          a  class="p-category no-underline rounded p-1 mr-1 text-xsm u-url bg-yellow-100/60 hover:bg-yellow-200 dark:bg-yellow-400/60 dark:hover:bg-yellow-400/80 dark:text-yellow-50 dark:hover:text-yellow-100 text-gray-600" href="/tagged/#{tag.slug}"
-            = tag.label
+          a  class="p-category no-underline rounded p-1 mr-1 text-xsm u-url bg-yellow-100/60 hover:bg-yellow-200 dark:bg-yellow-400/60 dark:hover:bg-yellow-400/80 dark:text-yellow-50 dark:hover:text-yellow-100 text-gray-600" href="/tagged/#{post_tag.slug}"
+            = post_tag.label
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
 

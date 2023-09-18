@@ -1,7 +1,7 @@
-- context.content_for(:title, "Tag - #{tag.label} | ")
+- context.content_for(:title, "Tag - #{post_tag.label} | ")
 
 div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
-  h2 = "#{posts.count} item(s) tagged \"#{tag.label}\""
+  h2 = "#{posts.count} item(s) tagged \"#{post_tag.label}\""
 
 div class="mb-12 max-w-prose mx-auto"
   - posts.each do |post|
