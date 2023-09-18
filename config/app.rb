@@ -24,5 +24,7 @@ module Adamantium
       "syndication.dayone",
       "renderers.markdown"
     ]
+
+    config.assets.manifest_path = Hanami.env == :production ? "public/assets/asset-manifest.json" : nil
   end
 end

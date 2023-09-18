@@ -4,11 +4,11 @@ source "https://rubygems.org"
 
 ruby "3.2.2"
 
-gem "hanami", "~> 2.0.0"
-gem "hanami-router", "~> 2.0.0"
-gem "hanami-controller", "~> 2.0.0"
-gem "hanami-validations", "~> 2.0.0"
-# gem "hanami-assets", github: "hanami/view", branch: "main"
+gem "hanami", github: "hanami/hanami", branch: "main"
+gem "hanami-router", github: "hanami/router", branch: "main"
+gem "hanami-controller", github: "hanami/controller", branch: "main"
+gem "hanami-validations", github: "hanami/validations", branch: "main"
+gem "hanami-assets", github: "hanami/assets", branch: "main"
 gem "hanami-view", github: "hanami/view", branch: "main"
 
 gem "rom-sql"
@@ -46,7 +46,7 @@ gem "lastfm", "~> 1.27"
 gem "mail"
 gem "que"
 gem "connection_pool"
-gem "omdb-api", require: false
+gem "omdb-api", "1.4.3", require: false
 gem "image_processing", "~> 1.0"
 
 gem "sentry-ruby"

@@ -1,7 +1,5 @@
-# get index.css, index.js
-# generate hash
-# rename files
-# write asset manifest
+# generates a Hanami::Assets compatible asset manifest
+# from the few asset files in this project
 
 require "securerandom"
 require "json"
@@ -20,7 +18,7 @@ end
 
 Dir.glob(dist_path + "/*.{js,css}").each_with_object(filenames) do |f, memo|
   filename = File.basename(f, File.extname(f))
-  memo[filename + File.extname(f)] = filename + "-" + hash + File.extname(f)
+  memo[filename + File.extname(f)] = {url: "/assets/dist/" + filename + "-" + hash + File.extname(f)}
   File.rename(f, dist_path + "/" + filename + "-" + hash + File.extname(f))
 end
 

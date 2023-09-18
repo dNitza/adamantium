@@ -21,14 +21,14 @@ html
     link rel="me" href=Hanami.app.settings.mastodon_url
     link rel="me" href=Hanami.app.settings.github_url
 
-    link rel="stylesheet" href=asset_from_manifest("index.css")
+    link rel="stylesheet" href=assets["index.css"]
     link rel="icon" type="image/x-icon" href="/assets/favicon.ico"
 
     script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'
     link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet'
 
     script data-domain="dnitza.com" src="https://stats.dnitza.com/js/script.js" defer="true"
-    script src=asset_from_manifest("index.js")
+    script src=assets["index.js"]
 
   body class="bg-white dark:bg-black selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-600 dark:selection:text-blue-100"
     == yield

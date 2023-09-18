@@ -23,6 +23,61 @@ GIT
     ruby-filemagic (0.7.3)
 
 GIT
+  remote: https://github.com/hanami/assets.git
+  revision: 72bcef964c7810047d6657f2c07104f363c56c09
+  branch: main
+  specs:
+    hanami-assets (2.1.0.alpha1)
+
+GIT
+  remote: https://github.com/hanami/controller.git
+  revision: 2eb83900e298a03a7dadce9cbd1adef33dfec83e
+  branch: main
+  specs:
+    hanami-controller (2.1.0.beta1)
+      dry-configurable (~> 1.0, < 2)
+      dry-core (~> 1.0)
+      hanami-utils (~> 2.0)
+      rack (~> 2.0)
+      zeitwerk (~> 2.6)
+
+GIT
+  remote: https://github.com/hanami/hanami.git
+  revision: f57e241386a472c59915cbf26e7ea709dbfb366e
+  branch: main
+  specs:
+    hanami (2.1.0.beta1)
+      bundler (>= 1.16, < 3)
+      dry-configurable (~> 1.0, < 2)
+      dry-core (~> 1.0, < 2)
+      dry-inflector (~> 1.0, < 2)
+      dry-logger (~> 1.0, < 2)
+      dry-monitor (~> 1.0, >= 1.0.1, < 2)
+      dry-system (~> 1.0, < 2)
+      hanami-cli (~> 2.1.beta)
+      hanami-utils (~> 2.1.beta)
+      zeitwerk (~> 2.6)
+
+GIT
+  remote: https://github.com/hanami/router.git
+  revision: b502a68d66f637999ccc6291b97c7b72e97a5028
+  branch: main
+  specs:
+    hanami-router (2.1.0.beta1)
+      mustermann (~> 3.0)
+      mustermann-contrib (~> 3.0)
+      rack (~> 2.0)
+
+GIT
+  remote: https://github.com/hanami/validations.git
+  revision: c675f43fa098938af950ed8d0e3ba90e5b0a1315
+  branch: main
+  specs:
+    hanami-validations (2.1.0.beta1)
+      dry-validation (>= 1.10, < 2)
+      zeitwerk (~> 2.6.0)
+
+GIT
   remote: https://github.com/hanami/view.git
   revision: 083f8325b86685e18be856ef62c70d599b6d9596
   branch: main
@@ -48,11 +103,12 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.8)
+    activesupport (6.0.6.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 1.6, < 2)
-      minitest (>= 5.1)
-      tzinfo (~> 2.0)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+      zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     airbrussh (1.4.2)
@@ -152,8 +208,8 @@ GEM
       dry-initializer (~> 3.0)
       dry-schema (>= 1.12, < 2)
       zeitwerk (~> 2.6)
-    faker (2.23.0)
-      i18n (>= 1.8.11, < 2)
+    faker (2.2.1)
+      i18n (>= 0.8)
     ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -179,49 +235,25 @@ GEM
       guard-compat (~> 1.2)
       puma (>= 4.0, < 7)
     guess_html_encoding (0.0.11)
-    hanami (2.0.3)
-      bundler (>= 1.16, < 3)
-      dry-configurable (~> 1.0, < 2)
-      dry-core (~> 1.0, < 2)
-      dry-inflector (~> 1.0, < 2)
-      dry-logger (~> 1.0, < 2)
-      dry-monitor (~> 1.0, >= 1.0.1, < 2)
-      dry-system (~> 1.0, < 2)
-      hanami-cli (~> 2.0)
-      hanami-utils (~> 2.0)
-      zeitwerk (~> 2.6)
-    hanami-cli (2.0.3)
+    hanami-cli (2.1.0.beta1)
       bundler (~> 2.1)
       dry-cli (~> 1.0, < 2)
       dry-files (~> 1.0, >= 1.0.1, < 2)
       dry-inflector (~> 1.0, < 2)
       rake (~> 13.0)
       zeitwerk (~> 2.6)
-    hanami-controller (2.0.2)
-      dry-configurable (~> 1.0, < 2)
-      dry-core (~> 1.0)
-      hanami-utils (~> 2.0)
-      rack (~> 2.0)
-      zeitwerk (~> 2.6)
     hanami-reloader (2.0.2)
       hanami-cli (~> 2.0)
       zeitwerk (~> 2.6)
-    hanami-router (2.0.2)
-      mustermann (~> 3.0)
-      mustermann-contrib (~> 3.0)
-      rack (~> 2.0)
     hanami-rspec (2.0.1)
       hanami-cli (~> 2.0)
       rake (~> 13.0)
       rspec (~> 3.12)
       zeitwerk (~> 2.6)
-    hanami-utils (2.0.3)
+    hanami-utils (2.1.0.beta1)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       dry-transformer (~> 1.0, < 2)
-    hanami-validations (2.0.1)
-      dry-validation (>= 1.10, < 2)
-      zeitwerk (~> 2.6.0)
     hansi (0.2.1)
     hashie (2.1.2)
     http (5.1.1)
@@ -236,7 +268,7 @@ GEM
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (1.14.1)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     image_processing (1.12.2)
@@ -397,7 +429,7 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
-    rubocop-performance (1.19.0)
+    rubocop-performance (1.19.1)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.13.0)
@@ -438,13 +470,14 @@ GEM
       standard
     temple (0.10.2)
     thor (1.2.2)
+    thread_safe (0.3.6)
     tilt (2.3.0)
     time_math2 (0.1.1)
     timecop (0.9.8)
     timeout (0.4.0)
     transproc (1.1.1)
-    tzinfo (2.0.6)
-      concurrent-ruby (~> 1.0)
+    tzinfo (1.2.11)
+      thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -482,12 +515,13 @@ DEPENDENCIES
   gnuplot
   gpx
   guard-puma (~> 0.8)
-  hanami (~> 2.0.0)
-  hanami-controller (~> 2.0.0)
+  hanami!
+  hanami-assets!
+  hanami-controller!
   hanami-reloader
-  hanami-router (~> 2.0.0)
+  hanami-router!
   hanami-rspec
-  hanami-validations (~> 2.0.0)
+  hanami-validations!
   hanami-view!
   httparty
   image_processing (~> 1.0)
@@ -495,7 +529,7 @@ DEPENDENCIES
   mail
   matrix
   ogpr
-  omdb-api
+  omdb-api (= 1.4.3)
   pg
   pinboard!
   puma

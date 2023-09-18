@@ -1596,11 +1596,6 @@ video {
   background-color: rgb(254 249 195 / 0.6);
 }
 
-.bg-pink-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(253 242 248 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-75 {
   --tw-bg-opacity: 0.75;
 }
@@ -1850,11 +1845,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-pink-600 {
-  --tw-text-opacity: 1;
-  color: rgb(219 39 119 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -2135,11 +2125,6 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   background-color: rgb(254 240 138 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-pink-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 231 243 / var(--tw-bg-opacity));
-}
-
 .hover\:fill-blue-400:hover {
   fill: #60a5fa;
 }
@@ -2180,11 +2165,6 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .hover\:text-red-400:hover {
   --tw-text-opacity: 1;
   color: rgb(248 113 113 / var(--tw-text-opacity));
-}
-
-.hover\:text-pink-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(244 114 182 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -2385,11 +2365,6 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     background-color: rgb(250 204 21 / 0.6);
   }
 
-  .dark\:bg-pink-900 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(131 24 67 / var(--tw-bg-opacity));
-  }
-
   .dark\:text-blue-200 {
     --tw-text-opacity: 1;
     color: rgb(191 219 254 / var(--tw-text-opacity));
@@ -2463,16 +2438,6 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   .dark\:text-yellow-50 {
     --tw-text-opacity: 1;
     color: rgb(254 252 232 / var(--tw-text-opacity));
-  }
-
-  .dark\:text-pink-400 {
-    --tw-text-opacity: 1;
-    color: rgb(244 114 182 / var(--tw-text-opacity));
-  }
-
-  .dark\:text-pink-100 {
-    --tw-text-opacity: 1;
-    color: rgb(252 231 243 / var(--tw-text-opacity));
   }
 
   .dark\:shadow-pink-200 {
@@ -2567,11 +2532,6 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   .hover\:dark\:bg-pink-900:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(131 24 67 / var(--tw-bg-opacity));
-  }
-
-  .dark\:hover\:bg-pink-200:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(251 207 232 / var(--tw-bg-opacity));
   }
 
   .dark\:hover\:text-yellow-100:hover {
