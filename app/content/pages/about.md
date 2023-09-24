@@ -35,7 +35,7 @@ In my spare time I like to tinker on various Ruby projects (including the softwa
   - ✅ Build a blogging tool that I actually use. 
   - Clean things up and open-source the code — I'm currently using some un-released features of Hanami, so keen to bring in the officially supported stuff before sharing.
   - ✅ Build in a photo gallery to post pages.
-  - Add a way to syndicate after a post is published.
+  - ✅ Add a way to syndicate after a post is published.
   - Add places visited to weekly posts.
   - Add weather history to weekly posts.
 - ✅ [Take a holiday overseas](https://dnitza.com/trips/5)
