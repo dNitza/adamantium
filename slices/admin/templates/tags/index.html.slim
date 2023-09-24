@@ -3,13 +3,13 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
 
 div class="max-w-prose mx-auto"
   ul
-    - unused_tags.each do |tag|
-      == render "shared/tag", tag: tag
+    - unused_tags.each do |post_tag|
+      == render "shared/tag", post_tag: post_tag
     - if !unused_tags.empty?
       li class="py-2"
         hr
-    - used_tags.each do |tag|
-      == render "shared/tag", tag: tag
+    - used_tags.each do |post_tag|
+      == render "shared/tag", post_tag: post_tag
 
 
 div class="max-w-screen-md mx-auto border-t-4 border-solid border-gray-400 dark:border-gray-600"
