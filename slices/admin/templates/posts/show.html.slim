@@ -1,11 +1,23 @@
 
-div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 bg-red-100"
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 bg-pink-100 p-4 rounded"
   h3 Syndicated to
   ul
     - post.syndication_sources.to_a.each do |name, url|
      li
       a href=url
         = name
+  form hx-post="/admin/posts/#{post.id}/syndicate/add_source"
+    span class="mr-2"
+      label for="syndication_source_name"
+        ' Name:
+        select id="syndication_source_name" name="syndication_source_name"
+          option value="" (none)
+          option value="mastodon" Mastodon
+    span class="mr-2"
+      label for="syndication_source_url"
+        ' URL:
+        input type="text" id="syndication_source_url" name="syndication_source_url"
+    button type="submit" Add source
   button hx-post="/admin/posts/#{post.id}/syndicate/day_one" Send to Day One
 
 // TODO: Add preview, fix sending to DayOne
