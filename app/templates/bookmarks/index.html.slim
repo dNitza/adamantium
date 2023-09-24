@@ -1,12 +1,15 @@
 - context.content_for(:title, "Bookmarks | ")
 
-div class="flex justify-between  mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
-  div class="basis-1/5"
+div class="flex justify-between prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  div
     h1 Bookmarks
-
-  form class="basis-2/5" method="GET" action="/bookmarks"
-    input class="w-36 border-blue-400 border-2 rounded mr-2 px-2 dark:text-gray-800" id="seach" type="text" name="q" value=q
-    button class="w-16 border-blue-400 border-2 rounded bg-blue-400 hover:bg-blue-800 hover:border-blue-800 hover:text-blue-100 px-1 text-gray-200" type="submit" Search
+div class="flex mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  form method="GET" action="/bookmarks"
+    input class="border-blue-400 border-2 rounded mr-2 px-2 dark:text-gray-800" id="search" type="text" name="q" value=q
+    button class="border-blue-400 border-2 rounded bg-blue-400 hover:bg-blue-800 hover:border-blue-800 hover:text-blue-100 px-1 text-gray-200" type="submit" Search
+  - unless q.nil?
+    div class="ml-2"
+      a class="text-gray-400" href="/bookmarks" Clear search
 
 div class="mb-12 max-w-prose mx-auto"
   - bookmarks.each do |bookmark|

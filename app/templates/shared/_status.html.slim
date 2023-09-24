@@ -18,4 +18,5 @@ div class="mb-8 h-entry border border-gray-200 m-2 p-4 bg-gray-50 hover:bg-gray-
         - post.syndicated_to.each do |loc|
           == " &middot;"
           a rel="syndication" class="u-syndication inline-block ml-1 float-left" href=loc[:url]
-            == render "shared/#{loc[:location]}", width: "w-4"
+            - if loc[:location] != ""
+              == render "shared/#{loc[:location]}", width: "w-4"
