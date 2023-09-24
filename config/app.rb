@@ -22,7 +22,8 @@ module Adamantium
 
     config.shared_app_component_keys += [
       "syndication.dayone",
-      "renderers.markdown"
+      "renderers.markdown",
+      "post_utilities.link_finder"
     ]
 
     config.assets.manifest_path = Hanami.env == :production ? "public/assets/asset-manifest.json" : nil

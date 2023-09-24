@@ -23,9 +23,9 @@ module Adamantium
 
           syndicate.call(created_post.id, post)
 
-          # decorated_post = Decorators::Posts::Decorator.new(created_post)
+          decorated_post = Decorators::Posts::Decorator.new(created_post)
 
-          # send_webmentions.call(post_content: attrs[:content], post_url: decorated_post.permalink)
+          send_webmentions.call(post_content: created_post.content, post_url: decorated_post.permalink)
 
           Success(created_post)
         end
