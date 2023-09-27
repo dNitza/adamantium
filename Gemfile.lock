@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/assets.git
-  revision: 72bcef964c7810047d6657f2c07104f363c56c09
+  revision: 31ca1f7dfa0e1d47af88b310d19638c3728fb63c
   branch: main
   specs:
     hanami-assets (2.1.0.alpha1)
@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: f57e241386a472c59915cbf26e7ea709dbfb366e
+  revision: 787c52cfc1cf40a79efb4ec9f2700c1d231da6a7
   branch: main
   specs:
     hanami (2.1.0.beta1)
@@ -79,7 +79,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/view.git
-  revision: 083f8325b86685e18be856ef62c70d599b6d9596
+  revision: 55321527d45694463c3b85b7e11892a8f442d147
   branch: main
   specs:
     hanami-view (2.1.0.beta1)
@@ -103,15 +103,14 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.0.6.1)
+    activesupport (7.0.8)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-      zeitwerk (~> 2.2, >= 2.2.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
-    airbrussh (1.4.2)
+    airbrussh (1.5.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.2)
     babosa (2.0.0)
@@ -208,9 +207,9 @@ GEM
       dry-initializer (~> 3.0)
       dry-schema (>= 1.12, < 2)
       zeitwerk (~> 2.6)
-    faker (2.2.1)
-      i18n (>= 0.8)
-    ffi (1.15.5)
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
+    ffi (1.16.2)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -268,7 +267,7 @@ GEM
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (0.9.5)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     image_processing (1.12.2)
@@ -321,7 +320,7 @@ GEM
       timeout
     net-scp (4.0.0)
       net-ssh (>= 2.6.5, < 8.0.0)
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     net-ssh (7.2.0)
     netrc (0.11.0)
@@ -348,7 +347,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.3)
-    puma (6.3.1)
+    puma (6.4.0)
       nio4r (~> 2.0)
     que (2.2.1)
     racc (1.7.1)
@@ -470,14 +469,13 @@ GEM
       standard
     temple (0.10.2)
     thor (1.2.2)
-    thread_safe (0.3.6)
     tilt (2.3.0)
     time_math2 (0.1.1)
     timecop (0.9.8)
     timeout (0.4.0)
     transproc (1.1.1)
-    tzinfo (1.2.11)
-      thread_safe (~> 0.1)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -489,7 +487,7 @@ GEM
       nokogiri (>= 1.13)
     xml-simple (1.1.9)
       rexml
-    zeitwerk (2.6.11)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   x86_64-darwin-22
