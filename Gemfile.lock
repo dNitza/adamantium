@@ -24,17 +24,18 @@ GIT
 
 GIT
   remote: https://github.com/hanami/assets.git
-  revision: 31ca1f7dfa0e1d47af88b310d19638c3728fb63c
+  revision: 87ed48be7327c627bc2bcd73f8cf53afd3d680cf
   branch: main
   specs:
-    hanami-assets (2.1.0.alpha1)
+    hanami-assets (2.1.0.beta2)
+      zeitwerk (~> 2.6)
 
 GIT
   remote: https://github.com/hanami/controller.git
-  revision: 2eb83900e298a03a7dadce9cbd1adef33dfec83e
+  revision: 1f31d7f9c92573c06526a69816c9c9dcd55f393f
   branch: main
   specs:
-    hanami-controller (2.1.0.beta1)
+    hanami-controller (2.1.0.beta2)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0)
       hanami-utils (~> 2.0)
@@ -43,10 +44,10 @@ GIT
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: 787c52cfc1cf40a79efb4ec9f2700c1d231da6a7
+  revision: 965aa5aeb25b0a16b9c519866f14b4fa916d290a
   branch: main
   specs:
-    hanami (2.1.0.beta1)
+    hanami (2.1.0.beta2)
       bundler (>= 1.16, < 3)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
@@ -79,10 +80,10 @@ GIT
 
 GIT
   remote: https://github.com/hanami/view.git
-  revision: 55321527d45694463c3b85b7e11892a8f442d147
+  revision: 15da1b1e68b6121a70b0e8da85156997221ae4f2
   branch: main
   specs:
-    hanami-view (2.1.0.beta1)
+    hanami-view (2.1.0.beta2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0)
       dry-core (~> 1.0)
@@ -157,7 +158,7 @@ GEM
     dry-events (1.0.1)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
-    dry-files (1.0.1)
+    dry-files (1.0.2)
     dry-inflector (1.0.0)
     dry-initializer (3.1.1)
     dry-logger (1.0.3)
@@ -209,7 +210,7 @@ GEM
       zeitwerk (~> 2.6)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
-    ffi (1.16.2)
+    ffi (1.16.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -234,10 +235,10 @@ GEM
       guard-compat (~> 1.2)
       puma (>= 4.0, < 7)
     guess_html_encoding (0.0.11)
-    hanami-cli (2.1.0.beta1)
+    hanami-cli (2.1.0.beta2)
       bundler (~> 2.1)
       dry-cli (~> 1.0, < 2)
-      dry-files (~> 1.0, >= 1.0.1, < 2)
+      dry-files (~> 1.0, >= 1.0.2, < 2)
       dry-inflector (~> 1.0, < 2)
       rake (~> 13.0)
       zeitwerk (~> 2.6)
@@ -300,7 +301,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.5.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.0808)
+    mime-types-data (3.2023.1003)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
@@ -414,7 +415,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.1)
-    rubocop (1.56.3)
+    rubocop (1.56.4)
       base64 (~> 0.1.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -443,7 +444,7 @@ GEM
       nokogiri (>= 1.12.0)
     sentry-ruby (5.11.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sequel (5.72.0)
+    sequel (5.73.0)
       bigdecimal
     shellany (0.0.1)
     simple-rss (1.3.3)
@@ -467,7 +468,7 @@ GEM
       rubocop-performance (~> 1.19.0)
     standardrb (1.0.1)
       standard
-    temple (0.10.2)
+    temple (0.10.3)
     thor (1.2.2)
     tilt (2.3.0)
     time_math2 (0.1.1)
@@ -479,7 +480,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    unicode-display_width (2.4.2)
+    unicode-display_width (2.5.0)
     warning (1.3.0)
     webmention (7.0.0)
       http (~> 5.0)
