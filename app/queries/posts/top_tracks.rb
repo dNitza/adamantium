@@ -8,9 +8,10 @@ module Adamantium
         include Deps["settings", "repos.post_repo", "repos.top_track_repo"]
 
         def call(slug:)
+          ENV["TZ"] = "Australia/Melbourne"
           post = post_repo.fetch!(slug)
-          start_date = TimeMath.week.floor(post.published_at)
-          end_date = TimeMath.week.ceil(post.published_at)
+          start_date = TimeMath.week.floor(post.published_at).to_i
+          end_date = TimeMath.week.ceil(post.published_at).to_i
 
           top_tracks = top_track_repo.for_post(id: post.id)
 
@@ -30,8 +31,9 @@ module Adamantium
             mb_id = (track["mbid"] == {}) ? "unknown" : track["mbid"]
             top_track_repo.upsert(post_id: post.id, name: track["name"], artist: track.dig("artist", "content"), url: track["url"], mb_id: mb_id)
           end
+          ENV["TZ"] = nil
 
-          top_track_repo.for_post(id: post.id)
+            top_track_repo.for_post(id: post.id)
         end
       end
     end
