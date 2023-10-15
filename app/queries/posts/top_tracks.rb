@@ -9,8 +9,8 @@ module Adamantium
 
         def call(slug:)
           post = post_repo.fetch!(slug)
-          start_date = TimeMath.week.floor(post.published_at).to_i
-          end_date = TimeMath.week.ceil(post.published_at).to_i
+          start_date = TimeMath.week.floor(post.published_at)
+          end_date = TimeMath.week.ceil(post.published_at)
 
           top_tracks = top_track_repo.for_post(id: post.id)
 
