@@ -10,6 +10,9 @@ div class="mb-4"
         == render("link_arrow")
   p class="e-content leading-relaxed md:text-lg text-gray-800 dark:text-gray-200"
     = bookmark.content
+
+  == bookmark.youtube_embed
+
   == render "shared/tags", tags: bookmark.tags
 
   p class="text-sm text-blue-400 mb-4"

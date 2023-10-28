@@ -8,6 +8,9 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
     p class="text-xl text-ellipsis overflow-hidden"
       = bookmark.url
 
+  div class="mb-6"
+    == bookmark.youtube_embed
+
   == bookmark.content
 
   - unless bookmark.cached_content.nil?
