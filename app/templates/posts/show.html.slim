@@ -33,11 +33,13 @@ article class="h-entry"
             figcaption
               = photo["alt"]
       - if post.videos?
-        - post.videos.each do |video|
-          figure
-            video loop=true muted=true controls=true
+        - post.videos.each_with_index do |video, index|
+          figure id="video-#{index}"
+            video loop=false muted=true controls=true
               source type="video/mp4" src="#{video["value"]}"
             figcaption= video["alt"]
+            a href="#" data-replay="video-#{index}" Replay
+
 
       - if post.location
         img class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
@@ -68,7 +70,7 @@ article class="h-entry"
 
       - if past_movies.count > 0
         div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 mb-4"
-          h3 class="text-xl" Movies watched
+          h3 class="text-xl" Movies watched for the first time
           div class="flex gap-4 pb-4 mt-4"
             - past_movies.map do |movie|
               a href=movie.url
