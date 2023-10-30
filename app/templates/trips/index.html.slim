@@ -14,7 +14,7 @@ div class="mb-4 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:t
             td
               a class="block" href="/trips/#{trip.id}"
                 = trip.name
-              span class="text-right text-sm text-gray-400 dark:text-gray-600 break-normal"
+              span class="text-right text-sm text-gray-400 dark:text-indigo-300 break-normal"
                 = "#{trip.start_date.strftime("%d %b")} — #{trip.end_date.strftime("%d %b")}"
             td
               = trip.subtitle

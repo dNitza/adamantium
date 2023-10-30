@@ -1,14 +1,14 @@
 div class="mb-2 h-entry relative"
   - if !first
-    div class="-top-4 absolute rounded-full border-2 bg-orange-100 border-orange-200 p-1 w-1 h-2 inline-block dark:border-orange-400 dark:bg-orange-400"
+    div class="-top-4 absolute rounded-full border-2 bg-orange-100 border-orange-200 p-1 w-1 h-2 inline-block dark:border-amber-400 dark:bg-amber-400"
   - if first
-    div class="inline-block mb-2"
+    div class="inline-block mb-2 dark:text-indigo-400"
       span class="mr-2"
         = "🛬"
       = trip.start_date
 
-  div class="ml-[5] #{ last ? '' : 'mb-[20]'} pl-6 border-solid border-l-2 border-orange-200 dark:border-orange-400"
-    h3 class="text-xl font-semibold text-blue-600"
+  div class="ml-[5] #{ last ? '' : 'mb-[20]'} pl-6 border-solid border-l-2 border-orange-200 dark:border-amber-400"
+    h3 class="text-xl font-semibold text-blue-600 dark:text-indigo-300"
       a class="border-b-2 border-transparent hover:border-blue-600 hover:border-b-2" href="/post/#{post.slug}"
         = post.name
     div class="e-content prose-p:mb-0 prose-img:my-2 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100"
@@ -17,12 +17,12 @@ div class="mb-2 h-entry relative"
         -post.photos.each do |photo|
           img class="w-44 h-44 object-cover rounded" src=photo["value"]
 
-    p class="text-sm text-blue-400"
+    p class="text-sm text-blue-400 dark:text-indigo-50"
       a class="u-url" href="#{post.permalink}"
         time class="dt-published" datetime=post.machine_published_at
           = post.display_published_at
   - if last
-    div class="inline-block mb-6"
+    div class="inline-block mb-6 dark:text-indigo-400"
       span class="mr-2"
         = "🛫"
       = trip.end_date
