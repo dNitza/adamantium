@@ -3,8 +3,8 @@ module Admin
     module Posts
       class Update
         include Deps[
-                  "repos.post_repo",
-                  "renderers.markdown"
+          "repos.post_repo",
+          "renderers.markdown"
                 ]
 
         def call(params:)

@@ -82,7 +82,7 @@ module Adamantium
 
       halt 401 unless (decoded_response.include? :scope) && (decoded_response.include? :me)
 
-      decoded_response[:scope].gsub(/post/, "create").split.map(&:to_sym)
+      decoded_response[:scope].gsub("post", "create").split.map(&:to_sym)
     end
   end
 end

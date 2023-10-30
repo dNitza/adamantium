@@ -33,7 +33,7 @@ module Adamantium
           end
           ENV["TZ"] = nil
 
-            top_track_repo.for_post(id: post.id)
+          top_track_repo.for_post(id: post.id)
         end
       end
     end

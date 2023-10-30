@@ -8,9 +8,8 @@ module Admin
 
         def handle(req, res)
           add_syndication_source.call(post_id: req.params[:id],
-                                      source_name: req.params[:syndication_source_name],
-                                      source_url: req.params[:syndication_source_url]
-          )
+            source_name: req.params[:syndication_source_name],
+            source_url: req.params[:syndication_source_url])
 
           res.status = 201
           res.headers["HX-Refresh"] = true

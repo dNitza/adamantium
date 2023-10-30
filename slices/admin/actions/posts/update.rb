@@ -5,7 +5,7 @@ module Admin
         include Deps["commands.posts.update"]
 
         def handle(req, res)
-          update.(params: req.params)
+          update.call(params: req.params)
           res.redirect "/admin/posts/#{req.params[:id]}"
         end
       end

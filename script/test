@@ -17,3 +17,4 @@ if [ -n "$1" ]; then
 else
   bundle exec rake spec
 fi
+
