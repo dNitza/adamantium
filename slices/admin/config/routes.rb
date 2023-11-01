@@ -49,5 +49,7 @@ module Admin
     post "/trips/remove_post", to: Auth.call(action: "trips.remove_post")
     get "/trips/new", to: Auth.call(action: "trips.new")
     post "/trips/:id", to: Auth.call(action: "trips.update")
+
+    get "/apple_music", to: Auth.call(action: "apple_music.index")
   end
 end

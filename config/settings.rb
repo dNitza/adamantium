@@ -28,6 +28,10 @@ module Adamantium
     setting :lastfm_api_key, default: nil
     setting :lastfm_secret, default: nil
 
+    setting :apple_music_team, default: nil
+    setting :apple_music_key, default: nil
+    setting :apple_music_user_token, default: nil
+
     setting :omdb_api_key, default: nil
 
     setting :shortcut_key, default: nil

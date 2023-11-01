@@ -1,0 +1,32 @@
+script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js" data-web-components async
+
+javascript:
+  document.addEventListener('musickitloaded', async function () {
+    // Call configure() to configure an instance of MusicKit on the Web.
+    try {
+      await MusicKit.configure({
+        developerToken: '#{developer_token}',
+        app: {
+          name: 'Blog',
+          build: '2023.1',
+        },
+      });
+    } catch (err) {
+      // Handle configuration error
+    }
+
+    // MusicKit instance is available
+    const music = MusicKit.getInstance();
+    await music.authorize();
+
+    document.querySelectorAll(".mut")[0].innerHTML = music.musicUserToken;
+  });
+
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Apple Music auth
+
+  div
+    p Your music user token is:
+    code
+      pre class="mut"
+    p keep it secret, keep it safe

@@ -49,6 +49,8 @@ module Adamantium
 
     get "/movies", to: "movies.index"
 
+    get "/recently_played", to: "recently_played.index"
+
     get "/:slug", to: "pages.show"
 
     get "/trips", to: "trips.index"

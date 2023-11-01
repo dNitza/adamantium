@@ -27,6 +27,10 @@ I currently live in Canberra with my partner and [our dogs](https://instagram.co
 
 In my spare time I like to tinker on various Ruby projects (including the software that powers this blog), make things with [Processing](https://processing.org), explore the various [hiking trails](/hikes) around Canberra and potter around [in the garden](/tagged/garden).
 
+### Currently listening to
+
+<div hx-get="/recently_played" hx-trigger="load"></div>
+
 ### 2023 Goals
 
 - 25 Hikes
