@@ -8,11 +8,11 @@ module Adamantium
 
         expose :recently_played_music do |recently_played_result|
           # raise recently_played_result["data"].inspect
-          JSON.parse(recently_played_result)["data"].reject{ |a| a["type"] != "albums" }.map do |album|
+          JSON.parse(recently_played_result)["data"].reject { |a| a["type"] != "albums" }.map do |album|
             {
               artist: album["attributes"]["artistName"],
               name: album["attributes"]["name"],
-              image: album["attributes"]["artwork"]["url"].gsub("{w}", "256").gsub("{h}", "256"),
+              image: album["attributes"]["artwork"]["url"].gsub("{w}", "512").gsub("{h}", "512"),
               href: album["attributes"]["url"]
             }
           end

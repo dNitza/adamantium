@@ -1,10 +1,10 @@
 # Now
 
-### Work
+### 🏢 Work
 
 I'm currently a technical lead at [Culture Amp](https://cultureamp.com), where I lead a small team working in a Rails monolith and across many microservices. Previously I worked with the wonderful humans of [Icelab](https://icelab.com.au) on a wide range of interesting and valuable projects.
 
-### Web
+### 🕸️ Web
 
 I have been working on building this site to act as a repository for all my nonsense online, and as a way of encouraging me to write more!
 
@@ -21,17 +21,17 @@ Where possible, I will try and post as much as I can here, and then syndicate ou
 - [Mastodon](https://social.dnitza.com/@daniel)
 - [Raindrop](https://raindrop.io/nitza/public-32480451)
 
-### Life
+### 🌱 Life
 
 I currently live in Canberra with my partner and [our dogs](https://instagram.com/barkly_and_crumpet). We've been here since 2015, it's great. You should visit.
 
 In my spare time I like to tinker on various Ruby projects (including the software that powers this blog), make things with [Processing](https://processing.org), explore the various [hiking trails](/hikes) around Canberra and potter around [in the garden](/tagged/garden).
 
-### Currently listening to
+### 🎧 Currently listening to
 
 <div hx-get="/recently_played" hx-trigger="load"></div>
 
-### 2023 Goals
+### 🥅 2023 Goals
 
 - 25 Hikes
   - Tracking these as I remember on [this page](/hikes).

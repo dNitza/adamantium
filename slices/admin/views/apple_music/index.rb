@@ -19,7 +19,7 @@ module Admin
           JWT.encode(
             authentication_payload,
             private_key,
-            'ES256',
+            "ES256",
             kid: settings.apple_music_key
           )
         end
