@@ -24,18 +24,18 @@ GIT
 
 GIT
   remote: https://github.com/hanami/assets.git
-  revision: 1683c758e74c4d2c1ea9bc074d5acda07af0a9a3
+  revision: d96fb434fb1ea0ed8c6f9026332174def6a2f9e3
   branch: main
   specs:
-    hanami-assets (2.1.0.beta2)
+    hanami-assets (2.1.0.rc1)
       zeitwerk (~> 2.6)
 
 GIT
   remote: https://github.com/hanami/controller.git
-  revision: c406d35695a5ab2c6393d7ae47015002eb7cf2c2
+  revision: 14295edf5908af80beafe5202c91177b9523f331
   branch: main
   specs:
-    hanami-controller (2.1.0.beta2)
+    hanami-controller (2.1.0.rc1)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0)
       hanami-utils (~> 2.0)
@@ -44,10 +44,10 @@ GIT
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: 79e81b5ca3b126d87b2dc29df03fd3739f2f8e48
+  revision: ce5befbc69b9108d38825b19295eec2ea42f378d
   branch: main
   specs:
-    hanami (2.1.0.beta2.1)
+    hanami (2.1.0.rc1)
       bundler (>= 1.16, < 3)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
@@ -80,10 +80,10 @@ GIT
 
 GIT
   remote: https://github.com/hanami/view.git
-  revision: cc8220ff65711b83a9ca89074fe7b3d209b4f15a
+  revision: 89fa27842d96074ef9d912c99caf6e822229f190
   branch: main
   specs:
-    hanami-view (2.1.0.beta2)
+    hanami-view (2.1.0.rc1)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0)
       dry-core (~> 1.0)
@@ -242,7 +242,7 @@ GEM
       guard-compat (~> 1.2)
       puma (>= 4.0, < 7)
     guess_html_encoding (0.0.11)
-    hanami-cli (2.1.0.beta2)
+    hanami-cli (2.1.0.rc1)
       bundler (~> 2.1)
       dry-cli (~> 1.0, < 2)
       dry-files (~> 1.0, >= 1.0.2, < 2)
@@ -321,7 +321,7 @@ GEM
       mustermann (= 3.0.0)
     mutex_m (0.1.2)
     nenv (0.3.0)
-    net-imap (0.4.2)
+    net-imap (0.4.3)
       date
       net-protocol
     net-pop (0.1.2)
@@ -360,7 +360,7 @@ GEM
     puma (6.4.0)
       nio4r (~> 2.0)
     que (2.3.0)
-    racc (1.7.1)
+    racc (1.7.2)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -453,7 +453,7 @@ GEM
       nokogiri (>= 1.12.0)
     sentry-ruby (5.12.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sequel (5.73.0)
+    sequel (5.74.0)
       bigdecimal
     shellany (0.0.1)
     simple-rss (1.3.3)
