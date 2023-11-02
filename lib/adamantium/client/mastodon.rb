@@ -19,7 +19,7 @@ module Adamantium
         content = if post[:name]
           "#{post[:name]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
         else
-          sanitze_post(post[:content])
+          "#{sanitze_post(post[:content])} \r\n\r\n 🔗 #{settings.micropub_site_url}/post/#{post[:slug]}"
         end
 
         tags = post[:category].map { |tag| "##{tag}" }.join(" ")
