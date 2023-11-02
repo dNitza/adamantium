@@ -1,5 +1,6 @@
 # generates a Hanami::Assets compatible asset manifest
 # from the few asset files in this project
+# Isn't required in Hanami > 2.1
 
 require "securerandom"
 require "json"
