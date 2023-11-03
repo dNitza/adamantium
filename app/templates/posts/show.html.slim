@@ -123,5 +123,6 @@ article class="h-entry"
     - if post.syndicated?
       span Also on:&nbsp;
       - post.syndicated_to.each do |loc|
+        - next if loc[:location] == ""
         a rel="syndication" class="u-syndication" href=loc[:url]
           == render "shared/#{loc[:location]}"
