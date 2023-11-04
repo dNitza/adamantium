@@ -20,6 +20,7 @@ module Adamantium
     setting :micropub_pub_key, default: nil
     setting :github_url, default: nil
     setting :mastodon_url, default: nil
+    setting :fed_bridge_url, default: nil
 
     setting :webmention_url, default: nil
     setting :pingback_url, default: nil
