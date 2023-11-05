@@ -12,6 +12,7 @@ module Adamantium
               /[a-z]/.match?(grouper) ? grouper : "#"
             }
             .sort
+            .map { |group, tags| {group: group, tags: tags.map {|tag| {tag: tag, count: tag.posts.count} }} }
         end
       end
     end

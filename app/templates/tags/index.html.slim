@@ -3,13 +3,13 @@
 div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 columns-2"
   h1 Tags
 
-  - tag_groups.each do |group, tags|
+  - tag_groups.each do |tags|
     div class="break-inside-avoid-column"
-      h3 class="border-b-2" class="text-xl mt-6 mb-2 font-bold text-gray-800 dark:text-gray-200" = group.upcase
+      h3 class="border-b-2" class="text-xl mt-6 mb-2 font-bold text-gray-800 dark:text-gray-200" = tags[:group].upcase
 
-      - tags.each do |post_tag|
+      - tags[:tags].each do |post_tag|
         div
-          a class="p-category no-underline rounded p-1 mr-1 u-url text-gray-600 dark:text-indigo-400 hover:text-gray-900" href="/tagged/#{post_tag.slug}"
-            = post_tag.label
+          a class="p-category no-underline rounded p-1 mr-1 u-url text-gray-600 dark:text-indigo-400 hover:text-indigo-200" href="/tagged/#{post_tag[:tag].slug}"
+            = "#{post_tag[:tag].label} (#{post_tag[:count]})"
 div class="max-w-screen-md mx-auto border-t border-solid border-gray-200 dark:border-gray-600"
 

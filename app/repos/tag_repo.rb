@@ -8,6 +8,7 @@ module Adamantium
       def list
         tags
           .order(Sequel.function(:lower, :label))
+          .combine(:posts)
           .to_a
       end
     end
