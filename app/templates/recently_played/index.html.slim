@@ -1,10 +1,10 @@
-div class="grid grid-cols-4 gap-4"
+div class="grid grid-cols-4 gap-2"
     - recently_played_music.each do |album|
         a href="#{album[:href]}"
             div
-                img class="rounded transition-transform ease-out hover:scale-105" src="#{album[:image]}"
+                img class="m-0 rounded transition-transform ease-out hover:scale-105" src="#{album[:image]}"
                 span class="inline-block text-sm"
-                    = album[:name]
+                  = album[:name]
                 br
                 span class="inline-block text-sm font-bold"
-                    = album[:artist]
+                  = album[:artist]

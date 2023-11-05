@@ -8,7 +8,7 @@ I'm currently a technical lead at [Culture Amp](https://cultureamp.com), where I
 
 I have been working on building this site to act as a repository for all my nonsense online, and as a way of encouraging me to write more!
 
-It's [built](https://github.com/dNitza/Adamantium) using [Hanami 2](https://hanamirb.org), and conforms to the [MicroPub spec](https://www.w3.org/TR/micropub/). I've named it _Adamantium_ — partly for my Mum and partly for super strong metal ;)
+It's built using [Hanami 2](https://hanamirb.org), and conforms to the [MicroPub spec](https://www.w3.org/TR/micropub/). I've named it [Adamantium](https://github.com/dNitza/Adamantium) — partly for my Mum and partly for super strong metal 😉
 
 Where possible, I will try and post as much as I can here, and then syndicate out to services like Mastodon, but you can also find me on:
 
