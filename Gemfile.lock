@@ -122,6 +122,11 @@ GEM
     babosa (2.0.0)
     base64 (0.1.1)
     bigdecimal (3.1.4)
+    bskyrb (0.5.3)
+      date (>= 3.3.3)
+      httparty (>= 0.21.0)
+      json (>= 2.0)
+      xrpc (>= 0.0.4)
     builder (3.2.4)
     capistrano (3.18.0)
       airbrussh (>= 1.0.0)
@@ -497,6 +502,10 @@ GEM
       nokogiri (>= 1.13)
     xml-simple (1.1.9)
       rexml
+    xrpc (0.1.7.2)
+      date
+      httparty
+      json (>= 2.0)
     zeitwerk (2.6.12)
 
 PLATFORMS
@@ -506,6 +515,7 @@ PLATFORMS
 
 DEPENDENCIES
   babosa
+  bskyrb
   builder
   capistrano (~> 3.7)
   capistrano-bundler

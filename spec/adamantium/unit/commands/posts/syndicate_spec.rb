@@ -4,7 +4,7 @@ require "dry/monads"
 RSpec.describe Adamantium::Commands::Posts::Syndicate do
   include Dry::Monads[:result]
 
-  let(:settings) { double("settings", mastodon_server: "https://mastodon.example/@tester") }
+  let(:settings) { double("settings", mastodon_server: "https://mastodon.example/@tester", blue_sky_url: "https://bluesky.app") }
   let(:mastodon_client) { double("Adamantium::Client::Mastodon") }
   let(:mastodon_syndicator) { Adamantium::Syndication::Mastodon.new(mastodon_client: mastodon_client) }
   let(:post) { {url: "example.com", syndicate_to: ["https://mastodon.example", "https://pinboard.in"], category: []} }

@@ -10,6 +10,7 @@ module Adamantium
 
         include Deps["settings",
           "syndication.mastodon",
+          "syndication.blue_sky",
           add_post_syndication_source: "commands.posts.add_syndication_source",
           send_to_dayone: "syndication.dayone",
         ]
@@ -21,6 +22,12 @@ module Adamantium
             res = mastodon.call(post: post)
 
             add_post_syndication_source.call(post_id, :mastodon, res.value!) if res.success?
+          end
+
+          if syndicate_to.include? :blue_sky
+            res = blue_sky.call(post: post)
+
+            add_post_syndication_source.call(post_id, :blue_sky, res.value!) if res.success?
           end
 
           if post[:category].include? "weekly"
@@ -35,6 +42,7 @@ module Adamantium
         def syndication_targets(syndicate_to)
           targets = []
           targets << :mastodon if syndicate_to.any? { |url| settings.mastodon_server.match(/#{url}/) }
+          targets << :blue_sky if syndicate_to.any? { |url| settings.blue_sky_url.match(/#{url}/) }
           targets
         end
       end

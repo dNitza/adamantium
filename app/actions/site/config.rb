@@ -29,6 +29,10 @@ module Adamantium
                 {
                   uid: "https://pinboard.in",
                   name: "Pinboard"
+                },
+                {
+                  uid: "https://bsky.app",
+                  name: "Blue Sky"
                 }
               ]
             }.to_json
@@ -44,6 +48,10 @@ module Adamantium
                 {
                   uid: "https://pinboard.in",
                   name: "Pinboard"
+                },
+                {
+                  uid: "https://bsky.app",
+                  name: "Blue Sky"
                 }
               ]
             }.to_json

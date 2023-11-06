@@ -22,6 +22,10 @@ module Adamantium
     setting :mastodon_url, default: nil
     setting :fed_bridge_url, default: nil
 
+    setting :blue_sky_url, default: nil
+    setting :blue_sky_username, default: nil
+    setting :blue_sky_password, default: nil
+
     setting :webmention_url, default: nil
     setting :pingback_url, default: nil
     setting :webmention_token, default: nil
