@@ -5,7 +5,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
 
   - tag_groups.each do |tags|
     div class="break-inside-avoid-column"
-      h3 class="border-b-2" class="text-xl mt-6 mb-2 font-bold text-gray-800 dark:text-gray-200" = tags[:group].upcase
+      h4 class="bg-indigo-100 px-1" class="mt-6 mb-2 font-bold text-indigo-400 dark:text-indigo-600" = tags[:group].upcase
 
       - tags[:tags].each do |post_tag|
         div
