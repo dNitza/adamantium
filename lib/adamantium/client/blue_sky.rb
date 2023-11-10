@@ -12,8 +12,8 @@ module Adamantium
       include Deps["settings"]
 
       def create_post(post:)
-        unless settings.mastodon_token && settings.mastodon_server
-          return Failure(:no_mastodon_credentials)
+        unless settings.blue_sky_username && settings.blue_sky_url
+          return Failure(:no_blue_sky_credentials)
         end
 
         content = if post[:name]

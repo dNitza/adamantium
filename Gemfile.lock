@@ -24,30 +24,30 @@ GIT
 
 GIT
   remote: https://github.com/hanami/assets.git
-  revision: d96fb434fb1ea0ed8c6f9026332174def6a2f9e3
+  revision: c099ec7ff01396c081360ddb87f8c1cdc5784b3d
   branch: main
   specs:
-    hanami-assets (2.1.0.rc1)
+    hanami-assets (2.1.0.rc2)
       zeitwerk (~> 2.6)
 
 GIT
   remote: https://github.com/hanami/controller.git
-  revision: 14295edf5908af80beafe5202c91177b9523f331
+  revision: 1acd5e59a4ac114cf649685bdb2fe32ed5f50dd5
   branch: main
   specs:
-    hanami-controller (2.1.0.rc1)
+    hanami-controller (2.1.0.rc2)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0)
-      hanami-utils (~> 2.0)
+      hanami-utils (~> 2.1.rc)
       rack (~> 2.0)
       zeitwerk (~> 2.6)
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: ce5befbc69b9108d38825b19295eec2ea42f378d
+  revision: 57d81662f54e96cb5fcb59f5621603dec3836826
   branch: main
   specs:
-    hanami (2.1.0.rc1)
+    hanami (2.1.0.rc2)
       bundler (>= 1.16, < 3)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
@@ -55,36 +55,35 @@ GIT
       dry-logger (~> 1.0, < 2)
       dry-monitor (~> 1.0, >= 1.0.1, < 2)
       dry-system (~> 1.0, < 2)
-      hanami-cli (~> 2.1.beta)
-      hanami-utils (~> 2.1.beta)
+      hanami-cli (~> 2.1.rc)
+      hanami-utils (~> 2.1.rc)
       zeitwerk (~> 2.6)
 
 GIT
   remote: https://github.com/hanami/router.git
-  revision: b502a68d66f637999ccc6291b97c7b72e97a5028
+  revision: 37c58e31de8ebcbb6f7ec9a0e2727ab57f3cc190
   branch: main
   specs:
-    hanami-router (2.1.0.beta1)
+    hanami-router (2.1.0.rc2)
       mustermann (~> 3.0)
       mustermann-contrib (~> 3.0)
       rack (~> 2.0)
 
 GIT
   remote: https://github.com/hanami/validations.git
-  revision: c675f43fa098938af950ed8d0e3ba90e5b0a1315
+  revision: 81a732b4208cbe22261adf25b3558b5b56770e39
   branch: main
   specs:
-    hanami-validations (2.1.0.beta1)
+    hanami-validations (2.1.0.rc2)
       dry-validation (>= 1.10, < 2)
       zeitwerk (~> 2.6.0)
 
 GIT
   remote: https://github.com/hanami/view.git
-  revision: 89fa27842d96074ef9d912c99caf6e822229f190
+  revision: 3fe45cfedfb10883a002f14eb7f52ba60ecf3c12
   branch: main
   specs:
-    hanami-view (2.1.0.rc1)
-      concurrent-ruby (~> 1.0)
+    hanami-view (2.1.0.rc2)
       dry-configurable (~> 1.0)
       dry-core (~> 1.0)
       dry-inflector (~> 1.0, < 2)
@@ -120,7 +119,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.2)
     babosa (2.0.0)
-    base64 (0.1.1)
+    base64 (0.2.0)
     bigdecimal (3.1.4)
     bskyrb (0.5.3)
       date (>= 3.3.3)
@@ -148,14 +147,14 @@ GEM
     database_cleaner-sequel (2.0.2)
       database_cleaner-core (~> 2.0.0)
       sequel
-    date (3.3.3)
+    date (3.3.4)
     diff-lcs (1.5.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
     down (5.4.1)
       addressable (~> 2.8)
-    drb (2.1.1)
+    drb (2.2.0)
       ruby2_keywords
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
@@ -247,7 +246,7 @@ GEM
       guard-compat (~> 1.2)
       puma (>= 4.0, < 7)
     guess_html_encoding (0.0.11)
-    hanami-cli (2.1.0.rc1)
+    hanami-cli (2.1.0.rc2)
       bundler (~> 2.1)
       dry-cli (~> 1.0, < 2)
       dry-files (~> 1.0, >= 1.0.2, < 2)
@@ -262,7 +261,7 @@ GEM
       rake (~> 13.0)
       rspec (~> 3.12)
       zeitwerk (~> 2.6)
-    hanami-utils (2.1.0.beta1)
+    hanami-utils (2.1.0.rc2)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       dry-transformer (~> 1.0, < 2)
@@ -324,14 +323,14 @@ GEM
     mustermann-contrib (3.0.0)
       hansi (~> 0.2.0)
       mustermann (= 3.0.0)
-    mutex_m (0.1.2)
+    mutex_m (0.2.0)
     nenv (0.3.0)
-    net-imap (0.4.3)
+    net-imap (0.4.4)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-scp (4.0.0)
       net-ssh (>= 2.6.5, < 8.0.0)
@@ -365,7 +364,7 @@ GEM
     puma (6.4.0)
       nio4r (~> 2.0)
     que (2.3.0)
-    racc (1.7.2)
+    racc (1.7.3)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -429,12 +428,11 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.1)
-    rubocop (1.56.4)
-      base64 (~> 0.1.1)
+    rubocop (1.57.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
-      parser (>= 3.2.2.3)
+      parser (>= 3.2.2.4)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
@@ -456,7 +454,7 @@ GEM
     sanitize (6.1.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    sentry-ruby (5.12.0)
+    sentry-ruby (5.13.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
     sequel (5.74.0)
       bigdecimal
@@ -468,10 +466,10 @@ GEM
     sshkit (1.21.5)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    standard (1.31.2)
+    standard (1.32.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
-      rubocop (~> 1.56.4)
+      rubocop (~> 1.57.2)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.2)
     standard-custom (1.0.2)
@@ -487,7 +485,7 @@ GEM
     tilt (2.3.0)
     time_math2 (0.1.1)
     timecop (0.9.8)
-    timeout (0.4.0)
+    timeout (0.4.1)
     transproc (1.1.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)

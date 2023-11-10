@@ -8,6 +8,10 @@ module Adamantium
         super(**options)
       end
 
+      def current_path
+        request.fullpath
+      end
+
       def asset_by_name(name)
         if Hanami.env == :development
           "/assets/#{name}"
