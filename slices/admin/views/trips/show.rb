@@ -7,7 +7,7 @@ module Admin
         include Deps["repos.trip_repo", "repos.post_repo"]
 
         expose :trip do |id:|
-          trip = trip_repo.fetch(id)
+          trip_repo.fetch(id)
         end
 
         expose :trip_summary do |trip|

@@ -17,10 +17,10 @@ module Adamantium
         end
 
         content = if post[:name]
-                    "#{post[:name]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
-                  else
-                    "#{sanitze_post(post[:content])} \r\n\r\n 🔗 #{settings.micropub_site_url}/post/#{post[:slug]}"
-                  end
+          "#{post[:name]} — #{settings.micropub_site_url}/post/#{post[:slug]}"
+        else
+          "#{sanitze_post(post[:content])} \r\n\r\n 🔗 #{settings.micropub_site_url}/post/#{post[:slug]}"
+        end
 
         credentials = Bskyrb::Credentials.new(settings.blue_sky_username, settings.blue_sky_password)
         session = Bskyrb::Session.new(credentials, settings.blue_sky_url)
