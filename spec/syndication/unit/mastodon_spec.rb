@@ -9,7 +9,7 @@ RSpec.describe Adamantium::Syndication::Mastodon do
 
   describe "syndication to mastodon" do
     let(:post) {
-      Adamantium::Entities::PostRequest.new(
+      Micropub::Entities::PostRequest.new(
         h: "h-type",
         action: nil,
         name: "My Post",

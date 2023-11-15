@@ -9,14 +9,7 @@ module Adamantium
     use Hanami::Middleware::BodyParser, [:form, :json]
     # use Adamantium::Middleware::ProcessParams
 
-    scope "micropub" do
-      get "/", to: "site.config"
-      post "/", to: "posts.handle"
-      post "/media", to: "media.create"
-      get "/media", to: "media.show"
-
-      post "/webmentions", to: "webmentions.create"
-    end
+    slice :micropub, at: "/micropub"
 
     get "/", to: "site.home"
     get "/post/top_tracks/:slug", to: "posts.top_tracks"

@@ -1,14 +1,14 @@
 require "spec_helper"
 require "dry/monads"
 
-RSpec.describe Adamantium::Commands::Posts::Syndicate do
+RSpec.describe Micropub::Commands::Posts::Syndicate do
   include Dry::Monads[:result]
 
   let(:settings) { double("settings", mastodon_server: "https://mastodon.example/@tester", blue_sky_url: "https://bluesky.app") }
   let(:mastodon_client) { double("Adamantium::Client::Mastodon") }
   let(:mastodon_syndicator) { Adamantium::Syndication::Mastodon.new(mastodon_client: mastodon_client) }
   let(:post) { {url: "example.com", syndicate_to: ["https://mastodon.example", "https://pinboard.in"], category: []} }
-  let(:add_post_syndication_source) { spy(Adamantium::Commands::Posts::AddSyndicationSource) }
+  let(:add_post_syndication_source) { spy(Micropub::Commands::Posts::AddSyndicationSource) }
 
   subject {
     described_class.new(mastodon: mastodon_syndicator,

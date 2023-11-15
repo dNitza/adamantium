@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe Adamantium::Commands::Posts::Update, :db do
+RSpec.describe Micropub::Commands::Posts::Update, :db do
   # Adding: add a property that didn't previously exist
   # If there are any existing values for this property, they are not changed, the new values are added.
   # If the property does not exist already, it is created.
@@ -10,7 +10,7 @@ RSpec.describe Adamantium::Commands::Posts::Update, :db do
 
   describe "add" do
     let(:post) { Test::Factory[:post] }
-    let(:repo) { Adamantium::Container["repos.post_repo"] }
+    let(:repo) { Micropub::Container["repos.post_repo"] }
 
     let(:params) {
       {
@@ -37,7 +37,7 @@ RSpec.describe Adamantium::Commands::Posts::Update, :db do
   # Replacing: Replace all values of the property. If the property does not exist already, it is created.
   describe "replace" do
     let(:post) { Test::Factory[:post] }
-    let(:repo) { Adamantium::Container["repos.post_repo"] }
+    let(:repo) { Micropub::Container["repos.post_repo"] }
 
     let(:params) {
       {
@@ -62,7 +62,7 @@ RSpec.describe Adamantium::Commands::Posts::Update, :db do
   describe "remove" do
     let(:post1) { Test::Factory[:post] }
     let(:post2) { Test::Factory[:post] }
-    let(:repo) { Adamantium::Container["repos.post_repo"] }
+    let(:repo) { Micropub::Container["repos.post_repo"] }
 
     let(:complete_params) {
       {

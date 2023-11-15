@@ -1,4 +1,4 @@
-RSpec.describe Adamantium::MicropubRequestParser do
+RSpec.describe Micropub::RequestParser do
   subject { described_class.new }
 
   context "json request" do
@@ -19,7 +19,7 @@ RSpec.describe Adamantium::MicropubRequestParser do
       it "parses the params in to the expected shape" do
         Timecop.freeze do
           result = subject.call(params: params)
-          expect(result).to be_a Adamantium::Entities::PostRequest
+          expect(result).to be_a Micropub::Entities::PostRequest
         end
       end
     end
@@ -38,7 +38,7 @@ RSpec.describe Adamantium::MicropubRequestParser do
     it "parses the params in to the expected shape" do
       Timecop.freeze do
         result = subject.call(params: params)
-        expect(result).to be_a Adamantium::Entities::PostRequest
+        expect(result).to be_a Micropub::Entities::PostRequest
       end
     end
   end
@@ -140,7 +140,7 @@ RSpec.describe Adamantium::MicropubRequestParser do
     it "parses the request" do
       Timecop.freeze do
         result = subject.call(params: params)
-        expect(result).to be_a Adamantium::Entities::CheckinRequest
+        expect(result).to be_a Micropub::Entities::CheckinRequest
       end
     end
   end

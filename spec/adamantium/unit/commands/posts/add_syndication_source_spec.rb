@@ -1,11 +1,11 @@
 require "spec_helper"
 
-RSpec.describe Adamantium::Commands::Posts::AddSyndicationSource, :db do
+RSpec.describe Micropub::Commands::Posts::AddSyndicationSource, :db do
   subject { described_class.new }
 
   describe "setting a syndication source" do
     let(:post) { Test::Factory[:post] }
-    let(:repo) { Adamantium::Container["repos.post_repo"] }
+    let(:repo) { Micropub::Container["repos.post_repo"] }
 
     context "when no sources exist" do
       it "sets a new source" do

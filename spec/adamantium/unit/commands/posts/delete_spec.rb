@@ -1,7 +1,7 @@
 require "spec_helper"
 
-RSpec.describe Adamantium::Commands::Posts::Delete, :db do
-  let(:post_repo) { spy(Adamantium::Repos::PostRepo) }
+RSpec.describe Micropub::Commands::Posts::Delete, :db do
+  let(:post_repo) { spy(Micropub::Repos::PostRepo) }
   let(:subject) { described_class.new(post_repo: post_repo) }
 
   it "deletes a post" do

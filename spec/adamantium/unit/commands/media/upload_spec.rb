@@ -3,7 +3,7 @@
 require "dry/monads"
 require "base64"
 
-RSpec.describe Adamantium::Commands::Media::Upload do
+RSpec.describe Micropub::Commands::Media::Upload do
   subject { described_class.new }
 
   it "saves a file and returns its URL" do

@@ -23,9 +23,16 @@ module Adamantium
     config.logger.stream = "log/hanami.log"
 
     config.shared_app_component_keys += [
+      "post_utilities.slugify",
       "syndication.dayone",
+      "syndication.mastodon",
+      "syndication.blue_sky",
+      "syndication.raindrop",
       "renderers.markdown",
-      "post_utilities.link_finder"
+      "post_utilities.link_finder",
+      "param_parser.micropub_post",
+      "param_parser.webmention",
+      "post_utilities.page_cacher"
     ]
   end
 end
