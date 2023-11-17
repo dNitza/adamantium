@@ -56,11 +56,11 @@ gem "sentry-ruby"
 gem "warning"
 
 group :cli, :development do
-  gem "hanami-reloader"
+  gem "hanami-reloader", "~> 2.1.0.rc"
 end
 
 group :cli, :development, :test do
-  gem "hanami-rspec"
+  gem "hanami-rspec", "~> 2.1.0.rc"
 end
 
 group :development do

@@ -21,4 +21,10 @@ config/systemd/que.service.erb
 script/deploy
 tmp/*
 public/media
+public/assets/*.css
+public/assets/*.js
+public/assets/*.ttf
+public/assets/*.json
+public/*.json
+public/assets/*.js.map
 *.p8
