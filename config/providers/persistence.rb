@@ -24,11 +24,15 @@ Hanami.app.register_provider :persistence, namespace: true do
   start do
     rom_config = target["persistence.config"]
     rom_config.auto_registration(
-      target.root.join("lib/adamantium/persistence"),
-      namespace: "Adamantium::Persistence"
+      target.root.join("app"),
+      namespace: Hanami.app.namespace.to_s
     )
 
     register "rom", ROM.container(rom_config)
+  end
+
+  stop do
+    target["persistence.rom"].disconnect
   end
 
   define_method(:silence_warnings) do |&block|
