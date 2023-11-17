@@ -1,2 +1,3 @@
 web: bundle exec hanami server
-css: npx tailwindcss -i ./app/assets/index.css -o ./public/assets/index.css --watch
+tailwind: bundle exec rake tailwind:watch
+assets: bundle exec hanami assets watch

@@ -5,7 +5,7 @@ Markdown Gallery
 -- Released under GPLv3
 */
 
-function md_gallery(config) {
+export function md_gallery(config) {
     var config = config || {},
         list_type = config.list_type || 'ul',
         class_name = config.class_name || 'gallery',

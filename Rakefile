@@ -52,3 +52,13 @@ namespace :blog do
     end
   end
 end
+
+namespace :tailwind do
+  task :watch do
+    system("npx tailwindcss -i ./app/assets/css/tailwind.css -o ./app/assets/builds/tailwind.css --watch")
+  end
+
+  task :build do
+    system("npx tailwindcss -i ./app/assets/css/tailwind.css -o ./app/assets/builds/tailwind.css --minify")
+  end
+end

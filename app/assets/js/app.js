@@ -1,3 +1,7 @@
+import "../builds/tailwind.css";
+
+import { md_gallery } from "./gallery.js";
+
 (function() {
     document.addEventListener('alpine:init', () => {
         Alpine.magic('clipboard', () => {

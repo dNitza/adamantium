@@ -4,7 +4,7 @@ require "hanami"
 
 module Adamantium
   class App < Hanami::App
-    config.assets.manifest_path = "public/assets/asset-manifest.json"
+    config.assets.manifest_path = "public/assets.json"
 
     config.actions.content_security_policy[:script_src] += " 'unsafe-eval' https://gist.github.com"
     config.actions.content_security_policy[:script_src] += " *.dnitza.com"
@@ -23,16 +23,16 @@ module Adamantium
     config.logger.stream = "log/hanami.log"
 
     config.shared_app_component_keys += [
+      "param_parser.micropub_post",
+      "param_parser.webmention",
       "post_utilities.slugify",
+      "post_utilities.link_finder",
+      "post_utilities.page_cacher",
       "syndication.dayone",
       "syndication.mastodon",
       "syndication.blue_sky",
       "syndication.raindrop",
       "renderers.markdown",
-      "post_utilities.link_finder",
-      "param_parser.micropub_post",
-      "param_parser.webmention",
-      "post_utilities.page_cacher"
     ]
   end
 end
