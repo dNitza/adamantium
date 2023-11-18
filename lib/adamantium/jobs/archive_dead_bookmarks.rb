@@ -12,7 +12,7 @@ module Adamantium
         bookmarks.each do |bookmark|
           code = HTTParty.get(bookmark.url, follow_redirects: false).code
           if code >= 400
-            bookmark_repo.update(bookmark.id, params: {url: "https://web.archive.org/web/*/#{bookmark.url}"})
+            bookmark_repo.update(id: bookmark.id, params: {url: "https://web.archive.org/web/*/#{bookmark.url}"})
           end
         end
       end
