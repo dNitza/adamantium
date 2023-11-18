@@ -32,7 +32,7 @@ module Adamantium
       "syndication.mastodon",
       "syndication.blue_sky",
       "syndication.raindrop",
-      "renderers.markdown",
+      "renderers.markdown"
     ]
   end
 end
