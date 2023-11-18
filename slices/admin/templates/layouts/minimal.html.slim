@@ -1,0 +1,24 @@
+html
+  head
+    meta charest="utf-8"
+
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    meta name="theme-color" content="rgb(37, 99, 235)"
+
+    title Admin // Daniel Nitsikopoulos
+
+    = stylesheet_tag "app"
+    link rel="icon" type="image/x-icon" href="/assets/favicon.ico"
+
+  body class="bg-white dark:bg-black selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-600 dark:selection:text-blue-100"
+    main class="pb-8 px-4 pt-4 md:pt-8"
+      header class="mb-12 max-w-screen-md mx-auto"
+        div class="flex items-center mb-8 md:mb-12 text-lg md:text-xl text-gray-400 dark:text-gray-600"
+          div class="flex-none mx-auto md:flex-auto md:mx-0"
+            div class="h-card flex items-center"
+              img class="u-photo w-6 h6 md:w-10 md:h-10 rounded-full mr-1.5" src="/assets/memoji.png"
+              a href="/" rel="me" class="u-url u-uid"
+                h1 class="p-name uppercase text-sm md:text-sm text-gray-400 dark:text-gray-400" = Hanami.app.settings.site_name
+
+      == yield

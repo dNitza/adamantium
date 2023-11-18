@@ -11,6 +11,10 @@ module Admin
 
     get "/", to: Auth.call(action: "index")
 
+    get "/login", to: "sessions.new"
+    get "/login/:token", to: "sessions.validate"
+    post "/sessions/create", to: "sessions.create"
+
     get "/pages", to: Auth.call(action: "pages.index")
     get "/pages/new", to: Auth.call(action: "pages.new")
     get "/pages/:slug/edit", to: Auth.call(action: "pages.edit")

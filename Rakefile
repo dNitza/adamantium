@@ -51,6 +51,13 @@ namespace :blog do
       )
     end
   end
+
+  task :create_user, [:email] => ["blog:load_environment"] do |t, args|
+    require "hanami/prepare"
+
+    user_repo = Admin::Container["repos.user_repo"]
+    user_repo.create(id: SecureRandom.uuid, email: args[:email])
+  end
 end
 
 namespace :tailwind do

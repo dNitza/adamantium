@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
 require "hanami/middleware/body_parser"
-# require_relative "../slices/admin/config/routes"
-# require_relative "authenticated_admin_action"
 
 module Adamantium
   class Routes < Hanami::Routes
     use Hanami::Middleware::BodyParser, [:form, :json]
-    # use Adamantium::Middleware::ProcessParams
 
     slice :micropub, at: "/micropub"
 

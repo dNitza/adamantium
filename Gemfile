@@ -29,6 +29,8 @@ gem "gpx"
 gem "gnuplot"
 gem "matrix"
 
+gem "rack-session"
+
 gem "ruby-readability", require: "readability"
 gem "down"
 gem "httparty"
