@@ -11,6 +11,15 @@ module Admin
 
     get "/", to: Auth.call(action: "index")
 
+    get "/pages", to: Auth.call(action: "pages.index")
+    get "/pages/new", to: Auth.call(action: "pages.new")
+    get "/pages/:slug/edit", to: Auth.call(action: "pages.edit")
+    post "/pages/create", to: Auth.call(action: "pages.create")
+    post "/pages/:slug", to: Auth.call(action: "pages.update")
+    post "/pages/:slug/archive", to: Auth.call(action: "pages.archive")
+    post "/pages/:slug/publish", to: Auth.call(action: "pages.publish")
+    delete "/pages/:slug", to: Auth.call(action: "pages.delete")
+
     get "/tags", to: Auth.call(action: "tags.index")
     delete "/tags/:id", to: Auth.call(action: "tags.delete")
 

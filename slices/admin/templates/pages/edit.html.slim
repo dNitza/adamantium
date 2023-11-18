@@ -1,0 +1,18 @@
+
+article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
+  form action="/admin/pages/#{page.slug}" method="POST"
+    div class="mb-4"
+      label for="name" Name
+      input type="text" id="name" name="page[name]" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" value=page.name
+    div class="mb-4"
+      label for="slug" slug
+      input type="text" id="slug" name="page[slug]" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" value=page.slug
+    div class="mb-4"
+      label for="body" Body
+      textarea name="page[content]" id="body" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"
+        == markdown_content
+    div class="mb-4"
+      label for="published_at" Publish date
+      input type="date" id="published_at" name="page[published_at]" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" value=page.published_at
+    button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"
+      = "Update"
