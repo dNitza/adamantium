@@ -6,8 +6,6 @@ module Adamantium
 
         expose :page_content do |page|
           renderer.call(content: page.content)
-        rescue Errno::ENOENT
-          renderer.call(content: "## Page not found")
         end
 
         expose :page_name do |page|
