@@ -31,8 +31,8 @@ module Admin
         posts.where(id: id).update(published_at: Time.now)
       end
 
-      def update(id:, cached_content:)
-        posts.where(id: id).update(cached_content: cached_content)
+      def update(id:, params:)
+        posts.where(id: id).update(params)
       end
     end
   end

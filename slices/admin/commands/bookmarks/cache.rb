@@ -9,7 +9,7 @@ module Admin
           bookmark = bookmark_repo.fetch(id: bookmark_id)
 
           page_cacher.call(url: bookmark.url) do |content|
-            bookmark_repo.update(id: bookmark_id, cached_content: content)
+            bookmark_repo.update(id: bookmark_id, params: { cached_content: content })
           end
 
           Success()
