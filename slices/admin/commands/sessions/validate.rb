@@ -5,9 +5,16 @@ module Admin
         include Deps["repos.login_tokens_repo"]
 
         def call(token:)
-          user_id = login_tokens_repo.by_token(token: token).user_id
-          if user_id
+          token = login_tokens_repo.by_token(token: token)
+
+          if (Time.now - token.created_at) > 15
             login_tokens_repo.delete_all
+            return nil
+          end
+
+          user_id = token.user_id
+
+          if user_id
             user_id
           end
         end
