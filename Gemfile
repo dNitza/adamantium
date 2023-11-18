@@ -30,6 +30,7 @@ gem "gnuplot"
 gem "matrix"
 
 gem "rack-session"
+gem "rack-rewrite"
 
 gem "ruby-readability", require: "readability"
 gem "down"
