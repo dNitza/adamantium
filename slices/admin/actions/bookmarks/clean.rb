@@ -8,10 +8,10 @@ module Admin
           Que.connection = Adamantium::Container["persistence.db"]
 
           res.status = 200
-          if Que.job_stats.any? { |job| job[:job_class] == Adamantium::Jobs::RemoveDeadBookmarks.name }
+          if Que.job_stats.any? { |job| job[:job_class] == Adamantium::Jobs::ArchiveDeadBookmarks.name }
             res.body = "Job already queued"
           else
-            Adamantium::Jobs::RemoveDeadBookmarks.enqueue
+            Adamantium::Jobs::ArchiveDeadBookmarks.enqueue
             res.body = "#{Que.job_stats.count} job queued"
           end
         end
