@@ -33,6 +33,20 @@ module Micropub
         end
       end
 
+      def by_title(title_contains:)
+        posts
+          .where(post_type: "post")
+          .published
+          .where(Sequel.ilike(:name, "%#{title_contains}%")).to_a
+      end
+
+      def by_content(body_contains:)
+        posts
+          .where(post_type: "post")
+          .published
+          .where(Sequel.ilike(:content, "%#{body_contains}%")).to_a
+      end
+
       def slug_exists?(slug)
         !!posts
           .where(slug: slug)
