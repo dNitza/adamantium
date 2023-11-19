@@ -7,7 +7,7 @@ module Admin
         def call(token:)
           token = login_tokens_repo.by_token(token: token)
 
-          if (Time.now - token.created_at) > 15
+          if (Time.now - token.created_at) > (15 * 60)
             login_tokens_repo.delete_all
             return nil
           end
