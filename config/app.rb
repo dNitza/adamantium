@@ -28,6 +28,7 @@ module Adamantium
       "post_utilities.slugify",
       "post_utilities.link_finder",
       "post_utilities.page_cacher",
+      "sentry.client",
       "syndication.dayone",
       "syndication.mastodon",
       "syndication.blue_sky",
