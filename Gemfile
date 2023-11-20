@@ -59,6 +59,7 @@ gem "sentry-ruby"
 gem "warning"
 
 group :cli, :development do
+  gem "irb"
   gem "hanami-reloader", "~> 2.1.0.rc"
 end
 
@@ -67,6 +68,8 @@ group :cli, :development, :test do
 end
 
 group :development do
+  gem "ed25519"
+  gem "bcrypt_pbkdf"
   gem "guard-puma", "~> 0.8"
   gem "standardrb"
   gem "capistrano", "~> 3.7", require: false
