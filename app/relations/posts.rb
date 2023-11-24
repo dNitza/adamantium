@@ -35,6 +35,13 @@ module Adamantium
         where(self[:published_at] >= start_date)
           .where(self[:published_at] <= end_date)
       end
+
+      def search(term:)
+        ref = dataset
+              .full_text_search([:content], [term])
+              .select(:id)
+        where(id: ref)
+      end
     end
   end
 end

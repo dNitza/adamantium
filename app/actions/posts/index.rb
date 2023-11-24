@@ -4,7 +4,7 @@ module Adamantium
       class Index < Action
         include Deps["views.posts.index"]
         def handle(req, res)
-          res.render index
+          res.render index, query: req.params[:q]
         end
       end
     end
