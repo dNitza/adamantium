@@ -19,7 +19,7 @@ module Adamantium
         end
         
         expose :query do |query:|
-          query
+          query == "" ? nil : query
         end
 
         expose :post_years do
