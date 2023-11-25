@@ -90,13 +90,15 @@ article class="h-entry"
                   = "#{past_post.display_title} (#{past_post.published_at.year})"
 
       div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
-      - photo_posts.group_by{ |p| p.published_at.year }.each do |year, posts|
-        div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200"
-          div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200"
-            = year
-          div class="grid grid-cols-3 gap-4 mb-4 max-w-prose mx-auto"
-            -posts.each do |post|
-              == render "shared/photo_post", post: post, extended: false
+        div class="grid grid-cols-3 gap-4 mb-4 max-w-prose mx-auto"
+          - photo_posts.group_by{ |p| p.published_at.year }.each do |year, posts|
+            -posts.each_with_index do |post, index|
+              div
+                -if index == 0
+                  p class="mb-1 px-1" = year
+                - else
+                  p class="mb-1 px-1" &nbsp;
+                == render "shared/photo_post", post: post, extended: false
     div class="mb-4 max-w-screen-md mx-auto border-t border-solid border-gray-200 dark:border-gray-600"
 
   div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
