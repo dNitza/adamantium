@@ -7,7 +7,7 @@ module Admin
         include Deps["repos.movie_repo"]
 
         def call(movie)
-          repo = Adamantium::Container["repos.movie_repo"]
+          repo = Container["repos.movie_repo"]
 
           return if repo.by_title_and_year(title: movie[:title], year: movie[:year])
 
