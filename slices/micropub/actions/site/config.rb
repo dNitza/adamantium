@@ -27,10 +27,6 @@ module Micropub
                   name: "Mastodon"
                 },
                 {
-                  uid: "https://pinboard.in",
-                  name: "Pinboard"
-                },
-                {
                   uid: "https://bsky.app",
                   name: "Blue Sky"
                 }
@@ -44,10 +40,6 @@ module Micropub
                 {
                   uid: "https://social.dnitza.com",
                   name: "Mastodon"
-                },
-                {
-                  uid: "https://pinboard.in",
-                  name: "Pinboard"
                 },
                 {
                   uid: "https://bsky.app",

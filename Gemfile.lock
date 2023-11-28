@@ -8,14 +8,6 @@ GIT
       simple-rss (~> 1.3, >= 1.3.1)
 
 GIT
-  remote: https://github.com/dnitza/pinboard
-  revision: a178662d901c768a6f76af7b94f7336484752e03
-  branch: master
-  specs:
-    pinboard (1.1.1)
-      httparty (~> 0.21.0)
-
-GIT
   remote: https://github.com/dnitza/ruby-filemagic
   revision: 9699941ae5b9d53ce685f2b9808890596fe1334f
   branch: master
@@ -530,7 +522,6 @@ DEPENDENCIES
   ogpr
   omdb-api (= 1.4.3)
   pg
-  pinboard!
   puma
   que
   rack-rewrite

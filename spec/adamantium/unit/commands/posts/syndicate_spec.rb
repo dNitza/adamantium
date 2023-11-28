@@ -7,7 +7,7 @@ RSpec.describe Micropub::Commands::Posts::Syndicate do
   let(:settings) { double("settings", mastodon_server: "https://mastodon.example/@tester", blue_sky_url: "https://bluesky.app") }
   let(:mastodon_client) { double("Adamantium::Client::Mastodon") }
   let(:mastodon_syndicator) { Adamantium::Syndication::Mastodon.new(mastodon_client: mastodon_client) }
-  let(:post) { {url: "example.com", syndicate_to: ["https://mastodon.example", "https://pinboard.in"], category: []} }
+  let(:post) { {url: "example.com", syndicate_to: ["https://mastodon.example", "https://bsky.app"], category: []} }
   let(:add_post_syndication_source) { spy(Micropub::Commands::Posts::AddSyndicationSource) }
 
   subject {
