@@ -74,7 +74,7 @@ module Micropub
       })
       decoded_response = URI.decode_www_form(resp.body).to_h.transform_keys(&:to_sym)
 
-      logger.info({log: "verify_response", msg: decoded_response.inspect})
+      logger.info({log: "verify_response", msg: decoded_response.inspect, token: access_token})
 
       halt 401 unless (decoded_response.include? :scope) && (decoded_response.include? :me)
 
