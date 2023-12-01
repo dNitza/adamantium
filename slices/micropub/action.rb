@@ -87,7 +87,11 @@ module Micropub
 
       halt 401 unless indie_auth_verified || micro_blog_verified
 
-      decoded_response[:scope].gsub("post", "create").split.map(&:to_sym)
+      if indie_auth_verified
+        decoded_response[:scope].gsub("post", "create").split.map(&:to_sym)
+      elsif micro_blog_verified
+        [:create, :update]
+      end
     end
   end
 end
