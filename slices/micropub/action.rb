@@ -66,6 +66,7 @@ module Micropub
       return %i[create update delete undelete media] if settings.shortcut_key == access_token
       return %i[create update delete undelete media] if Hanami.env == :development || Hanami.env == :test
 
+      # Verify with IndieAuth
       resp = HTTParty.get(settings.micropub_token_endpoint, {
         headers: {
           "Accept" => "application/x-www-form-urlencoded",
@@ -73,10 +74,18 @@ module Micropub
         }
       })
       decoded_response = URI.decode_www_form(resp.body).to_h.transform_keys(&:to_sym)
+      indie_auth_verified = (decoded_response.include? :scope) && (decoded_response.include? :me)
 
-      logger.info({log: "verify_response", msg: decoded_response.inspect, token: access_token})
+      # Verify with micro.blog
+      micro_blog_verified = if settings.microblog_auth_endpoint
+        resp = HTTParty.post(settings.microblog_auth_endpoint, body: {
+          token: access_token
+        })
+        decoded_response = JSON.parse(resp.body).transform_keys(&:to_sym)
+        !decoded_response.include? :error
+      end
 
-      halt 401 unless (decoded_response.include? :scope) && (decoded_response.include? :me)
+      halt 401 unless indie_auth_verified || micro_blog_verified
 
       decoded_response[:scope].gsub("post", "create").split.map(&:to_sym)
     end
