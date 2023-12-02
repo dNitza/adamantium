@@ -33,7 +33,7 @@ namespace :blog do
   task scrobble_podcasts: ["blog:load_environment"] do
     require "hanami/prepare"
 
-    command = Adamantium::OvercastScrobbler.new(username: "daniel@dnitza.com", password: "impacted-mingle.buckeye4incise")
+    command = Adamantium::OvercastScrobbler.new(username: Hanami.app.settings.overcast_username, password: Hanami.app.settings.overcast_password)
     command.()
   end
 
