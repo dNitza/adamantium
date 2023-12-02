@@ -6,7 +6,9 @@
     "assets": "node config/assets.js"
   },
   "dependencies": {
-    "hanami-assets": "^2.1.0-rc.2"
+    "@icelab/defo": "^0.0.3",
+    "hanami-assets": "^2.1.0-rc.2",
+    "tiny-markdown-editor": "^0.1.8"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",
