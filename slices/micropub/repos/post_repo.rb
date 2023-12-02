@@ -121,6 +121,15 @@ module Micropub
         delete_post = posts.where(slug: slug).command(:update)
         delete_post.call(published_at: Time.now)
       end
+
+      def search(term:)
+        posts
+          .published
+          .search(term: term)
+          .combine(:tags)
+          .order(Sequel.desc(:published_at))
+          .to_a
+      end
     end
   end
 end

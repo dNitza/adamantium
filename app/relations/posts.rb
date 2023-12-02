@@ -37,10 +37,7 @@ module Adamantium
       end
 
       def search(term:)
-        ref = dataset
-              .full_text_search([:content], [term])
-              .select(:id)
-        where(id: ref)
+        where(Sequel.ilike(:content, "%#{term}%"))
       end
     end
   end

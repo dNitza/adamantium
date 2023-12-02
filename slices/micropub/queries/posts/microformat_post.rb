@@ -6,7 +6,19 @@ module Micropub
       class MicroformatPost
         include Deps["repos.post_repo"]
 
-        def call(url:, properties:)
+        def call(url:, filter:, properties:)
+          if url
+            fetch_post(url: url, properties: properties)
+          end
+
+          if filter
+            search_posts(filter: filter)
+          end
+        end
+
+        private
+
+        def fetch_post(url:, properties:)
           slug = URI(url).path.split("/").last
 
           post = post_repo.fetch_unpublished!(slug)
@@ -30,6 +42,24 @@ module Micropub
           result[:properties][:category] = post.tags.map { |t| t.label.to_s } if properties.include? "category"
           result[:properties][:photos] = post.photos if properties.include? "photos"
           result
+        end
+
+        def search_posts(filter:)
+          post_repo
+            .search(term: filter)
+            .map { |post|
+              content = ReverseMarkdown.convert(post.content, unknown_tags: :pass_through, github_flavored: true).to_s
+
+              {
+                type: ["h-entry"],
+                properties: {
+                  published: [post.published_at],
+                  content: [content],
+                  photo: post.photos,
+                  category: post.tags.map { |t| t.label.to_s }
+                }
+              }
+            }
         end
       end
     end

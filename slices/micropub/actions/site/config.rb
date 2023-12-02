@@ -50,7 +50,7 @@ module Micropub
           elsif req.params[:q] == "source"
             res.status = 200
             res.content_type = "Application/JSON"
-            res.body = microformat_post.call(url: req.params[:url], properties: req.params[:properties]).to_json
+            res.body = microformat_post.call(url: req.params[:url], filter: req.params[:filter], properties: req.params[:properties]).to_json
           else
             res.redirect_to "/"
           end
