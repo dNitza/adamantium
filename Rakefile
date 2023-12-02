@@ -34,7 +34,7 @@ namespace :blog do
     require "hanami/prepare"
 
     command = Adamantium::OvercastScrobbler.new(username: Hanami.app.settings.overcast_username, password: Hanami.app.settings.overcast_password)
-    command.()
+    command.call
   end
 
   task load_from_bookshelf: ["blog:load_environment"] do
