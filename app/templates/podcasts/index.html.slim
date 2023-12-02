@@ -4,6 +4,14 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   h1 🎙️ Podcasts
 
   div class="mb-12 max-w-prose mx-auto"
+    - if listens && listens.count > 0
+      div class="p-4 bg-pink-200 dark:bg-pink-900 rounded"
+        h4 class="p-0 m-0 text-pink-900 dark:text-pink-200" Recent listens
+        - listens.each do |listen|
+          div
+            a class="text-pink-800 dark:text-pink-100 no-underline hover:decoration-wavy hover:underline" href=listen.url
+              = "#{listen.podcast_name}: #{listen.title}"
+
     table class="prose dark:prose-invert table-auto"
       thead
         tr

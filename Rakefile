@@ -30,6 +30,13 @@ namespace :blog do
     end
   end
 
+  task scrobble_podcasts: ["blog:load_environment"] do
+    require "hanami/prepare"
+
+    command = Adamantium::OvercastScrobbler.new(username: "daniel@dnitza.com", password: "impacted-mingle.buckeye4incise")
+    command.()
+  end
+
   task load_from_bookshelf: ["blog:load_environment"] do
     require "hanami/prepare"
     require "csv"
