@@ -186,12 +186,12 @@ module Adamantium
           .order(:year)
           .to_a
       end
-   
+
       def search(term:)
         posts
           .where(post_type: "post", location: nil)
           .published
-          .search(term: term) 
+          .search(term: term)
           .combine(:tags)
           .order(Sequel.desc(:published_at))
           .to_a

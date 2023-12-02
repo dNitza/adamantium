@@ -20,7 +20,7 @@ module Adamantium
       podcast_list = []
 
       doc.xpath("//outline[@type='rss']").each_with_object(podcast_list) do |rss, memo|
-        podcasts = rss.xpath("outline[@type='podcast-episode']").select{|ep| ep.get_attribute("played") == "1" }
+        podcasts = rss.xpath("outline[@type='podcast-episode']").select { |ep| ep.get_attribute("played") == "1" }
 
         name = rss.get_attribute("title")
 
@@ -43,4 +43,4 @@ module Adamantium
       end
     end
   end
-end 
+end

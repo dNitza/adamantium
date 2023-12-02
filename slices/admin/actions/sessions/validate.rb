@@ -5,7 +5,7 @@ module Admin
         include Deps["commands.sessions.validate"]
 
         def handle(req, res)
-          user_id = validate.(token: req.params[:token])
+          user_id = validate.call(token: req.params[:token])
           session = req.env["rack.session"]
 
           session[:user_id] = user_id

@@ -5,8 +5,8 @@ module Admin
     module Sessions
       class Create
         include Deps[
-                  "repos.login_tokens_repo",
-                  "repos.user_repo"
+          "repos.login_tokens_repo",
+          "repos.user_repo"
                 ]
 
         def call(email:)
@@ -37,7 +37,7 @@ module Admin
             body "#{app_settings.micropub_site_url}/admin/login/#{token.token}"
           end
 
-          mail[:to] = email
+          mail[:to] = user.email
           mail[:from] = app_settings.from_email
 
           mail.deliver

@@ -4,10 +4,10 @@
 module Micropub
   class Action < Adamantium::Action
     include Deps["logger",
-                 "settings",
-                 not_found_view: "views.not_found",
-                 error_view: "views.error",
-                 sentry: "sentry.client"]
+      "settings",
+      not_found_view: "views.not_found",
+      error_view: "views.error",
+      sentry: "sentry.client"]
 
     include Dry::Matcher.for(:handle, with: Dry::Matcher::ResultMatcher)
     include Dry::Monads[:result]

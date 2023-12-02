@@ -8,7 +8,7 @@ module Adamantium
 
       def call(env)
         session = env["rack.session"]
-        return [403, {'Content-Type' => 'text/html'}, ["Unauthorized | <a href=\"/admin/login\">Login</>"]] unless @auth_proc.call(session[:user_id])
+        return [403, {"Content-Type" => "text/html"}, ["Unauthorized | <a href=\"/admin/login\">Login</>"]] unless @auth_proc.call(session[:user_id])
 
         @app.call(env)
       end

@@ -53,10 +53,10 @@ module Adamantium
     setting :micropub_authorization_endpoint
     setting :micropub_token_endpoint
 
-    setting :microblog_auth_endpoint, default:  nil
+    setting :microblog_auth_endpoint, default: nil
 
-    setting :overcast_username, default:  nil
-    setting :overcast_password, default:  nil
+    setting :overcast_username, default: nil
+    setting :overcast_password, default: nil
 
     setting :mastodon_token, default: nil
     setting :mastodon_server, default: nil

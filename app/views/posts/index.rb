@@ -17,9 +17,9 @@ module Adamantium
             post_repo.post_listing
           end
         end
-        
+
         expose :query do |query:|
-          query == "" ? nil : query
+          (query == "") ? nil : query
         end
 
         expose :post_years do

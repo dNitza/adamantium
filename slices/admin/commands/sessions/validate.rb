@@ -12,11 +12,7 @@ module Admin
             return nil
           end
 
-          user_id = token.user_id
-
-          if user_id
-            user_id
-          end
+          token.user_id
         end
       end
     end
