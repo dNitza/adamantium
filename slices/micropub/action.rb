@@ -73,22 +73,22 @@ module Micropub
           "Authorization" => "Bearer #{access_token}"
         }
       })
-      decoded_response = URI.decode_www_form(resp.body).to_h.transform_keys(&:to_sym)
-      indie_auth_verified = (decoded_response.include? :scope) && (decoded_response.include? :me)
+      indie_auth_decoded_response = URI.decode_www_form(resp.body).to_h.transform_keys(&:to_sym)
+      indie_auth_verified = (indie_auth_decoded_response.include? :scope) && (indie_auth_decoded_response.include? :me)
 
       # Verify with micro.blog
       micro_blog_verified = if settings.microblog_auth_endpoint
         resp = HTTParty.post(settings.microblog_auth_endpoint, body: {
           token: access_token
         })
-        decoded_response = JSON.parse(resp.body).transform_keys(&:to_sym)
-        !decoded_response.include? :error
+        micropub_decoded_response = JSON.parse(resp.body).transform_keys(&:to_sym)
+        !micropub_decoded_response.include? :error
       end
 
       halt 401 unless indie_auth_verified || micro_blog_verified
 
       if indie_auth_verified
-        decoded_response[:scope].gsub("post", "create").split.map(&:to_sym)
+        indie_auth_decoded_response[:scope].gsub("post", "create").split.map(&:to_sym)
       elsif micro_blog_verified
         [:create, :update]
       end
