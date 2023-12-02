@@ -23,7 +23,7 @@ article class="h-entry"
       - if post.photos? || post.videos?
         a class="dark:text-gray-400" href="/photos" photos
     article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded prose-video:rounded"
-      div class="e-content"
+      div class="e-content prose-code:bg-pink-100 prose-code:text-pink-900"
         == post.content
 
       - if post.photos?

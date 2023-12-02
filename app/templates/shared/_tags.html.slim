@@ -1,8 +1,8 @@
 - if tags.count > 0
-  div class="mb-2"
-    span class="text-sm text-gray-600 dark:text-gray-200 leading-10"
-      = "Tagged: "
+  p class="mb-2"
+    = "Tagged"
+  div class="mb-2 grid grid-flow-col grid-rows-2 justify-end gap-x-1.5"
     - tags.each do |post_tag|
       span
-        a  class="p-category rounded p-1 mr-1 text-xsm u-url bg-yellow-100/60 hover:bg-yellow-200 dark:bg-amber-400/60 dark:hover:bg-amber-400/80 dark:text-amber-100 dark:hover:text-yellow-100 text-gray-600" href="/tagged/#{post_tag.slug}"
-          = post_tag.label
+        a  class="p-category rounded mr-1 u-url text-pink-400 hover:text-pink-600 dark:text-pink-400 dark:hover:text-pink-100 text-gray-600" href="/tagged/#{post_tag.slug}"
+          = "##{post_tag.label}"
