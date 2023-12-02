@@ -45,7 +45,7 @@ module Micropub
         end
 
         def search_posts(filter:)
-          post_repo
+          posts = post_repo
             .search(term: filter)
             .map { |post|
               content = ReverseMarkdown.convert(post.content, unknown_tags: :pass_through, github_flavored: true).to_s
@@ -62,6 +62,10 @@ module Micropub
                 }
               }
             }
+
+          {
+            items: posts
+          }
         end
       end
     end
