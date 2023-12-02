@@ -4,7 +4,7 @@ module Micropub
   module Queries
     module Posts
       class MicroformatPost
-        include Deps["repos.post_repo"]
+        include Deps["settings", "repos.post_repo"]
 
         def call(url:, filter:, properties:)
           if url
@@ -53,6 +53,8 @@ module Micropub
               {
                 type: ["h-entry"],
                 properties: {
+                  url: ["#{settings.micropub_site_url}/post/#{post.slug}"],
+                  uid: [post.id],
                   published: [post.published_at],
                   content: [content],
                   photo: post.photos,
