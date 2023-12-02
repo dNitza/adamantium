@@ -13,7 +13,8 @@ module Micropub
           post = post_repo.fetch!(slug)
 
           if params.key? :replace
-            content = params[:replace].delete(:content).first
+            content = params[:replace].delete(:content)
+            content = content.is_a?(Array) ? content.first : content
             name = params[:replace].delete(:name)
 
             attrs_to_replace = {}
