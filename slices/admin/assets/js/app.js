@@ -5,6 +5,12 @@ import TinyMDE from "tiny-markdown-editor";
 import defo from "@icelab/defo";
 
 (function() {
+    document.addEventListener('alpine:init', () => {
+        Alpine.magic('clipboard', () => {
+            return subject => navigator.clipboard.writeText(subject)
+        })
+    })
+
     document.addEventListener("DOMContentLoaded", function () {
         const views = {
             markdown: (el, attrs) => {

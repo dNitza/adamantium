@@ -3,11 +3,6 @@ import "../builds/tailwind.css";
 import { md_gallery } from "./gallery.js";
 
 (function() {
-    document.addEventListener('alpine:init', () => {
-        Alpine.magic('clipboard', () => {
-            return subject => navigator.clipboard.writeText(subject)
-        })
-    })
     document.addEventListener("DOMContentLoaded", function () {
         if (window.hljs !== undefined) {
             window.hljs.highlightAll();
