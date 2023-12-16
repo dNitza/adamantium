@@ -1,6 +1,6 @@
-div class="prose dark:prose-invert w-full max-w-6xl mx-auto px-4 m-4"
-  div class="grid md:grid-cols-12 gap-5 p-4 m-2"
-    div class="md:col-span-8 p-4"
+div class="max-w-screen-md mx-auto px-4 m-4 h-max"
+  div class="grid md:grid-cols-16 gap-5 p-4 m-2"
+    div class="prose dark:prose-invert md:col-span-13 p-4"
       h2 class="mt-0" = display_date
 
       a href="/timemachine/#{prev_date}" &larr; #{prev_date}
@@ -13,26 +13,24 @@ div class="prose dark:prose-invert w-full max-w-6xl mx-auto px-4 m-4"
       - if posts.count > 0
         div class="mt-4"
           - posts.each_with_index do |post, index|
-            div class="#{"border-t-2" if index == 0} border-b-2 border-gray-200"
+            div class="#{"border-t-2" if index == 0} border-b-2 border-gray-200 dark:border-indigo-300"
               - if post.photos.count == 0
                 a href="/post/#{post.slug}"
                   h3= post.name
                 == post.excerpt
               - else
-                div class="grid grid-cols-3 gap-2"
+                div class="grid grid-cols-3 gap-2 pb-4"
                   - posts.each do |post|
                     - if post.photos.count > 0
                       - post.photos.each do |photo|
                         a href="/post/#{post.slug}"
                           img class="mb-0 rounded" src="#{photo["value"]}"
-                      a href="/post/#{post.slug}"
-                        = post.name
+                          = post.name
       - else
         p No posts
 
-    aside class="md:col-span-4 md:pt-0 p-2"
       - if bookmarks.count > 0
-        h3 class="mt-0" Bookmarks
+        h3 class="" Bookmarks
 
         div
           ul
@@ -42,7 +40,7 @@ div class="prose dark:prose-invert w-full max-w-6xl mx-auto px-4 m-4"
                   = bookmark.name
 
       - if podcasts.count > 0
-        h3 class="mt-0" Podcasts
+        h3 class="" Podcasts
 
         div
           ul
@@ -54,3 +52,16 @@ div class="prose dark:prose-invert w-full max-w-6xl mx-auto px-4 m-4"
                     small = podcast.podcast_name
       / h3 class="mt-0" Music
       / h3 class="mt-0" Reading
+    aside class="md:col-span-3 p-2 md:block hidden"
+      div class="flex flex-col items-start space-y-1 max-h-fit w-full"
+        - total = posts_by_month.count
+        - posts_by_month.each_with_index do |(post_month, count), index|
+          -if index == 0
+            p class="text-pink-800 dark:text-indigo-300"
+              = post_month
+          a class="group block h-3 w-full relative" href="/timemachine/#{post_month}"
+            div style="width: #{4 * (count * 3)}px" class="float-left rounded-full h-3 #{"bg-pink-800 dark:bg-indigo-800" if current_path == "/timemachine/#{post_month}"} bg-pink-100 group-hover:bg-pink-400 dark:bg-indigo-200 dark:group-hover:bg-indigo-400 inline-block"
+            span style="margin-left: #{5 + (4 * (count * 3))}px" class="hidden group-hover:block text-pink-400 dark:text-indigo-200 text-sm absolute h-3 p-0 block bottom-1" = post_month
+          - if index == total - 1
+            p class="text-pink-800 dark:text-indigo-300"
+              = post_month

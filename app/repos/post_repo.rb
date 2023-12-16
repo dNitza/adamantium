@@ -154,6 +154,14 @@ module Adamantium
           .to_a
       end
 
+      def all_posts
+        posts
+          .where(post_type: ["post", "bookmark"])
+          .published
+          .order(Sequel.desc(:published_at))
+          .to_a
+      end
+
       def for_rss
         posts
           .where(post_type: "post", location: nil)

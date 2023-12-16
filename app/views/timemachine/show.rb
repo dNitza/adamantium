@@ -45,9 +45,26 @@ module Adamantium
               .strftime("%Y/%m/%d")
         end
 
+        expose :current_date do |year:, month:, day:|
+          "#{year}/#{month}/#{day}"
+        end
+
         expose :prev_date do |date|
           TimeMath.day.advance(date.value, -1)
             .strftime("%Y/%m/%d")
+        end
+
+        expose :posts_by_month do
+          post_tally = Hash.new(0)
+          posts = post_repo.all_posts.each_with_object(post_tally) do |post, memo|
+            memo[post.published_at.strftime("%Y/%m/%d")] += 1
+          end
+
+          podcast_scrobble_repo.listing.each do |scrobble|
+            posts[scrobble.listened_at.strftime("%Y/%m/%d")] += 1
+          end
+
+          posts
         end
 
         private_expose :date do |year:, month:, day:|
