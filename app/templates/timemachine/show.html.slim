@@ -1,0 +1,56 @@
+div class="prose dark:prose-invert w-full max-w-6xl mx-auto px-4 m-4"
+  div class="grid md:grid-cols-12 gap-5 p-4 m-2"
+    div class="md:col-span-8 p-4"
+      h2 class="mt-0" = display_date
+
+      a href="/timemachine/#{prev_date}" &larr; #{prev_date}
+
+      a class="inline-block px-2" href="/timemachine/#{today}" Today
+
+      - if next_date
+        a href="/timemachine/#{next_date}" #{next_date} &rarr;
+
+      - if posts.count > 0
+        div class="mt-4"
+          - posts.each_with_index do |post, index|
+            div class="#{"border-t-2" if index == 0} border-b-2 border-gray-200"
+              - if post.photos.count == 0
+                a href="/post/#{post.slug}"
+                  h3= post.name
+                == post.excerpt
+              - else
+                div class="grid grid-cols-3 gap-2"
+                  - posts.each do |post|
+                    - if post.photos.count > 0
+                      - post.photos.each do |photo|
+                        a href="/post/#{post.slug}"
+                          img class="mb-0 rounded" src="#{photo["value"]}"
+                      a href="/post/#{post.slug}"
+                        = post.name
+      - else
+        p No posts
+
+    aside class="md:col-span-4 md:pt-0 p-2"
+      - if bookmarks.count > 0
+        h3 class="mt-0" Bookmarks
+
+        div
+          ul
+            - bookmarks.each do |bookmark|
+              li
+                a href="/bookmark/#{bookmark.slug}"
+                  = bookmark.name
+
+      - if podcasts.count > 0
+        h3 class="mt-0" Podcasts
+
+        div
+          ul
+            - podcasts.each do |podcast|
+              li
+                a href=podcast.url
+                  =podcast.title
+                  div
+                    small = podcast.podcast_name
+      / h3 class="mt-0" Music
+      / h3 class="mt-0" Reading

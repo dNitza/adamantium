@@ -15,6 +15,12 @@ module Adamantium
           .limit(5)
           .to_a
       end
+
+      def for_timemachine(date:)
+        podcast_scrobbles
+          .where(listened_at: TimeMath.day.floor(date)...TimeMath.day.advance(date, +1))
+          .to_a
+      end
     end
   end
 end

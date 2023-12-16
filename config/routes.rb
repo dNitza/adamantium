@@ -50,6 +50,8 @@ module Adamantium
 
     get "/bookshelf", to: "books.index"
 
+    get "/timemachine/:year/:month/:day", to: "timemachine.show"
+
     redirect "deploying-a-hanami-app-to-fly-io", to: "/post/deploying-a-hanami-20-app-to-flyio"
     redirect "deploying-a-hanami-app-to-fly-io/", to: "/post/deploying-a-hanami-20-app-to-flyio"
 

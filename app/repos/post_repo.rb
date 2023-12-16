@@ -140,6 +140,20 @@ module Adamantium
           .to_a
       end
 
+      def posts_for_timemachine(date:)
+        posts
+          .where(post_type: "post")
+          .where(published_at: TimeMath.day.floor(date)...TimeMath.day.advance(date, +1))
+          .to_a
+      end
+
+      def bookmarks_for_timemachine(date:)
+        posts
+          .where(post_type: "bookmark")
+          .where(published_at: TimeMath.day.floor(date)...TimeMath.day.advance(date, +1))
+          .to_a
+      end
+
       def for_rss
         posts
           .where(post_type: "post", location: nil)
