@@ -13,8 +13,6 @@ div class="mb-4"
 
   == bookmark.youtube_embed
 
-  == render "shared/tags", tags: bookmark.tags
-
   p class="text-sm text-blue-400 mb-4"
     a href="/bookmark/#{bookmark.slug}"
       time class="dt-published" datetime=bookmark.machine_published_at

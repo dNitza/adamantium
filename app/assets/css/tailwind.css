@@ -4,8 +4,8 @@
 @tailwind typography;
 
 @font-face {
-    font-family: "Rubik";
-    src: url("../fonts/Rubik-VariableFont_wght.ttf") format("truetype");
+    font-family: "Montagu";
+    src: url("../fonts/MontaguSlab-VariableFont_opsz,wght.ttf") format("truetype");
     font-display: swap;
 }
 
@@ -16,17 +16,17 @@
 }
 
 @font-face {
-    font-family: "Karla";
-    src: url("../fonts/Karla-VariableFont_wght.ttf") format("truetype");
+    font-family: "Figtree";
+    src: url("../fonts/Figtree-VariableFont_wght.ttf") format("truetype");
     font-display: swap;
 }
 
 * {
-    font-family: "Karla", Helvetica, Arial, sans-serif;
+    font-family: "Figtree", Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    font-family: "Montagu", Times New Roman, serif;
 }
 
 .prose h1 a {
@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     border-bottom: none;
 }
 
-.gist span {
+.gist span, pre, pre span {
     font-family: "JetBrainsMono", Monaco, monospace;
 }
 

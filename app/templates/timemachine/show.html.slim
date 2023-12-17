@@ -18,14 +18,16 @@ div class="max-w-screen-md mx-auto px-4 m-4 h-max"
                 a href="/post/#{post.slug}"
                   h3= post.name
                 == post.excerpt
+                - if post.name == ""
+                  p
+                    a href="/post/#{post.slug}" 🔗 permalink
               - else
                 div class="grid grid-cols-3 gap-2 pb-4"
-                  - posts.each do |post|
-                    - if post.photos.count > 0
-                      - post.photos.each do |photo|
-                        a href="/post/#{post.slug}"
-                          img class="mb-0 rounded" src="#{photo["value"]}"
-                          = post.name
+                  - if post.photos.count > 0
+                    - post.photos.each do |photo|
+                      a href="/post/#{post.slug}"
+                        img class="mb-0 rounded" src="#{photo["value"]}"
+                        = post.name
       - else
         p No posts
 
