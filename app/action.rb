@@ -23,7 +23,7 @@ module Adamantium
     handle_exception StandardError => :handle_error
 
     config.default_headers = {
-      "Content-Type" => "text/html"
+      "Content-Type" => "application/octet-stream"
     }
 
     def cache(key:, content:)
