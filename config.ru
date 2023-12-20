@@ -20,9 +20,9 @@ end
 
 require "adamantium/middleware/header_fix"
 use Adamantium::Middleware::HeaderFix do |headers, env|
-  if env["REQUEST_METHOD"] == "HEAD"
+  # if env["REQUEST_METHOD"] == "HEAD"
     headers['Content-Type'] = "text/html"
-  end
+  # end
 end
 
 run Hanami.app
