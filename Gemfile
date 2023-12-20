@@ -31,6 +31,7 @@ gem "matrix"
 
 gem "rack-session"
 gem "rack-rewrite"
+gem "rack-contrib"
 
 gem "ruby-readability", require: "readability"
 gem "down"

@@ -8,7 +8,7 @@ module Adamantium
 
     slice :micropub, at: "/micropub"
 
-    get "/", to: "site.home"
+    root to: "site.home"
     get "/post/top_tracks/:slug", to: "posts.top_tracks"
     get "/post/:slug", to: "posts.show"
     get "/posts", to: "posts.index"

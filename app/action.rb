@@ -22,6 +22,10 @@ module Adamantium
     handle_exception ROM::TupleCountMismatchError => :not_found
     handle_exception StandardError => :handle_error
 
+    config.default_headers = {
+      "Content-Type" => "text/html"
+    }
+
     def cache(key:, content:)
       cacher.call(key: key, content: content, expiry: TimeMath.min.advance(Time.now, +10))
     end

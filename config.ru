@@ -15,7 +15,14 @@ use Rack::Session::Cookie,
 require "rack/rewrite"
 use Rack::Rewrite do
   # remove trailing slashes
-  # r302 %r{(/.*)/(\?.*)?$}, "$1$2"
+  r302 %r{(/.*)/(\?.*)?$}, "$1$2"
+end
+
+require "adamantium/middleware/header_fix"
+use Adamantium::Middleware::HeaderFix do |headers, env|
+  if env["REQUEST_METHOD"] == "HEAD"
+    headers['Content-Type'] = "text/html"
+  end
 end
 
 run Hanami.app

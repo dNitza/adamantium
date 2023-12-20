@@ -331,6 +331,8 @@ GEM
     que (2.3.0)
     racc (1.7.3)
     rack (2.2.8)
+    rack-contrib (2.4.0)
+      rack (< 4)
     rack-rewrite (1.5.1)
     rack-session (1.0.1)
       rack (< 3)
@@ -524,6 +526,7 @@ DEPENDENCIES
   pg
   puma
   que
+  rack-contrib
   rack-rewrite
   rack-session
   rack-test
