@@ -15,7 +15,7 @@ html
 
     link rel="webmention" href=Hanami.app.settings.webmention_url
     link rel="pingback" href=Hanami.app.settings.pingback_url
-    link rel="feed" type="text/html" href="/posts"
+    link rel="feed" type="text/html" href="/#{Hanami.app.settings.micropub_site_url}/statuses"
     link rel="feed alternate" type="application/rss+xml" href="/feeds/rss"
     link rel="feed alternate" type="application/rss+xml" href="/feeds/statuses_rss"
     link rel="alternate" type="text/mf2+html" href="#{Hanami.app.settings.micropub_site_url}/statuses"
