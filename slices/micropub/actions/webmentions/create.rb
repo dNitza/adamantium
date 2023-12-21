@@ -24,9 +24,9 @@ module Micropub
             }.to_json
             res.status = 202
           in Failure(:invalid_request)
-            res.status = 429
+            res.status = 422
           in Failure(:not_implemented)
-            res.status = 429
+            res.status = 422
           end
         end
       end
