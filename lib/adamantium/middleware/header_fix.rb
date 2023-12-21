@@ -4,7 +4,7 @@ require "rack/contrib"
 module Adamantium
   module Middleware
     class HeaderFix
-      HEADERS_KLASS = Rack.release < "3" ? Rack::Utils::HeaderHash : Rack::Headers
+      HEADERS_KLASS = (Rack.release < "3") ? Rack::Utils::HeaderHash : Rack::Headers
       private_constant :HEADERS_KLASS
 
       def initialize(app, &block)

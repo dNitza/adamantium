@@ -20,7 +20,7 @@ module Micropub
 
             webmentions_repo.create(reply)
             res.body = {
-              "result": "Webmention was successful"
+              result: "Webmention was successful"
             }.to_json
             res.status = 202
           in Failure(:invalid_request)

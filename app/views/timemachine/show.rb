@@ -5,21 +5,21 @@ module Adamantium
     module Timemachine
       class Show < Adamantium::View
         include Deps[
-                  "repos.post_repo",
-                  "repos.movie_repo",
-                  "repos.podcast_scrobble_repo",
-                  "repos.trip_repo"
+          "repos.post_repo",
+          "repos.movie_repo",
+          "repos.podcast_scrobble_repo",
+          "repos.trip_repo"
                 ]
 
         expose :posts do |date|
           post_repo.posts_for_timemachine(date: date.value).map do |post|
-              Decorators::Posts::Decorator.new(post)
+            Decorators::Posts::Decorator.new(post)
           end
         end
 
         expose :bookmarks do |date|
           post_repo.bookmarks_for_timemachine(date: date.value).map do |post|
-              Decorators::Bookmarks::Decorator.new(post)
+            Decorators::Bookmarks::Decorator.new(post)
           end
         end
 
@@ -36,13 +36,13 @@ module Adamantium
 
           unless today_to_tomorrow[:hours] < 0
             TimeMath.day.advance(date.value, +1)
-                    .strftime("%Y/%m/%d")
+              .strftime("%Y/%m/%d")
           end
         end
 
         expose :today do
           Time.now
-              .strftime("%Y/%m/%d")
+            .strftime("%Y/%m/%d")
         end
 
         expose :current_date do |year:, month:, day:|

@@ -21,7 +21,7 @@ end
 require "adamantium/middleware/header_fix"
 use Adamantium::Middleware::HeaderFix do |headers, env|
   # if env["REQUEST_METHOD"] == "HEAD"
-    headers['Content-Type'] = "text/html; charset=utf-8"
+  headers["Content-Type"] = "text/html; charset=utf-8"
   # end
 end
 
