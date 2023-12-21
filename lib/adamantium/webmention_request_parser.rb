@@ -21,6 +21,17 @@ module Adamantium
           target_url: wm_params[:"in-reply-to"]
         }]
       when "like-of"
+        Success[:like, {
+          type: "like",
+          author_name: wm_params[:author][:name],
+          author_photo: wm_params[:author][:photo],
+          author_url: wm_params[:author][:url],
+          published_at: wm_params[:published],
+          content_html: wm_params[:content][:html],
+          content_text: wm_params[:content][:text],
+          source_url: wm_params[:url],
+          target_url: wm_params[:"in-reply-to"]
+        }]
         Failure(:not_implemented)
       when "repost-of"
         Failure(:not_implemented)
