@@ -5,18 +5,20 @@ module Adamantium
     include Dry::Monads[:result]
 
     def call(params:)
-      case params[:"wm-property"]
+      wm_params = params.fetch(:post, params)
+
+      case wm_params[:"wm-property"]
       when "in-reply-to"
         Success[:reply, {
           type: "reply",
-          author_name: params[:author][:name],
-          author_photo: params[:author][:photo],
-          author_url: params[:author][:url],
-          published_at: params[:published],
-          content_html: params[:content][:html],
-          content_text: params[:content][:text],
-          source_url: params[:url],
-          target_url: params[:"in-reply-to"]
+          author_name: wm_params[:author][:name],
+          author_photo: wm_params[:author][:photo],
+          author_url: wm_params[:author][:url],
+          published_at: wm_params[:published],
+          content_html: wm_params[:content][:html],
+          content_text: wm_params[:content][:text],
+          source_url: wm_params[:url],
+          target_url: wm_params[:"in-reply-to"]
         }]
       when "like-of"
         Failure(:not_implemented)
