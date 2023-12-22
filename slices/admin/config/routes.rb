@@ -64,5 +64,8 @@ module Admin
     post "/trips/:id", to: Auth.call(action: "trips.update")
 
     get "/apple_music", to: Auth.call(action: "apple_music.index")
+
+    get "/books", to: Auth.call(action: "books.index")
+    patch "/books/:id", to: Auth.call(action: "books.update")
   end
 end

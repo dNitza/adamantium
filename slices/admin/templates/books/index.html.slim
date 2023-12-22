@@ -1,0 +1,14 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Books
+
+div class="max-w-prose prose dark:prose-invert mx-auto"
+
+  - books.each do |book|
+    div class="w-full"
+      span class="px-2"
+        select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" name="book_status" hx-params="book_status" hx-patch="/admin/books/#{book.id}" hx-trigger="change"
+          option value="read" selected=(book.book_status == "read") Read
+          option value="to-read" selected=(book.book_status == "to-read") To Read
+          option value="reading" selected=(book.book_status == "reading") Reading
+      span
+        = book.name
