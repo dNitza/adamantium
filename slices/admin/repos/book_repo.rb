@@ -1,7 +1,7 @@
 module Admin
   module Repos
     class BookRepo < Adamantium::Repo[:posts]
-      commands update: :by_pk
+      commands :create, update: :by_pk
 
       def list_all
         posts

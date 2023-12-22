@@ -2,6 +2,27 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   h1 Admin // Books
 
 div class="max-w-prose prose dark:prose-invert mx-auto"
+  form action="/admin/books" method="POST"
+    div class="p-2"
+      label class="mr-4" for="name" Name
+      input type="text" name="name" id="name" class="text-gray-900 p-2"
+    div class="p-2"
+      label class="mr-4" for="book_author" Author
+      input type="text" name="book_author" id="book_author" class="text-gray-900 p-2"
+    div class="p-2"
+      label class="mr-4" for="slug" Slug
+      input type="text" name="slug" id="slug" class="text-gray-900 p-2"
+    div class="p-2"
+      label for="book_status"
+        select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" name="book_status"
+          option value="read" Read
+          option value="to-read" To Read
+          option value="reading" Reading
+    div class="p-2"
+      button 
+        = "Create book"
+
+
 
   - books.each do |book|
     div class="w-full"

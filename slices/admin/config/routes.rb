@@ -67,5 +67,6 @@ module Admin
 
     get "/books", to: Auth.call(action: "books.index")
     patch "/books/:id", to: Auth.call(action: "books.update")
+    post "/books", to: Auth.call(action: "books.create")
   end
 end
