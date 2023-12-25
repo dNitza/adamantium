@@ -5,7 +5,7 @@ module Adamantium
     include Dry::Monads[:result]
 
     def call(params:)
-      wm_params = params.fetch(:post, params)
+      wm_params = params.to_h.fetch(:post, params)
 
       case wm_params[:"wm-property"]
       when "in-reply-to"
