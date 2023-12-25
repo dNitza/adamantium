@@ -1,6 +1,6 @@
 div class="max-w-screen-md mx-auto px-4 m-4 h-max"
-  div class="grid md:grid-cols-16 gap-5 p-4 m-2"
-    div class="prose dark:prose-invert md:col-span-13 p-4"
+  div class="p-4 m-2"
+    div class="prose dark:prose-invert md:col-span-16 p-4"
       h2 class="mt-0" = display_date
 
       a href="/timemachine/#{prev_date}" &larr; #{prev_date}
@@ -54,16 +54,27 @@ div class="max-w-screen-md mx-auto px-4 m-4 h-max"
                     small = podcast.podcast_name
       / h3 class="mt-0" Music
       / h3 class="mt-0" Reading
-    aside class="md:col-span-3 p-2 md:block hidden"
-      div class="flex flex-col items-start space-y-1 max-h-fit w-full"
-        - total = posts_by_month.count
-        - posts_by_month.each_with_index do |(post_month, count), index|
-          -if index == 0
-            p class="text-pink-800 dark:text-indigo-300"
-              = post_month
-          a class="group block h-3 w-full relative" href="/timemachine/#{post_month}"
-            div style="width: #{4 * (count * 3)}px" class="float-left rounded-full h-3 #{"bg-pink-800 dark:bg-indigo-800" if current_path == "/timemachine/#{post_month}"} bg-pink-100 group-hover:bg-pink-400 dark:bg-indigo-200 dark:group-hover:bg-indigo-400 inline-block"
-            span style="margin-left: #{5 + (4 * (count * 3))}px" class="hidden group-hover:block text-pink-400 dark:text-indigo-200 text-sm absolute h-3 p-0 block bottom-1" = post_month
-          - if index == total - 1
-            p class="text-pink-800 dark:text-indigo-300"
-              = post_month
+
+    div class="w-full p-2 md:block hidden prose dark:prose-invert"
+      div class=""
+        - posts_by_month.each do |year, months|
+          div class="text-center"
+            h3 class="my-4" = year
+            div class="text-sm flex justify-between"
+              div Jan
+              div Feb
+              div Mar
+              div Apr
+              div May
+              div Jun
+              div Jul
+              div Aug
+              div Sep
+              div Oct
+              div Nov
+              div Dec
+            div class="grid grid-rows-7 grid-flow-col col-start-2 gap-0.5" 
+              - months.each do |month, days|
+                - days.each do |day, post_count|
+                  a class="group block h-2.5 w-2.5 #{post_count == 0 ? "bg-gray-50 dark:bg-indigo-800" : "bg-pink-600 dark:bg-amber-400 hover:bg-pink-800 hover:dark:bg-amber-200"}" style="opacity: #{post_count == 0 ? 1.0 : post_count.to_f / days.values.max}" href="/timemachine/#{year}/#{month}/#{day}"
+
