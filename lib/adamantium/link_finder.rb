@@ -8,6 +8,7 @@ module Adamantium
       overcast.fm
       youtube.com
       bsky.app
+      bsky.social
       github.com]
 
     def call(content)

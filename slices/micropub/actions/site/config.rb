@@ -27,7 +27,7 @@ module Micropub
                   name: "Mastodon"
                 },
                 {
-                  uid: "https://bsky.app",
+                  uid: "https://bsky.social",
                   name: "Blue Sky"
                 }
               ]
@@ -42,7 +42,7 @@ module Micropub
                   name: "Mastodon"
                 },
                 {
-                  uid: "https://bsky.app",
+                  uid: "https://bsky.social",
                   name: "Blue Sky"
                 }
               ]
