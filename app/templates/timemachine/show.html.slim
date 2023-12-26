@@ -73,7 +73,7 @@ div class="max-w-screen-md mx-auto px-4 m-4 h-max"
               div Oct
               div Nov
               div Dec
-            div class="grid grid-rows-7 grid-flow-col col-start-2 gap-0.5" 
+            div class="grid grid-rows-7 grid-flow-col gap-0.5 col-start-2" 
               - months.each do |month, days|
                 - days.each do |day, post_count|
                   a class="group block h-2.5 w-2.5 #{post_count == 0 ? "bg-gray-50 dark:bg-indigo-800" : "bg-pink-600 dark:bg-amber-400 hover:bg-pink-800 hover:dark:bg-amber-200"}" style="opacity: #{post_count == 0 ? 1.0 : post_count.to_f / days.values.max}" href="/timemachine/#{year}/#{month}/#{day}"

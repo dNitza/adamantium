@@ -10,8 +10,8 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
         - listens.each do |listen|
           div
             a class="text-pink-800 dark:text-pink-100 no-underline hover:decoration-wavy hover:underline" href=listen.url
-              strong = listen.title
-              span= " — #{listen.podcast_name}"
+              span = listen.title
+              em= " — #{listen.podcast_name}"
 
     table class="prose dark:prose-invert table-auto"
       thead
