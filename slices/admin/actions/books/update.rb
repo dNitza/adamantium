@@ -4,7 +4,6 @@ module Admin
   module Actions
     module Books
       class Update < Admin::Action
-
         include Deps["repos.book_repo"]
 
         def handle(req, resp)

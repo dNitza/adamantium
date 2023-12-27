@@ -4,7 +4,6 @@ module Admin
   module Actions
     module Books
       class Create < Admin::Action
-
         include Deps["repos.book_repo"]
 
         def handle(req, resp)

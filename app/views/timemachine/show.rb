@@ -57,9 +57,9 @@ module Adamantium
         expose :posts_by_month do
           post_tally = {}
           posts = post_repo.all_posts
-         
+
           (DateTime.parse("01-01-#{posts.last.published_at.year}")...DateTime.parse("31-12-#{posts.first.published_at.year}")).each do |date|
-            post_tally[date.year] ||= {} 
+            post_tally[date.year] ||= {}
             post_tally[date.year][date.strftime("%m")] ||= {}
             post_tally[date.year][date.strftime("%m")][date.strftime("%d")] = 0
           end
@@ -69,13 +69,12 @@ module Adamantium
             date = post.published_at
             memo[year][date.strftime("%m")][date.strftime("%d")] += 1
           end
-          
 
           podcast_scrobble_repo.listing.each do |scrobble|
             post_stats[scrobble.listened_at.year][scrobble.listened_at.strftime("%m")][scrobble.listened_at.strftime("%d")] += 1
           end
 
-          post_stats.sort_by{|k, _| -k}
+          post_stats.sort_by { |k, _| -k }
         end
 
         private_expose :date do |year:, month:, day:|

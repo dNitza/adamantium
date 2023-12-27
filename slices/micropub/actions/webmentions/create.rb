@@ -29,7 +29,7 @@ module Micropub
 
             reply[:post_id] = post.id
 
-            webmentions_repo.create(reply)
+            webmentions_repo.create(like)
             res.body = {
               result: "Webmention was successful"
             }.to_json
