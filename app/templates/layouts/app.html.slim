@@ -1,3 +1,4 @@
+doctype html
 html
   head
     meta charest="utf-8"
@@ -27,34 +28,32 @@ html
     = stylesheet_tag "app"
     link rel="icon" type="image/x-icon" href="/assets/favicon.ico"
 
-    script data-domain="dnitza.com" src="https://stats.dnitza.com/js/script.js" defer="true"
+    script data-domain="dnitza.com" src="https://stats.dnitza.com/js/script.js" defer=""
     = javascript_tag "app"
 
     script src="https://unpkg.com/htmx.org@1.9.2/dist/htmx.min.js" integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h" crossorigin="anonymous"
-    script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer="true"
+    script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer=""
 
     link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/github-dark.min.css"
-    script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js" defer="true"
+    script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js" defer=""
 
     - if Hanami.app.settings.micropub_pub_key
       link rel="pgpkey" href="/key"
   body class="bg-white dark:bg-indigo-950 selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-amber-600 dark:selection:text-amber-400" x-data="{ imgModal : false, imgModalSrc : '', imgModalDesc : '' }" x-on:keydown.escape="imgModal=false"
     main class="pb-8 px-4 pt-4 md:pt-8"
-      header class="mb-12 max-w-screen-md mx-auto"
-        div class="flex items-center mb-8 md:mb-12 text-lg md:text-xl text-gray-400 dark:text-gray-600"
+      header class="mb-12 max-w-screen-md mx-auto items-center md:items-justify"
+        div class="flex mb-8 md:mb-12 text-lg md:text-xl text-gray-400 dark:text-gray-600 grid grid-cols-1 md:grid-cols-2"
           div class="flex-none mx-auto md:flex-auto md:mx-0"
             div class="h-card flex items-center"
-              img class="u-photo w-6 h6 md:w-10 md:h-10 mr-1" src="/assets/memoji.png"
+              img class="u-photo w-6 h6 md:w-10 md:h-10 mr-1" alt="Memoji profile picture" src="/assets/memoji.png"
               a href="/" rel="me" class="u-url u-uid"
                 h1 class="p-name text-sm md:text-sm text-gray-600 dark:text-gray-400" = Hanami.app.settings.site_name
-          nav class="space-x-1 text-sm md:text-sm uppercase md:block"
-            a class="transition-colors p-1 rounded hover:bg-pink-100 hover:text-pink-400 dark:hover:bg-pink-800 #{context.current_path.start_with?('/now') ? 'text-pink-600 bg-pink-50 dark:bg-pink-900 dark:text-pink-400' : 'text-gray-400'}" href="/now" Now
-            span class="text-gray-400 dark:text-gray-600"
-              = "/"
+          nav class="space-x-1 text-sm md:text-sm mx-auto md:flex-auto uppercase md:block mt-4 md:mt-3"
+            - pages.each do |page|
+              a class="transition-colors p-1 rounded text-gray-400 hover:bg-#{page.light_colour}-100 hover:text-#{page.light_colour}-400 dark:hover:bg-#{page.dark_colour}-800 #{context.current_path.start_with?("/#{page.slug}") ? "text-#{page.light_colour}-400 bg-#{page.light_colour}-50 dark:bg-#{page.dark_colour}-900 dark:text-#{page.dark_colour}-400" : 'text-gray-400'}" href="/#{page.slug}" #{page.name}
+              span class="text-gray-400 dark:text-gray-600"
+                = "/"
             a class="transition-colors p-1 rounded hover:bg-emerald-100 hover:text-emerald-400 dark:hover:bg-emerald-800 #{context.current_path.start_with?('/post') ? 'text-emerald-400 bg-emerald-50 dark:bg-emerald-900 dark:text-emerald-400' : 'text-gray-400'}" href="/posts" Writing
-            span class="text-gray-400 dark:text-gray-600"
-              = "/"
-            a class="transition-colors p-1 rounded text-gray-400 hover:bg-yellow-100 hover:text-yellow-400 dark:hover:bg-yellow-800 #{context.current_path.start_with?('/uses') ? 'text-yellow-400 bg-yellow-50 dark:bg-yellow-900 dark:text-yellow-400' : 'text-gray-400'}" href="#{Hanami.app.settings.micropub_site_url}/uses" Uses
             span class="text-gray-400 dark:text-gray-600"
               = "/"
             a class="transition-colors p-1 rounded text-gray-400 hover:bg-orange-100 hover:text-orange-400 dark:hover:bg-orange-800" href="#{Hanami.app.settings.micropub_site_url}/feeds/rss" RSS

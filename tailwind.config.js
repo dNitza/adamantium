@@ -4,6 +4,16 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: ["./app/templates/**/*.slim", "./slices/admin/templates/**/*.slim", "./public/assets/index.js", "app/decorators/*/decorator.rb"],
+  safelist: [
+    {
+      pattern: /bg-(yellow|orange|green|blue|pink|purple|indigo|emerald)-(50|100|800|900)/,
+      variants: ['hover', 'dark']
+    },
+    {
+      pattern: /text-(yellow|orange|green|blue|pink|purple|indigo|emerald)-(400)/,
+      variants: ['hover', 'dark']
+    },
+  ],
   theme: {
     fontSize: {
       xsm: '0.75rem',

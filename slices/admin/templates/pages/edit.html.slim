@@ -8,6 +8,16 @@ article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 d
       label for="slug" slug
       input type="text" id="slug" name="page[slug]" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" value=page.slug
     div class="mb-4"
+      label for="main-menu" class="mr-2" Display on main menu?
+      input type="hidden" name="page[main_menu]" value="false"
+      input type="checkbox" id="main-menu" name="page[main_menu]" value="true" checked=page.main_menu
+    div class="mb-4"
+      label for="light_colour" Light colour
+      input type="text" id="light_colour" name="page[light_colour]" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" value=page.light_colour
+    div class="mb-4"
+      label for="dark_colour" Dark colour
+      input type="text" id="dark_colour" name="page[dark_colour]" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" value=page.dark_colour
+    div class="mb-4"
       label for="body" Body
       textarea name="page[content]" id="body" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"
         == markdown_content
