@@ -9,7 +9,7 @@ raise StandardError.new("No secret key") unless ENV["SESSION_SECRET"]
 use Rack::Session::Cookie,
   domain: URI.parse(ENV["MICROPUB_SITE_URL"]).host,
   path: "/",
-  expire_after: 3600 * 24,
+  expire_after: 3600 * 72,
   secret: ENV["SESSION_SECRET"]
 
 require "rack/rewrite"
