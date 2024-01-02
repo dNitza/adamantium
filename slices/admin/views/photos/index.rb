@@ -7,15 +7,17 @@ module Admin
 
         expose :photos_buckets do |available_paths|
           available_paths.each_with_object({}) do |root, memo|
-            memo[root.gsub(MEDIA_DIR, "")] = Dir["#{root}/**"].sort { |a, b| File.ctime(b) <=> File.ctime(a) }
+            memo[root[0].gsub(MEDIA_DIR, "")] = Dir["#{root[0]}/**"].sort { |a, b| File.ctime(b) <=> File.ctime(a) }
           end
         end
 
         private_expose :available_paths do
           Dir["#{MEDIA_DIR}*"]
+            .map { |path| [path, path.split("-").reverse.join(" — ")] }
+            .sort { |a,b| a[1] <=> b[1] }
             .reverse
             .reject do |path|
-            IGNORE_PATHS.any? { |ip| path.match(ip) }
+            IGNORE_PATHS.any? { |ip| path[0].match(ip) }
           end
         end
       end
