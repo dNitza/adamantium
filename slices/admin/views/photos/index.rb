@@ -14,7 +14,7 @@ module Admin
         private_expose :available_paths do
           Dir["#{MEDIA_DIR}*"]
             .map { |path| [path, path.split("-").reverse.join(" — ")] }
-            .sort { |a,b| a[1] <=> b[1] }
+            .sort_by { |a| a[1] }
             .reverse
             .reject do |path|
             IGNORE_PATHS.any? { |ip| path[0].match(ip) }
