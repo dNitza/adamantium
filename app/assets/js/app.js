@@ -4,6 +4,10 @@ import { md_gallery } from "./gallery.js";
 
 (function() {
     document.addEventListener("DOMContentLoaded", function () {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+          localStorage.setItem("_x_darkMode", event.matches ? true : false)
+        });
+
         if (window.hljs !== undefined) {
             window.hljs.highlightAll();
         }
