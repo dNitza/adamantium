@@ -9,6 +9,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
         tr
           td Title
           td Year
+          td Rating
       - movies.each do |movie|
         tr
           td
@@ -16,5 +17,10 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
               = movie.title
           td
             = movie.year
+          td class="min-w-32"
+            - if movie.rating > 0
+              == "#{'🌕' * movie.rating.floor}#{'🌗' * (movie.rating % movie.rating.floor).ceil}"
+            - else
+             == "&nbsp;"
 
 div class="max-w-screen-md mx-auto border-t border-solid border-gray-200 dark:border-gray-600"

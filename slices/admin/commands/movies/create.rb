@@ -9,7 +9,11 @@ module Admin
         def call(movie)
           repo = Container["repos.movie_repo"]
 
-          return if repo.by_title_and_year(title: movie[:title], year: movie[:year])
+          db_movie = repo.by_title_and_year(title: movie[:title], year: movie[:year])
+          if db_movie
+            repo.update(db_movie.id, rating: movie[:rating])
+            return
+          end
 
           page = Down.download(movie[:url])
           match = page.read.match(/href=".+title\/(tt\d+)\/maindetails"/)

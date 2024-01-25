@@ -25,8 +25,23 @@ namespace :blog do
         title: title,
         year: activity.year,
         url: activity.film_link,
-        watched_at: activity.watched_at
+        watched_at: activity.watched_at,
+        rating: (activity.score / 2.0)
       })
+    end
+  end
+
+  task load_twitter_archive: ["blog:load_environment"] do
+    require "hanami/prepare"
+
+    repo = Micropub::Container["repos.post_repo"]
+    file = "tmp/tweets.json"
+    tweets = JSON.parse(File.read(file))
+    tweets.each do |tweet|
+      next if tweet["tweet"]["full_text"].start_with? "@"
+      tweet["tweet"]["full_text"] = tweet["tweet"]["full_text"].gsub(/(#{URI::DEFAULT_PARSER.make_regexp})/, "<a href='#{$1}'>#{$1}</a>")
+
+      repo.create({slug: tweet["tweet"]["id"], content: tweet["tweet"]["full_text"], published_at: tweet["tweet"]["created_at"], category: [], post_type: "post", syndication_sources: {twitter: "https://twitter.com/nitza/status/#{tweet["tweet"]["id"]}"}})
     end
   end
 
