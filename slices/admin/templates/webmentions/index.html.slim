@@ -4,6 +4,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   table
     tr
       td ID
+      td Type
       td Author
       td Content
       td
@@ -14,6 +15,8 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
       tr
         td
           = webmention.id
+        td
+          = webmention.type
         td
           = webmention.author_name
         td
