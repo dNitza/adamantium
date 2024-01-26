@@ -96,7 +96,7 @@ module Adamantium
           .published
           .combine(:tags, :webmentions)
           .node(:webmentions) { |webmention|
-            webmention.where(type: "reply")
+            webmention.published.where(type: "reply")
           }
           .order(Sequel.desc(:published_at))
           .limit(limit)
@@ -186,7 +186,7 @@ module Adamantium
           .published
           .combine(:tags, :trips, :webmentions)
           .node(:webmentions) { |webmention|
-            webmention.where(type: "reply")
+            webmention.published.where(type: "reply")
           }
           .where(slug: slug)
           .one!

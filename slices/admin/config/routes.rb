@@ -68,5 +68,8 @@ module Admin
     get "/books", to: Auth.call(action: "books.index")
     patch "/books/:id", to: Auth.call(action: "books.update")
     post "/books", to: Auth.call(action: "books.create")
+
+    get "/webmentions", to: Auth.call(action: "webmentions.index")
+    patch "/webmentions/:id/:update_type", to: Auth.call(action: "webmentions.update")
   end
 end

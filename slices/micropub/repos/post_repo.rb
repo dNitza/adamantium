@@ -64,7 +64,7 @@ module Micropub
           .published
           .combine(:tags, :trips, :webmentions)
           .node(:webmentions) { |webmention|
-            webmention.where(type: "reply")
+            webmention.published.where(type: "reply")
           }
           .where(slug: slug)
           .one!

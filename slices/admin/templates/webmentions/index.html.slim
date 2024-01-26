@@ -1,0 +1,36 @@
+div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  h1 Admin // Webmentions
+
+  table
+    tr
+      td ID
+      td Author
+      td Content
+      td
+      td
+      td
+
+    - webmentions.each do |webmention|
+      tr
+        td
+          = webmention.id
+        td
+          = webmention.author_name
+        td
+          div class="w-full"
+          / span class="px-2"
+          /   select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" name="book_status" hx-params="book_status" hx-patch="/admin/books/#{book.id}" hx-trigger="change"
+          /     option value="read" selected=(book.book_status == "read") Read
+          /     option value="to-read" selected=(book.book_status == "to-read") To Read
+          /     option value="reading" selected=(book.book_status == "reading") Reading
+          span
+            == webmention.content_html
+        td
+          a href="#{webmention.source_url}" Source
+        td
+          a href="#{webmention.target_url}" Target
+        td
+          - if webmention.published_at
+            button hx-swap="afterend" hx-patch="/admin/webmentions/#{webmention.id}/archive" hx-trigger="click" Archive
+          - else
+            button hx-swap="afterend" hx-patch="/admin/webmentions/#{webmention.id}/publish" hx-trigger="click" Publish

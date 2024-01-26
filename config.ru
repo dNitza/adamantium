@@ -20,7 +20,7 @@ end
 
 require "adamantium/middleware/header_fix"
 use Adamantium::Middleware::HeaderFix do |headers, env|
-  unless headers["Content-Type"].include? "xml"
+  unless headers["Content-Type"]&.include? "xml"
     headers["Content-Type"] = "text/html; charset=utf-8"
   end
 end
