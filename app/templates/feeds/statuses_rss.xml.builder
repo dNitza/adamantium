@@ -9,6 +9,18 @@ xml.channel do |channel|
   channel.pubDate Time.now.rfc2822
   channel.ttl 1800
 
+  channel.alternate_feed do |item|
+    item.link "/feeds/rss"
+    item.title "Main feed"
+    item.description "The main feed, with all the posts"
+  end
+
+  channel.alternate_feed do |item|
+    item.link "/feeds/statuses_rss"
+    item.title "Statuses / Microblog (this feed)"
+    item.description "Ony shorter posts, usually also appearing on Mastodon"
+  end
+
   posts.each do |post|
     channel.item do |item|
       item.title post.raw_content

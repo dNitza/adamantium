@@ -30,6 +30,20 @@
               Visit Website &#x2192;
             </a>
           </header>
+
+          <h2>Alternate feeds</h2>
+          <xsl:for-each select="/channel/alternate_feed">
+            <div class="pb-5">
+              <a target="_blank">
+                <xsl:attribute name="href">
+                  <xsl:value-of select="link"/>
+                </xsl:attribute>
+                <xsl:value-of select="title"/>
+              </a>
+              <p><xsl:value-of select="description"/></p>
+            </div>
+          </xsl:for-each>
+
           <h2>Recent Items</h2>
           <xsl:for-each select="/channel/item">
             <div class="pb-5">
