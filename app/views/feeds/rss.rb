@@ -8,7 +8,9 @@ module Adamantium
 
         expose :posts do
           post_repo.for_rss.map do |post|
-            Decorators::Posts::Decorator.new post
+            post.post_type == "bookmark" ?
+              Decorators::Bookmarks::Decorator.new(post) :
+              Decorators::Posts::Decorator.new(post)
           end
         end
 

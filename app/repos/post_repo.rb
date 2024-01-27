@@ -164,7 +164,7 @@ module Adamantium
 
       def for_rss
         posts
-          .where(post_type: "post", location: nil)
+          .where(post_type: ["post", "bookmark"], location: nil)
           .exclude(name: nil)
           .published
           .combine(:tags)

@@ -10,6 +10,18 @@ module Adamantium
           published_at.strftime("%e %B, %Y")
         end
 
+        def display_title
+          "🔖: #{name}"
+        end
+
+        def feed_content
+          content || ""
+        end
+
+        def permalink
+          "#{Hanami.app.settings.micropub_site_url}/bookmark/#{slug}"
+        end
+
         def machine_published_at
           published_at.rfc2822
         end

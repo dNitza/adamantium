@@ -12,13 +12,13 @@ xml.channel do |channel|
   channel.alternate_feed do |item|
     item.link "/feeds/rss"
     item.title "Main feed"
-    item.description "The main feed, with all the posts"
+    item.description "Containing longer text posts and bookmarks"
   end
 
   channel.alternate_feed do |item|
     item.link "/feeds/statuses_rss"
     item.title "Statuses / Microblog (this feed)"
-    item.description "Ony shorter posts, usually also appearing on Mastodon"
+    item.description "Only shorter posts and photo posts, usually also appearing on Mastodon"
   end
 
   posts.each do |post|
