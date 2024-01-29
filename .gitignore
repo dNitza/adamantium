@@ -28,3 +28,4 @@ public/assets/*.json
 public/*.json
 public/assets/*.js.map
 *.p8
+script/pull_db.rb
