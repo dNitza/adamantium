@@ -19,21 +19,21 @@ div class="mb-8 max-w-screen-md mx-auto border-t border-solid border-gray-200 da
         p See all
 
 div class="flex justify-between max-w-prose mx-auto mb-2"
-  h2 class="text-l text-gray-600 dark:text-gray-200" Weekly posts
+  h2 class="text-xl text-amber-600 dark:text-amber-200" Weekly posts
   a class="rounded px-2 text-amber-600 hover:dark:bg-amber-900 hover:dark:text-amber-100 dark:text-amber-200 hover:text-amber-600 hover:bg-amber-100" href="/tagged/weekly" See all &rarr;
 
 div class="mb-12 max-w-prose mx-auto bg-amber-100 rounded dark:bg-amber-900 dark:text-gray-100"
   ul class="columns-1"
     - week_posts.each do |post|
       li class=""
-        a class="block content-justify hover:bg-amber-200 decoration-wavy rounded py-1 px-2" href="/post/#{post.slug}"
+        a class="block content-justify hover:bg-amber-200 decoration-wavy rounded py-1.5 px-2" href="/post/#{post.slug}"
           div class="flex justify-between"
             span class="grow-0 inline-block pr-2" = post.name
             span class="border-b border-amber-400 dark:border-amber-600 -top-3 relative border-dashed grow inline-block"
             span class="grow-0 inline-block pl-2" = post.display_published_at
 
 div class="flex justify-between max-w-prose mx-auto mb-2"
-  h2 class="text-xl text-gray-600 dark:text-gray-200" 📯 Posts
+  h2 class="text-xl text-blue-600 dark:text-blue-200" 📯 Posts
   a class="rounded px-2 h-6 text-blue-600 hover:dark:bg-blue-900 hover:dark:text-blue-100 dark:text-blue-200 hover:text-blue-600 hover:bg-blue-100" href="/posts" See all &rarr;
 
 div class="h-feed mb-12 max-w-prose mx-auto"
@@ -41,7 +41,7 @@ div class="h-feed mb-12 max-w-prose mx-auto"
     == render "shared/post", post: post
 
 div class="flex justify-between max-w-prose mx-auto mb-2"
-  h2 class="text-xl text-gray-600 dark:text-gray-200" 📸 Photos
+  h2 class="text-xl text-blue-600 dark:text-blue-200" 📸 Photos
   a class="rounded px-2 h-6 text-blue-600 hover:dark:bg-blue-900 hover:dark:text-blue-100 dark:text-blue-200 hover:text-blue-600 hover:bg-blue-100" href="/photos" See all &rarr;
 
 div class="grid grid-cols-3 gap-4 max-w-prose mx-auto"
