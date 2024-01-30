@@ -78,6 +78,27 @@ module Adamantium
         JSON.parse(response.body, symbolize_names: true).fetch(:id, nil)
       end
 
+      def remove_post(post_id:)
+        unless settings.mastodon_token && settings.mastodon_server
+          return Failure(:no_mastodon_credentials)
+        end
+
+        mastodon_token = settings.mastodon_token
+        mastodon_server = settings.mastodon_server.split("@").first
+        response = HTTParty.delete("#{mastodon_server}api/v1/statuses/#{post_id}", {
+          headers: {
+            "Idempotency-Key": key,
+            Authorization: "Bearer #{mastodon_token}"
+          }
+        })
+
+        if response.code >= 200 && response.code < 300
+          Success(post_id)
+        else
+          Failure(response.message)
+        end
+      end
+
       private
 
       def sanitze_post(content)

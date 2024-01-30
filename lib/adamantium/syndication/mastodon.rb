@@ -20,6 +20,16 @@ module Adamantium
           Failure(:failed_to_syndicate)
         end
       end
+
+      def de_syndicate(post_id:)
+        response = mastodon_client.remove_post(post_id: post_id)
+
+        if response.success?
+          Success(response.value!)
+        else
+          Failure(:failed_to_de_syndicate)
+        end
+      end
     end
   end
 end

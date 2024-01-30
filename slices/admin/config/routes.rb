@@ -49,6 +49,7 @@ module Admin
     post "/posts/:id/publish", to: Auth.call(action: "posts.publish")
     get "/posts/:id", to: Auth.call(action: "posts.show")
     post "/posts/:id/syndicate/add_source", to: Auth.call(action: "posts.add_syndication_source")
+    post "/posts/:id/de_syndicate/:target", to: Auth.call(action: "posts.de_syndicate")
     post "/posts/:id/syndicate/:target", to: Auth.call(action: "posts.syndicate")
     post "/post/:id/update", to: Auth.call(action: "posts.update")
 

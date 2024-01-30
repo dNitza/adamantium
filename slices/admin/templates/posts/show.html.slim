@@ -6,6 +6,8 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
      li
       a href=url
         = name
+      = " — "
+      button hx-swap="afterend" hx-post="/admin/posts/#{post.id}/de_syndicate/#{name}" de-syndicate
   form hx-post="/admin/posts/#{post.id}/syndicate/add_source"
     span class="mr-2"
       label for="syndication_source_name"
