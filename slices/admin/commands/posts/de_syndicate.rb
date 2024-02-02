@@ -12,9 +12,9 @@ module Admin
           post = post_repo.find(id: post_id)
 
           request = if target.to_sym == :mastodon
-                      masto_id = post.syndication_sources[target].split("/").last
-                      mastodon.de_syndicate(post_id: masto_id)
-                    end
+            masto_id = post.syndication_sources[target].split("/").last
+            mastodon.de_syndicate(post_id: masto_id)
+          end
 
           if request.success?
             post.syndication_sources.delete(target)
