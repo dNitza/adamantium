@@ -14,8 +14,8 @@ div class="mb-4 max-w-prose mx-auto prose dark:prose-invert"
       - photos.each_with_index do |photo, idx|
         - if photo.match(/.mp3/)
           div class="rounded max-w-xs" x-data="" id="photo-#{idx}"
-            div class="w-48 mb-2"
-              audio controls="" src="/#{photo.gsub("public/", "")}"
+            div class="h-48 w-48 mb-2"
+              audio class="w-48" controls="" src="/#{photo.gsub("public/", "")}"
             div class="grid grid-cols-2 gap-2"
               button class="hover:text-blue-400 p-1 bg-blue-100 rounded text-blue-600 no-underline" @click="$clipboard('#{Hanami.app.settings.micropub_site_url}/#{photo.gsub("public/", "")}')" Copy URL
               button class="hover:text-blue-400 p-1 bg-blue-100 rounded text-blue-600 no-underline" @click="$clipboard('<audio controls src=\'#{Hanami.app.settings.micropub_site_url}/#{photo.gsub("public/", "")}\'></audio>')" Copy .md
