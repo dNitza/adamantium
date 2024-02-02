@@ -4,6 +4,7 @@
 
 require "rexml/parsers/pullparser"
 require "sanitize"
+require "nokogiri"
 
 module Adamantium
   module Decorators
@@ -36,6 +37,16 @@ module Adamantium
 
         def videos
           __getobj__.photos.select { |p| p["value"].end_with?("mp4") }
+        end
+
+        def key_image
+          if photos?
+            return photos.first["url"]
+          end
+
+          doc = Nokogiri::HTML(content)
+          images = doc.at("//img")
+          images.first[1] if images
         end
 
         def prefix_emoji

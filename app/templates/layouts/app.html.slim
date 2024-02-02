@@ -38,6 +38,12 @@ html x-data="{darkMode: $persist(false)}" :class="{'dark' : darkMode === true}"
     link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/github-dark.min.css"
     script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js" defer=""
 
+    meta property="og:title" content="#{context.content_for(:title)}"
+    meta property="og:type" content="website"
+    meta property="og:url" content="#{context.content_for(:url)}"
+    - if context.content_for(:image)
+      meta property="og:image" content="#{context.content_for(:image)}"
+
     - if Hanami.app.settings.micropub_pub_key
       link rel="pgpkey" href="/key"
   body class="transition-colors bg-white dark:bg-indigo-950 selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-amber-600 dark:selection:text-amber-400" x-data="{ imgModal : false, imgModalSrc : '', imgModalDesc : '' }" x-on:keydown.escape="imgModal=false"
