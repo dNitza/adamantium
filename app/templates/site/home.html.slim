@@ -11,7 +11,10 @@ div class="mb-8 max-w-screen-md mx-auto border-t border-solid border-gray-200 da
     div class="col-span-7 sm:col-span-6 text-left"
       a class="u-url block my-auto hover:underline decoration-wavy" href=latest_status.permalink
         span class="e-content status-body"
-          == latest_status.content
+          - if latest_status.key_image
+            img class="float-start max-w-32 rounded mr-2" src=latest_status.key_image
+          p
+            == latest_status.raw_content
       - latest_status.syndicated_to.each do |loc|
         small class="text-fuchsia-200 dark:text-fuchsia-500"
           a rel="syndication" class="u-syndication" href=loc[:url] Read on #{loc[:location]}
