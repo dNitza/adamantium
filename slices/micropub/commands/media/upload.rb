@@ -13,18 +13,20 @@ module Micropub
         include Deps["settings"]
         include Dry::Monads[:result]
 
-        IMAGE_TYPES = %i[jpeg jpg png].freeze
-        VIDEO_TYPES = %i[gif iso].freeze
-        VALID_UPLOAD_TYPES = IMAGE_TYPES + VIDEO_TYPES
+        IMAGE_TYPES = %w[image/jpeg imag/jpg image/png].freeze
+        VIDEO_TYPES = %w[image/gif video/mp4].freeze
+        AUDIO_TYPES = %w[audio/mp3 audio/mpeg audio/x-m4a].freeze
+        VALID_UPLOAD_TYPES = IMAGE_TYPES + VIDEO_TYPES + AUDIO_TYPES
 
         def call(file:)
           mime = FileMagic.new
-          type = mime.file(file[:tempfile].path, true).to_sym
-
+          mime.flags = [:mime_type]
+          type = mime.file(file[:tempfile].path)
           return Failure(:invalid_file_type) unless VALID_UPLOAD_TYPES.include? type
 
           result = save_image(file: file) if IMAGE_TYPES.include? type
           result = save_video(file: file, type: type) if VIDEO_TYPES.include? type
+          result = save_audio(file: file, type: type) if AUDIO_TYPES.include? type
 
           if result.success?
             Success(result.value!)
@@ -64,6 +66,25 @@ module Micropub
           end
 
           upload_path = File.join(settings.micropub_site_url, "/media/", "/#{pathname}/", fullsize_filename).to_s
+          Success(upload_path)
+        end
+
+        def save_audio(file:, type:)
+          filename = "#{uuid}.mp3"
+
+          dirname = File.join("public", "media", pathname)
+
+          unless File.directory?(dirname)
+            FileUtils.mkdir_p(dirname)
+          end
+
+          begin
+            Open3.popen3("ffmpeg -i #{file[:tempfile].path} -vn -ar 44100 -ac 2 -b:a 192k #{File.join(dirname, filename)}")
+          rescue Errno::ENOENT, NoMethodError => e
+            return Failure(e.message)
+          end
+
+          upload_path = File.join(settings.micropub_site_url, "/media/", "/#{pathname}/", filename).to_s
           Success(upload_path)
         end
 

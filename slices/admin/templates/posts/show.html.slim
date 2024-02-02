@@ -26,7 +26,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
 // TODO: Add preview, fix sending to DayOne
 article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
   a href="/post/#{post.slug}"
-    h1= post.name
+    h1= post.name || "💬"
   form action="/admin/post/#{post.id}/update" method="POST"
     textarea name="body" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"
       == markdown_body
