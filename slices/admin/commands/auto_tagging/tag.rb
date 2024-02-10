@@ -18,7 +18,7 @@ module Admin
               post_repo.by_content(body_contains: auto_tagging.body_contains)
 
             posts.each do |post|
-              post_repo.tag_post(post_id: post.id,
+              post_repo.auto_tag_post(post_id: post.id,
                 tag_id: auto_tagging.tag_id)
             end
           end

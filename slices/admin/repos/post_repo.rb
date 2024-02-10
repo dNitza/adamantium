@@ -5,7 +5,32 @@ module Admin
     class PostRepo < Adamantium::Repo[:posts]
       commands update: :by_pk
 
-      def tag_post(post_id:, tag_id:)
+      def tag_post(post_id:, tags:)
+        tags.each do |tag_name|
+          next if tag_name == ""
+
+          tag = posts.tags.where(label: tag_name).one ||
+            posts
+              .tags
+              .changeset(:create, {label: tag_name, slug: tag_name.downcase.strip.tr(" ", "-").gsub(/[^\w-]/, "")})
+              .commit
+
+          next if posts
+                      .post_tags
+                      .where(
+                        post_id: post_id,
+                        tag_id: tag[:id]
+                      ).count > 0
+
+          posts.post_tags.changeset(:create, {
+            post_id: post_id,
+            tag_id: tag[:id]
+          })
+            .commit
+        end
+      end
+
+      def auto_tag_post(post_id:, tag_id:)
         return if posts
           .post_tags
           .where(
@@ -44,7 +69,9 @@ module Admin
       end
 
       def find(id:)
-        posts.where(id: id).one!
+        posts
+          .combine(:tags)
+          .where(id: id).one!
       end
 
       def delete(id:)
@@ -66,6 +93,13 @@ module Admin
           .combine(:trips)
           .published_between(start_date, end_date)
           .to_a
+      end
+
+      def remove_tags(post_id:)
+        posts
+          .post_tags
+          .where(post_id: post_id)
+          .delete
       end
     end
   end
