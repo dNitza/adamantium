@@ -19,7 +19,8 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
         tr id="bookmark-#{bookmark.id}"
           td
             div
-              = bookmark.name
+              a href="/bookmark/#{bookmark.slug}"
+                = bookmark.name
             a class="no-underline" href=bookmark.url
               small class="text-gray-400 dark:text-gray-600" = bookmark.url
             div
