@@ -80,6 +80,14 @@ namespace :blog do
     user_repo = Admin::Container["repos.user_repo"]
     user_repo.create(id: SecureRandom.uuid, email: args[:email])
   end
+
+  task clean_webmentions: ["blog:load_environment"] do
+    require "hanami/prepare"
+    require "que"
+
+    Que.connection = Adamantium::Container["persistence.db"]
+    Adamantium::Jobs::ArchiveDeletedWebmentions.enqueue
+  end
 end
 
 namespace :tailwind do

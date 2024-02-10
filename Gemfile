@@ -57,6 +57,8 @@ gem "onnxruntime"
 gem "mini_magick"
 gem "sentry-ruby"
 
+gem "whenever", require: false
+
 gem "warning"
 
 group :cli, :development do
