@@ -53,7 +53,8 @@ gem "que"
 gem "connection_pool"
 gem "omdb-api", "1.4.3", require: false
 gem "image_processing", "~> 1.0"
-
+gem "onnxruntime"
+gem "mini_magick"
 gem "sentry-ruby"
 
 gem "warning"
