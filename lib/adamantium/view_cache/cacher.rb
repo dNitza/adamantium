@@ -3,18 +3,20 @@ require "json"
 module Adamantium
   module ViewCache
     class Cacher
-      def call(key:, content:, expiry:)
+      def call(key:, content_proc:, expiry:)
         cached_content = read(key: key)
 
         return cached_content if cached_content
 
-        data = JSON.generate(expire: expiry.to_i, content: content)
+        rendered_content = content_proc.()
+
+        data = JSON.generate(expire: expiry.to_i, content: rendered_content)
 
         path = "#{key}.json"
 
         File.write(File.join(Hanami.app.root, "tmp", path), data)
 
-        content
+        rendered_content
       end
 
       private

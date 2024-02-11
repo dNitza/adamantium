@@ -7,7 +7,7 @@ module Adamantium
         include Deps["views.recently_played.index"]
 
         def handle(req, res)
-          res.body = cache(key: "recently_played", content: index.call.to_str)
+          res.body = cache(key: "recently_played", content_proc: -> { index.call.to_str })
         end
       end
     end
