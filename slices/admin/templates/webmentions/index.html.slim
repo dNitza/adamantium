@@ -21,7 +21,7 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
         td
           = webmention.author_name
         td
-          = "#{webmention.last_checked_at.strftime("%c")} (#{webmention.retrieval_attempts})"
+          = "#{webmention.last_checked_at&.strftime("%c")} (#{webmention.retrieval_attempts})"
         td
           div class="w-full"
           / span class="px-2"
