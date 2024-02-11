@@ -30,6 +30,10 @@ module Adamantium
     setting :pingback_url, default: nil
     setting :webmention_token, default: nil
 
+    setting :rss_url, default: nil
+    setting :rss_username, default: nil
+    setting :rss_password, default: nil
+
     setting :lastfm_api_key, default: nil
     setting :lastfm_secret, default: nil
 

@@ -39,6 +39,10 @@ module Adamantium
 
     get "/movies", to: "movies.index"
 
+    get "/blogroll", to: "blogroll.index"
+    get "/blogroll/list", to: "blogroll.list"
+    get "/blogroll/opml", to: "blogroll.opml"
+
     get "/recently_played", to: "recently_played.index"
 
     get "/:slug", to: "pages.show"

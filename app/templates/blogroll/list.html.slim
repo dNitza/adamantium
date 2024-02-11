@@ -1,0 +1,13 @@
+- blogroll.each do |blog|
+  div class="flex mb-4"
+    img loading="lazy" class="w-8 h-8 rounded mx-0 my-0 mr-4" src=blog[:icon]
+    div
+      div
+        = "#{blog[:title]} — ("
+        a href=blog[:url] RSS
+        = " | "
+        a href=blog[:html_url]  Website
+        = ")"
+      div
+        small Categories:
+        small = " #{blog[:categories].join(",")}"
