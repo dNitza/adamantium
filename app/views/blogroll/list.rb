@@ -2,6 +2,8 @@ module Adamantium
   module Views
     module Blogroll
       class List < Adamantium::View
+        config.layout = false
+
         include Deps[blogroll_list: "queries.blogroll.index"]
 
         expose :blogroll do |blogroll_result|

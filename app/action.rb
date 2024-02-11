@@ -6,6 +6,7 @@ require "httparty"
 require "dry-monads"
 require "dry-matcher"
 require "dry/matcher/result_matcher"
+require "time_math"
 
 module Adamantium
   class Action < Hanami::Action
