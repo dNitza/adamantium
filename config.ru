@@ -16,7 +16,11 @@ require "rack/rewrite"
 use Rack::Rewrite do
   # remove trailing slashes
   r302 %r{(/.*)/(\?.*)?$}, "$1$2"
-  r302 %r{/fonts/(.*)?$}, "/assets/$1"
+  r302 %r{/fonts/(.*)?$}, lambda { |match, rack_env|
+    manifest = JSON.parse(File.read("public/assets/main/assets.json"))
+
+    manifest[match[1]]["url"]
+  }
 end
 
 require "adamantium/middleware/header_fix"
