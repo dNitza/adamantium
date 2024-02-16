@@ -1,0 +1,17 @@
+{
+  "app.js": {
+    "url": "/assets/admin/app.js"
+  },
+  "MontaguSlab-VariableFont_opsz,wght.ttf": {
+    "url": "/assets/admin/MontaguSlab-VariableFont_opsz,wght-DPPFFS5R.ttf"
+  },
+  "JetBrainsMono-VariableFont_wght.ttf": {
+    "url": "/assets/admin/JetBrainsMono-VariableFont_wght-LU32XR3Q.ttf"
+  },
+  "Figtree-VariableFont_wght.ttf": {
+    "url": "/assets/admin/Figtree-VariableFont_wght-EP5BD5S6.ttf"
+  },
+  "app.css": {
+    "url": "/assets/admin/app.css"
+  }
+}

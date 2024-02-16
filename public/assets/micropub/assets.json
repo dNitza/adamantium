@@ -1,0 +1,8 @@
+{
+  "app.js": {
+    "url": "/assets/micropub/app.js"
+  },
+  "app.css": {
+    "url": "/assets/micropub/app.css"
+  }
+}

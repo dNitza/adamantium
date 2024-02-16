@@ -1,8 +1,6 @@
 module Adamantium
   module Views
     class Context < Hanami::View::Context
-      include Hanami::View::ContextHelpers::ContentHelpers
-
       include Deps["repos.page_repo"]
 
       def initialize(**options)

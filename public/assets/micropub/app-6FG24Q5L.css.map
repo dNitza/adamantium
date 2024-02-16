@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../slices/micropub/assets/css/app.css"],
+  "sourcesContent": ["body {\n  background-color: #fff;\n  color: #000;\n  font-family: sans-serif;\n}\n"],
+  "mappings": "AAAA,KACE,iBAAkB,KAClB,MAAO,KACP,YAAa,UACf",
+  "names": []
+}

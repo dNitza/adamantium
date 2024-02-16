@@ -1092,6 +1092,10 @@ video {
   grid-column-start: 2;
 }
 
+.float-start {
+  float: inline-start;
+}
+
 .float-right {
   float: right;
 }
@@ -1112,9 +1116,19 @@ video {
   margin: 1rem;
 }
 
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .my-4 {
@@ -1217,6 +1231,10 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .block {
@@ -1354,6 +1372,10 @@ video {
 
 .min-w-32 {
   min-width: 8rem;
+}
+
+.max-w-32 {
+  max-width: 8rem;
 }
 
 .max-w-3xl {
@@ -5680,9 +5702,9 @@ video {
   color: rgb(52 211 153 / 0.95);
 }
 
-.text-fuchsia-200 {
+.text-fuchsia-900 {
   --tw-text-opacity: 1;
-  color: rgb(245 208 254 / var(--tw-text-opacity));
+  color: rgb(112 26 117 / var(--tw-text-opacity));
 }
 
 .text-gray-100 {
@@ -6460,12 +6482,6 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .squircle {
   -webkit-clip-path: url(#squircleClip);
           clip-path: url(#squircleClip);
-}
-
-.status-body img {
-  max-width: 8rem;
-  border-radius: 0.25rem;
-  margin-top: 1rem;
 }
 
 :is(:where(.dark) .dark\:prose-invert) {
@@ -14977,9 +14993,9 @@ h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: rgb(52 211 153 / 0.95);
 }
 
-:is(:where(.dark) .dark\:text-fuchsia-500) {
+:is(:where(.dark) .dark\:text-fuchsia-300) {
   --tw-text-opacity: 1;
-  color: rgb(217 70 239 / var(--tw-text-opacity));
+  color: rgb(240 171 252 / var(--tw-text-opacity));
 }
 
 :is(:where(.dark) .dark\:text-gray-100) {

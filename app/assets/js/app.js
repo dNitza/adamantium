@@ -1,5 +1,3 @@
-import "../builds/tailwind.css";
-
 import { md_gallery } from "./gallery.js";
 
 (function() {

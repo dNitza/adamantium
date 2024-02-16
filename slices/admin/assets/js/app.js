@@ -1,4 +1,4 @@
-import "../../../../app/assets/builds/tailwind.css";
+import "../../../../app/assets/builds/app.css";
 import "../css/app.css";
 
 import TinyMDE from "tiny-markdown-editor";

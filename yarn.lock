@@ -457,10 +457,10 @@ graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
-hanami-assets@^2.1.0-rc.2:
-  version "2.1.0-rc.2"
-  resolved "https://registry.npmjs.org/hanami-assets/-/hanami-assets-2.1.0-rc.2.tgz"
-  integrity sha512-IDQ7K/5hEWBX9ds74amWpnjDGnaOxor6fafiCdxyHHh6XiS7SugfV10Ob06Zf0ld3dXN8NiiLtFBuztiLuj95A==
+hanami-assets@^2.1.0-rc.3:
+  version "2.1.0-rc.3"
+  resolved "https://registry.yarnpkg.com/hanami-assets/-/hanami-assets-2.1.0-rc.3.tgz#5f459883191487739875f79a6eb8c01c2ecce83d"
+  integrity sha512-4cnVHOp47liLzvrUQWinVDl2FVhKegZQH5rd+truwLwdJ1bX6eLXRmxtSuVmWiu6HbpArk/DP9uGVvyPqikcHg==
   dependencies:
     esbuild "^0.19.0"
     fs-extra "^11.1.0"

@@ -16,6 +16,7 @@ require "rack/rewrite"
 use Rack::Rewrite do
   # remove trailing slashes
   r302 %r{(/.*)/(\?.*)?$}, "$1$2"
+  rewrite %r{/fonts/(.*)?$}, "/assets/$1"
 end
 
 require "adamantium/middleware/header_fix"
