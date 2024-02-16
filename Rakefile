@@ -92,10 +92,10 @@ end
 
 namespace :tailwind do
   task :watch do
-    system("npx tailwindcss -i ./app/assets/css/app.css -o ./app/assets/builds/app.css --watch")
+    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./slices/main/assets/builds/app.css --watch")
   end
 
   task :build do
-    system("npx tailwindcss -i ./app/assets/css/app.css -o ./app/assets/builds/app.css --minify")
+    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./slices/main/assets/builds/app.css --minify")
   end
 end

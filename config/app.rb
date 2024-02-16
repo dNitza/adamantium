@@ -33,6 +33,7 @@ module Adamantium
       "syndication.mastodon",
       "syndication.blue_sky",
       "syndication.raindrop",
+      "view_cache.cacher",
       "renderers.markdown"
     ]
   end

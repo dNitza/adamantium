@@ -2,7 +2,7 @@
 
 require "hanami/boot"
 
-use Rack::Static, urls: ["/assets", "/media"], root: "public"
+use Rack::Static, urls: ["/assets", "/media", "/fonts"], root: "public", cascade: true
 
 raise StandardError.new("No secret key") unless ENV["SESSION_SECRET"]
 

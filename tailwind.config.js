@@ -4,7 +4,7 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   darkMode: 'class',
-  content: ["./app/templates/**/*.slim", "./slices/admin/templates/**/*.slim", "./public/assets/index.js", "app/decorators/*/decorator.rb"],
+  content: ["./app/templates/**/*.slim", "./slices/main/templates/**/*.slim", "./slices/admin/templates/**/*.slim", "./public/assets/index.js", "app/decorators/*/decorator.rb"],
   safelist: [
     {
       pattern: /bg-(yellow|orange|green|blue|pink|purple|indigo|emerald)-(50|100|800|900)/,

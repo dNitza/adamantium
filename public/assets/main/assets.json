@@ -1,0 +1,26 @@
+{
+  "app.js": {
+    "url": "/assets/main/app.js"
+  },
+  "Figtree-Italic-VariableFont_wght.ttf": {
+    "url": "/assets/main/Figtree-Italic-VariableFont_wght.ttf"
+  },
+  "Figtree-VariableFont_wght.ttf": {
+    "url": "/assets/main/Figtree-VariableFont_wght.ttf"
+  },
+  "JetBrainsMono-VariableFont_wght.ttf": {
+    "url": "/assets/main/JetBrainsMono-VariableFont_wght.ttf"
+  },
+  "Karla-VariableFont_wght.ttf": {
+    "url": "/assets/main/Karla-VariableFont_wght.ttf"
+  },
+  "MontaguSlab-VariableFont_opsz,wght.ttf": {
+    "url": "/assets/main/MontaguSlab-VariableFont_opsz,wght.ttf"
+  },
+  "Rubik-VariableFont_wght.ttf": {
+    "url": "/assets/main/Rubik-VariableFont_wght.ttf"
+  },
+  "app.css": {
+    "url": "/assets/main/app.css"
+  }
+}
