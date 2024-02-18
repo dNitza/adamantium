@@ -1,0 +1,78 @@
+doctype html
+html x-data="{darkMode: $persist(false)}" :class="{'dark' : darkMode === true}"
+  head
+    meta charest="utf-8"
+
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)"
+    meta name="theme-color" content="#1e1b4b" media="(prefers-color-scheme: dark)"
+
+    title #{context.content_for(:title)} #{Hanami.app.settings.site_name}
+
+    link rel="authorization_endpoint" href=Hanami.app.settings.micropub_authorization_endpoint
+    link rel="token_endpoint" href=Hanami.app.settings.micropub_token_endpoint
+    link rel="micropub" href="#{URI.join(Hanami.app.settings.micropub_site_url, "micropub")}"
+
+    link rel="webmention" href=Hanami.app.settings.webmention_url
+    link rel="pingback" href=Hanami.app.settings.pingback_url
+    link rel="feed" type="text/html" href="#{Hanami.app.settings.micropub_site_url}/statuses"
+    link rel="feed alternate" type="application/rss+xml" href="/feeds/rss"
+    link rel="feed alternate" type="application/rss+xml" href="/feeds/statuses_rss"
+    link rel="alternate" type="text/mf2+html" href="#{Hanami.app.settings.micropub_site_url}/statuses"
+
+    link rel="me" href=Hanami.app.settings.mastodon_url
+    link rel="me" href=Hanami.app.settings.github_url
+    link rel="me" href=Hanami.app.settings.fed_bridge_url
+
+    = stylesheet_tag "app"
+    link rel="icon" type="image/x-icon" href="/assets/favicon.ico"
+
+    script data-domain="dnitza.com" src="https://stats.dnitza.com/js/script.js" defer=""
+
+    script src="https://unpkg.com/htmx.org@1.9.2/dist/htmx.min.js" integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h" crossorigin="anonymous"
+    script src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.13.3/dist/cdn.min.js"
+    = javascript_tag "app"
+    script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer=""
+
+    link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/github-dark.min.css"
+    script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js" defer=""
+
+    meta property="og:title" content="#{context.content_for(:title)}"
+    meta property="og:type" content="website"
+    meta property="og:url" content="#{context.content_for(:url)}"
+    - if context.content_for(:image)
+      meta property="og:image" content="#{context.content_for(:image)}"
+
+    - if Hanami.app.settings.micropub_pub_key
+      link rel="pgpkey" href="/key"
+  body class="transition-colors bg-white dark:bg-indigo-950 selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-amber-600 dark:selection:text-amber-400" x-data="{ imgModal : false, imgModalSrc : '', imgModalDesc : '' }" x-on:keydown.escape="imgModal=false"
+    main class="pb-8 px-4 pt-4 md:pt-8"
+      header class="mb-12 max-w-screen-md mx-auto items-center md:items-justify"
+        div class="flex mb-8 md:mb-12 text-lg md:text-xl text-gray-400 dark:text-gray-600 grid grid-cols-1 md:grid-cols-2"
+          div class="flex-none mx-auto md:flex-auto md:mx-0"
+            div class="h-card flex items-center"
+              img class="u-photo w-6 h6 md:w-10 md:h-10 mr-1" alt="Memoji profile picture" src="/assets/memoji.png"
+              a href="/" rel="me" class="u-url u-uid"
+                h1 class="p-name text-sm md:text-sm text-gray-600 dark:text-gray-400" = Hanami.app.settings.site_name
+          nav class="space-x-1 text-sm md:text-sm mx-auto md:flex-auto uppercase md:block mt-4 md:mt-3"
+            - pages.each do |page|
+              a class="transition-colors p-1 rounded text-gray-400 hover:bg-#{page.light_colour}-100 hover:text-#{page.light_colour}-400 dark:hover:bg-#{page.dark_colour}-800 #{context.current_path.start_with?("/#{page.slug}") ? "text-#{page.light_colour}-400 bg-#{page.light_colour}-50 dark:bg-#{page.dark_colour}-900 dark:text-#{page.dark_colour}-400" : 'text-gray-400'}" href="/#{page.slug}" #{page.name}
+              span class="text-gray-400 dark:text-gray-600"
+                = "/"
+            a class="transition-colors p-1 rounded hover:bg-emerald-100 hover:text-emerald-400 dark:hover:bg-emerald-800 #{context.current_path.start_with?('/post') ? 'text-emerald-400 bg-emerald-50 dark:bg-emerald-900 dark:text-emerald-400' : 'text-gray-400'}" href="/posts" Writing
+            span class="text-gray-400 dark:text-gray-600"
+              = "/"
+            a class="transition-colors p-1 rounded text-gray-400 hover:bg-orange-100 hover:text-orange-400 dark:hover:bg-orange-800" href="#{Hanami.app.settings.micropub_site_url}/feeds/rss" RSS
+            span class="text-gray-400 dark:text-gray-600"
+              = "/"
+            button x-data="" @click="darkMode = ! darkMode"
+              span class="opacity-80 hover:opacity-100 hidden dark:block" ☀️
+              span class="opacity-80 hover:opacity-100 block dark:hidden" 🌝
+      == yield
+    div class="px-4 max-w-screen-md mx-auto pb-10"
+      p class="float-left text-gray-200 dark:text-indigo-900" © 2010 - 2024 Daniel Nitsikopoulos. All rights reserved.
+      p class="float-right text-gray-200 dark:text-gray-600"
+        a href="https://xn--sr8hvo.ws/%F0%9F%8D%93%E2%9E%97%F0%9F%8E%B0/previous" &larr;
+        a href="https://xn--sr8hvo.ws"  🕸💍
+        a href="https://xn--sr8hvo.ws/%F0%9F%8D%93%E2%9E%97%F0%9F%8E%B0/next" &nbsp; &rarr;
