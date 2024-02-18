@@ -23,6 +23,10 @@ module Adamantium
     config.logger.stream = "log/hanami.log"
 
     config.shared_app_component_keys += [
+      "clients.omdb",
+      "clients.blue_sky",
+      "clients.mastodon",
+      "geo.gpx_parser",
       "param_parser.micropub_post",
       "param_parser.webmention",
       "post_utilities.slugify",
