@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe "Post creation", :db, :requests do
-  let(:post_repo) { Adamantium::Repos::PostRepo.new }
+  let(:post_repo) { Main::Repos::PostRepo.new }
 
   context "posts" do
     it "is successful" do
