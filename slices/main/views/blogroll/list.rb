@@ -1,7 +1,7 @@
 module Main
   module Views
     module Blogroll
-      class List< Main::View
+      class List < Main::View
         config.layout = false
 
         include Deps[blogroll_list: "queries.blogroll.index"]
@@ -13,7 +13,7 @@ module Main
               url: feed["url"],
               html_url: feed["htmlUrl"],
               icon: feed["iconUrl"],
-              categories: feed["categories"].map {|cat| cat["label"]}
+              categories: feed["categories"].map { |cat| cat["label"] }
             }
           end
         end

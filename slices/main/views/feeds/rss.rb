@@ -3,7 +3,7 @@ require "builder"
 module Main
   module Views
     module Feeds
-      class Rss< Main::View
+      class Rss < Main::View
         include Deps["repos.post_repo"]
 
         expose :posts do

@@ -1,4 +1,3 @@
-
 module Main
   class Routes < Hanami::Routes
     root to: "site.home"

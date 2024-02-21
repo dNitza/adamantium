@@ -1,7 +1,7 @@
 module Main
   module Views
     module Pages
-      class Show< Main::View
+      class Show < Main::View
         include Deps["repos.page_repo", renderer: "renderers.markdown"]
 
         expose :page_content do |page|

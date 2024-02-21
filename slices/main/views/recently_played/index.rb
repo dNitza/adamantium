@@ -1,7 +1,7 @@
 module Main
   module Views
     module RecentlyPlayed
-      class Index< Main::View
+      class Index < Main::View
         config.layout = false
 
         include Deps["queries.posts.recently_played"]

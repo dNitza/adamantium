@@ -1,5 +1,5 @@
 # xml.instruct! "xml-stylesheet", {href: "/assets/style.xslt", type: "text/xsl"}
-xml.opml("xmlns:frss" => "https://freshrss.org/opml", version: "2.0") do
+xml.opml("xmlns:frss" => "https://freshrss.org/opml", :version => "2.0") do
   xml.head do |head|
     head.title "Daniel Nitsikopoulos's RSS subscriptions"
     head.link "https://dnitza.com/blogroll/opml"

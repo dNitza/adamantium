@@ -8,7 +8,7 @@ module Adamantium
 
         return cached_content if cached_content
 
-        rendered_content = content_proc.()
+        rendered_content = content_proc.call
 
         data = JSON.generate(expire: expiry.to_i, content: rendered_content)
 

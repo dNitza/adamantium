@@ -1,7 +1,7 @@
 module Main
   module Views
     module Trips
-      class Show< Main::View
+      class Show < Main::View
         include Deps[
                   "repos.trip_repo"
                 ]

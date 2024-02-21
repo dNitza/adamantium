@@ -9,6 +9,5 @@ module Adamantium
     slice :main, at: "/"
     slice :admin, at: "/admin"
     slice :micropub, at: "/micropub"
-
   end
 end

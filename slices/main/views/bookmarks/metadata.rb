@@ -3,7 +3,7 @@ require "ogpr"
 module Main
   module Views
     module Bookmarks
-      class Metadata< Main::View
+      class Metadata < Main::View
         include Deps["repos.post_repo"]
 
         config.layout = nil

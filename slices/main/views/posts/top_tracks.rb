@@ -1,7 +1,7 @@
 module Main
   module Views
     module Posts
-      class TopTracks< Main::View
+      class TopTracks < Main::View
         config.layout = false
 
         expose :name do |track:|

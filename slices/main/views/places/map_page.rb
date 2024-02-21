@@ -1,7 +1,7 @@
 module Main
   module Views
     module Places
-      class MapPage< Main::View
+      class MapPage < Main::View
         include Deps["repos.post_repo"]
 
         config.layout = "map"

@@ -3,6 +3,5 @@
 
 module Main
   class Action < Adamantium::Action
-
   end
 end

@@ -9,7 +9,7 @@ module Adamantium
       youtube.com
       bsky.app
       bsky.social
-      github.com]
+      github.com].freeze
 
     def call(content)
       links = URI::DEFAULT_PARSER.extract(content)

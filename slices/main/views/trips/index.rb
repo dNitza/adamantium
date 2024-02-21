@@ -1,7 +1,7 @@
 module Main
   module Views
     module Trips
-      class Index< Main::View
+      class Index < Main::View
         include Deps["repos.trip_repo"]
 
         expose :trip_years do

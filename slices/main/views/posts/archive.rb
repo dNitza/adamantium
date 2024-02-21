@@ -1,7 +1,7 @@
 module Main
   module Views
     module Posts
-      class Archive< Main::View
+      class Archive < Main::View
         include Deps["repos.post_repo"]
 
         expose :year do |year:|

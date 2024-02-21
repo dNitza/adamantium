@@ -1,7 +1,7 @@
 module Main
   module Views
     module Blogroll
-      class Opml< Main::View
+      class Opml < Main::View
         include Deps[blogroll_list: "queries.blogroll.index"]
 
         expose :blogroll do |blogroll_result|
@@ -11,7 +11,7 @@ module Main
               url: feed["url"],
               html_url: feed["htmlUrl"],
               icon: feed["iconUrl"],
-              categories: feed["categories"].map {|cat| cat["label"]}
+              categories: feed["categories"].map { |cat| cat["label"] }
             }
           end
         end

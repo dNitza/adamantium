@@ -1,7 +1,7 @@
 module Main
   module Views
     module Movies
-      class Index< Main::View
+      class Index < Main::View
         include Deps["repos.movie_repo"]
 
         expose :movies do

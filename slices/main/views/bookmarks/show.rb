@@ -1,7 +1,7 @@
 module Main
   module Views
     module Bookmarks
-      class Show< Main::View
+      class Show < Main::View
         include Deps["repos.post_repo"]
 
         expose :bookmark do |slug:|

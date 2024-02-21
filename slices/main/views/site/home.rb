@@ -1,7 +1,7 @@
 module Main
   module Views
     module Site
-      class Home< Main::View
+      class Home < Main::View
         include Deps["repos.post_repo", renderer: "renderers.markdown"]
 
         expose :home_content do

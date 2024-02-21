@@ -3,7 +3,7 @@ require "time_math"
 module Main
   module Views
     module Posts
-      class Show< Main::View
+      class Show < Main::View
         include Deps["repos.post_repo", "repos.movie_repo"]
 
         expose :post do |slug:|

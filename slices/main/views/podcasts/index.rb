@@ -1,7 +1,7 @@
 module Main
   module Views
     module Podcasts
-      class Index< Main::View
+      class Index < Main::View
         include Deps["repos.podcast_repo", "repos.podcast_scrobble_repo"]
 
         expose :podcasts do

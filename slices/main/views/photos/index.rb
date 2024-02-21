@@ -1,7 +1,7 @@
 module Main
   module Views
     module Photos
-      class Index< Main::View
+      class Index < Main::View
         include Deps["repos.post_repo"]
 
         expose :photos do

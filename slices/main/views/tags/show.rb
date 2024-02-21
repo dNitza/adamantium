@@ -1,7 +1,7 @@
 module Main
   module Views
     module Tags
-      class Show< Main::View
+      class Show < Main::View
         include Deps[
           "repos.post_tag_repo",
           "repos.tag_repo"

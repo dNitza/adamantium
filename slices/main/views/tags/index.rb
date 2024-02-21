@@ -1,7 +1,7 @@
 module Main
   module Views
     module Tags
-      class Index< Main::View
+      class Index < Main::View
         include Deps["repos.tag_repo"]
 
         expose :tag_groups do

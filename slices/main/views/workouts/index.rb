@@ -1,7 +1,7 @@
 module Main
   module Views
     module Workouts
-      class Index< Main::View
+      class Index < Main::View
         include Deps["repos.workout_repo"]
 
         expose :workouts_by_year do
