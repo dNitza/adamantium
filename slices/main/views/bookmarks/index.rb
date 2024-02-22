@@ -10,11 +10,11 @@ module Main
           end
         end
 
-        expose :bookmarks_by_tag do
-          post_repo.bookmark_listing(query: query).map do |bookmark|
-            Decorators::Bookmarks::Decorator.new bookmark
-          end
-        end
+        # expose :bookmarks_by_tag do |query:|
+        #   post_repo.bookmark_listing(query: query).map do |bookmark|
+        #     Decorators::Bookmarks::Decorator.new bookmark
+        #   end
+        # end
 
         expose :q do |query:|
           query
