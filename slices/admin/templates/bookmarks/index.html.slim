@@ -13,7 +13,7 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
     thead
       th Details
       th Date
-      th colspan="2" Actions
+      th colspan="3" Actions
     tbody class="{ 'active': activeTab === 0 }" x-show.transition.in.opacity.duration.600="activeTab === 0"
       - published_bookmarks.each do |bookmark|
         tr id="bookmark-#{bookmark.id}"
@@ -36,6 +36,11 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
             button class="text-red-600" hx-delete="/admin/bookmarks/#{bookmark.id}" hx-target="#bookmark-#{bookmark.id}" delete
           td
             button hx-post="/admin/bookmarks/#{bookmark.id}/archive" archive
+          td
+            - if bookmark.is_read
+              button hx-post="/admin/bookmarks/#{bookmark.id}/mark_unread" mark unread
+            - else
+              button hx-post="/admin/bookmarks/#{bookmark.id}/mark_read" mark read
     tbody class="{ 'active': activeTab === 1 }" x-show.transition.in.opacity.duration.600="activeTab === 1"
       - unpublished_bookmarks.each do |bookmark|
         tr id="bookmark-#{bookmark.id}"

@@ -88,6 +88,14 @@ namespace :blog do
     Que.connection = Adamantium::Container["persistence.db"]
     Adamantium::Jobs::ArchiveDeletedWebmentions.enqueue
   end
+
+  task gently_remind_me: ["blog:load_environment"] do
+    require "hanami/prepare"
+    require "que"
+
+    command = Adamantium::GentlyRemindMe.new
+    command.call(limit: 5)
+  end
 end
 
 namespace :tailwind do

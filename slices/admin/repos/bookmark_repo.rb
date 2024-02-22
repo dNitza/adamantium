@@ -34,6 +34,14 @@ module Admin
       def update(id:, params:)
         posts.where(id: id).update(params)
       end
+
+      def mark_read(id:)
+        posts.where(id: id).update(is_read: true)
+      end
+
+      def mark_unread(id:)
+        posts.where(id: id).update(is_read: false)
+      end
     end
   end
 end

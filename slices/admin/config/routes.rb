@@ -42,6 +42,8 @@ module Admin
     post "/bookmarks/cache/:id", to: Auth.call(action: "bookmarks.cache")
     post "/bookmarks/:id/archive", to: Auth.call(action: "bookmarks.archive")
     post "/bookmarks/:id/publish", to: Auth.call(action: "bookmarks.publish")
+    post "/bookmarks/:id/mark_read", to: Auth.call(action: "bookmarks.mark_read")
+    post "/bookmarks/:id/mark_unread", to: Auth.call(action: "bookmarks.mark_unread")
 
     get "/posts", to: Auth.call(action: "posts.index")
     delete "/posts/:id", to: Auth.call(action: "posts.delete")
