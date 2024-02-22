@@ -12,14 +12,19 @@ module Adamantium
 
         data = JSON.generate(expire: expiry.to_i, content: rendered_content)
 
-        path = "#{key}.json"
-
-        File.write(File.join(Hanami.app.root, "tmp", path), data)
+        write(key: key, content: data)
 
         rendered_content
       end
 
       private
+
+      def write(key:, content:)
+        filename = "#{key}.json"
+        path = File.join(Hanami.app.root, "tmp", filename)
+
+        File.write(path, content)
+      end
 
       def read(key:)
         filename = "#{key}.json"
