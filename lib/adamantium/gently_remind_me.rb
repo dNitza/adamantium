@@ -15,7 +15,7 @@ module Adamantium
 
       body_content = ""
       bookmarks_struct.each do |bm|
-        body_content += "#{bm[:name]} — #{bm[:source_url]} \n"
+        body_content += "🔗 #{bm[:name]} — #{bm[:source_url]} \n"
         body_content += "    #{bm[:url]}\n"
         body_content += "\n"
       end
@@ -34,7 +34,7 @@ module Adamantium
       Mail.delivery_method.settings[:password] = app_settings.smtp_password
 
       mail = Mail.new do
-        subject "A gentle reminder"
+        subject "A gentle reminder of some things to read 🌿"
         body body_content
       end
 

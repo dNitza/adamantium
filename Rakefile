@@ -94,7 +94,7 @@ namespace :blog do
     require "que"
 
     command = Adamantium::GentlyRemindMe.new
-    command.call(limit: 5)
+    command.call(limit: 15)
   end
 end
 
