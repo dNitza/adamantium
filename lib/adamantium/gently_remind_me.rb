@@ -6,7 +6,18 @@ module Adamantium
       repo = Adamantium::Container["repos.post_repo"]
       app_settings = Adamantium::Container["settings"]
 
-      bookmarks = repo.for_reminders(limit: limit)
+      recent_bookmarks = repo.recent(limit: limit)
+
+      random_fillers = limit - recent_bookmarks.count
+
+      random_bookmarks = if random_fillers > 0
+        repo.random(limit: random_fillers, excluding: recent_bookmarks.map(&:id))
+      else
+        []
+      end
+
+      bookmarks = recent_bookmarks + random_bookmarks
+
       bookmarks_struct = bookmarks.map do |bookmark|
         {
           name: bookmark.name,
