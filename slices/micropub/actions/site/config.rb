@@ -8,7 +8,7 @@ module Micropub
         def handle(req, res)
           if req.params[:q] == "config"
             res.status = 200
-            res.content_type = "application/json"
+            res.content_type = "Application/JSON"
             res.body = {
               "media-endpoint" => settings.micropub_media_endpoint,
               "destination" => [
