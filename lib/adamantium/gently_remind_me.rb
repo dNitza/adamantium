@@ -1,3 +1,5 @@
+require "mail"
+
 module Adamantium
   class GentlyRemindMe
     def call(limit:)
