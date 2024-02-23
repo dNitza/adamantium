@@ -25,20 +25,22 @@ module Adamantium
         latdiff = maxlat - minlat
         londiff = maxlon - minlon
 
-        svg = Gnuplot.open do |gp|
-          Gnuplot::Plot.new(gp) do |plot|
-            plot.arbitrary_lines << "unset border"
-            plot.arbitrary_lines << "unset xtics"
-            plot.arbitrary_lines << "unset ytics"
-            plot.arbitrary_lines << "set size ratio -1"
-            plot.arbitrary_lines << "set yrange [#{minlat}:#{maxlat}]" if latdiff >= londiff # portrait
-            plot.arbitrary_lines << "set xrange [#{minlon}:#{maxlon}]" if latdiff < londiff # landscape
-            plot.arbitrary_lines << "set term svg"
-            plot.data << Gnuplot::DataSet.new([x, y]) do |ds|
-              ds.with = "lines"
-              ds.linewidth = 4
-              ds.linecolor = 'rgb "#84cc16"'
-              ds.notitle
+        svg = with_silent_output do
+          Gnuplot.open do |gp|
+            Gnuplot::Plot.new(gp) do |plot|
+              plot.arbitrary_lines << "unset border"
+              plot.arbitrary_lines << "unset xtics"
+              plot.arbitrary_lines << "unset ytics"
+              plot.arbitrary_lines << "set size ratio -1"
+              plot.arbitrary_lines << "set yrange [#{minlat}:#{maxlat}]" if latdiff >= londiff # portrait
+              plot.arbitrary_lines << "set xrange [#{minlon}:#{maxlon}]" if latdiff < londiff # landscape
+              plot.arbitrary_lines << "set term svg"
+              plot.data << Gnuplot::DataSet.new([x, y]) do |ds|
+                ds.with = "lines"
+                ds.linewidth = 4
+                ds.linecolor = 'rgb "#84cc16"'
+                ds.notitle
+              end
             end
           end
         end
@@ -46,6 +48,16 @@ module Adamantium
         svg.gsub!('width="600" height="480"', 'width="100%" height="100%"')
 
         Success({svg: svg, distance: gpx.distance(units: "kilometers"), duration: gpx.duration})
+      end
+
+      private
+
+      define_method(:with_silent_output) do |&block|
+        orig_verbose = $VERBOSE
+        $VERBOSE = nil
+        result = block.call
+        $VERBOSE = orig_verbose
+        result
       end
     end
   end

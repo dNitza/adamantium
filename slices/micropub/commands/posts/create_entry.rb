@@ -1,41 +1,32 @@
-require "dry/monads"
-
 module Micropub
   module Commands
     module Posts
       class CreateEntry < Adamantium::Command
-        include Deps["repos.post_repo",
+        include Deps[
           "post_utilities.slugify",
-          renderer: "renderers.markdown",
-          syndicate: "commands.posts.syndicate",
-          send_to_dayone: "syndication.dayone",
-          send_webmentions: "commands.posts.send_webmentions",
-          auto_tag: "commands.auto_tagging.tag",
-                    ]
+          "repos.post_repo",
+          create_resolver: "commands.posts.creation_resolver"
+                ]
 
-        include Dry::Monads[:result]
+        def call(req_entity:)
+          command, contract = create_resolver.call(entry_type: req_entity).values_at(:command, :validation)
+          post_params = prepare_params(req_entity.to_h)
+          validation = contract.call(post_params)
 
-        def call(post)
-          post_params = prepare_params(params: post)
-          created_post = post_repo.create(post_params)
-
-          auto_tag.call
-
-          syndicate.call(created_post.id, post)
-
-          decorated_post = Decorators::Posts::Decorator.new(created_post)
-
-          send_webmentions.call(post_content: created_post.content, post_url: decorated_post.permalink)
-
-          Success(created_post)
+          if validation.success?
+            post = command.call(validation.to_h)
+            Success(post)
+          else
+            Failure(validation)
+          end
         end
 
         private
 
-        def prepare_params(params:)
-          attrs = params.to_h
-          attrs[:content] = renderer.call(content: attrs[:content])
-          attrs
+        def prepare_params(post_params)
+          post = post_params.to_h
+          post[:slug] = post[:slug].empty? ? slugify.call(text: post[:name], checker: post_repo.method(:slug_exists?)) : post[:slug]
+          post
         end
       end
     end

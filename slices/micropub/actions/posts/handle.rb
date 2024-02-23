@@ -6,10 +6,8 @@ module Micropub
 
         include Deps[
           "settings",
-          "post_utilities.slugify",
-          "repos.post_repo",
+          "commands.posts.create_entry",
           post_param_parser: "param_parser.micropub_post",
-          create_resolver: "commands.posts.creation_resolver",
           delete_post: "commands.posts.delete",
           undelete_post: "commands.posts.undelete",
           update_post: "commands.posts.update",
@@ -18,52 +16,46 @@ module Micropub
 
         def handle(req, res)
           req_entity = post_param_parser.call(params: req.params.to_h)
-          action = req.params[:action]
+          action_type = req.params[:action]
 
           # delete, undelete, update
-          if action
-            perform_action(req: req, res: res, action: action)
-          elsif req_entity # create
-            create_entry(req: req, res: res, req_entity: req_entity)
+          if action_type
+            case resolve_command(req: req, action_type: action_type)
+            in Success[command]
+              command.call(params: req.params.to_h)
+              res.status = 200
+            in Failure[:not_permitted]
+              halt 401
+            end
+          end
+
+          # create
+          if req_entity && verify_scope(req: req, scope: :create)
+            create_entry.call(req_entity: req_entity) do |m|
+              m.success do |post|
+                res.status = 201
+                res.headers["Location"] = "#{settings.micropub_site_url}/#{post.post_type}/#{post.slug}"
+              end
+
+              m.failure do |validation|
+                res.body = {error: validation.errors.to_h}.to_json
+                res.status = 422
+              end
+            end
           end
         end
 
         private
 
-        def create_entry(req:, res:, req_entity:)
-          halt 401 unless verify_scope(req: req, scope: :create)
+        def resolve_command(req:, action_type:)
+          command, permission_check = commands(action_type)
 
-          command, contract = create_resolver.call(entry_type: req_entity).values_at(:command, :validation)
-          post_params = prepare_params(req_entity.to_h)
-          validation = contract.call(post_params)
+          return Failure(:not_permitted) unless permission_check.call(req)
 
-          if validation.success?
-            command.call(validation.to_h).bind do |post|
-              res.status = 201
-              res.headers["Location"] = "#{settings.micropub_site_url}/#{post.post_type}/#{post.slug}"
-            end
-          else
-            res.body = {error: validation.errors.to_h}.to_json
-            res.status = 422
-          end
+          Success(command)
         end
 
-        def perform_action(req:, res:, action:)
-          operation, permission_check = resolve_operation(action)
-
-          halt 401 unless permission_check.call(req)
-
-          operation.call(params: req.params.to_h)
-          res.status = 200
-        end
-
-        def prepare_params(post_params)
-          post = post_params.to_h
-          post[:slug] = post[:slug].empty? ? slugify.call(text: post[:name], checker: post_repo.method(:slug_exists?)) : post[:slug]
-          post
-        end
-
-        def resolve_operation(action)
+        def commands(action)
           case action
           when "delete"
             [delete_post, ->(req) { verify_scope(req: req, scope: :delete) }]
