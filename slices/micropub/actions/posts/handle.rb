@@ -22,12 +22,13 @@ module Micropub
           if action_type
             case resolve_command(req: req, action_type: action_type)
             in Success[command]
-              command.call(params: req.params.to_h)
-              res.status = 200
+              if command.call(params: req.params.to_h).success?
+                res.status = 200
+              else
+                halt 400
+              end
             in Failure[:not_permitted]
               halt 401
-            in Failure[:invalid_request]
-              halt 400
             end
           end
 

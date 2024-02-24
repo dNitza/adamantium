@@ -13,7 +13,7 @@ module Micropub
           post = post_repo.fetch!(slug)
 
           if params.key? :replace
-            return Failure(:invalid_request) 400 unless params[:replace].is_a?(Hash)
+            return Failure(:invalid_request) unless params[:replace].is_a?(Hash)
 
             content = params[:replace].delete(:content)
             content = content.is_a?(Array) ? content.first : content
