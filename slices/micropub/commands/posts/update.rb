@@ -32,8 +32,8 @@ module Micropub
             content = params[:add].delete(:content)&.first
             name = params[:add].delete(:name)
 
-            attrs_to_add[:name] = name if post.name.empty?
-            attrs_to_add[:content] = markdown.call(content: content) if post.content.empty?
+            attrs_to_add[:name] = name if post&.name&.empty?
+            attrs_to_add[:content] = markdown.call(content: content) if post&.content&.empty?
 
             params[:add].keys.each_with_object(attrs_to_add) do |attr, memo|
               memo[attr] = params[:add][attr].first if post.fetch(attr, nil).nil?
