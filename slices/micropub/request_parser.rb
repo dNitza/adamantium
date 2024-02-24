@@ -54,7 +54,7 @@ module Micropub
       new_params = if req_type == :json
          content = if params[:properties][:content]
                      if params[:properties][:content].is_a?(Array) && params[:properties][:content].first[:html]
-                       params[:properties][:content][:html]
+                       params[:properties][:content].first[:html]
                      else
                        params[:properties][:content].first&.tr("\n", " ")
                      end
