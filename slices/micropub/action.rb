@@ -26,7 +26,7 @@ module Micropub
       # Pull out and verify the authorization header or access_token
 
       if req.env["HTTP_AUTHORIZATION"]
-        header = req.env["HTTP_AUTHORIZATION"].match(/Bearer (.*)$/)
+        header = req.env["HTTP_AUTHORIZATION"].match(/^Bearer (.*)$/)
         access_token = header[1] unless header.nil?
       elsif req.params["access_token"]
         access_token = req.params["access_token"]
