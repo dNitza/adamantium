@@ -6,7 +6,7 @@ module Main
 
         expose :posts do
           post_repo.statuses_listing.map do |post|
-            Decorators::Posts::Decorator.new(post)
+            Decorators::Statuses::Decorator.new(post)
           end
         end
       end
