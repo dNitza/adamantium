@@ -52,14 +52,27 @@ module Micropub
       publish_time = params[:published_at] || Time.now
 
       new_params = if req_type == :json
+         content = if params[:properties][:content]
+                     if params[:properties][:content].is_a?(Hash) && params[:properties][:content][:html]
+                       params[:properties][:content][:html]
+                     else
+                       params[:properties][:content].first&.tr("\n", " ")
+                     end
+                   end
+         photos = if params[:properties][:photo].is_a?(String)
+                    {value: params[:properties][:photo], alt: ""}
+                  else
+                    params[:properties][:photo] || []
+                  end
+
         new_params.merge({
           published_at: (params[:"post-status"] == "draft") ? nil : publish_time,
           category: params[:properties][:category] || [],
           name: params[:properties][:name]&.first,
-          content: params[:properties][:content]&.first&.tr("\n", " "),
+          content: content,
           slug: params[:slug] || params[:"mp-slug"],
           syndicate_to: Array(params[:properties][:"mp-syndicate-to"]) || [],
-          photos: params[:properties][:photo] || [],
+          photos: photos,
           location: params[:properties][:location]
         })
       else
