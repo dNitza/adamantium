@@ -59,10 +59,16 @@ module Micropub
                        params[:properties][:content].first&.tr("\n", " ")
                      end
                    end
-         photos = if params[:properties][:photo].is_a?(String)
+         photos = if params[:properties][:photo].is_a?(Array)
+                    params[:properties][:photo].map do |p|
+                      {value: p, alt: ""}
+                    end
+                  elsif params[:properties][:photo].is_a?(Hash)
+                    params[:properties][:photo]
+                  elsif
                     {value: params[:properties][:photo], alt: ""}
                   else
-                    params[:properties][:photo] || []
+                    []
                   end
 
         new_params.merge({
