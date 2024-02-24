@@ -4,8 +4,7 @@
   "type": "module",
   "dependencies": {
     "@icelab/defo": "^0.0.3",
-    "hanami-assets": "^2.1.0-rc.3",
-    "tiny-markdown-editor": "^0.1.8"
+    "hanami-assets": "^2.1.0-rc.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",
