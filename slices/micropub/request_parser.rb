@@ -139,7 +139,7 @@ module Micropub
       location = if params.dig(:properties, :location)
                    params.dig(:properties, :location).first[:properties]
                  elsif checkin.dig(:properties, :latitude) && checkin.dig(:properties, :longitude)
-                   {latitude: checkin.dig(:properties, :latitude).first, longitude: checkin.dig(:properties, :longitude).first}
+                   {latitude: checkin.dig(:properties, :latitude), longitude: checkin.dig(:properties, :longitude)}
                  end
 
       new_params[:photos] = params.dig(:properties, :photo)&.map { |p| {value: p, alt: new_params[:name]} } || []
