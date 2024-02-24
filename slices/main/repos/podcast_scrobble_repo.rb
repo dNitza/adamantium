@@ -1,8 +1,6 @@
 module Main
   module Repos
     class PodcastScrobbleRepo < Adamantium::Repo[:podcast_scrobbles]
-      commands :create
-
       def exists?(id:)
         !!podcast_scrobbles
           .where(overcast_id: id)
