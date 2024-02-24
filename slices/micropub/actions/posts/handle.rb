@@ -26,6 +26,8 @@ module Micropub
               res.status = 200
             in Failure[:not_permitted]
               halt 401
+            in Failure[:invalid_request]
+              halt 400
             end
           end
 
