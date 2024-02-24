@@ -65,7 +65,7 @@ module Micropub
                     end
                   elsif params[:properties][:photo].is_a?(Hash)
                     params[:properties][:photo]
-                  elsif
+                  elsif params[:properties][:photo]
                     {value: params[:properties][:photo], alt: ""}
                   else
                     []
@@ -126,16 +126,22 @@ module Micropub
 
       checkin = params.dig(:properties, :checkin).first
       new_params[:h] = "entry"
-      new_params[:syndication_sources] = params.dig(:properties, :syndication)
+      new_params[:syndication_sources] = params.dig(:properties, :syndication) || []
       new_params[:name] = checkin.dig(:properties, :name).first
       new_params[:content] = params.dig(:properties, :content)&.first || ""
       new_params[:url] = checkin.dig(:properties, :url)&.first
       new_params[:slug] = SecureRandom.uuid
-      new_params[:category] = params.dig(:properties, :category)
+      new_params[:category] = params.dig(:properties, :category) || []
       published = DateTime.parse(params.dig(:properties, :published)&.first).new_offset(0)
       new_params[:published_at] = published.to_s
       new_params[:post_type] = :checkin
-      location = params.dig(:properties, :location).first[:properties]
+
+      location = if params.dig(:properties, :location)
+                   params.dig(:properties, :location).first[:properties]
+                 elsif checkin.dig(:properties, :latitude) && checkin.dig(:properties, :longitude)
+                   {latitude: checkin.dig(:properties, :latitude).first, longitude: checkin.dig(:properties, :longitude).first}
+                 end
+
       new_params[:photos] = params.dig(:properties, :photo)&.map { |p| {value: p, alt: new_params[:name]} } || []
       new_params[:location] = "geo:#{location.dig(:latitude).first},#{location.dig(:longitude).first};u=0"
       new_params

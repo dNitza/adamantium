@@ -41,6 +41,123 @@ RSpec.describe "Post creation", :db, :requests do
       expect(post_repo.statuses_listing.count).to eq 1
       expect(post_repo.statuses_listing.first.tags.map(&:label)).to eq ["ruby", "rspec"]
     end
+
+    it "Create an h-entry with HTML content (JSON)" do
+      params = {
+        type: ["h-entry"],
+        properties: {
+          content: [{
+                        html: "<p>This post has <b>bold</b> and <i>italic</i> text.</p>"
+                      }]
+        }
+      }
+
+      post "/micropub", params
+
+      expect(last_response).to be_successful
+      expect(post_repo.statuses_listing.count).to eq 1
+      expect(post_repo.statuses_listing.first.content).to eq "<p>This post has <b>bold</b> and <i>italic</i> text.</p>\n"
+    end
+
+    it "Create an h-entry with a photo referenced by URL (JSON)" do
+      params = {
+        type: ["h-entry"],
+        properties: {
+          content: ["Micropub test of creating a photo referenced by URL. This post should include a photo of a sunset."],
+          photo: ["https://micropub.rocks/media/sunset.jpg"]
+        }
+      }
+
+      post "/micropub", params
+
+      expect(last_response).to be_successful
+      expect(post_repo.statuses_listing.count).to eq 1
+      expect(post_repo.statuses_listing.first.photos.count).to eq 1
+      expect(post_repo.statuses_listing.first.content).to eq "<p>Micropub test of creating a photo referenced by URL. This post should include a photo of a sunset.</p>\n"
+    end
+
+    it "Create an h-entry post with a nested object (JSON)" do
+      params = {
+        type: [
+          "h-entry"
+        ],
+        properties: {
+          published: [
+            "2017-05-31T12:03:36-07:00"
+          ],
+          content: [
+            "Lunch meeting"
+          ],
+          checkin: [
+            {
+              type: [
+                "h-card"
+              ],
+              properties: {
+                name: ["Los Gorditos"],
+                url: ["https://foursquare.com/v/502c4bbde4b06e61e06d1ebf"],
+                latitude: [45.524330801154],
+                longitude: [-122.68068808051],
+                "street-address": ["922 NW Davis St"],
+                locality: ["Portland"],
+                region: ["OR"],
+                "country-name": ["United States"],
+                "postal-code": ["97209"]
+              }
+            }
+          ]
+        }
+      }
+
+      post "/micropub", params
+
+      expect(last_response).to be_successful
+      expect(post_repo.places_listing.count).to eq 1
+      expect(post_repo.places_listing.first.post_type).to eq "checkin"
+      expect(post_repo.places_listing.first.content).to eq "<p>Lunch meeting</p>\n"
+    end
+
+    it "Create an h-entry post with a photo with alt text (JSON)" do
+      params = {
+        type: ["h-entry"],
+        properties: {
+          content: ["Micropub test of creating a photo referenced by URL with alt text. This post should include a photo of a sunset."],
+          photo: [
+            {
+              value: "https://micropub.rocks/media/sunset.jpg",
+              alt: "Photo of a sunset"
+            }
+          ]
+        }
+      }
+
+      post "/micropub", params
+
+      expect(last_response).to be_successful
+      expect(post_repo.statuses_listing.count).to eq 1
+      expect(post_repo.statuses_listing.first.photos.count).to eq 1
+      expect(post_repo.statuses_listing.first.content).to eq "<p>Micropub test of creating a photo referenced by URL with alt text. This post should include a photo of a sunset.</p>\n"
+    end
+
+    it "Create an h-entry with multiple photos referenced by URL (JSON)" do
+      params = {
+        type: ["h-entry"],
+        properties: {
+          content: ["Micropub test of creating multiple photos referenced by URL. This post should include a photo of a city at night."],
+          photo: [
+            "https://micropub.rocks/media/sunset.jpg",
+            "https://micropub.rocks/media/city-at-night.jpg"
+          ]
+        }
+      }
+
+      post "/micropub", params
+
+      expect(last_response).to be_successful
+      expect(post_repo.statuses_listing.count).to eq 1
+      expect(post_repo.statuses_listing.first.photos.count).to eq 2
+      expect(post_repo.statuses_listing.first.content).to eq "<p>Micropub test of creating multiple photos referenced by URL. This post should include a photo of a city at night.</p>\n"
+    end
   end
 
   context "bookmarks" do
