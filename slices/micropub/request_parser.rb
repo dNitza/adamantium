@@ -83,7 +83,7 @@ module Micropub
         })
       else
         photos = if params[:photo].is_a?(String)
-          {value: params[:photo], alt: ""}
+                   [{value: params[:photo], alt: ""}]
         elsif params[:photo].nil?
           []
         else
