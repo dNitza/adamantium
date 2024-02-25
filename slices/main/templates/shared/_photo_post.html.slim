@@ -2,8 +2,8 @@
   - post.photos.each_with_index do |photo, idx|
     div class="rounded max-w-xs"
       a href="#{post.permalink}#photo-#{idx}"
-        img class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{photo["value"]}" alt="#{photo["alt"]}"
+        img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{photo["value"]}" alt="#{photo["alt"]}"
 - else
   div class="rounded max-w-xs"
     a href="#{post.permalink}"
-      img class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{post.photos[0]["value"]}" alt="#{post.photos[0]["alt"]}"
+      img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{post.photos[0]["value"]}" alt="#{post.photos[0]["alt"]}"

@@ -12,7 +12,7 @@ div class="mb-8 max-w-screen-md mx-auto border-t border-solid border-gray-200 da
       a class="u-url block my-auto hover:underline decoration-wavy" href=latest_status.permalink
         span class="e-content status-body"
           - if latest_status.key_image
-            img class="float-start max-w-32 rounded mr-2" src=latest_status.key_image
+            img loading="lazy" class="float-start max-w-32 rounded mr-2" src=latest_status.key_image
           p
             == latest_status.raw_content
       - latest_status.syndicated_to.each do |loc|

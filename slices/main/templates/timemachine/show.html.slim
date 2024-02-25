@@ -26,7 +26,7 @@ div class="max-w-screen-md mx-auto px-4 m-4 h-max"
                   - if post.photos.count > 0
                     - post.photos.each do |photo|
                       a href="/post/#{post.slug}"
-                        img class="mb-0 rounded" src="#{photo["value"]}"
+                        img loading="lazy" class="mb-0 rounded" src="#{photo["value"]}"
                         = post.name
       - else
         p No posts

@@ -6,7 +6,7 @@ div class="mb-8 h-entry"
     == post.excerpt
     div class="grid gap-4 grid-flow-row grid-cols-#{post.photos.count} grid-rows-1"
       -post.photos.each do |photo|
-        img class="w-44 h-44 object-cover rounded" src=photo["value"]
+        img loading="lazy" class="w-44 h-44 object-cover rounded" src=photo["value"]
   / == render "shared/tags", tags: post.tags
 
   p class="text-sm text-blue-400 dark:text-indigo-400"
