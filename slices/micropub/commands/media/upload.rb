@@ -56,9 +56,9 @@ module Micropub
 
           begin
             case type
-            when :gif
+            when "image/gif"
               Open3.popen3("ffmpeg -i #{file[:tempfile].path} -movflags faststart -pix_fmt yuv420p -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' #{File.join(dirname, fullsize_filename)}")
-            when :iso
+            when "video/mp4"
               Open3.popen3("ffmpeg -i #{file[:tempfile].path} -vcodec libx264 -crf 28 #{File.join(dirname, fullsize_filename)}")
             end
           rescue Errno::ENOENT, NoMethodError => e
