@@ -14,7 +14,7 @@ module Micropub
         include Dry::Monads[:result]
 
         IMAGE_TYPES = %w[image/jpeg imag/jpg image/png].freeze
-        VIDEO_TYPES = %w[image/gif video/mp4].freeze
+        VIDEO_TYPES = %w[image/gif video/mp4 video/mov].freeze
         AUDIO_TYPES = %w[audio/mp3 audio/mpeg audio/x-m4a].freeze
         VALID_UPLOAD_TYPES = IMAGE_TYPES + VIDEO_TYPES + AUDIO_TYPES
 
@@ -59,6 +59,8 @@ module Micropub
             when "image/gif"
               Open3.popen3("ffmpeg -i #{file[:tempfile].path} -movflags faststart -pix_fmt yuv420p -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' #{File.join(dirname, fullsize_filename)}")
             when "video/mp4"
+              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -vcodec libx264 -crf 28 #{File.join(dirname, fullsize_filename)}")
+            when "video/mov"
               Open3.popen3("ffmpeg -i #{file[:tempfile].path} -vcodec libx264 -crf 28 #{File.join(dirname, fullsize_filename)}")
             end
           rescue Errno::ENOENT, NoMethodError => e
