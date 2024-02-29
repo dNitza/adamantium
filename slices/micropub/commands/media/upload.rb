@@ -59,9 +59,9 @@ module Micropub
             when "image/gif"
               Open3.popen3("ffmpeg -i #{file[:tempfile].path} -movflags faststart -pix_fmt yuv420p -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' #{File.join(dirname, fullsize_filename)}")
             when "video/mp4"
-              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -vcodec libx264 -crf 28 #{File.join(dirname, fullsize_filename)}")
+              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -c:v h264 -profile:v main -vf format=yuv420p -c:a aac -movflags +faststart #{File.join(dirname, fullsize_filename)}")
             when "video/mov"
-              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -vcodec libx264 -crf 28 #{File.join(dirname, fullsize_filename)}")
+              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -c:v h264 -profile:v main -vf format=yuv420p -c:a aac -movflags +faststart #{File.join(dirname, fullsize_filename)}")
             end
           rescue Errno::ENOENT, NoMethodError => e
             return Failure(e.message)
