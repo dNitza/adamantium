@@ -4,12 +4,12 @@ source "https://rubygems.org"
 
 ruby "3.3.0"
 
-gem "hanami", "2.1.0rc3"
-gem "hanami-router", "2.1.0rc3"
-gem "hanami-controller", "2.1.0rc3"
-gem "hanami-validations", "2.1.0rc3"
-gem "hanami-assets", "2.1.0rc3"
-gem "hanami-view", "2.1.0rc3"
+gem "hanami", "2.1.0"
+gem "hanami-router", "2.1.0"
+gem "hanami-controller", "2.1.0"
+gem "hanami-validations", "2.1.0"
+gem "hanami-assets", "2.1.0"
+gem "hanami-view", "2.1.0"
 
 gem "rom-sql"
 gem "pg"
