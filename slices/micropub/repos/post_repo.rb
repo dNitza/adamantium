@@ -53,6 +53,12 @@ module Micropub
           .one
       end
 
+      def url_exists?(url)
+        !!posts
+          .where(url: url)
+          .one
+      end
+
       def find!(id)
         posts
           .by_pk(id)
