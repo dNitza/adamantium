@@ -5,4 +5,6 @@ article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 d
   h1= page_name
   == page_content
 
+  - if page_updated_at
+    ="Last updated: #{page_updated_at}"
 div class="max-w-screen-md mx-auto border-t border-solid border-gray-200 dark:border-gray-600"
