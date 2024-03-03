@@ -1,5 +1,6 @@
 require "httparty"
 require "que"
+require "net/http"
 
 module Adamantium
   module Jobs
@@ -14,6 +15,8 @@ module Adamantium
           if code >= 400
             bookmark_repo.update(id: bookmark.id, params: {url: "https://web.archive.org/web/*/#{bookmark.url}"})
           end
+        rescue Net::OpenTimeout
+            bookmark_repo.update(id: bookmark.id, params: {url: "https://web.archive.org/web/*/#{bookmark.url}"})
         end
       end
     end

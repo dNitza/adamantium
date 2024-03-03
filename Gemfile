@@ -11,6 +11,7 @@ gem "hanami-validations", "2.1.0"
 gem "hanami-assets", "2.1.0"
 gem "hanami-view", "2.1.0"
 
+gem "csv"
 gem "rom-sql"
 gem "pg"
 gem "scraperd", github: "dNitza/scraperd", branch: "master"
