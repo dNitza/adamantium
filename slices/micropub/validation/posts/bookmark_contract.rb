@@ -2,7 +2,6 @@ module Micropub
   module Validation
     module Posts
       class BookmarkContract < Dry::Validation::Contract
-
         include Deps["repos.post_repo"]
 
         params do

@@ -12,7 +12,7 @@ ROM::SQL.migration do
      $$ language 'plpgsql';
     SQL
 
-    alter_table :pages do 
+    alter_table :pages do
       add_column :updated_at, :timestamp
     end
 
@@ -25,7 +25,7 @@ ROM::SQL.migration do
 
   down do
     execute("DROP FUNCTION IF EXISTS update_updated_at_column();")
-    
+
     run <<-SQL
       DROP TRIGGER IF EXISTS update_pages_updated_at ON pages;
     SQL

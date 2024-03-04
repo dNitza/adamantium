@@ -12,9 +12,8 @@ module Main
       class Decorator < Main::Decorators::Posts::Decorator
         def raw_content
           Sanitize.fragment(content,
-                            elements: ["img", "p"],
-                            attributes: {"img" => ["alt", "src", "title"]}
-          )
+            elements: ["img", "p"],
+            attributes: {"img" => ["alt", "src", "title"]})
         end
       end
     end

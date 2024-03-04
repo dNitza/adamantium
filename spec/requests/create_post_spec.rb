@@ -47,8 +47,8 @@ RSpec.describe "Post creation", :db, :requests do
         type: ["h-entry"],
         properties: {
           content: [{
-                        html: "<p>This post has <b>bold</b> and <i>italic</i> text.</p>"
-                      }]
+            html: "<p>This post has <b>bold</b> and <i>italic</i> text.</p>"
+          }]
         }
       }
 
@@ -191,7 +191,7 @@ RSpec.describe "Post creation", :db, :requests do
       expect(last_response).to be_successful
       expect(post_repo.bookmark_listing.count).to eq 1
       expect(post_repo.bookmark_listing.last.cached_content).to_not eq nil
-      
+
       post "/micropub", params
       expect(last_response).to_not be_successful
       expect(post_repo.bookmark_listing.count).to eq 1

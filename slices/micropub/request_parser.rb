@@ -16,6 +16,9 @@ module Micropub
       when :book
         book_params = parse_book_params(params)
         Entities::BookRequest.new(book_params)
+      when :code
+        code_params = parse_code_params(params)
+        Entities::CodeRequest.new(code_params)
       else
         req_params = parse_post_params(req_type, cont_type, params)
         Entities::PostRequest.new(req_params)
@@ -28,6 +31,7 @@ module Micropub
       return :bookmark if params[:"bookmark-of"]
       return :book if params.dig(:properties, :"read-of")
       return :checkin if params.dig(:properties, :checkin)
+      return :code if params.dig(:properties, :programming_language)
       :post
     end
 
@@ -43,6 +47,21 @@ module Micropub
       nil
     end
 
+    def parse_code_params(params)
+      new_params = {}
+      new_params[:h] = "entry"
+      new_params[:action] = params[:action]
+      new_params[:content] = params[:properties][:content].first
+      new_params[:slug] = SecureRandom.uuid
+      new_params[:programming_language] = params[:properties][:programming_language]
+      new_params[:published_at] = Time.now
+      new_params[:post_type] = :code
+      new_params[:name] = params[:properties][:name]&.first
+      new_params[:syndicate_to] = Array(params[:properties][:"mp-syndicate-to"]) || []
+
+      new_params
+    end
+
     def parse_post_params(req_type, post_type, params)
       new_params = {}
       new_params[:h] = "entry"
@@ -52,24 +71,24 @@ module Micropub
       publish_time = params[:published_at] || Time.now
 
       new_params = if req_type == :json
-         content = if params[:properties][:content]
-                     if params[:properties][:content].is_a?(Array) && params[:properties][:content].first.is_a?(Hash)
-                       params[:properties][:content].first[:html]
-                     else
-                       params[:properties][:content].first&.tr("\n", " ")
-                     end
-                   end
-         photos = if params[:properties][:photo].is_a?(Array)
-                    params[:properties][:photo].map do |p|
-                      {value: p, alt: ""}
-                    end
-                  elsif params[:properties][:photo].is_a?(Hash)
-                    params[:properties][:photo]
-                  elsif params[:properties][:photo]
-                    {value: params[:properties][:photo], alt: ""}
-                  else
-                    []
-                  end
+        content = if params[:properties][:content]
+          if params[:properties][:content].is_a?(Array) && params[:properties][:content].first.is_a?(Hash)
+            params[:properties][:content].first[:html]
+          else
+            params[:properties][:content].first&.tr("\n", " ")
+          end
+        end
+        photos = if params[:properties][:photo].is_a?(Array)
+          params[:properties][:photo].map do |p|
+            {value: p, alt: ""}
+          end
+        elsif params[:properties][:photo].is_a?(Hash)
+          params[:properties][:photo]
+        elsif params[:properties][:photo]
+          {value: params[:properties][:photo], alt: ""}
+        else
+          []
+        end
 
         new_params.merge({
           published_at: (params[:"post-status"] == "draft") ? nil : publish_time,
@@ -83,7 +102,7 @@ module Micropub
         })
       else
         photos = if params[:photo].is_a?(String)
-                   [{value: params[:photo], alt: ""}]
+          [{value: params[:photo], alt: ""}]
         elsif params[:photo].nil?
           []
         else
@@ -137,10 +156,10 @@ module Micropub
       new_params[:post_type] = :checkin
 
       location = if params.dig(:properties, :location)
-                   params.dig(:properties, :location).first[:properties]
-                 elsif checkin.dig(:properties, :latitude) && checkin.dig(:properties, :longitude)
-                   {latitude: checkin.dig(:properties, :latitude), longitude: checkin.dig(:properties, :longitude)}
-                 end
+        params.dig(:properties, :location).first[:properties]
+      elsif checkin.dig(:properties, :latitude) && checkin.dig(:properties, :longitude)
+        {latitude: checkin.dig(:properties, :latitude), longitude: checkin.dig(:properties, :longitude)}
+      end
 
       new_params[:photos] = params.dig(:properties, :photo)&.map { |p| {value: p, alt: new_params[:name]} } || []
       new_params[:location] = "geo:#{location.dig(:latitude).first},#{location.dig(:longitude).first};u=0"

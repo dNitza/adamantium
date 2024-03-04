@@ -24,27 +24,32 @@ article class="h-entry"
         a class="dark:text-gray-400" href="/places" places
       - if post.photos? || post.videos?
         a class="dark:text-gray-400" href="/photos" photos
-    article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded prose-video:rounded"
-      div class="e-content prose-code:bg-pink-100 prose-code:text-pink-900"
-        == post.content
+    - if post.post_type == "code"
+      pre
+        code
+          == post.content
+    - else
+      article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded prose-video:rounded"
+        div class="e-content prose-code:bg-pink-100 prose-code:text-pink-900"
+          == post.content
 
-      - if post.photos?
-        - post.photos.each_with_index do |photo, idx|
-          figure id="photo-#{idx}"
-            img loading="lazy" class="u-photo shadow-solid shadow-pink-100 dark:shadow-pink-200 mb-4" src=photo["value"] alt=photo["alt"]
-            figcaption
-              = photo["alt"]
-      - if post.videos?
-        - post.videos.each_with_index do |video, index|
-          figure id="video-#{index}"
-            video loop=false muted=true controls=true
-              source type="video/mp4" src="#{video["value"]}"
-            figcaption= video["alt"]
-            a href="#" data-replay="video-#{index}" Replay
+        - if post.photos?
+          - post.photos.each_with_index do |photo, idx|
+            figure id="photo-#{idx}"
+              img loading="lazy" class="u-photo shadow-solid shadow-pink-100 dark:shadow-pink-200 mb-4" src=photo["value"] alt=photo["alt"]
+              figcaption
+                = photo["alt"]
+        - if post.videos?
+          - post.videos.each_with_index do |video, index|
+            figure id="video-#{index}"
+              video loop=false muted=true controls=true
+                source type="video/mp4" src="#{video["value"]}"
+              figcaption= video["alt"]
+              a href="#" data-replay="video-#{index}" Replay
 
 
-      - if post.location
-        img loading="lazy" class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
+        - if post.location
+          img loading="lazy" class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
     -if post.webmentions && post.webmentions.count > 0
       div class="mt-12"
         h3 #{post.webmentions.count} Comment#{post.webmentions.count != 1 ? "s" : ""}

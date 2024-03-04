@@ -13,7 +13,7 @@ module Micropub
         posts.transaction do
           new_post = posts.changeset(:create, post_attrs).commit
 
-          post_attrs[:category].each do |tag_name|
+          post_attrs[:category]&.each do |tag_name|
             next if tag_name == ""
 
             tag = posts.tags.where(label: tag_name).one ||
