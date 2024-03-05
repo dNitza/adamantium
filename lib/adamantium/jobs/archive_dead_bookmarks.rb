@@ -16,7 +16,7 @@ module Adamantium
             bookmark_repo.update(id: bookmark.id, params: {url: "https://web.archive.org/web/*/#{bookmark.url}"})
           end
         rescue Net::OpenTimeout
-            bookmark_repo.update(id: bookmark.id, params: {url: "https://web.archive.org/web/*/#{bookmark.url}"})
+          bookmark_repo.update(id: bookmark.id, params: {url: "https://web.archive.org/web/*/#{bookmark.url}"})
         end
       end
     end
