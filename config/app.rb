@@ -36,6 +36,7 @@ module Adamantium
       "syndication.dayone",
       "syndication.mastodon",
       "syndication.blue_sky",
+      "syndication.gist",
       "syndication.raindrop",
       "view_cache.cacher",
       "renderers.markdown"

@@ -29,6 +29,10 @@ module Micropub
                 {
                   uid: "https://bsky.social",
                   name: "Blue Sky"
+                },
+                {
+                  uid: "https://gist.github.com",
+                  name: "Gist"
                 }
               ]
             }.to_json
@@ -44,6 +48,10 @@ module Micropub
                 {
                   uid: "https://bsky.social",
                   name: "Blue Sky"
+                },
+                {
+                  uid: "https://gist.github.com",
+                  name: "Gist"
                 }
               ]
             }.to_json

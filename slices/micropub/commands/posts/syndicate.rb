@@ -11,6 +11,7 @@ module Micropub
         include Deps["settings",
           "syndication.mastodon",
           "syndication.blue_sky",
+          "syndication.gist",
           add_post_syndication_source: "commands.posts.add_syndication_source",
           send_to_dayone: "syndication.dayone",
         ]
@@ -30,7 +31,13 @@ module Micropub
             add_post_syndication_source.call(post_id, :blue_sky, res.value!) if res.success?
           end
 
-          if post[:category].include? "weekly"
+          if syndicate_to.include? :gist
+            res = gist.call(post: post)
+
+            add_post_syndication_source.call(post_id, :gist, res.value!) if res.success?
+          end
+
+          if post[:category]&.include? "weekly"
             send_to_dayone.call(name: post[:name], content: post[:content])
           end
 
@@ -43,6 +50,7 @@ module Micropub
           targets = []
           targets << :mastodon if syndicate_to.any? { |url| settings.mastodon_server.match(/#{url}/) }
           targets << :blue_sky if syndicate_to.any? { |url| settings.blue_sky_url.match(/#{url}/) }
+          targets << :gist if syndicate_to.any? { |url| "https://gist.github.com".match(/#{url}/) }
           targets
         end
       end

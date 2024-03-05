@@ -72,5 +72,7 @@ module Adamantium
 
     setting :sentry_dsn, default: nil
     setting :raise_exceptions, default: true
+
+    setting :gist_client_token, default: nil
   end
 end

@@ -15,7 +15,7 @@ module Micropub
           post_params = prepare_params(params: post)
           created_post = post_repo.create(post_params)
 
-          # syndicate.call(created_post.id, post)
+          syndicate.call(created_post.id, post)
 
           # decorated_post = Decorators::Posts::Decorator.new(created_post)
 
