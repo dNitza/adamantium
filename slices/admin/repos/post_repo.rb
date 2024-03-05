@@ -63,7 +63,7 @@ module Admin
 
       def list
         posts
-          .where(post_type: ["post", "checkin"])
+          .where(post_type: ["post", "checkin", "code"])
           .order(Sequel.lit("published_at desc"))
           .to_a
       end
