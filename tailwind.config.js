@@ -40,8 +40,24 @@ module.exports = {
         'solid': `10px 10px 1px 2px`
       },
       typography: {
-        emphasis: {
+        DEFAULT: {
           css: {
+            h1: {
+              'font-weight': 500
+            },
+            h2: {
+              'font-weight': 500
+            }, 
+            h3: {
+              'font-weight': 500
+            },
+            h2: {
+              'font-weight': 500
+            },
+          }
+        },
+        emphasis: {
+          css: { 
             em: {
               colors: colors.pink['400']
             },
