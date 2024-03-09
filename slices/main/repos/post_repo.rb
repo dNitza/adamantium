@@ -142,7 +142,7 @@ module Main
 
       def posts_for_timemachine(date:)
         posts
-          .where(post_type: "post")
+          .where(post_type: ["post", "code", "checkin"])
           .where(published_at: TimeMath.day.floor(date)...TimeMath.day.advance(date, +1))
           .to_a
       end
@@ -156,7 +156,7 @@ module Main
 
       def all_posts
         posts
-          .where(post_type: ["post", "bookmark"])
+          .where(post_type: ["post", "code", "bookmark"])
           .published
           .order(Sequel.desc(:published_at))
           .to_a
@@ -164,7 +164,7 @@ module Main
 
       def for_rss
         posts
-          .where(post_type: ["post", "bookmark"], location: nil)
+          .where(post_type: ["post", "code", "bookmark"], location: nil)
           .exclude(name: nil)
           .published
           .combine(:tags)
