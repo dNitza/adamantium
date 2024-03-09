@@ -7,11 +7,11 @@ module.exports = {
   content: ["./app/templates/**/*.slim", "./slices/main/templates/**/*.slim", "./slices/admin/templates/**/*.slim", "./public/assets/index.js", "app/decorators/*/decorator.rb"],
   safelist: [
     {
-      pattern: /bg-(yellow|orange|green|blue|pink|purple|indigo|emerald)-(50|100|800|900)/,
+      pattern: /bg-(yellow|orange|green|lime|blue|pink|purple|indigo|emerald)-(50|100|800|900)/,
       variants: ['hover', 'dark']
     },
     {
-      pattern: /text-(yellow|orange|green|blue|pink|purple|indigo|emerald)-(400)/,
+      pattern: /text-(yellow|orange|green|lime|blue|pink|purple|indigo|emerald)-(400)/,
       variants: ['hover', 'dark']
     },
   ],
