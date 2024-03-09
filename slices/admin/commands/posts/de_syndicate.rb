@@ -13,7 +13,7 @@ module Admin
 
           request = if target.to_sym == :mastodon
             masto_id = post.syndication_sources[target].split("/").last
-            if masto_id == ""
+            if masto_id.nil?
               Success()
             else
               mastodon.de_syndicate(post_id: masto_id)

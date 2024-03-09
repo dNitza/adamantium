@@ -87,7 +87,6 @@ module Adamantium
         mastodon_server = settings.mastodon_server.split("@").first
         response = HTTParty.delete("#{mastodon_server}api/v1/statuses/#{post_id}", {
           headers: {
-            "Idempotency-Key": key,
             Authorization: "Bearer #{mastodon_token}"
           }
         })
