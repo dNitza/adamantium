@@ -44,9 +44,12 @@ module Main
             return photos.first["url"]
           end
 
+          inline_images.first[1] if inline_images
+        end
+
+        def inline_images
           doc = Nokogiri::HTML(content)
-          images = doc.at("//img")
-          images.first[1] if images
+          doc.at("//img")
         end
 
         def prefix_emoji

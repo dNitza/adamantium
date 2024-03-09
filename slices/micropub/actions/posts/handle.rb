@@ -36,7 +36,8 @@ module Micropub
           if req_entity && verify_scope(req: req, scope: :create)
             Dry::Matcher::ResultMatcher.call(create_entry.call(req_entity: req_entity)) do |m|
               m.success do |post|
-                res.headers["Location"] = "#{settings.micropub_site_url}/#{post.value!.post_type}/#{post.value!.slug}"
+                post_type = (post.value!.post_type == :bookmark) ? :bookmark : :post
+                res.headers["Location"] = "#{settings.micropub_site_url}/#{post_type}/#{post.value!.slug}"
                 res.status = 201
               end
 

@@ -1,5 +1,6 @@
 require "dry/monads"
 require "httparty"
+require "nokogiri"
 
 module Adamantium
   module Syndication
@@ -8,9 +9,12 @@ module Adamantium
       include Deps[mastodon_client: "clients.mastodon"]
 
       def call(post:)
-        media_ids = post[:photos]&.map do |photo|
+        inline_images = inline_images(post[:content]).first(4).map { |img| {"value" => img, "alt" => ""} }
+        images_to_upload = Array(inline_images) + Array(post[:photos])
+
+        media_ids = images_to_upload.map do |photo|
           mastodon_client.upload_media(photo: photo)
-        end&.compact
+        end.compact
 
         response = mastodon_client.create_post(post: post, media_ids: media_ids)
 
@@ -29,6 +33,13 @@ module Adamantium
         else
           Failure(:failed_to_de_syndicate)
         end
+      end
+
+      private
+
+      def inline_images(content)
+        doc = Nokogiri::HTML(content)
+        doc.search("//img").flat_map { |img| img.attribute_nodes.flat_map(&:value) }
       end
     end
   end
