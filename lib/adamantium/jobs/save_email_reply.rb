@@ -14,7 +14,7 @@ module Adamantium
         return unless mail.subject == "About that post of yours"
 
         reply_content, in_reply_to = mail.body.decoded.split("---")
-        post_url = URI.join(settings.micropub_site_url, in_reply_to.match(URI::DEFAULT_PARSER.make_regexp)[7]&.gsub(")", "")).to_s
+        post_url = URI.join(settings.micropub_site_url, in_reply_to.match(URI::DEFAULT_PARSER.make_regexp)[7]).to_s
 
         slug = post_url.split("/").last
         post = post_repo.fetch!(slug)

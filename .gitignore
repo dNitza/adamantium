@@ -18,6 +18,7 @@ Capfile
 config/deploy.rb
 config/deploy/production.rb
 config/systemd/que.service.erb
+config/systemd/mail_room.service.erb
 config/mail_room.yaml
 script/deploy
 tmp/*
