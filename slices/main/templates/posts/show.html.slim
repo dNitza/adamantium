@@ -103,12 +103,15 @@ article class="h-entry"
           h3 class="text-xl mb-0"  This week, years ago
       - if text_posts.count > 0
         div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 mb-4"
-          div class="block grow bg-blue-100 dark:bg-blue-600 rounded px-4 py-2 mb-12"
+          div class="block grow bg-blue-100 dark:bg-blue-600 rounded mb-12"
             ul class="mt-0"
               - text_posts.each do |past_post|
-                li class="m-0"
-                  a class="hover:underline" href=past_post.permalink
-                    = "#{past_post.display_title} (#{past_post.published_at.year})"
+                li class=""
+                  a class="block content-justify hover:bg-blue-200 hover:dark:bg-blue-800 decoration-wavy rounded py-1.5 px-2" href=past_post.permalink
+                    div class="flex justify-between"
+                      span class="grow-0 inline-block pr-2" = past_post.display_title
+                      span class="border-b border-blue-400 dark:border-blue-900 -top-3 relative border-dashed grow inline-block"
+                      span class="grow-0 inline-block pl-2" = past_post.published_at.year
 
       div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
         div class="grid grid-cols-3 gap-4 mb-4 max-w-prose mx-auto"
