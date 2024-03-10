@@ -1,10 +1,17 @@
 div class="mb-8 h-entry border border-gray-200 m-2 p-4 bg-gray-50 hover:bg-gray-100 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-950 hover:dark:border-slate-900 rounded"
   a class="border-b-2 border-transparent hover:border-blue-600 hover:border-b-2" href="/post/#{post.slug}"
     div class="e-content prose-p:mb-0 prose-img:my-2 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100 mb-4 prose-img:rounded"
-      == " 💬 #{post.raw_content}"
-      div class="grid gap-4 grid-flow-row grid-cols-4 grid-rows-1"
-        -post.photos.each do |photo|
-          img loading="lazy" class="w-32 h-32 object-cover rounded" src=photo["value"]
+      - if post.photos.count == 0 && post.key_image.nil?
+        div class="flex"
+          div class="text-8xl px-8"
+            = post.prefix_emoji
+          div class=""
+            == post.raw_content
+      -else
+        == " #{post.prefix_emoji} #{post.raw_content}"
+        div class="grid gap-4 grid-flow-row grid-cols-4 grid-rows-1"
+          - post.photos.each do |photo|
+            img loading="lazy" class="w-32 h-32 object-cover rounded" src=photo["value"]
     == render "shared/tags", tags: post.tags
 
   div class="mb-8"

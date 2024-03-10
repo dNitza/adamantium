@@ -52,6 +52,7 @@ gem "jwt"
 gem "lastfm", "~> 1.27"
 gem "mail"
 gem "que"
+gem "unicode-emoji"
 gem "connection_pool"
 gem "omdb-api", "1.4.3", require: false
 gem "image_processing", "~> 1.0"

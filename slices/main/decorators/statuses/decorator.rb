@@ -11,9 +11,11 @@ module Main
     module Statuses
       class Decorator < Main::Decorators::Posts::Decorator
         def raw_content
-          Sanitize.fragment(content,
+          res = Sanitize.fragment(content,
             elements: ["img", "p"],
             attributes: {"img" => ["alt", "src", "title"]})
+
+          res.gsub(prefix_emoji[0], "") if prefix_emoji
         end
       end
     end

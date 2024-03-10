@@ -5,6 +5,7 @@
 require "rexml/parsers/pullparser"
 require "sanitize"
 require "nokogiri"
+require "unicode/emoji"
 
 module Main
   module Decorators
@@ -54,11 +55,15 @@ module Main
 
         def prefix_emoji
           if name
-            ""
+            nil
           elsif photos? && content == ""
             "📷"
           else
-            "💬"
+            @prefix_emoji ||= if (match = content.match(Unicode::Emoji::REGEX))
+                                match
+                              else
+                                "💬"
+            end
           end
         end
 
@@ -80,7 +85,8 @@ module Main
         end
 
         def raw_content
-          Sanitize.fragment(content)
+          res = Sanitize.fragment(content)
+          res.gsub(prefix_emoji[0], "") if prefix_emoji
         end
 
         def excerpt
