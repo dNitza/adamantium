@@ -7,7 +7,7 @@ module Adamantium
       def run
         webmention_repo = Admin::Container["repos.webmention_repo"]
 
-        webmentions = webmention_repo.list_all
+        webmentions = webmention_repo.list_all_for_check
 
         webmentions.each do |webmention|
           code = HTTParty.get(webmention.source_url, follow_redirects: false).code

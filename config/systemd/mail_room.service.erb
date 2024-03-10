@@ -1,0 +1,13 @@
+[Unit]
+Description = blog mail_room worker
+
+[Service]
+Type=simple
+Environment = PWD=/home/blog/current
+WorkingDirectory = /home/blog/current
+ExecStart = /home/deployer/.rbenv/shims/bundle exec mail_room -c config/mail_room.yaml
+Restart=always
+User=deployer
+
+[Install]
+WantedBy = multi-user.target

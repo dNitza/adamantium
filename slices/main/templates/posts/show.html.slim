@@ -50,19 +50,32 @@ article class="h-entry"
 
         - if post.location
           img loading="lazy" class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
-    -if post.webmentions && post.webmentions.count > 0
+    - if post.webmentions && post.webmentions.count == 0 && post.commentable
+      a href="mailto:blog@dnitza.com?subject=About that post of yours&body=%0A%0A---%0A(In reply to #{post.permalink})" Reply
+    - if post.webmentions && post.webmentions.count > 0
       div class="mt-12"
-        h3 #{post.webmentions.count} Comment#{post.webmentions.count != 1 ? "s" : ""}
+        h3
+          = "#{post.webmentions.count} Comment#{post.webmentions.count != 1 ? "s" : ""}"
+          - if post.commentable
+            == " &middot; "
+            a href="mailto:blog@dnitza.com?subject=About that post of yours&body=%0A%0A---%0A(In reply to #{post.permalink})" reply
         - post.webmentions.each do |mention|
           div class="prose-p:m-1 mb-6 p-8 bg-orange-100 dark:bg-indigo-900 squircle"
             div class="flex h-8"
-              img loading="lazy" class="w-8 rounded-full m-0 mr-2" src=mention.author_photo
-              a class="block text-orange-700 dark:text-violet-300 no-underline hover:underline" href=mention.author_url
-                = mention.author_name
+              - if mention.author_photo != ""
+                img loading="lazy" class="w-8 rounded-full m-0 mr-2" src=mention.author_photo
+              - if mention.author_url == ""
+                = "From #{mention.author_name}"
+              - else
+                a class="block text-orange-700 dark:text-violet-300 no-underline hover:underline" href=mention.author_url
+                  = mention.author_name
             div class="prose dark:prose-invert dark:text-indigo-250 prose-a:text-orange-700 dark:prose-a:text-violet-300 prose-a:no-underline hover:prose-a:underline"
               == mention.content_html
             div class="text-sm"
-              a class="no-underline hover:underline text-orange-900 dark:text-violet-400" href=mention.source_url
+              - if mention.source_url != "email"
+                a class="no-underline hover:underline text-orange-900 dark:text-violet-400" href=mention.source_url
+                  = mention.published_at.strftime("%e %B, %Y")
+              - else
                 = mention.published_at.strftime("%e %B, %Y")
   div class="mb-12"
     - if trip

@@ -32,7 +32,10 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
           span
             == webmention.content_html
         td
-          a href="#{webmention.source_url}" Source
+          - if webmention.source_url == "email"
+            = "email"
+          - else
+            a href="#{webmention.source_url}" Source
         td
           a href="#{webmention.target_url}" Target
         td

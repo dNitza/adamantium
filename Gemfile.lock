@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/dNitza/mail_room.git
+  revision: e36e9b457e61227f7b631246e63d35fb17d921fa
+  branch: master
+  specs:
+    mail_room (0.11.1)
+      jwt (>= 2.0)
+      net-imap (>= 0.2.1)
+      oauth2 (>= 1.4.4, < 3)
+
+GIT
   remote: https://github.com/dNitza/scraperd.git
   revision: a8fc96f56e64a13e70490ded1dd73345dc7bc9f2
   branch: master
@@ -63,6 +73,7 @@ GEM
       sshkit (~> 1.3)
     capistrano-systemd-multiservice (0.1.0.beta13)
       capistrano (~> 3.7)
+    charlock_holmes (0.7.7)
     chronic (0.10.2)
     coderay (1.1.3)
     concurrent-ruby (1.2.3)
@@ -147,10 +158,11 @@ GEM
     ed25519 (1.3.0)
     faker (3.2.3)
       i18n (>= 1.8.11, < 2)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
+    faraday-net_http (3.1.0)
+      net-http
     ffi (1.16.3)
-    ffi-compiler (1.0.1)
-      ffi (>= 1.0.0)
-      rake
     formatador (1.1.0)
     georuby (2.5.2)
     gnuplot (2.6.2)
@@ -226,16 +238,9 @@ GEM
       zeitwerk (~> 2.6)
     hansi (0.2.1)
     hashie (2.1.2)
-    http (5.2.0)
-      addressable (~> 2.8)
-      base64 (~> 0.1)
-      http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.5.0)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    http-form_data (2.3.0)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -245,10 +250,6 @@ GEM
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-    indieweb-endpoints (8.0.0)
-      http (~> 5.0)
-      link-header-parser (~> 5.0)
-      nokogiri (>= 1.13)
     io-console (0.7.2)
     irb (1.11.2)
       rdoc
@@ -260,14 +261,10 @@ GEM
     lastfm (1.27.4)
       httparty
       xml-simple
-    link-header-parser (5.1.1)
     lint_roller (1.1.0)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    llhttp-ffi (0.5.0)
-      ffi-compiler (~> 1.0)
-      rake (~> 13.0)
     lumberjack (1.2.10)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
@@ -290,6 +287,8 @@ GEM
       mustermann (= 3.0.0)
     mutex_m (0.2.0)
     nenv (0.3.0)
+    net-http (0.4.1)
+      uri
     net-imap (0.4.10)
       date
       net-protocol
@@ -315,6 +314,13 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oauth2 (2.0.9)
+      faraday (>= 0.17.3, < 3.0)
+      jwt (>= 1.0, < 3.0)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 4)
+      snaky_hash (~> 2.0)
+      version_gem (~> 1.1)
     ogpr (1.1.0)
       nokogiri (~> 1.8)
       rest-client (~> 2.1.0)
@@ -449,6 +455,9 @@ GEM
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
+    snaky_hash (2.0.1)
+      hashie
+      version_gem (~> 1.1, >= 1.1.1)
     sshkit (1.22.0)
       mutex_m
       net-scp (>= 1.1.2)
@@ -479,11 +488,9 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
+    version_gem (1.1.3)
     warning (1.3.0)
-    webmention (7.0.0)
-      http (~> 5.0)
-      indieweb-endpoints (~> 8.0)
-      nokogiri (>= 1.13)
     whenever (1.0.0)
       chronic (>= 0.6.3)
     xml-simple (1.1.9)
@@ -510,6 +517,7 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.2)
   capistrano-systemd-multiservice
   capistrano3-puma!
+  charlock_holmes
   connection_pool
   csv
   database_cleaner-sequel
@@ -537,6 +545,7 @@ DEPENDENCIES
   jwt
   lastfm (~> 1.27)
   mail
+  mail_room!
   matrix
   mini_magick
   ogpr
@@ -565,7 +574,6 @@ DEPENDENCIES
   time_math2
   timecop
   warning
-  webmention
   whenever
 
 RUBY VERSION

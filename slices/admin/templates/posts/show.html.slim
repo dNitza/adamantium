@@ -31,6 +31,9 @@ article class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 d
     textarea name="body" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2 mb-4" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"
       == markdown_body
     fieldset class="mb-4 flex"
+      label for="commentable" class="mr-2" Commentable?
+      input class="mt-2" type="checkbox" value="true" id="commentable" name="commentable" switch="switch" checked=post.commentable
+    fieldset class="mb-4 flex"
       label for="tags" class="mr-2" Tags:
       input type="text" name="tags" id="tags" class="w-full px-1 border rounded" value="#{post.tags.map(&:label).join(", ")}"
     button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"

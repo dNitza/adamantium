@@ -10,6 +10,7 @@ module Admin
         def call(params:)
           attrs_to_replace = {}
           attrs_to_replace[:content] = markdown.call(content: params[:body]) if params[:body]
+          attrs_to_replace[:commentable] = params[:commentable]
 
           tags = params[:tags].split(",").map(&:strip)
 
