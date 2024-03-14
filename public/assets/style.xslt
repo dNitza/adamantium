@@ -55,6 +55,7 @@
                   <xsl:value-of select="title"/>
                 </a>
               </h3>
+              <xsl:value-of select="description" disable-output-escaping="yes"/>
               <small class="text-gray">
                 Published: <xsl:value-of select="pubDate" />
               </small>

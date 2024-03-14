@@ -23,7 +23,7 @@ xml.channel do |channel|
 
   posts.each do |post|
     channel.item do |item|
-      item.title post.raw_content
+      item.title post.display_title
       item.description do |desc|
         desc.cdata! post.feed_content
       end

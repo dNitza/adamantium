@@ -67,6 +67,7 @@ gem "warning"
 group :cli, :development do
   gem "irb"
   gem "hanami-reloader", "~> 2.1.0.rc"
+  gem 'rubocop', require: false
 end
 
 group :cli, :development, :test do
