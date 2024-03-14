@@ -23,9 +23,9 @@ xml.channel do |channel|
 
   posts.each do |post|
     channel.item do |item|
-      item.title post.display_title
+      item.title post.feed_content
       item.description do |desc|
-        desc.cdata! post.feed_content
+        desc.cdata! post.raw_content
       end
       item.link(post.permalink)
       item.guid(post.slug, isPermaLink: true)

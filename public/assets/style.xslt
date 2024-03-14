@@ -47,17 +47,15 @@
           <h2>Recent Items</h2>
           <xsl:for-each select="/channel/item">
             <div class="pb-5">
-              <h3 class="mb-0">
+              <xsl:value-of select="title" disable-output-escaping="yes"/>
+
+              <small class="text-gray">
                 <a target="_blank">
                   <xsl:attribute name="href">
                     <xsl:value-of select="link"/>
                   </xsl:attribute>
-                  <xsl:value-of select="title"/>
+                  Published: <xsl:value-of select="pubDate" />
                 </a>
-              </h3>
-              <xsl:value-of select="description" disable-output-escaping="yes"/>
-              <small class="text-gray">
-                Published: <xsl:value-of select="pubDate" />
               </small>
             </div>
           </xsl:for-each>
