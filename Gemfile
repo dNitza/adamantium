@@ -58,7 +58,6 @@ gem "omdb-api", "1.4.3", require: false
 gem "image_processing", "~> 1.0"
 gem "onnxruntime"
 gem "mini_magick"
-gem "sentry-ruby"
 
 gem "whenever", require: false
 
@@ -84,6 +83,7 @@ group :development do
   gem "capistrano-systemd-multiservice"
   gem "capistrano-rbenv", "~> 2.2"
   gem "capistrano3-puma", github: "seuros/capistrano-puma"
+  gem "vernier"
 end
 
 group :test do

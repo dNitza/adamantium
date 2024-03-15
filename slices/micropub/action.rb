@@ -6,8 +6,7 @@ module Micropub
     include Deps["logger",
       "settings",
       not_found_view: "views.not_found",
-      error_view: "views.error",
-      sentry: "sentry.client"]
+      error_view: "views.error"]
 
     include Dry::Matcher.for(:handle, with: Dry::Matcher::ResultMatcher)
     include Dry::Monads[:result]
@@ -48,8 +47,6 @@ module Micropub
 
     def handle_error(req, res, exception)
       raise exception if settings.raise_exceptions
-
-      sentry.capture_exception(exception)
 
       res.status = 500
       res.render error_view
