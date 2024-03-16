@@ -3,42 +3,30 @@ require "json"
 module Adamantium
   module ViewCache
     class Cacher
-      def call(key:, content_proc:, expiry:)
-        cached_content = read(key: key)
+      include Deps["settings"]
+
+      def call(key:, params:, content_proc:, expiry:)
+        calculated_key = "adamantium:#{key}_#{params.join("_")}"
+        cached_content = cache_store.read(key: calculated_key)
 
         return cached_content if cached_content
 
-        rendered_content = content_proc.call
+        rendered_content = content_proc.call(*params)
 
         data = JSON.generate(expire: expiry.to_i, content: rendered_content)
 
-        write(key: key, content: data)
+        cache_store.write(key: calculated_key, content: data, expiry: expiry)
 
         rendered_content
       end
 
       private
 
-      def write(key:, content:)
-        filename = "#{key}.json"
-        path = File.join(Hanami.app.root, "tmp", filename)
-
-        File.write(path, content)
-      end
-
-      def read(key:)
-        filename = "#{key}.json"
-        path = File.join(Hanami.app.root, "tmp", filename)
-
-        return nil unless File.exist?(path)
-
-        cached_data = JSON.parse(File.read(path))
-
-        if Time.strptime(cached_data["expire"].to_s, "%s") < Time.now
-          File.delete(path)
-          nil
+      def cache_store
+        if settings.cache_store == :redis_cache_store
+          RedisCacheStore.new
         else
-          cached_data["content"]
+          FileStore.new
         end
       end
     end

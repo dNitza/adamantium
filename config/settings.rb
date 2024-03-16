@@ -4,6 +4,9 @@ require "adamantium/types"
 
 module Adamantium
   class Settings < Hanami::Settings
+    # App Settings
+    setting :cache_store, default: :redis_cache_store
+
     # Infrastructure
     setting :database_url
 
