@@ -6,8 +6,7 @@ module Main
         def handle(req, res)
           res.body = cache(key: "posts_index", 
                            params: [req.params[:q]], 
-                           content_proc: ->(q) { res.render index, query: q }) 
-          res.status = 200
+                           content_proc: ->(q) { index.call(context: Main::Views::Context.new(request: req), query: q) }) 
         end
       end
     end
