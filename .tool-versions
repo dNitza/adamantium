@@ -1,4 +1,5 @@
 ruby     3.3.0
 postgres 16.1
 rust     1.74.1
-node     20.10.0
+nodejs   20.10.0
+redis    7.2.4

@@ -4,7 +4,9 @@ module Main
       class Index < Action
         include Deps["views.posts.index"]
         def handle(req, res)
-          res.render index, query: req.params[:q]
+          res.body = cache(key: "posts_index", 
+                           params: [req.params[:q]], 
+                           content_proc: ->(q) { index.call(context: Main::Views::Context.new(request: req), query: q) }) 
         end
       end
     end

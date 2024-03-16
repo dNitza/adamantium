@@ -29,6 +29,7 @@ gem "georuby"
 gem "gpx"
 gem "gnuplot"
 gem "matrix"
+gem "redis"
 
 gem "rack-session"
 gem "rack-rewrite"
