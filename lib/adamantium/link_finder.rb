@@ -18,7 +18,7 @@ module Adamantium
       links.reject do |link|
         link.end_with?(":") ||
           IGNORE_LIST.include?(URI.parse(link).host)
-      end
+      end.map{ |uri| URI(uri) }
     end
   end
 end
