@@ -60,9 +60,9 @@ module Main
             "📷"
           else
             @prefix_emoji ||= if (match = content.match(Unicode::Emoji::REGEX))
-                                match
-                              else
-                                "💬"
+              match
+            else
+              "💬"
             end
           end
         end

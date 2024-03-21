@@ -15,4 +15,3 @@ module Adamantium
     end
   end
 end
-

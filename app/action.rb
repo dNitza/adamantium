@@ -22,7 +22,7 @@ module Adamantium
     handle_exception ROM::TupleCountMismatchError => :not_found
     handle_exception StandardError => :handle_error
 
-    def cache(key:, params: [], content_proc:, expiry: TimeMath.min.advance(Time.now, +10))
+    def cache(key:, content_proc:, params: [], expiry: TimeMath.min.advance(Time.now, +10))
       cacher.call(key: key, params: params, content_proc: content_proc, expiry: expiry)
     end
 
