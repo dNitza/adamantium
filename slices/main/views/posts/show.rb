@@ -4,7 +4,7 @@ module Main
   module Views
     module Posts
       class Show < Main::View
-        include Deps["repos.post_repo", "repos.movie_repo"]
+        include Deps["repos.post_repo", "repos.movie_repo", "settings"]
 
         expose :post do |slug:|
           Decorators::Posts::Decorator.new(post_repo.fetch!(slug))
@@ -34,6 +34,13 @@ module Main
 
         expose :trip do |post|
           post.trips.first
+        end
+
+        expose :reply_in_context do |post|
+          if post.in_reply_to&.match settings.micropub_site_url
+            slug = post.in_reply_to.split("/").last
+            Decorators::Posts::Decorator.new(post_repo.fetch(slug))
+          end
         end
       end
     end

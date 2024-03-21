@@ -97,6 +97,7 @@ module Micropub
           content: content,
           slug: params[:slug] || params[:"mp-slug"],
           syndicate_to: Array(params[:properties][:"mp-syndicate-to"]) || [],
+          in_reply_to: params[:properties][:"in-reply-to"] || nil,
           photos: photos,
           location: params[:properties][:location]
         })
@@ -119,6 +120,7 @@ module Micropub
 
         new_params.merge({
           syndicate_to: Array(params[:"mp-syndicate-to"]) || [],
+          in_reply_to: params[:"in-reply-to"],
           name: params[:name],
           slug: params[:slug] || params[:"mp-slug"],
           published_at: (params[:"post-status"] == "draft") ? nil : publish_time,

@@ -12,6 +12,7 @@ module Micropub
           required(:syndicate_to).array(:string)
           required(:photos).array(:hash)
           required(:location).maybe(:string)
+          required(:in_reply_to).maybe(:string)
         end
       end
     end

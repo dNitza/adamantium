@@ -192,6 +192,17 @@ module Main
           .one!
       end
 
+      def fetch(slug)
+        posts
+          .published
+          .combine(:tags, :trips, :webmentions)
+          .node(:webmentions) { |webmention|
+            webmention.published.where(type: "reply")
+          }
+          .where(slug: slug)
+          .one
+      end
+
       def find!(id)
         posts
           .by_pk(id)

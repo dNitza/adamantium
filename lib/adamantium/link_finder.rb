@@ -9,6 +9,7 @@ module Adamantium
       youtube.com
       bsky.app
       bsky.social
+      localhost
       github.com].freeze
 
     def call(content)

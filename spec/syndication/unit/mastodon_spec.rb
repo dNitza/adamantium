@@ -20,7 +20,8 @@ RSpec.describe Adamantium::Syndication::Mastodon do
         post_type: "post",
         syndicate_to: [],
         photos: [],
-        location: nil
+        location: nil,
+        in_reply_to: nil
       )
     }
 

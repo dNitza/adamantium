@@ -24,7 +24,7 @@ module Micropub
 
           decorated_post = Decorators::Posts::Decorator.new(created_post)
 
-          send_webmentions.call(post_content: created_post.content, post_url: decorated_post.permalink)
+          send_webmentions.call(post_content: created_post.content, post_url: decorated_post.permalink, in_reply_to: created_post.in_reply_to)
 
           Success(created_post)
         end
