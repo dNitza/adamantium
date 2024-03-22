@@ -67,23 +67,28 @@ article class="h-entry"
             == " &middot; "
             a href="mailto:blog@dnitza.com?subject=About that post of yours&body=%0A%0A---%0A(In reply to #{post.permalink})" reply
         - post.webmentions.each do |mention|
-          div class="prose-p:m-1 mb-6 p-8 bg-orange-100 dark:bg-indigo-900 squircle"
-            div class="flex h-8"
-              - if mention.author_photo != ""
-                img loading="lazy" class="w-8 rounded-full m-0 mr-2" src=mention.author_photo
-              - if mention.author_url == ""
-                = "From #{mention.author_name}"
-              - else
-                a class="block text-orange-700 dark:text-violet-300 no-underline hover:underline" href=mention.author_url
-                  = mention.author_name
-            div class="prose dark:prose-invert dark:text-indigo-250 prose-a:text-orange-700 dark:prose-a:text-violet-300 prose-a:no-underline hover:prose-a:underline"
-              == mention.content_html
-            div class="text-sm"
-              - if mention.source_url != "email"
-                a class="no-underline hover:underline text-orange-900 dark:text-violet-400" href=mention.source_url
+          - if mention.source_url.match Hanami.app.settings.micropub_site_url
+            div class="prose-p:m-1 mb-6 p-2 bg-orange-100 dark:bg-indigo-900 rounded"
+              = "Mentioned in "
+              a href=mention.source_url #{mention.source_url}
+          - else
+            div class="prose-p:m-1 mb-6 p-8 bg-orange-100 dark:bg-indigo-900 squircle"
+              div class="flex h-8"
+                - if mention.author_photo != ""
+                  img loading="lazy" class="w-8 rounded-full m-0 mr-2" src=mention.author_photo
+                - if mention.author_url == ""
+                  = "From #{mention.author_name.gsub(/.{0,6}@/,'***@')}"
+                - else
+                  a class="block text-orange-700 dark:text-violet-300 no-underline hover:underline" href=mention.author_url
+                    = mention.author_name
+              div class="prose dark:prose-invert dark:text-indigo-250 prose-a:text-orange-700 dark:prose-a:text-violet-300 prose-a:no-underline hover:prose-a:underline"
+                == mention.content_html
+              div class="text-sm"
+                - if mention.source_url != "email"
+                  a class="no-underline hover:underline text-orange-900 dark:text-violet-400" href=mention.source_url
+                    = mention.published_at.strftime("%e %B, %Y")
+                - else
                   = mention.published_at.strftime("%e %B, %Y")
-              - else
-                = mention.published_at.strftime("%e %B, %Y")
   div class="mb-12"
     - if trip
       div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex gap-4"
