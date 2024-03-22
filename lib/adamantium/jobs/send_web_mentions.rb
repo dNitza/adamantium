@@ -11,19 +11,20 @@ module Adamantium
         source = post_url
         links = link_finder.call(post_content)
         links.each do |target|
-          HTTParty.post(settings.webmention_url, {
+          HTTParty.post(URI(settings.webmention_url), {
             token: settings.webmention_token,
             source: source,
-            target: target
+            target: target.to_s
           })
         end
 
         links = link_finder.call(in_reply_to)
-        links.each do |target|
-          HTTParty.post(settings.webmention_url, {
+        links.map do |target|
+          puts [target.to_s, source]
+          HTTParty.post(URI(settings.webmention_url), {
             token: settings.webmention_token,
             source: source,
-            target: target
+            target: target.to_s
           })
         end
       end

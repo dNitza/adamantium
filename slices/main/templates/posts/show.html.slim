@@ -21,9 +21,9 @@ article class="h-entry"
       div class=""
         em = "In reply to: "
         - if reply_in_context
-          a class="no-underline bg-pink-50 hover:bg-pink-100 dark:bg-pink-600 hover:dark:bg-pink-900 p-1 rounded" href=post.in_reply_to #{reply_in_context.display_title}
+          a class="u-in-reply-to no-underline bg-pink-50 hover:bg-pink-100 dark:bg-pink-600 hover:dark:bg-pink-900 p-1 rounded" href=post.in_reply_to #{reply_in_context.display_title}
         - else
-          a class="no-underline bg-pink-50 hover:bg-pink-100 dark:bg-pink-600 hover:dark:bg-pink-900 p-1 rounded" href=post.in_reply_to #{post.in_reply_to}
+          a class="u-in-reply-to no-underline bg-pink-50 hover:bg-pink-100 dark:bg-pink-600 hover:dark:bg-pink-900 p-1 rounded" href=post.in_reply_to #{post.in_reply_to}
     nav class="space-x-1 text-sm md:text-sm md:block dark:text-gray-600"
       - if post.location || post.photos? || post.videos?
         span See more:
