@@ -4,7 +4,7 @@ require "hanami"
 
 module Adamantium
   class App < Hanami::App
-    config.actions.content_security_policy[:script_src] += " 'unsafe-eval' https://gist.github.com"
+    config.actions.content_security_policy[:script_src] += " 'unsafe-eval' https://gist.github.com https://tinylytics.app"
     config.actions.content_security_policy[:script_src] += " *.dnitza.com"
     config.actions.content_security_policy[:script_src] += " https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"
     config.actions.content_security_policy[:media_src] += " https://dnitza.com"
