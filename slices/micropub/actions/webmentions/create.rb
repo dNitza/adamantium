@@ -13,7 +13,7 @@ module Micropub
           webmention = webmention_parser.call(params: req.params)
           case webmention
           in Success[:reply, reply]
-            slug = req.params[:"in-reply-to"].split("/").last
+            slug = req.params[:post][:"in-reply-to"].split("/").last
             post = post_repo.fetch!(slug)
 
             reply[:post_id] = post.id
