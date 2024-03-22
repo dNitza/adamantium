@@ -13,7 +13,7 @@ module Adamantium
     config.actions.content_security_policy[:script_src] += " https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.13.3/dist/cdn.min.js"
 
     config.actions.content_security_policy[:script_src] += " https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js"
-    config.actions.content_security_policy[:connect_src] += " https://stats.dnitza.com/api/event https://*.mapbox.com"
+    config.actions.content_security_policy[:connect_src] += " https://stats.dnitza.com/api/event https://*.mapbox.com https://tinylytics.app/*"
     config.actions.content_security_policy[:frame_src] += " https://embed.music.apple.com https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com"
     config.actions.content_security_policy[:style_src] += " https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css"
     config.actions.content_security_policy[:style_src] += " https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/github-dark.min.css"
