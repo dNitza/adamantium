@@ -24,6 +24,8 @@ module Main
     get "/feeds/rss", to: "feeds.rss"
     get "/feeds/statuses_rss", to: "feeds.statuses_rss"
 
+    get "/feeds/statuses_json", to: "feeds.statuses_json"
+
     get "/more", to: "more.index"
 
     get "/hikes", to: "workouts.index"

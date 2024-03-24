@@ -53,11 +53,23 @@ module Main
           doc.at("//img")
         end
 
+        def inline_image_sources
+          inline_images
+            &.select {|attr, _value| attr == "src"}
+            &.map {|img| img[1] } || []
+        end
+
+        def photo_sources
+          photos.map{|photo| photo["value"]}
+        end
+
         def prefix_emoji
           if name
             nil
           elsif photos? && content == ""
             "📷"
+          elsif __getobj__.emoji
+            __getobj__.emoji
           else
             @prefix_emoji ||= if (match = content.match(Unicode::Emoji::REGEX))
               match
@@ -131,6 +143,15 @@ module Main
 
         def trips
           __getobj__.trips
+        end
+
+        def to_h
+          {
+            id: slug,
+            emoji: prefix_emoji,
+            content: raw_content,
+            images: (inline_image_sources + photo_sources).compact
+          }
         end
 
         private

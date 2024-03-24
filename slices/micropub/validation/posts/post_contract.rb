@@ -13,6 +13,7 @@ module Micropub
           required(:photos).array(:hash)
           required(:location).maybe(:string)
           required(:in_reply_to).maybe(:string)
+          required(:emoji).maybe(:string)
         end
       end
     end

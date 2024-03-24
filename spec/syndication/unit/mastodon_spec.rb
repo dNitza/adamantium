@@ -21,7 +21,8 @@ RSpec.describe Adamantium::Syndication::Mastodon do
         syndicate_to: [],
         photos: [],
         location: nil,
-        in_reply_to: nil
+        in_reply_to: nil,
+        emoji: nil
       )
     }
 
