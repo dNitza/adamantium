@@ -146,10 +146,12 @@ module Main
         end
 
         def to_h
+          clean_content = CGI::unescapeHTML(content.gsub(/<\/?[^>]*>/, "")).strip
+          clean_content = clean_content.gsub(prefix_emoji[0], "") if prefix_emoji
           {
             id: slug,
             emoji: prefix_emoji,
-            content: raw_content,
+            content: clean_content,
             images: (inline_image_sources + photo_sources).compact
           }
         end
