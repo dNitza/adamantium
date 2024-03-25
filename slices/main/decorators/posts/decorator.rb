@@ -152,7 +152,8 @@ module Main
             id: slug,
             emoji: prefix_emoji,
             content: clean_content,
-            images: (inline_image_sources + photo_sources).compact
+            images: (inline_image_sources + photo_sources).compact,
+            published_at: display_published_at
           }
         end
 
