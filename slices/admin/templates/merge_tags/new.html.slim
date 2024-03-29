@@ -2,14 +2,14 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
   h1 Admin // Merge Tags
 
 div class="max-w-prose mx-auto prose dark:prose-invert"
-  h3 Pick a tag to merge in to #{tag.label}
+  h3 Pick a tag to merge in to "#{post_tag.label}"
 
   form action="/admin/tags/merge" method="POST"
-    input type="hidden" name="target_id" value=tag.id
+    input type="hidden" name="target_id" value=post_tag.id
 
     div class="mb-4"
       select class="text-gray-800" name="source_id"
-        - tags.each do |source_tag|
+        - post_tags.each do |source_tag|
           option value=source_tag.id
             = source_tag.label
     div class="mb-4"

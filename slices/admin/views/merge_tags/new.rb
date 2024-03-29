@@ -4,11 +4,11 @@ module Admin
       class New < Admin::View
         include Deps["repos.tag_repo"]
 
-        expose :tag do |id:|
+        expose :post_tag do |id:|
           tag_repo.fetch(id)
         end
 
-        expose :tags do |id:|
+        expose :post_tags do |id:|
           tag_repo.list.reject { |t| t.id.to_s == id.to_s }
         end
       end
