@@ -13,7 +13,7 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
     thead
       th Details
       th Date
-      th colspan="3" Actions
+      th colspan="4" Actions
     tbody class="{ 'active': activeTab === 0 }" x-show.transition.in.opacity.duration.600="activeTab === 0"
       - published_bookmarks.each do |bookmark|
         tr id="bookmark-#{bookmark.id}"
@@ -41,6 +41,8 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
               button hx-post="/admin/bookmarks/#{bookmark.id}/mark_unread" mark unread
             - else
               button hx-post="/admin/bookmarks/#{bookmark.id}/mark_read" mark read
+          td
+            a href="obsidian://new?zettelkasten&file=Personal%2F01%20Blog%2F01.03%20Bookmarks%2F#{bookmark.name}&content=#{bookmark.url}" Blog about this
     tbody class="{ 'active': activeTab === 1 }" x-show.transition.in.opacity.duration.600="activeTab === 1"
       - unpublished_bookmarks.each do |bookmark|
         tr id="bookmark-#{bookmark.id}"
