@@ -57,8 +57,8 @@ article class="h-entry"
 
         - if post.location
           img loading="lazy" class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
-    - if post.webmentions && post.webmentions.count == 0 && post.commentable
-      a href="mailto:blog@dnitza.com?subject=About that post of yours&body=%0A%0A---%0A(In reply to #{post.permalink})" Reply
+    div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
+      = render "shared/reactions", post: post
     - if post.webmentions && post.webmentions.count > 0
       div class="mt-12"
         h3

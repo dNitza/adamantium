@@ -50,6 +50,8 @@ module Main
 
     get "/timemachine/:year/:month/:day", to: "timemachine.show"
 
+    post "/posts/:slug/react", to: "posts.react"
+
     redirect "deploying-a-hanami-app-to-fly-io", to: "/post/deploying-a-hanami-20-app-to-flyio"
     redirect "deploying-a-hanami-app-to-fly-io/", to: "/post/deploying-a-hanami-20-app-to-flyio"
   end

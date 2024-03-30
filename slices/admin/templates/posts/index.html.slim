@@ -9,6 +9,8 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
       thead
         th Details
         th Date
+        th Mentions
+        th Reactions
         th colspan="2" Actions
       tbody class="{ 'active': activeTab === 0 }" x-show.transition.in.opacity.duration.600="activeTab === 0"
         - published_posts.each do |post|
@@ -20,6 +22,10 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
                 small class="text-gray-400 dark:text-gray-600" = post.slug
             td
               = post.published_at&.strftime("%d %b %Y")
+            td
+              = post.webmentions.count
+            td
+              = post.reactions.count
             td
               a href="/admin/posts/#{post.id}" edit
             td
@@ -36,6 +42,10 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
                 small class="text-gray-400 dark:text-gray-600" = post.slug
             td
               = post.published_at&.strftime("%d %b %Y")
+            td
+              = post.webmentions.count
+            td
+              = post.reactions.count
             td
               a href="/admin/posts/#{post.id}" edit
             td
