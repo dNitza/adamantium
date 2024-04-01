@@ -13,7 +13,7 @@ module Main
         end
 
         expose :page_updated_at do |page|
-          page.updated_at&.strftime("%m/%d/%Y")
+          page.updated_at&.strftime("%d/%m/%Y")
         end
 
         private_expose :page do |slug:|
