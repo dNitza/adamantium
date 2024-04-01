@@ -158,10 +158,9 @@ GEM
     ed25519 (1.3.0)
     faker (3.3.0)
       i18n (>= 1.8.11, < 2)
-    faraday (2.9.0)
-      faraday-net_http (>= 2.0, < 3.2)
-    faraday-net_http (3.1.0)
-      net-http
+    faraday (1.2.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     ffi (1.16.3)
     formatador (1.1.0)
     georuby (2.5.2)
@@ -280,6 +279,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.22.3)
     multi_xml (0.6.0)
+    multipart-post (2.4.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     mustermann-contrib (3.0.0)
@@ -287,8 +287,6 @@ GEM
       mustermann (= 3.0.0)
     mutex_m (0.2.0)
     nenv (0.3.0)
-    net-http (0.4.1)
-      uri
     net-imap (0.4.10)
       date
       net-protocol
@@ -327,12 +325,6 @@ GEM
     omdb-api (1.4.3)
       activesupport
       httparty
-    onnxruntime (0.9.0-arm64-darwin)
-      ffi
-    onnxruntime (0.9.0-x86_64-darwin)
-      ffi
-    onnxruntime (0.9.0-x86_64-linux)
-      ffi
     parallel (1.24.0)
     parser (3.3.0.5)
       ast (~> 2.4.1)
@@ -479,6 +471,8 @@ GEM
       rubocop-performance (~> 1.20.2)
     standardrb (1.0.1)
       standard
+    steam-api (1.2.0)
+      faraday (~> 1.0)
     stringio (3.1.0)
     temple (0.10.3)
     thor (1.3.1)
@@ -493,7 +487,6 @@ GEM
     unicode-emoji (3.4.0)
       unicode-version (~> 1.0)
     unicode-version (1.4.0)
-    uri (0.13.0)
     vernier (0.6.0)
     version_gem (1.1.4)
     warning (1.3.0)
@@ -556,7 +549,6 @@ DEPENDENCIES
   mini_magick
   ogpr
   omdb-api (= 1.4.3)
-  onnxruntime
   pg
   puma
   que
@@ -578,6 +570,7 @@ DEPENDENCIES
   scraperd!
   slim
   standardrb
+  steam-api
   time_math2
   timecop
   unicode-emoji

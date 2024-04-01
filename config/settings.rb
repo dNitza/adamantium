@@ -76,5 +76,9 @@ module Adamantium
     setting :raise_exceptions, default: true
 
     setting :gist_client_token, default: nil
+
+    setting :cache_pages, default: true
+    setting :steam_api_key, default: nil
+    setting :steam_user_id, default: nil
   end
 end

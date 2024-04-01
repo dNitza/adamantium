@@ -38,6 +38,8 @@ module Main
     get "/blogroll/opml", to: "blogroll.opml"
 
     get "/recently_played", to: "recently_played.index"
+    get "/recently_played_games", to: "recently_played_games.index"
+    get "/past_week", to: "past_week.index"
 
     get "/:slug", to: "pages.show"
 

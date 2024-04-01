@@ -14,9 +14,10 @@ gem "hanami-view", "2.1.0"
 gem "csv"
 gem "rom-sql"
 gem "pg"
-gem "scraperd", github: "dNitza/scraperd", branch: "master"
 
 gem "dotenv"
+gem "whenever", require: false
+gem "warning"
 
 gem "dry-types"
 gem "dry-matcher"
@@ -25,11 +26,13 @@ gem "puma"
 gem "rake"
 gem "slim"
 gem "builder"
-gem "georuby"
 gem "gpx"
+
+gem "redis"
+
+gem "georuby"
 gem "gnuplot"
 gem "matrix"
-gem "redis"
 
 gem "rack-session"
 gem "rack-rewrite"
@@ -42,27 +45,25 @@ gem "redcarpet"
 gem "reverse_markdown"
 gem "rexml"
 gem "babosa"
-gem "bskyrb"
-gem "ogpr"
 gem "ruby-filemagic", git: "https://github.com/dnitza/ruby-filemagic", branch: "master"
-gem "mail_room", github: "dNitza/mail_room", branch: "master"
 gem "charlock_holmes"
 gem "sanitize"
 gem "time_math2", require: "time_math"
 gem "jwt"
-gem "lastfm", "~> 1.27"
 gem "mail"
 gem "que"
-gem "unicode-emoji"
 gem "connection_pool"
-gem "omdb-api", "1.4.3", require: false
 gem "image_processing", "~> 1.0"
-gem "onnxruntime"
 gem "mini_magick"
+gem "unicode-emoji"
 
-gem "whenever", require: false
-
-gem "warning"
+gem "mail_room", github: "dNitza/mail_room", branch: "master"
+gem "scraperd", github: "dNitza/scraperd", branch: "master"
+gem "bskyrb"
+gem "ogpr"
+gem "omdb-api", "1.4.3", require: false
+gem "lastfm", "~> 1.27"
+gem "steam-api"
 
 group :cli, :development do
   gem "irb"
