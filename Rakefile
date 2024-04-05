@@ -108,7 +108,7 @@ namespace :tailwind do
   end
 
   task :build do
-    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./slices/_main/assets/builds/app.css --minify")
-    system("npx tailwindcss -i ./slices/admin/assets/css/app.css -o ./slices/_admin/assets/builds/app.css --minify")
+    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./slices/main/assets/builds/app.css --minify")
+    system("npx tailwindcss -i ./slices/admin/assets/css/app.css -o ./slices/admin/assets/builds/app.css --minify")
   end
 end
