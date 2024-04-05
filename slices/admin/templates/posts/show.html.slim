@@ -57,8 +57,9 @@ article x-data="$textHighlighter, {isOpen: false, anchorX: 0, anchorY: 0, text: 
               button
                 = "Delete"
 
-  div @click.outside="isOpen = false" class="p-2 bg-indigo-900 hover:bg-indigo-800 rounded text-white shadow-md shadow-indigo-500" x-show="isOpen" x-anchor.no-style="$refs.bookmarkText" :style="{ position: 'absolute', hidden: isOpen, top: isOpen ? anchorY : '0px', left: isOpen ? anchorX : '0px' }"
-    form method="POST" class="p-0 m-0" action="/admin/post/#{post.id}/highlight"
-      input type="hidden" name="post_id" value="#{post.id}"
-      input class="text-gray-600" type="hidden" x-model="text" name="text"
-      button = "Save highlight"
+  - if post.post_type == "bookmark"
+    div @click.outside="isOpen = false" class="p-2 bg-indigo-900 hover:bg-indigo-800 rounded text-white shadow-md shadow-indigo-500" x-show="isOpen" x-anchor.no-style="$refs.bookmarkText" :style="{ position: 'absolute', hidden: isOpen, top: isOpen ? anchorY : '0px', left: isOpen ? anchorX : '0px' }"
+      form method="POST" class="p-0 m-0" action="/admin/post/#{post.id}/highlight"
+        input type="hidden" name="post_id" value="#{post.id}"
+        input class="text-gray-600" type="hidden" x-model="text" name="text"
+        button = "Save highlight"

@@ -1,3 +1,11 @@
-button hx-post="/posts/#{post.slug}/react" hx-trigger="click" class="px-2 py-1 border rounded border-blue-100 dark:border-indigo-900 hover:border-blue-200 hover:bg-blue-100 hover:dark:bg-indigo-900 hover:dark:border-indigo-400 text-gray-400 dark:text-indigo-200 mr-2 hover:scale-110 transition-all" 👍 #{post.reactions.count}
+button hx-post="/posts/#{post.slug}/react" hx-trigger="click" class="group no-underline px-2 py-1 border rounded border-blue-100 hover:text-indigo-600 dark:border-indigo-900 hover:border-blue-200 hover:bg-blue-100 hover:dark:bg-indigo-900 hover:dark:border-indigo-400 text-gray-400 dark:text-indigo-200 mr-2 hover:scale-110 transition-all mr-2"
+  span class="inline-block group-hover:-rotate-12 transition-all"
+    = "👍 "
+  span
+   = " #{post.reactions.count}"
 - if post.webmentions && post.webmentions.count == 0 && post.commentable
-  a class="no-underline px-2 py-1 border rounded border-indigo-900 hover:border-indigo-400 text-indigo-200 mr-2" href="mailto:blog@dnitza.com?subject=About that post of yours&body=%0A%0A---%0A(In reply to #{post.permalink})" ✉️ Reply
+  a class="group no-underline px-2 py-1 border rounded border-blue-100 hover:text-indigo-600 dark:border-indigo-900 hover:border-blue-200 hover:bg-blue-100 hover:dark:bg-indigo-900 hover:dark:border-indigo-400 text-gray-400 dark:text-indigo-200 mr-2 hover:scale-110 transition-all mr-2" href="mailto:blog@dnitza.com?subject=About that post of yours&body=%0A%0A---%0A(In reply to #{post.permalink})"
+    span class="inline-block group-hover:-rotate-12 transition-all"
+      = "💌 "
+    span
+      = " Reply "
