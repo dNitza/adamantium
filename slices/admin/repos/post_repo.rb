@@ -71,7 +71,7 @@ module Admin
 
       def find(id:)
         posts
-          .combine(:tags)
+          .combine(:tags, :highlights)
           .where(id: id).one!
       end
 

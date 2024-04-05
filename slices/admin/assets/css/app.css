@@ -1,5 +1,4 @@
-body {
-  background-color: #fff;
-  color: #000;
-  font-family: sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind typography;

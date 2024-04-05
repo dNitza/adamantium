@@ -54,6 +54,8 @@ module Admin
     post "/posts/:id/de_syndicate/:target", to: Auth.call(action: "posts.de_syndicate")
     post "/posts/:id/syndicate/:target", to: Auth.call(action: "posts.syndicate")
     post "/post/:id/update", to: Auth.call(action: "posts.update")
+    post "/post/:id/highlight", to: Auth.call(action: "posts.create_highlight")
+    delete "/post/:post_id/highlight/:highlight_id", to: Auth.call(action: "posts.delete_highlight")
 
     get "/media", to: Auth.call(action: "photos.index")
     delete "/media/public/media/:year/:path", to: Auth.call(action: "photos.delete")

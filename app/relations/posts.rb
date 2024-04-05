@@ -11,8 +11,8 @@ module Adamantium
           has_many :post_trips
           has_many :trips, through: :post_trips
 
+          has_many :highlights
           has_many :reactions
-
           has_many :webmentions
         end
       end

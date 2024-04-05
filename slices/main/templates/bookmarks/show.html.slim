@@ -13,6 +13,13 @@ div class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:
 
   == bookmark.content
 
+  - if bookmark.highlights.count > 0
+    h2 Highlights
+  - bookmark.highlights.each do |highlight|
+    div class="rounded p-2 bg-amber-100 dark:bg-amber-800 mb-4"
+      = render "shared/quote", color: "fill-amber-200 dark:fill-amber-700"
+      = highlight.text
+
   - unless bookmark.cached_content.nil?
     button class="hover:text-gray-400" @click="open = ! open" Toggle cached version
 

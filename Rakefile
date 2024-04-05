@@ -41,7 +41,7 @@ namespace :blog do
       next if tweet["tweet"]["full_text"].start_with? "@"
       tweet["tweet"]["full_text"] = tweet["tweet"]["full_text"].gsub(/(#{URI::DEFAULT_PARSER.make_regexp})/, "<a href='#{$1}'>#{$1}</a>")
 
-      repo.create({slug: tweet["tweet"]["id"], content: tweet["tweet"]["full_text"], published_at: tweet["tweet"]["created_at"], category: [], post_type: "post", syndication_sources: {twitter: "https://twitter.com/nitza/status/#{tweet["tweet"]["id"]}"}})
+      repo.create({slug: tweet["tweet"]["id"], content: tweet["tweet"]["full_text"], published_at: tweet["tweet"]["created_at"], category: ["tweet"], post_type: "post", syndication_sources: {twitter: "https://twitter.com/nitza/status/#{tweet["tweet"]["id"]}"}})
     end
   end
 
@@ -100,10 +100,15 @@ end
 
 namespace :tailwind do
   task :watch do
-    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./public/assets/main/app.css --watch")
+    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./public/assets/_main/app.css --watch")
+  end
+
+  task :watch_admin do
+    system("npx tailwindcss -i ./slices/admin/assets/css/app.css -o ./public/assets/_admin/app.css --watch")
   end
 
   task :build do
-    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./slices/main/assets/builds/app.css --minify")
+    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./slices/_main/assets/builds/app.css --minify")
+    system("npx tailwindcss -i ./slices/admin/assets/css/app.css -o ./slices/_admin/assets/builds/app.css --minify")
   end
 end

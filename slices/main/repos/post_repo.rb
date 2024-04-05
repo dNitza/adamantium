@@ -184,7 +184,7 @@ module Main
       def fetch!(slug)
         posts
           .published
-          .combine(:tags, :trips, :webmentions, :reactions)
+          .combine(:tags, :trips, :webmentions, :reactions, :highlights)
           .node(:webmentions) { |webmention|
             webmention.published.where(type: "reply")
           }

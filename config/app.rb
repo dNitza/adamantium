@@ -9,8 +9,9 @@ module Adamantium
     config.actions.content_security_policy[:script_src] += " https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"
     config.actions.content_security_policy[:media_src] += " https://dnitza.com"
     config.actions.content_security_policy[:script_src] += " https://unpkg.com/htmx.org@1.9.2/dist/htmx.min.js "
-    config.actions.content_security_policy[:script_src] += " https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"
-    config.actions.content_security_policy[:script_src] += " https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.13.3/dist/cdn.min.js"
+    config.actions.content_security_policy[:script_src] += " https://cdn.jsdelivr.net/npm/alpinejs@3.13.8/dist/cdn.min.js"
+    config.actions.content_security_policy[:script_src] += " https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.13.8/dist/cdn.min.js"
+    config.actions.content_security_policy[:script_src] += " https://cdn.jsdelivr.net/npm/@alpinejs/anchor@3.13.8/dist/cdn.min.js"
 
     config.actions.content_security_policy[:script_src] += " https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js"
     config.actions.content_security_policy[:connect_src] += " https://stats.dnitza.com/count https://*.mapbox.com"
