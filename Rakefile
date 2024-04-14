@@ -112,9 +112,13 @@ namespace :tailwind do
     end
 
 
-  task :build do
-    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./slices/main/assets/builds/app.css --minify")
-    system("npx tailwindcss -i ./slices/admin/assets/css/app.css -o ./slices/admin/assets/builds/app.css --minify")
-    system("npx tailwindcss -i ./slices/puzzles/assets/css/app.css -o ./slices/puzzles/assets/builds/app.css --minify")
-  end
+    task :build do
+      system(
+        "npx",
+        "tailwindcss",
+        "--input", "app/assets/css/tailwind.css",
+        "--output", "app/assets/builds/tailwind.css",
+        "--minify"
+      )
+    end
 end
