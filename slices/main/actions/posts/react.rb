@@ -4,7 +4,6 @@ module Main
   module Actions
     module Posts
       class React < Action
-
         include Deps["repos.reaction_repo", "repos.post_repo"]
 
         def handle(req, res)
@@ -16,7 +15,6 @@ module Main
 
           res.body = "👍 #{reaction_count}"
           res.status = 201
-
         rescue
           res.status = 400
         end

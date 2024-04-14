@@ -99,16 +99,22 @@ namespace :blog do
 end
 
 namespace :tailwind do
-  task :watch do
-    system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./public/assets/_main/app.css --watch")
-  end
+  desc "Watch and compile your Tailwind CSS on file changes"
+    task :watch do
+      system(
+        "npx",
+        "tailwindcss",
+        "--input", "app/assets/css/tailwind.css",
+        "--output", "app/assets/builds/tailwind.css",
+        "--minify",
+        "--watch"
+      )
+    end
 
-  task :watch_admin do
-    system("npx tailwindcss -i ./slices/admin/assets/css/app.css -o ./public/assets/_admin/app.css --watch")
-  end
 
   task :build do
     system("npx tailwindcss -i ./slices/main/assets/css/app.css -o ./slices/main/assets/builds/app.css --minify")
     system("npx tailwindcss -i ./slices/admin/assets/css/app.css -o ./slices/admin/assets/builds/app.css --minify")
+    system("npx tailwindcss -i ./slices/puzzles/assets/css/app.css -o ./slices/puzzles/assets/builds/app.css --minify")
   end
 end

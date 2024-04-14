@@ -1,5 +1,4 @@
 web: bundle exec hanami server
-tailwind_main: bundle exec rake tailwind:watch
-tailwind_admin: bundle exec rake tailwind:watch_admin
+tailwind: bundle exec rake tailwind:watch
 assets: bundle exec hanami assets watch
 redis: redis-server

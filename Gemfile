@@ -10,6 +10,7 @@ gem "hanami-controller", "2.1.0"
 gem "hanami-validations", "2.1.0"
 gem "hanami-assets", "2.1.0"
 gem "hanami-view", "2.1.0"
+# gem "hanami-view", file: "~/Documents/projects/hanami/view"
 
 gem "csv"
 gem "rom-sql"

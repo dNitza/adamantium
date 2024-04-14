@@ -55,12 +55,12 @@ module Main
 
         def inline_image_sources
           inline_images
-            &.select {|attr, _value| attr == "src"}
-            &.map {|img| img[1] } || []
+            &.select { |attr, _value| attr == "src" }
+            &.map { |img| img[1] } || []
         end
 
         def photo_sources
-          photos.map{|photo| photo["value"]}
+          photos.map { |photo| photo["value"] }
         end
 
         def prefix_emoji
@@ -146,7 +146,7 @@ module Main
         end
 
         def to_h
-          clean_content = CGI::unescapeHTML(content.gsub(/<\/?[^>]*>/, "")).strip
+          clean_content = CGI.unescapeHTML(content.gsub(/<\/?[^>]*>/, "")).strip
           clean_content = clean_content.gsub(prefix_emoji[0], "") if prefix_emoji
           {
             id: slug,

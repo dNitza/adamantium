@@ -1,98 +1,109 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind typography;
-
 @font-face {
-    font-family: "Montagu";
-    src: url("../fonts/MontaguSlab-VariableFont_opsz,wght.ttf") format("truetype");
-    font-display: swap;
+  font-family: "Montagu";
+  src: url("../fonts/MontaguSlab-VariableFont_opsz,wght.ttf") format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "JetBrainsMono";
-    src: url("../fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
-    font-display: swap;
+  font-family: "JetBrainsMono";
+  src: url("../fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Figtree";
-    src: url("../fonts/Figtree-VariableFont_wght.ttf") format("truetype");
-    font-display: swap;
+  font-family: "Figtree";
+  src: url("../fonts/Figtree-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
 }
 
 * {
-    font-family: "Figtree", Helvetica, Arial, sans-serif;
+  font-family: "Figtree", Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    font-family: "Montagu", Times New Roman, serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  font-family:
+    "Montagu",
+    Times New Roman,
+    serif;
 }
 
 .prose h1 a {
-    border-bottom: none;
-    text-decoration: none;
+  border-bottom: none;
+  text-decoration: none;
 }
 
 .prose h1 a:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .gist tr {
-    border-bottom: none;
+  border-bottom: none;
 }
 
-.gist span, pre, pre span {
-    font-family: "JetBrainsMono", Monaco, monospace;
+.gist span,
+pre,
+pre span {
+  font-family: "JetBrainsMono", Monaco, monospace;
 }
 
 .map-marker {
-    border: 3px solid blue;
-    border-radius: 8px;
-    background: RGBa(0, 0, 255, 0.1);
-    width: 14px;
-    height: 14px;
+  border: 3px solid blue;
+  border-radius: 8px;
+  background: RGBa(0, 0, 255, 0.1);
+  width: 14px;
+  height: 14px;
 }
 
 .prose pre code::before {
-    padding-left: unset
+  padding-left: unset;
 }
 
 .prose pre code:after {
-    padding-right: unset
+  padding-right: unset;
 }
 
 .prose code {
-    font-weight: 400;
-    border-radius: 0.25rem;
+  font-weight: 400;
+  border-radius: 0.25rem;
 }
 
 .prose code:before {
-    content: "";
-    padding: 0 0 0 0.25rem;
+  content: "";
+  padding: 0 0 0 0.25rem;
 }
 
 .prose pre {
-    padding: 0;
+  padding: 0;
 }
 
 .prose code:after {
-    content: "";
-    padding: 0 0.25rem 0 0;
+  content: "";
+  padding: 0 0.25rem 0 0;
 }
 
 .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
 }
 .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
 }
 
 .squircle {

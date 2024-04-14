@@ -11,7 +11,7 @@ module Main
           recently_played_result.map do |game|
             {
               name: game["name"],
-              playtime_forever: game["playtime_forever"].to_i / 60,
+              playtime_forever: game["playtime_forever"].to_i / 60
             }
           end
         end
