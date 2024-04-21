@@ -14,7 +14,7 @@ module Micropub
         include Dry::Monads[:result]
 
         IMAGE_TYPES = %w[image/jpeg imag/jpg image/png].freeze
-        VIDEO_TYPES = %w[image/gif video/mp4 video/mov].freeze
+        VIDEO_TYPES = %w[image/gif video/mp4 video/mov video/quicktime].freeze
         AUDIO_TYPES = %w[audio/mp3 audio/mpeg audio/x-m4a].freeze
         VALID_UPLOAD_TYPES = IMAGE_TYPES + VIDEO_TYPES + AUDIO_TYPES
 
@@ -55,15 +55,20 @@ module Micropub
           end
 
           begin
-            case type
+            command = case type
             when "image/gif"
-              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -movflags faststart -pix_fmt yuv420p -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' #{File.join(dirname, fullsize_filename)}")
+              "ffmpeg -i #{file[:tempfile].path} -movflags faststart -pix_fmt yuv420p -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' #{File.join(dirname, fullsize_filename)}"
             when "video/mp4"
-              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -c:v libx265 -preset fast -crf 28 -tag:v hvc1 -c:a eac3 -b:a 224k #{File.join(dirname, fullsize_filename)}")
+              "ffmpeg -i #{file[:tempfile].path} -c:v libx265 -preset fast -crf 28 -tag:v hvc1 -c:a eac3 -b:a 224k #{File.join(dirname, fullsize_filename)}"
             when "video/mov"
-              Open3.popen3("ffmpeg -i #{file[:tempfile].path} -c:v libx265 -preset fast -crf 28 -tag:v hvc1 -c:a eac3 -b:a 224k #{File.join(dirname, fullsize_filename)}")
+              "ffmpeg -i #{file[:tempfile].path} -c:v libx265 -preset fast -crf 28 -tag:v hvc1 -c:a eac3 -b:a 224k #{File.join(dirname, fullsize_filename)}"
+            when "video/quicktime"
+              "ffmpeg -i #{file[:tempfile].path} -c:v libx265 -preset fast -crf 28 -tag:v hvc1 -c:a eac3 -b:a 224k #{File.join(dirname, fullsize_filename)}"
             end
+
+            system(command)
           rescue Errno::ENOENT, NoMethodError => e
+            puts "FAILED: #{e}"
             return Failure(e.message)
           end
 
