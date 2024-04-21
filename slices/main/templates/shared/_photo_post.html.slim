@@ -4,6 +4,12 @@
       a href="#{post.permalink}#photo-#{idx}"
         img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{photo["value"]}" alt="#{photo["alt"]}"
 - else
-  div class="rounded max-w-xs"
-    a href="#{post.permalink}"
-      img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{post.photos[0]["value"]}" alt="#{post.photos[0]["alt"]}"
+  - if post.photos.count > 0
+    div class="rounded max-w-xs"
+      a href="#{post.permalink}"
+        img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{post.photos[0]["value"]}" alt="#{post.photos[0]["alt"]}"
+  - if post.videos.count > 0
+    div class="rounded max-w-xs"
+      a href="#{post.permalink}"
+        video class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" loop=false muted=true controls=false
+          source type="video/mp4" src="#{post.videos[0]["value"]}"

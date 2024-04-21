@@ -1,3 +1,5 @@
+# memoize: true
+
 module Main
   module Views
     module Posts

@@ -45,6 +45,10 @@ module Main
             return photos.first["url"]
           end
 
+          if videos?
+            return videos.first["value"]
+          end
+
           inline_images.first[1] if inline_images
         end
 
