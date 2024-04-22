@@ -63,7 +63,7 @@ html x-data="{darkMode: $persist(false)}" :class="{'dark' : darkMode === true}"
             a class="transition-colors p-1 rounded hover:bg-emerald-100 hover:text-emerald-400 dark:hover:bg-emerald-800 #{context.current_path.start_with?('/post') ? 'text-emerald-400 bg-emerald-50 dark:bg-emerald-900 dark:text-emerald-400' : 'text-gray-400'}" href="/posts" Writing
             span class="text-gray-400 dark:text-gray-600"
               = "/"
-            a class="transition-colors p-1 rounded hover:bg-blue-100 hover:text-blue-400 dark:hover:bg-blue-800 #{context.current_path.start_with?('/post') ? 'text-blue-400 bg-blue-50 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-400'}" href="/statuses" Statuses
+            a class="transition-colors p-1 rounded hover:bg-blue-100 hover:text-blue-400 dark:hover:bg-blue-800 #{context.current_path.start_with?('/statuses') ? 'text-blue-400 bg-blue-50 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-400'}" href="/statuses" Statuses
             span class="text-gray-400 dark:text-gray-600"
               = "/"
             a class="transition-colors p-1 rounded hover:bg-lime-100 hover:text-lime-400 dark:hover:bg-lime-800 #{context.current_path.start_with?('/more') ? 'text-lime-400 bg-lime-50 dark:bg-lime-900 dark:text-lime-400' : 'text-gray-400'}" href="/more" More
