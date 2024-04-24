@@ -25,10 +25,7 @@ xml.channel do |channel|
     channel.item do |item|
       item.title post.raw_content
       item.description do |desc|
-        desc.cdata! post.raw_content
-        post.photos.each do |p|
-          desc.cdata! "<img src='#{p["value"]}' width='200' />"
-        end
+        desc.cdata! post.feed_content
       end
       item.link(post.permalink)
       item.guid(post.slug, isPermaLink: true)
