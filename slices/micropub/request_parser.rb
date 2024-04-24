@@ -84,8 +84,10 @@ module Micropub
           end
         elsif params[:properties][:photo].is_a?(Hash)
           params[:properties][:photo]
-        elsif params[:properties][:photo]
-          {value: params[:properties][:photo], alt: ""}
+        elsif params[:properties][:photo].is_a?(String)
+          params[:properties][:photo].split(" ").map do |photo|
+            {value: photo, alt: ""}
+          end
         else
           []
         end
