@@ -106,7 +106,9 @@ module Micropub
         })
       else
         photos = if params[:photo].is_a?(String)
-          [{value: params[:photo], alt: ""}]
+          params[:photo].split(" ").map do |photo|
+            {value: photo, alt: ""}
+          end
         elsif params[:photo].nil?
           []
         else
