@@ -24,7 +24,7 @@ module Micropub
             }.to_json
             res.status = 202
           in Success[:like, like]
-            slug = req.params[:"like-of"].split("/").last
+            slug = req.params[:post][:"like-of"].split("/").last
             post = post_repo.fetch!(slug)
 
             reply[:post_id] = post.id
