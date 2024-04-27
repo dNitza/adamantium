@@ -30,7 +30,6 @@ module Adamantium
           source_url: wm_params[:url],
           target_url: wm_params[:"like-of"]
         }]
-        Failure(:not_implemented)
       when "repost-of"
         Failure(:not_implemented)
       when "bookmark-of"
