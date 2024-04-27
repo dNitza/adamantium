@@ -186,7 +186,7 @@ module Main
           .published
           .combine(:tags, :trips, :webmentions, :reactions, :highlights)
           .node(:webmentions) { |webmention|
-            webmention.published.where(type: "reply")
+            webmention.published.where(type: ["reply", "like"])
           }
           .where(slug: slug)
           .one!
@@ -197,7 +197,7 @@ module Main
           .published
           .combine(:tags, :trips, :webmentions)
           .node(:webmentions) { |webmention|
-            webmention.published.where(type: "reply")
+            webmention.published.where(type: ["reply", "like"])
           }
           .where(slug: slug)
           .one

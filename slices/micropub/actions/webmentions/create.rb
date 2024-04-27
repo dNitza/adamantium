@@ -27,7 +27,7 @@ module Micropub
             slug = req.params[:post][:"like-of"].split("/").last
             post = post_repo.fetch!(slug)
 
-            reply[:post_id] = post.id
+            like[:post_id] = post.id
 
             webmentions_repo.create(like)
             res.body = {

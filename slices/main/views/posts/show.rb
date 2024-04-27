@@ -42,6 +42,14 @@ module Main
             Decorators::Posts::Decorator.new(post_repo.fetch(slug))
           end
         end
+
+        expose :replies do |post|
+          post.webmentions.select {|w| w[:type] == "reply" }
+        end
+
+        expose :likes do |post|
+          post.webmentions.select {|w| w[:type] == "like" }
+        end
       end
     end
   end

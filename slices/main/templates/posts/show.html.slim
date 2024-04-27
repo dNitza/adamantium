@@ -57,15 +57,15 @@ article class="h-entry"
         - if post.location
           img loading="lazy" class="shadow-solid shadow-pink-100 dark:shadow-pink-200 rounded mb-4" src=post.large_map
     div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
-      = render "shared/reactions", post: post
-    - if post.webmentions && post.webmentions.count > 0
+      = render "shared/reactions", post: post, replies: replies, likes: likes
+    - if replies && replies.count > 0
       div class="mt-12"
         h3
-          = "#{post.webmentions.count} Comment#{post.webmentions.count != 1 ? "s" : ""}"
+          = "#{replies.count} Comment#{replies.count != 1 ? "s" : ""}"
           - if post.commentable
             == " &middot; "
             a href="mailto:blog@dnitza.com?subject=About that post of yours&body=%0A%0A---%0A(In reply to #{post.permalink})" reply
-        - post.webmentions.each do |mention|
+        - replies.each do |mention|
           - if mention.source_url.match Hanami.app.settings.micropub_site_url
             div class="prose-p:m-1 mb-6 p-2 bg-orange-100 dark:bg-indigo-900 rounded"
               = "Mentioned in "
