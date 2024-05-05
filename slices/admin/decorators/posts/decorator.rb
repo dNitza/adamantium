@@ -81,7 +81,11 @@ module Admin
 
         def display_title
           title = name
-          "#{prefix_emoji} #{title}"
+          if prefix_emoji
+            return "#{prefix_emoji} #{title}"
+          else
+            return title
+          end
         end
 
         def display_published_at
