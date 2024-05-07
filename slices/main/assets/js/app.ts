@@ -14,6 +14,37 @@ import { md_gallery } from "./gallery.js";
       window.hljs.highlightAll();
     }
 
+    const homeTime = document.querySelector(".home-time");
+    if (homeTime != undefined) {
+      setInterval(() => {
+        const [hours, minutes, seconds] = homeTime.innerHTML
+          .split(" ")[0]
+          .split(":")
+          .map((x) => parseInt(x, 10));
+        const time = new Date();
+        time.setHours(hours, minutes, seconds);
+
+        const nextTime = time.valueOf() + 1000;
+        homeTime.innerHTML = formatAMPM(new Date(nextTime));
+      }, 1000);
+      console.log();
+    }
+
+    function formatAMPM(date) {
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var seconds = date.getSeconds();
+      var ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
+      return strTime;
+    }
+
     const times = document.querySelectorAll("time");
     times.forEach((time) => {
       const oldDtime = Date.parse(time.dateTime);

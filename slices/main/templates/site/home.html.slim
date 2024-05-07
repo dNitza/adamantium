@@ -1,8 +1,13 @@
 - context.content_for(:title, "")
 
-div class="h-card prose dark:prose-invert mb-12 prose-a:decoration-wavy hover:prose-a:text-blue-400 max-w-prose mx-auto text-gray-800 dark:text-gray-200"
-  p class="p-note"
+div class="h-card flex flex-col prose dark:prose-invert mb-1 prose-a:decoration-wavy hover:prose-a:text-blue-400 max-w-prose mx-auto text-gray-800 dark:text-gray-200"
+  div class="flex-col flex-1"
     == home_content
+
+  div class="rounded text-sm flex justify-between"
+    span class="font-mono inline-block text-gray-400" = formatted_date
+    span class="font-mono inline-block text-gray-400" Canberra, Australia
+    span class="font-mono inline-block text-gray-400 home-time" = time
 
 div class="mb-8 max-w-screen-md mx-auto border-t border-solid border-gray-200 dark:border-gray-600"
 

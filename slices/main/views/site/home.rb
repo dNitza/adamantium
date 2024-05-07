@@ -10,6 +10,18 @@ module Main
           renderer.call(content: markdown_content)
         end
 
+        private_expose :date do
+          TZInfo::Timezone.get('Australia/Canberra').now
+        end
+
+        expose :formatted_date do |date|
+          date.strftime("%B %d, %Y")
+        end
+
+        expose :time do |date|
+          date.strftime("%H:%M:%S %p")
+        end
+
         expose :week_posts do
           post_repo.week_posts(limit: 10).map do |post|
             Decorators::Posts::Decorator.new(post)
