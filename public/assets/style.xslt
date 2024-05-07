@@ -21,18 +21,18 @@
         </nav>
         <div class="container-md px-3 py-3 markdown-body">
           <header class="py-5">
-            <h2><xsl:value-of select="/channel/name"/></h2>
-            <p><xsl:value-of select="/channel/description"/></p>
+            <h2><xsl:value-of select="/rss/channel/name"/></h2>
+            <p><xsl:value-of select="/rss/channel/description"/></p>
             <a class="head_link" target="_blank">
               <xsl:attribute name="href">
-                <xsl:value-of select="/channel/link"/>
+                <xsl:value-of select="/rss/channel/link"/>
               </xsl:attribute>
               Visit Website &#x2192;
             </a>
           </header>
 
           <h2>Alternate feeds</h2>
-          <xsl:for-each select="/channel/alternate_feed">
+          <xsl:for-each select="/rss/channel/alternate_feed">
             <div class="pb-5">
               <a target="_blank">
                 <xsl:attribute name="href">
@@ -45,7 +45,7 @@
           </xsl:for-each>
 
           <h2>Recent Items</h2>
-          <xsl:for-each select="/channel/item">
+          <xsl:for-each select="/rss/channel/item">
             <div class="pb-5">
               <xsl:value-of select="title" disable-output-escaping="yes"/>
 
