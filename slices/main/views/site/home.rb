@@ -19,7 +19,7 @@ module Main
         end
 
         expose :time do |date|
-          date.strftime("%H:%M:%S %p")
+          date.strftime("%I:%M:%S %p")
         end
 
         expose :week_posts do

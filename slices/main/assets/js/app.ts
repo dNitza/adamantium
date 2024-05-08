@@ -17,17 +17,18 @@ import { md_gallery } from "./gallery.js";
     const homeTime = document.querySelector(".home-time");
     if (homeTime != undefined) {
       setInterval(() => {
-        const [hours, minutes, seconds] = homeTime.innerHTML
+        let [hours, minutes, seconds] = homeTime.innerHTML
           .split(" ")[0]
           .split(":")
           .map((x) => parseInt(x, 10));
+        const ampm = homeTime.innerHTML.split(" ")[1];
         const time = new Date();
+        hours = ampm == "AM" ? hours : hours + 12;
         time.setHours(hours, minutes, seconds);
 
         const nextTime = time.valueOf() + 1000;
         homeTime.innerHTML = formatAMPM(new Date(nextTime));
       }, 1000);
-      console.log();
     }
 
     function formatAMPM(date) {
