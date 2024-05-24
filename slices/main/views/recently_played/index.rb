@@ -7,7 +7,6 @@ module Main
         include Deps["queries.posts.recently_played"]
 
         expose :recently_played_music do |recently_played_result|
-          # raise recently_played_result["data"].inspect
           JSON.parse(recently_played_result)["data"].reject { |a| a["type"] != "albums" }.map do |album|
             {
               artist: album["attributes"]["artistName"],

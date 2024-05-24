@@ -1,10 +1,12 @@
-div class="grid grid-cols-4 gap-2"
-    - recently_played_music.each do |album|
-        a href="#{album[:href]}"
-            div
-                img class="m-0 rounded transition-transform ease-out hover:scale-105" src="#{album[:image]}"
-                span class="inline-block text-sm"
-                  = album[:name]
-                br
-                span class="inline-block text-sm font-bold"
-                  = album[:artist]
+- if recently_played_music.count > 0
+  h3 🎧 Recently listened to
+  div class="grid grid-cols-4 gap-2"
+      - recently_played_music.each do |album|
+          a href="#{album[:href]}"
+              div
+                  img class="m-0 rounded transition-transform ease-out hover:scale-105" src="#{album[:image]}"
+                  span class="inline-block text-sm"
+                    = album[:name]
+                  br
+                  span class="inline-block text-sm font-bold"
+                    = album[:artist]

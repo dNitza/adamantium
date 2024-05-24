@@ -1,8 +1,11 @@
-table
-  - recently_played_games.each do |game|
-    tr
-      td
-        = game[:name]
+- if recently_played_games.count > 0
+  h3 👾 Recently played on Steam
 
-      td
-        = "(#{game[:playtime_forever]}hrs total)"
+  table
+    - recently_played_games.each do |game|
+      tr
+        td
+          = game[:name]
+
+        td
+          = "(#{game[:playtime_forever]}hrs total)"
