@@ -5,7 +5,8 @@ module Micropub
         include Deps[
           "repos.post_repo",
           "renderers.markdown",
-          "commands.posts.add_syndication_source"
+          "commands.posts.add_syndication_source",
+          "queries.posts.syndication_url_to_source"
         ]
 
         def call(params:)
@@ -31,7 +32,8 @@ module Micropub
           if params.key? :add
             attrs_to_add = {}
 
-            syndication = params[:add].delete(:syndication)&.first
+            syndication_url = params[:add].delete(:syndication)&.first
+            syndication_source = syndication_url_to_source.call(url: syndication_url) if syndication_url && !syndication_url.empty?
             tags = params[:add].delete(:category)
             content = params[:add].delete(:content)&.first
             name = params[:add].delete(:name)
@@ -46,7 +48,7 @@ module Micropub
             post_repo.update(post.id, attrs_to_add) unless attrs_to_add.empty?
 
             post_repo.tag_post(post_id: post.id, tags: tags) if tags && !tags.empty?
-            add_syndication_source.call(post.id, "", syndication) if syndication && !syndication.empty?
+            add_syndication_source.call(post.id, syndication_source, syndication_url) if syndication_url && !syndication_url.empty?
 
             Success()
           end
