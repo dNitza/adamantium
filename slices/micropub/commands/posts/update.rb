@@ -26,7 +26,7 @@ module Micropub
 
             post_repo.update(post.id, attrs_to_replace)
 
-            Success()
+            return Success()
           end
 
           if params.key? :add
@@ -50,7 +50,7 @@ module Micropub
             post_repo.tag_post(post_id: post.id, tags: tags) if tags && !tags.empty?
             add_syndication_source.call(post.id, syndication_source, syndication_url) if syndication_url && !syndication_url.empty?
 
-            Success()
+            return Success()
           end
 
           if params.key? :delete
@@ -74,7 +74,7 @@ module Micropub
               post_repo.update(post.id, attrs) unless attrs.empty?
             end
 
-            Success()
+            return Success()
           end
         end
       end
