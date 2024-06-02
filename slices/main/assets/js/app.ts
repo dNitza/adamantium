@@ -35,7 +35,7 @@ import { md_gallery } from "./gallery.js";
       var hours = date.getHours();
       var minutes = date.getMinutes();
       var seconds = date.getSeconds();
-      var ampm = hours >= 12 ? "PM" : "AM";
+      var ampm = (hours >= 12 || hours == 0) ? "PM" : "AM";
       hours = hours % 12;
       hours = hours ? hours : 12; // the hour '0' should be '12'
 
