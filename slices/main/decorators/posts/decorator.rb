@@ -42,7 +42,7 @@ module Main
 
         def key_image
           if photos?
-            return photos.first["url"]
+            return photos.first["value"]
           end
 
           if videos?

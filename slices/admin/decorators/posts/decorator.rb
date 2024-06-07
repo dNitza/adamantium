@@ -42,7 +42,7 @@ module Admin
 
         def key_image
           if photos?
-            return photos.first["url"]
+            return photos.first["value"]
           end
 
           inline_images.first[1] if inline_images
