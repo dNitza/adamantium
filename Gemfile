@@ -38,6 +38,7 @@ gem "matrix"
 gem "rack-session"
 gem "rack-rewrite"
 gem "rack-contrib"
+gem "rack-attack", "~> 6.7"
 
 gem "ruby-readability", require: "readability"
 gem "down"
