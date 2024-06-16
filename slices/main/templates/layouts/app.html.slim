@@ -38,6 +38,9 @@ html x-data="{darkMode: $persist(false)}" :class="{'dark' : darkMode === true}"
     link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/github-dark.min.css"
     script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js" defer=""
 
+    script type="speculationrules"
+      == context.speculation_rules
+
     meta property="og:title" content="#{context.content_for(:title)}"
     meta property="og:type" content="website"
     meta property="og:url" content="#{context.content_for(:url)}"
