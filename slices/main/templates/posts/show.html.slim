@@ -109,6 +109,14 @@ article class="h-entry"
                   img loading="lazy" class="rounded hover:opacity-80" src=movie.poster
                   / figcaption= movie.title
           hr
+      - if bookmarks_this_week.count > 0
+        div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 mb-8"
+          h3 class="text-xl mb-4" Bookmarked this week
+          ul
+            - bookmarks_this_week.each do |bookmark|
+              li
+                a class="block bg-emerald-100 dark:bg-emerald-600 hover:dark:bg-emerald-900 hover:bg-emerald-200 dark:text-white rounded mb-2 p-2"  href=bookmark.url
+                  span class="grow-0 inline-block" = bookmark.name
       - if text_posts.count > 0 || photo_posts.count > 0
         div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 mb-4"
           h3 class="text-xl mb-0"  This week, years ago
@@ -123,7 +131,6 @@ article class="h-entry"
                       span class="grow-0 inline-block pr-2" = past_post.display_title
                       span class="border-b border-blue-400 dark:border-blue-900 -top-3 relative border-dashed grow inline-block"
                       span class="grow-0 inline-block pl-2" = past_post.published_at.year
-
       div class="max-w-prose mx-auto text-gray-600 dark:text-gray-200 flex"
         div class="grid grid-cols-3 gap-4 mb-4 max-w-prose mx-auto"
           - photo_posts.group_by{ |p| p.published_at.year }.each do |year, posts|

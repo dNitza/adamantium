@@ -154,6 +154,13 @@ module Main
           .to_a
       end
 
+      def bookmarks_for_week(date:)
+        posts
+          .where(post_type: "bookmark")
+          .where(published_at: TimeMath.day.advance(date, -7)...TimeMath.day.floor(date))
+          .to_a
+      end
+
       def all_posts
         posts
           .where(post_type: ["post", "code", "bookmark"])

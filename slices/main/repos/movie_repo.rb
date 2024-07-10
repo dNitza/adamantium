@@ -10,13 +10,6 @@ module Main
       end
 
       def from_the_archives(start_date:, end_date:)
-        # SELECT * FROM posts
-        # WHERE EXTRACT(month FROM "published_at") >= 2
-        # WHERE EXTRACT(month FROM "published_at") <= 2+
-        # AND EXTRACT(day FROM "published_at") > 20
-        # AND EXTRACT(day FROM "published_at") < 27
-        # AND post_type = 'post';
-
         movies
           .where { Sequel.extract(:year, :watched_at) >= start_date.year }
           .where { Sequel.extract(:year, :watched_at) <= start_date.year }

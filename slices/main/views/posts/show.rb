@@ -24,6 +24,10 @@ module Main
           movies.map { |p| Decorators::Movies::Decorator.new(p) }
         end
 
+        expose :bookmarks_this_week do |post|
+          post_repo.bookmarks_for_week(date: post.published_at).map { |p| Decorators::Posts::Decorator.new(p) }
+        end
+
         expose :text_posts do |past_posts|
           past_posts.reject(&:photos?)
         end
@@ -44,11 +48,11 @@ module Main
         end
 
         expose :replies do |post|
-          post.webmentions.select {|w| w[:type] == "reply" }
+          post.webmentions.select { |w| w[:type] == "reply" }
         end
 
         expose :likes do |post|
-          post.webmentions.select {|w| w[:type] == "like" }
+          post.webmentions.select { |w| w[:type] == "like" }
         end
       end
     end
