@@ -82,9 +82,9 @@ module Admin
         def display_title
           title = name
           if prefix_emoji
-            return "#{prefix_emoji} #{title}"
+            "#{prefix_emoji} #{title}"
           else
-            return title
+            title
           end
         end
 
@@ -150,7 +150,7 @@ module Admin
         end
 
         def to_h
-          clean_content = CGI.unescapeHTML(content.gsub(/<\/?[^>]*>/, "")).strip
+          clean_content = Sanitize.fragment(content).strip
           clean_content = clean_content.gsub(prefix_emoji[0], "") if prefix_emoji
           {
             id: slug,
