@@ -104,11 +104,13 @@ module Micropub
           fullsize_pipeline = ImageProcessing::Vips.source(file[:tempfile])
             .resize_to_limit(1024, nil)
             .saver(quality: 100)
+            .remove("xmp-data")
             .call(save: false)
 
           thumbnail_pipeline = ImageProcessing::Vips.source(file[:tempfile])
             .resize_to_limit(300, 300, crop: :attention)
             .saver(quality: 100)
+            .remove("xmp-data")
             .call(save: false)
 
           unless File.directory?(dirname)
