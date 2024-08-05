@@ -1,6 +1,6 @@
 module Micropub
   module Repos
-    class PostRepo < Adamantium::Repo[:posts]
+    class PostRepo < Adamantium::DB::Repo[:posts]
       commands update: :by_pk
 
       def remove_tag(post_id:, tag:)

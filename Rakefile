@@ -85,7 +85,7 @@ namespace :blog do
     require "hanami/prepare"
     require "que"
 
-    Que.connection = Adamantium::Container["persistence.db"]
+    Que.connection = Adamantium::Container["db.gateway"].connection
     Adamantium::Jobs::ArchiveDeletedWebmentions.enqueue
   end
 

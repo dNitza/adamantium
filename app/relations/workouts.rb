@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Workouts < ROM::Relation[:sql]
+    class Workouts < Adamantium::DB::Relation
       schema :workouts, infer: true
 
       auto_struct(true)

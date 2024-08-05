@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Pages < ROM::Relation[:sql]
+    class Pages < Adamantium::DB::Relation
       schema :pages, infer: true
 
       auto_struct(true)

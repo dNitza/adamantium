@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class LoginTokens < ROM::Relation[:sql]
+    class LoginTokens < Adamantium::DB::Relation
       schema :login_tokens, infer: true
 
       auto_struct(true)

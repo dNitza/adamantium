@@ -2,7 +2,7 @@ require "time_math"
 
 module Admin
   module Repos
-    class PostRepo < Adamantium::Repo[:posts]
+    class PostRepo < Adamantium::DB::Repo[:posts]
       commands update: :by_pk
 
       def tag_post(post_id:, tags:)

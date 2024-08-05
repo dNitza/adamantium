@@ -8,11 +8,11 @@ module Test
       end
 
       def rom
-        Hanami.app["persistence.rom"]
+        Hanami.app["db.rom"]
       end
 
       def db
-        Hanami.app["persistence.db"]
+        Hanami.app["db.gateway"].connection
       end
     end
   end

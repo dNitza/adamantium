@@ -19,7 +19,7 @@ module Admin
         end
 
         expose :running_jobs do
-          Que.connection = Adamantium::Container["persistence.db"]
+          Que.connection = Adamantium::Container["db.gateway"].connection
           Que.job_stats.any? { |job| job[:job_class] == Adamantium::Jobs::ArchiveDeadBookmarks.name }
         end
       end

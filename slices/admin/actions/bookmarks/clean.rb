@@ -5,7 +5,7 @@ module Admin
     module Bookmarks
       class Clean < Action
         def handle(req, res)
-          Que.connection = Adamantium::Container["persistence.db"]
+          Que.connection = Adamantium::Container["db.gateway"].connection
 
           res.status = 200
           if Que.job_stats.any? { |job| job[:job_class] == Adamantium::Jobs::ArchiveDeadBookmarks.name }

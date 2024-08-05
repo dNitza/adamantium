@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class TopTracks < ROM::Relation[:sql]
+    class TopTracks < Adamantium::DB::Relation
       schema :top_tracks, infer: true
 
       auto_struct(true)

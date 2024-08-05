@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Podcasts < ROM::Relation[:sql]
+    class Podcasts < Adamantium::DB::Relation
       schema :podcasts, infer: true
 
       auto_struct(true)

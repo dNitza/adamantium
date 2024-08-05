@@ -6,10 +6,6 @@ require_relative "db/database_cleaner"
 require_relative "db/factory"
 
 RSpec.configure do |config|
-  config.before :suite do
-    Hanami.app.start :persistence
-  end
-
   config.include Test::DB::Helpers, :db
 
   config.include(Test::DB::FactoryHelper.new, factory: nil)

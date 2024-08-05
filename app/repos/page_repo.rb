@@ -1,6 +1,6 @@
 module Adamantium
   module Repos
-    class PageRepo < Adamantium::Repo[:pages]
+    class PageRepo < Adamantium::DB::Repo[:pages]
       def fetch!(slug:)
         pages
           .published

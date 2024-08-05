@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class WebmentionRepo < Adamantium::Repo[:webmentions]
+    class WebmentionRepo < Adamantium::DB::Repo[:webmentions]
       commands update: :by_pk
 
       def list_all_for_check

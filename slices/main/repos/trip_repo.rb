@@ -1,6 +1,6 @@
 module Main
   module Repos
-    class TripRepo < Adamantium::Repo[:trips]
+    class TripRepo < Adamantium::DB::Repo[:trips]
       def fetch!(id)
         trips
           .where(id: id)

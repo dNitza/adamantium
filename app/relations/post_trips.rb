@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class PostTrips < ROM::Relation[:sql]
+    class PostTrips < Adamantium::DB::Relation
       schema :post_trips, infer: true do
         associations do
           belongs_to :post

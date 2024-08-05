@@ -1,6 +1,6 @@
 module Main
   module Repos
-    class PostTagRepo < Adamantium::Repo[:post_tags]
+    class PostTagRepo < Adamantium::DB::Repo[:post_tags]
       def posts_tagged(tag:)
         tag_id = post_tags
           .tags

@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Webmentions < ROM::Relation[:sql]
+    class Webmentions < Adamantium::DB::Relation
       schema :webmentions, infer: true do
         associations do
           belongs_to :post

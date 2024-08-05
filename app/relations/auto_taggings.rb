@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class AutoTaggings < ROM::Relation[:sql]
+    class AutoTaggings < Adamantium::DB::Relation
       schema :auto_taggings, infer: true do
         associations do
           belongs_to :tag

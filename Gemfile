@@ -4,12 +4,13 @@ source "https://rubygems.org"
 
 ruby "3.3.0"
 
-gem "hanami", "2.1.0"
-gem "hanami-router", "2.1.0"
-gem "hanami-controller", "2.1.0"
-gem "hanami-validations", "2.1.0"
-gem "hanami-assets", "2.1.0"
-gem "hanami-view", "2.1.0"
+gem "hanami", "~> 2.2.0.beta"
+gem "hanami-router", "~> 2.2.0.beta"
+gem "hanami-controller", "~> 2.2.0.beta"
+gem "hanami-validations", "~> 2.2.0.beta"
+gem "hanami-assets", "~> 2.2.0.beta"
+gem "hanami-view", "~> 2.2.0.beta"
+gem "hanami-db", "~> 2.2.0.beta"
 # gem "hanami-view", file: "~/Documents/projects/hanami/view"
 
 gem "csv"
@@ -20,7 +21,7 @@ gem "dotenv"
 gem "whenever", require: false
 gem "warning"
 
-gem "dry-types"
+gem "dry-types", "~> 1.0", ">= 1.6.1"
 gem "dry-matcher"
 gem "dry-monads"
 gem "puma"
@@ -69,7 +70,7 @@ gem "steam-api"
 
 group :cli, :development do
   gem "irb"
-  gem "hanami-reloader", "~> 2.1.0.rc"
+  gem "hanami-reloader", "~> 2.2.0.beta"
   gem "rubocop", require: false
 end
 
@@ -80,7 +81,8 @@ end
 group :development do
   gem "ed25519"
   gem "bcrypt_pbkdf"
-  gem "guard-puma", "~> 0.8"
+  gem "hanami-webconsole", "~> 2.2.0.beta"
+  gem "guard-puma"
   gem "standardrb"
   gem "capistrano", "~> 3.7", require: false
   gem "capistrano-bundler"
