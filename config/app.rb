@@ -29,6 +29,7 @@ module Adamantium
       "clients.blue_sky",
       "clients.mastodon",
       "clients.steam",
+      "db.rom",
       "geo.gpx_parser",
       "param_parser.micropub_post",
       "param_parser.webmention",
