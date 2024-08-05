@@ -1,6 +1,6 @@
 module Main
   module Repos
-    class WorkoutRepo < Adamantium::Repo[:workouts]
+    class WorkoutRepo < Adamantium::DB::Repo[:workouts]
       def list
         workouts.order(:published_at).to_a
       end

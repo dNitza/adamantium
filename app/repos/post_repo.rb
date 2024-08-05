@@ -2,7 +2,7 @@ require "time_math"
 
 module Adamantium
   module Repos
-    class PostRepo < Adamantium::Repo[:posts]
+    class PostRepo < Adamantium::DB::Repo[:posts]
       def recent(limit:)
         date = Time.now
 

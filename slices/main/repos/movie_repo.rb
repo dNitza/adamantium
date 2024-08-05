@@ -1,6 +1,6 @@
 module Main
   module Repos
-    class MovieRepo < Adamantium::Repo[:movies]
+    class MovieRepo < Adamantium::DB::Repo[:movies]
       def listing
         movies.order(Sequel.lit("year desc")).to_a
       end

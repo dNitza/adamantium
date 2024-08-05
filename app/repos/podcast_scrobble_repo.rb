@@ -1,6 +1,6 @@
 module Adamantium
   module Repos
-    class PodcastScrobbleRepo < Adamantium::Repo[:podcast_scrobbles]
+    class PodcastScrobbleRepo < Adamantium::DB::Repo[:podcast_scrobbles]
       commands :create
 
       def exists?(id:)

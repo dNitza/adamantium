@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class AutoTaggingRepo < Adamantium::Repo[:auto_taggings]
+    class AutoTaggingRepo < Adamantium::DB::Repo[:auto_taggings]
       commands :create
 
       def find(id)

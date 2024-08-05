@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class UserRepo < Adamantium::Repo[:users]
+    class UserRepo < Adamantium::DB::Repo[:users]
       commands :create
 
       def exists(id)

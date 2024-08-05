@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class TagRepo < Adamantium::Repo[:tags]
+    class TagRepo < Adamantium::DB::Repo[:tags]
       def list
         tags
           .order(Sequel.function(:lower, :label))

@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Tags < ROM::Relation[:sql]
+    class Tags < Adamantium::DB::Relation
       schema :tags, infer: true do
         associations do
           has_many :post_tags

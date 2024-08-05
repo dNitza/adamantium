@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class BookmarkRepo < Adamantium::Repo[:posts]
+    class BookmarkRepo < Adamantium::DB::Repo[:posts]
       def list
         posts
           .where(post_type: "bookmark")

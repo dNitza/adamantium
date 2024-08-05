@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe "Webmention creation", :db, :requests do
-  let(:post_repo) { Adamantium::Repos::PostRepo.new }
+  let(:post_repo) { Adamantium::DB::Repos::PostRepo.new }
   let(:post_record) { Test::Factory[:post] }
 
   context "reply" do

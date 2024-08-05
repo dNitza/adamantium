@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class PostTags < ROM::Relation[:sql]
+    class PostTags < Adamantium::DB::Relation
       schema :post_tags, infer: true do
         associations do
           belongs_to :post

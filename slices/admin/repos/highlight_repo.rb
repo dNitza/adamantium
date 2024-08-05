@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class HighlightRepo < Adamantium::Repo[:highlights]
+    class HighlightRepo < Adamantium::DB::Repo[:highlights]
       commands :create, delete: :by_pk
 
       def list_all

@@ -1,6 +1,6 @@
 module Main
   module Repos
-    class PostRepo < Adamantium::Repo[:posts]
+    class PostRepo < Adamantium::DB::Repo[:posts]
       Sequel.extension :pg_json
       Sequel.extension :pg_json_ops
 

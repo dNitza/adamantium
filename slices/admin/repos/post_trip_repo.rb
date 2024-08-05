@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class PostTripRepo < Adamantium::Repo[:post_trips]
+    class PostTripRepo < Adamantium::DB::Repo[:post_trips]
       commands :create
 
       def remove(trip_id:, post_id:)

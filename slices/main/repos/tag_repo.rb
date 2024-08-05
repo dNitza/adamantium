@@ -1,6 +1,6 @@
 module Main
   module Repos
-    class TagRepo < Adamantium::Repo[:tags]
+    class TagRepo < Adamantium::DB::Repo[:tags]
       def fetch!(slug)
         tags.where(slug: slug).one!
       end

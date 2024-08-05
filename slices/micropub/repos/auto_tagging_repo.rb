@@ -1,6 +1,6 @@
 module Micropub
   module Repos
-    class AutoTaggingRepo < Adamantium::Repo[:auto_taggings]
+    class AutoTaggingRepo < Adamantium::DB::Repo[:auto_taggings]
       def find(id)
         auto_taggings
           .where(id: id)

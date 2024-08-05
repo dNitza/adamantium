@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Reactions < ROM::Relation[:sql]
+    class Reactions < Adamantium::DB::Relation
       schema :reactions, infer: true do
         associations do
           belongs_to :post

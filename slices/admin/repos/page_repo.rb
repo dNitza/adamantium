@@ -2,7 +2,7 @@ require "time_math"
 
 module Admin
   module Repos
-    class PageRepo < Adamantium::Repo[:pages]
+    class PageRepo < Adamantium::DB::Repo[:pages]
       commands :create, update: :by_pk
 
       def list

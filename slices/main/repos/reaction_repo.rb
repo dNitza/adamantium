@@ -1,6 +1,6 @@
 module Main
   module Repos
-    class ReactionRepo < Adamantium::Repo[:reactions]
+    class ReactionRepo < Adamantium::DB::Repo[:reactions]
       commands :create
 
       def count(post_id:)

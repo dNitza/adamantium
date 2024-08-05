@@ -1,6 +1,6 @@
 module Micropub
   module Repos
-    class PodcastRepo < Adamantium::Repo[:podcasts]
+    class PodcastRepo < Adamantium::DB::Repo[:podcasts]
       commands :create
 
       def listing

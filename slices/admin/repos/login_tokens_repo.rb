@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class LoginTokensRepo < Adamantium::Repo[:login_tokens]
+    class LoginTokensRepo < Adamantium::DB::Repo[:login_tokens]
       commands :create
 
       def by_token(token:)

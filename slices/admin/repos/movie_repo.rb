@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class MovieRepo < Adamantium::Repo[:movies]
+    class MovieRepo < Adamantium::DB::Repo[:movies]
       commands :create
 
       def by_title_and_year(title:, year:)

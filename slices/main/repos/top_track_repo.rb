@@ -1,6 +1,6 @@
 module Main
   module Repos
-    class TopTrackRepo < Adamantium::Repo[:top_tracks]
+    class TopTrackRepo < Adamantium::DB::Repo[:top_tracks]
       def for_post(id:)
         top_tracks
           .where(post_id: id)

@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Highlights < ROM::Relation[:sql]
+    class Highlights < Adamantium::DB::Relation
       schema :highlights, infer: true do
         associations do
           belongs_to :post

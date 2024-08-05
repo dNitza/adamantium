@@ -1,6 +1,6 @@
 module Admin
   module Repos
-    class TripRepo < Adamantium::Repo[:trips]
+    class TripRepo < Adamantium::DB::Repo[:trips]
       commands :create
 
       def list

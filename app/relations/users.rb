@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Users < ROM::Relation[:sql]
+    class Users < Adamantium::DB::Relation
       schema :users, infer: true
 
       auto_struct(true)

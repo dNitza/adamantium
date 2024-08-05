@@ -2,7 +2,7 @@
 
 module Adamantium
   module Relations
-    class Movies < ROM::Relation[:sql]
+    class Movies < Adamantium::DB::Relation
       schema :movies, infer: true
 
       auto_struct(true)
