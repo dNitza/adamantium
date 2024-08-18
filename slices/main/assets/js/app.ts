@@ -16,34 +16,22 @@ import { md_gallery } from "./gallery.js";
 
     const homeTime = document.querySelector(".home-time");
     if (homeTime != undefined) {
-      setInterval(() => {
-        let [hours, minutes, seconds] = homeTime.innerHTML
-          .split(" ")[0]
-          .split(":")
-          .map((x) => parseInt(x, 10));
-        const ampm = homeTime.innerHTML.split(" ")[1];
-        const time = new Date();
-        hours = ampm == "AM" ? hours : hours + 12;
-        time.setHours(hours, minutes, seconds);
+      function updateTime() {
+        const australianTimeZone = "Australia/Canberra";
 
-        const nextTime = time.valueOf() + 1000;
-        homeTime.innerHTML = formatAMPM(new Date(nextTime));
-      }, 1000);
-    }
+        const currentTime = new Date().toLocaleTimeString("en-AU", {
+          timeZone: australianTimeZone,
+          hour12: true,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+        homeTime.textContent = currentTime;
+      }
 
-    function formatAMPM(date) {
-      var hours = date.getHours();
-      var minutes = date.getMinutes();
-      var seconds = date.getSeconds();
-      var ampm = (hours >= 12 || hours == 0) ? "PM" : "AM";
-      hours = hours % 12;
-      hours = hours ? hours : 12; // the hour '0' should be '12'
+      updateTime();
 
-      hours = hours < 10 ? "0" + hours : hours;
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-      var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
-      return strTime;
+      setInterval(updateTime, 1000);
     }
 
     const times = document.querySelectorAll("time");
