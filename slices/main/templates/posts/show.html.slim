@@ -1,6 +1,7 @@
 - context.content_for(:title, "#{post.display_title} | ")
 - context.content_for(:url, post.permalink)
 - context.content_for(:image, post.key_image)
+- context.content_for(:linked_data, linked_data)
 
 article class="h-entry"
   template @img-modal.window="imgModal = true; imgModalSrc = $event.detail.imgModalSrc; imgModalDesc = $event.detail.imgModalDesc;" x-if="imgModal"

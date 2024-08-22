@@ -54,6 +54,26 @@ module Main
         expose :likes do |post|
           post.webmentions.select { |w| w[:type] == "like" }
         end
+
+        expose :linked_data do |post|
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.name,
+            url: post.permalink,
+            author: {
+              "@type": "Person",
+              name: "Daniel Nitsikopoulos",
+              email: "hello@dnitza.com",
+              url: "https://dnitza.com"
+            },
+            mainEntityOfPage: post.permalink,
+            image: post.key_image,
+            datePublished: post.published_at,
+            dateCreated: post.published_at,
+            dateModified: post.published_at
+          }.to_json
+        end
       end
     end
   end

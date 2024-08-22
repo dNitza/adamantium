@@ -41,6 +41,9 @@ html x-data="{darkMode: $persist(false)}" :class="{'dark' : darkMode === true}"
     script type="speculationrules"
       == context.speculation_rules
 
+    script type="application/ld+json"
+      == context.content_for(:linked_data)
+
     meta property="og:title" content="#{context.content_for(:title)}"
     meta property="og:type" content="website"
     meta property="og:url" content="#{context.content_for(:url)}"
