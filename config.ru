@@ -26,10 +26,6 @@ end
 require "rack/attack"
 use Rack::Attack
 
-Rack::Attack.blocklist("block AI") do |req|
-  req.user_agent.match /AdsBot-Google|Amazonbot|anthropic-ai|Applebot|Applebot-Extended|AwarioRssBot|AwarioSmartBot|Bytespider|CCBot|ChatGPT-User|ClaudeBot|Claude-Web|cohere-ai|DataForSeoBot|Diffbot|FacebookBot|FriendlyCrawler|Google-Extended|GoogleOther|GPTBot|img2dataset|ImagesiftBot|magpie-crawler|Meltwater|omgili|omgilibot|peer39_crawler|peer39_crawler\/1.0|PerplexityBot|PiplBot|scoop.it|Seekr|YouBot/
-end
-
 require "adamantium/middleware/header_fix"
 use Adamantium::Middleware::HeaderFix do |headers, env|
   unless headers["Content-Type"]&.downcase&.include?("xml") || headers["Content-Type"]&.downcase&.include?("json")
