@@ -81,7 +81,7 @@ article class="h-entry"
                 - else
                   a class="block text-orange-700 dark:text-violet-300 no-underline hover:underline" href=mention.author_url
                     = mention.author_name
-              div class="prose dark:prose-invert dark:text-indigo-250 prose-a:text-orange-700 dark:prose-a:text-violet-300 prose-a:no-underline hover:prose-a:underline"
+              div class="prose dark:prose-invert dark:text-indigo-250 prose-a:text-orange-700 dark:prose-a:text-violet-300 prose-a:no-underline hover:prose-a:underline prose-img:max-w-32"
                 == mention.content_html
               div class="text-sm"
                 - if mention.source_url != "email"
@@ -172,6 +172,6 @@ article class="h-entry"
         a rel="syndication" class="u-syndication" href=loc[:url]
           == render "shared/#{loc[:location]}"
 
-svg width="10" height="10" viewBox="0 0 10 10"
+svg width="30" height="30" viewBox="0 0 5 5"
   clipPath id="squircleClip" clipPathUnits="objectBoundingBox"
-    path fill="red" stroke="none" d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5"
+    path fill="red" stroke="none" d="M 0,0.25 C 0,0 0,0 0.45,0 S 1,0 1,0.45 1,1 0.5,1 0,1 0,0.75"
