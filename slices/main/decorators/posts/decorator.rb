@@ -204,6 +204,8 @@ module Main
             results << "</#{tag}>"
           end
           results
+        rescue REXML::ParseException => e
+          return "<p>No excerpt</p>"
         end
 
         def attrs_to_s(attrs)

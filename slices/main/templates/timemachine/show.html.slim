@@ -28,6 +28,9 @@ div class="max-w-screen-md mx-auto px-4 m-4 h-max"
                       a href="/post/#{post.slug}"
                         img loading="lazy" class="mb-0 rounded" src="#{photo["value"]}"
                         = post.name
+              - if post.location
+                div class="text-sm"
+                  img loading="lazy" class="rounded mb-4" src=post.large_map
       - else
         p No posts
 
