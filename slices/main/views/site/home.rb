@@ -11,7 +11,7 @@ module Main
         end
 
         private_expose :date do
-          TZInfo::Timezone.get('Australia/Canberra').now
+          TZInfo::Timezone.get("Australia/Canberra").now
         end
 
         expose :formatted_date do |date|

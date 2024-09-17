@@ -6,6 +6,7 @@ require "rexml/parsers/pullparser"
 require "sanitize"
 require "nokogiri"
 require "unicode/emoji"
+require "mini_magick"
 
 module Main
   module Decorators
@@ -30,6 +31,12 @@ module Main
 
         def photos
           __getobj__.photos.select { |p| !p["value"].end_with?("mp4") }
+        end
+
+        def photo_thumbnails
+          photos.map do |photo|
+            photo["value"] = photo["value"].gsub(".jpeg", "-small.jpeg")
+          end
         end
 
         def videos?

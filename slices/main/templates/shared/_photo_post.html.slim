@@ -1,13 +1,13 @@
 - if extended
-  - post.photos.each_with_index do |photo, idx|
+  - post.photo_thumbnails.each_with_index do |photo, idx|
     div class="rounded max-w-xs"
       a href="#{post.permalink}#photo-#{idx}"
-        img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{photo["value"]}" alt="#{photo["alt"]}"
+        img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{photo}" alt="#{photo["alt"]}"
 - else
   - if post.photos.count > 0
     div class="rounded max-w-xs"
       a href="#{post.permalink}"
-        img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{post.photos[0]["value"]}" alt="#{post.photos[0]["alt"]}"
+        img loading="lazy" class="rounded object-cover transition-transform ease-out hover:scale-105 h-48 w-48" src="#{post.photo_thumbnails[0]}" alt="#{post.photos[0]["alt"]}"
   - if post.videos.count > 0
     div class="rounded max-w-xs"
       a href="#{post.permalink}"
