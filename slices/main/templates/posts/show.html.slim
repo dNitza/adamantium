@@ -72,7 +72,7 @@ article class="h-entry"
               = "Mentioned in "
               a href=mention.source_url #{mention.source_url}
           - else
-            div class="prose-p:m-1 mb-6 p-8 bg-orange-100 dark:bg-indigo-900 squircle"
+            div class="prose-p:m-1 mb-6 p-4 bg-orange-100 dark:bg-indigo-900 bg-orange-100 rounded"
               div class="flex h-8"
                 - if mention.author_photo != ""
                   img loading="lazy" class="w-8 rounded-full m-0 mr-2" src=mention.author_photo
