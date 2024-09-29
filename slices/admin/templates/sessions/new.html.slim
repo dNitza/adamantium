@@ -1,7 +1,11 @@
 div class="max-w-prose mx-auto prose dark:prose-invert"
   form action="/admin/sessions/create" method="POST"
+    div class=""
+      h2 class="m-0" Log in
     div class="mb-2"
+      p Enter your email address and we'll send you a login link
+    div class="mb-2 flex"
       label for="email" class="mr-2" Email
-      input type="email" id="email" name="email" class="border"
+      input type="email" id="email" name="email" class="border p-1 rounded w-full"
     div class="mb-2"
-      button Login
+      button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer w-full" Log in
