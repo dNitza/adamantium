@@ -5,6 +5,10 @@ import "../css/app.css";
 
 import { Crepe } from "@milkdown/crepe";
 import { listener, listenerCtx } from "@milkdown/kit/plugin/listener";
+import "@milkdown/crepe/theme/common/style.css";
+
+// We have some themes for you to choose
+import "@milkdown/crepe/theme/frame.css";
 
 async function uploadImage(file: File) {
   const formData = new FormData();

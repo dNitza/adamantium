@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "@icelab/defo": "^0.0.3",
+    "@milkdown/crepe": "^7.5.7",
+    "@milkdown/kit": "^7.5.5",
+    "@milkdown/theme-nord": "^7.5.0",
     "hanami-assets": "github:hanami/assets-js#main",
     "typescript": "^5.2.2"
   },
