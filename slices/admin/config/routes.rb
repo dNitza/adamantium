@@ -46,6 +46,8 @@ module Admin
     post "/bookmarks/:id/mark_unread", to: Auth.call(action: "bookmarks.mark_unread")
 
     get "/posts", to: Auth.call(action: "posts.index")
+    get "/posts/new", to: Auth.call(action: "posts.new")
+    post "/posts/create", to: Auth.call(action: "posts.create")
     delete "/posts/:id", to: Auth.call(action: "posts.delete")
     post "/posts/:id/archive", to: Auth.call(action: "posts.archive")
     post "/posts/:id/publish", to: Auth.call(action: "posts.publish")

@@ -38,6 +38,7 @@ module Micropub
               m.success do |post|
                 post_type = (post.value!.post_type == :bookmark) ? :bookmark : :post
                 res.headers["Location"] = "#{settings.micropub_site_url}/#{post_type}/#{post.value!.slug}"
+                res.headers["HX-Redirect"] = "#{settings.micropub_site_url}/#{post_type}/#{post.value!.slug}"
                 res.status = 201
               end
 

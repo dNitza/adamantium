@@ -1,0 +1,26 @@
+article x-data="{postTitle: 'Post title', postSlug: 'post-title', slugify(event) {
+    var str = event.target.value.replace(/^\s+|\s+$/g, '');
+    str = str.toLowerCase();
+    str = str.replace(/[^a-z0-9 -]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-');
+    this.postSlug = str;
+  }}" class="mb-12 prose dark:prose-invert max-w-prose mx-auto text-gray-800 dark:text-gray-200 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded"
+  form hx-post="/micropub"
+    fieldset class="mb-4 flex"
+      label for="name" class="mr-2"
+      input type="text" name="name" id="name" class="text-3xl w-full" x-on:change.debounce="slugify($event)" x-model="postTitle"
+    fieldset class="mb-4 flex"
+      label for="slug" class="mr-2" Slug:
+      input type="text" name="slug" id="slug" class="w-full px-1 border rounded" x-model="postSlug"
+    div id="editor" data-post-text=""
+    textarea id="body" name="content" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2 mb-4" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"
+
+    // fieldset class="mb-4 flex"
+    //   label for="commentable" class="mr-2" Commentable?
+    //   input class="mt-2" type="checkbox" value="true" id="commentable" name="commentable" switch="switch" checked=true
+    fieldset class="mb-4 flex"
+      label for="tags" class="mr-2" Tags:
+      input type="text" name="category" id="tags" class="w-full px-1 border rounded" value=""
+    button class="rounded bg-blue-100 hover:bg-blue-200 text-blue-600 px-2 hover:cursor-pointer" type="submit"
+      = "Create"

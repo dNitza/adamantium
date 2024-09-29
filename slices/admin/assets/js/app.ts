@@ -3,6 +3,36 @@ import "@main/css/app.css";
 import "@app/builds/tailwind.css";
 import "../css/app.css";
 
+import { Crepe } from "@milkdown/crepe";
+import { listener, listenerCtx } from "@milkdown/kit/plugin/listener";
+import "@milkdown/crepe/theme/common/style.css";
+
+// We have some themes for you to choose
+import "@milkdown/crepe/theme/frame.css";
+
+async function uploadImage(file: File) {
+  const formData = new FormData();
+  formData.append("file", file); // Append the file to the FormData object
+
+  try {
+    const response = await fetch("/micropub/media", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      return jsonResponse["url"];
+    } else {
+      alert("File upload failed.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("An error occurred during the upload.");
+    return null;
+  }
+}
+
 (function () {
   document.addEventListener("alpine:init", () => {
     Alpine.magic("clipboard", () => {
@@ -32,5 +62,31 @@ import "../css/app.css";
         },
       };
     });
+
+    let editor = document.getElementById("editor");
+
+    const crepe = new Crepe({
+      root: editor,
+      defaultValue: editor.dataset.postText,
+      featureConfigs: {
+        [Crepe.Feature.ImageBlock]: {
+          onUpload: async (file: File) => {
+            return uploadImage(file);
+          },
+        },
+      },
+    });
+
+    crepe.editor.config((ctx) => {
+      const bodyText = document.getElementById("body");
+      bodyText.hidden = true;
+      ctx.get(listenerCtx).markdownUpdated((ctx, markdown, prevMarkdown) => {
+        bodyText.innerHTML = markdown;
+      });
+    });
+
+    crepe.editor.use(listener);
+
+    crepe.create();
   });
 })();

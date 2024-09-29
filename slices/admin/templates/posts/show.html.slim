@@ -30,8 +30,12 @@ article x-data="$textHighlighter, {isOpen: false, anchorX: 0, anchorY: 0, text: 
       h1= post.name || "💬"
   form action="/admin/post/#{post.id}/update" method="POST"
     - if post.post_type != "bookmark"
-      textarea name="body" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2 mb-4" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"
-        == markdown_body
+      fieldset class="mb-4 flex"
+        label for="slug" class="mr-2" Slug:
+        input type="text" name="slug" id="slug" class="w-full px-1 border rounded" value="#{post.slug}"
+      div id="editor" data-post-text="#{markdown_body}"
+      textarea id="body" name="body" class="text-gray-800 w-full border-blue-200 border-2 rounded p-2 mb-4" x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }" x-init="resize()" @input="resize()"
+      //  == markdown_body
     - if post.post_type == "bookmark"
       div x-ref="bookmarkText" @mouseup.capture="highlightText()"
         == post.cached_content

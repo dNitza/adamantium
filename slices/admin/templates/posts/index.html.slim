@@ -5,6 +5,8 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
     div class="flex"
       a href="#" class="text-gray-200 cursor-pointer p-2 border-2 mr-2 rounded border-blue-400" :class="{ 'bg-blue-400 text-blue-900': activeTab === 0 }" @click="activeTab = 0" class="tab-control" Published
       a href="#" class="text-gray-200 cursor-pointer p-2 border-2 rounded border-blue-400" :class="{ 'bg-blue-400 text-blue-900': activeTab === 1 }" @click="activeTab = 1" class="tab-control" Un published
+      div class="flex-1"
+      a href="/admin/posts/new" class="text-gray-200 cursor-pointer p-2 border-2 rounded border-blue-400 bg-blue-400 text-blue-900" New Post
     table class="prose dark:prose-invert table-auto prose-a:text-blue-600 prose-a:no-underline"
       thead
         th Details
@@ -54,6 +56,3 @@ div class="max-w-prose mx-auto" x-data="{ activeTab:  0 }"
               button hx-post="/admin/posts/#{post.id}/publish" publish
 
 div class="max-w-screen-md mx-auto border-t border-solid border-gray-200 dark:border-gray-600"
-
-
-

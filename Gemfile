@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "3.3.5"
 
 gem "hanami", "~> 2.2.0.beta"
 gem "hanami-router", "~> 2.2.0.beta"
@@ -57,7 +57,6 @@ gem "mail"
 gem "que"
 gem "connection_pool"
 gem "image_processing", "~> 1.0"
-gem "mini_magick"
 gem "unicode-emoji"
 
 gem "mail_room", github: "dNitza/mail_room", branch: "master"
@@ -83,7 +82,7 @@ group :development do
   gem "bcrypt_pbkdf"
   gem "hanami-webconsole", "~> 2.2.0.beta"
   gem "guard-puma"
-  gem "standardrb"
+  gem "standard", ">= 1.35.1"
   gem "capistrano", "~> 3.7", require: false
   gem "capistrano-bundler"
   gem "capistrano-systemd-multiservice"
@@ -98,3 +97,7 @@ group :test do
   gem "database_cleaner-sequel"
   gem "timecop"
 end
+
+gem "phlex", github: "phlex-ruby/phlex", branch: "main"
+
+gem "mini_magick", "~> 4.13"
