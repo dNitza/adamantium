@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "3.3.5"
+ruby "3.3.0"
 
 gem "hanami", "~> 2.2.0.beta"
 gem "hanami-router", "~> 2.2.0.beta"
@@ -98,6 +98,5 @@ group :test do
   gem "timecop"
 end
 
-gem "phlex", github: "phlex-ruby/phlex", branch: "main"
 
 gem "mini_magick", "~> 4.13"

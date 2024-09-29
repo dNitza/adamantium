@@ -25,13 +25,6 @@ GIT
     ruby-filemagic (0.7.3)
 
 GIT
-  remote: https://github.com/phlex-ruby/phlex.git
-  revision: 739cb8df74e5b5f5a2d119f699f8ece8f098c133
-  branch: main
-  specs:
-    phlex (2.0.0.beta2)
-
-GIT
   remote: https://github.com/seuros/capistrano-puma.git
   revision: 9cd5e5df4dec324d75493d24b498d91285ddea9e
   specs:
@@ -605,7 +598,6 @@ DEPENDENCIES
   ogpr
   omdb-api (= 1.4.3)
   pg
-  phlex!
   puma
   que
   rack-attack (~> 6.7)
@@ -636,7 +628,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 3.3.5p100
+   ruby 3.3.0p0
 
 BUNDLED WITH
    2.5.18
