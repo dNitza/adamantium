@@ -4,13 +4,13 @@ source "https://rubygems.org"
 
 ruby "3.3.0"
 
-gem "hanami", "~> 2.2.0.beta"
-gem "hanami-router", "~> 2.2.0.beta"
-gem "hanami-controller", "~> 2.2.0.beta"
-gem "hanami-validations", "~> 2.2.0.beta"
-gem "hanami-assets", "~> 2.2.0.beta"
-gem "hanami-view", "~> 2.2.0.beta"
-gem "hanami-db", "~> 2.2.0.beta"
+gem "hanami", "~> 2.2.0.beta2"
+gem "hanami-router", "~> 2.2.0.beta2"
+gem "hanami-controller", "~> 2.2.0.beta2"
+gem "hanami-validations", "~> 2.2.0.beta2"
+gem "hanami-assets", "~> 2.2.0.beta2"
+gem "hanami-view", "~> 2.2.0.beta2"
+gem "hanami-db", "~> 2.2.0.beta2"
 # gem "hanami-view", file: "~/Documents/projects/hanami/view"
 
 gem "csv"
@@ -97,6 +97,5 @@ group :test do
   gem "database_cleaner-sequel"
   gem "timecop"
 end
-
 
 gem "mini_magick", "~> 4.13"
