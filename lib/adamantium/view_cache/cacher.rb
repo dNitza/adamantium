@@ -7,7 +7,7 @@ module Adamantium
 
       def call(key:, params:, content_proc:, expiry:)
         calculated_key = "adamantium:#{key}_#{params.join("_")}"
-        cached_content = cache_store.read(key: calculated_key)
+        cached_content = cache_store.read(key: calculated_key) if settings.cache_pages
 
         return cached_content if cached_content
 

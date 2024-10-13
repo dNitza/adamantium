@@ -77,7 +77,7 @@ module Adamantium
 
     setting :gist_client_token, default: nil
 
-    setting :cache_pages, default: true
+    setting :cache_pages, default: false
     setting :steam_api_key, default: nil
     setting :steam_user_id, default: nil
   end
