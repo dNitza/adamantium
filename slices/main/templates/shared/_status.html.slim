@@ -3,11 +3,31 @@ div class="mb-8 h-entry border border-gray-200 m-2 p-4 bg-gray-50 hover:bg-gray-
     div
       - if !post.photos? && post.key_image.nil?
         div class="flex"
-          div class="text-8xl px-8"
+          div class="text-5xl px-8"
             = post.prefix_emoji
-          a href="/post/#{post.slug}"
-            div class="e-content prose-p:mb-0 prose-img:my-2 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100 mb-4 prose-img:rounded"
-              == post.raw_content
+          div
+            a href="/post/#{post.slug}"
+              div class="e-content prose-p:mb-0 prose-img:my-2 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100 mb-4 prose-img:rounded"
+                == post.raw_content
+            div class="mb-8"
+              p class="text-sm text-blue-400 dark:text-indigo-400"
+                a class="u-url float-left mr-0 border-dotted border-b-2 border-blue-100 hover:border-blue-200 dark:border-indigo-900 dark:hover:border-indigo-800" href="#{post.permalink}"
+                  time class="dt-published" datetime=post.machine_published_at
+                    = post.display_published_at
+                  - if post.webmentions.count > 0
+                    == " &middot; #{post.webmentions.count} comment(s)"
+
+                  - post.syndicated_to.each do |loc|
+                    == " &middot;"
+                    a rel="syndication" class="u-syndication inline-block ml-1 float-left" href=loc[:url]
+                      - if loc[:location] != ""
+                        == render "shared/#{loc[:location]}", width: "w-4"
+              - if post.tags.count > 0
+                span class="text-sm float-left text-blue-400 dark:text-indigo-400 ml-1"
+                  == " &middot; tagged: "
+                - post.tags.each do |post_tag|
+                  a class="text-sm p-category float-left mr-1 u-url text-pink-400 hover:text-pink-600 dark:text-pink-400 dark:hover:text-pink-100 text-gray-600 ml-1" href="/tagged/#{post_tag.slug}"
+                    = "##{post_tag.label}"
       -else
         a href="/post/#{post.slug}"
           div class="e-content prose-p:mb-0 prose-img:my-2 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline p-name text-base prose prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 text-gray-800 dark:text-gray-200 prose-a:dark:text-gray-100 mb-4 prose-img:rounded"
@@ -21,18 +41,22 @@ div class="mb-8 h-entry border border-gray-200 m-2 p-4 bg-gray-50 hover:bg-gray-
             - post.videos.each do |video|
               video class="rounded w-max" autoplay=false loop=false muted=true controls=true
                 source type="video/mp4" src="#{video["value"]}"
-    == render "shared/tags", tags: post.tags
+        div class="mb-8"
+          p class="text-sm text-blue-400 dark:text-indigo-400"
+            a class="u-url float-left mr-0 border-dotted border-b-2 border-blue-100 hover:border-blue-200 dark:border-indigo-900 dark:hover:border-indigo-800" href="#{post.permalink}"
+              time class="dt-published" datetime=post.machine_published_at
+                = post.display_published_at
+              - if post.webmentions.count > 0
+                == " &middot; #{post.webmentions.count} comment(s)"
 
-  div class="mb-8"
-    p class="text-sm text-blue-400 dark:text-indigo-400"
-      a class="u-url float-left mr-0" href="#{post.permalink}"
-        time class="dt-published" datetime=post.machine_published_at
-          = post.display_published_at
-        - if post.webmentions.count > 0
-          == " &middot; #{post.webmentions.count} comment(s)"
-
-        - post.syndicated_to.each do |loc|
-          == " &middot;"
-          a rel="syndication" class="u-syndication inline-block ml-1 float-left" href=loc[:url]
-            - if loc[:location] != ""
-              == render "shared/#{loc[:location]}", width: "w-4"
+              - post.syndicated_to.each do |loc|
+                == " &middot;"
+                a rel="syndication" class="u-syndication inline-block ml-1 float-left" href=loc[:url]
+                  - if loc[:location] != ""
+                    == render "shared/#{loc[:location]}", width: "w-4"
+            - if post.tags.count > 0
+              span class="text-sm float-left text-blue-400 dark:text-indigo-400 ml-1"
+                == " &middot; tagged: "
+              - post.tags.each do |post_tag|
+                a class="text-sm p-category float-left mr-1 u-url text-pink-400 hover:text-pink-600 dark:text-pink-400 dark:hover:text-pink-100 text-gray-600 ml-1" href="/tagged/#{post_tag.slug}"
+                  = "##{post_tag.label}"
