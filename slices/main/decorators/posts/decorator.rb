@@ -12,6 +12,8 @@ module Main
   module Decorators
     module Posts
       class Decorator < SimpleDelegator
+        REGEXP = URI::DEFAULT_PARSER.make_regexp
+
         def syndicated?
           !syndication_sources.empty?
         end
@@ -111,6 +113,14 @@ module Main
           photos? ? "<div>#{photos.map { |p| "<img src='#{p["value"]}'/>" }.join("")} #{content}</div>" : content
         end
 
+        def rendered_content
+          html_text = wrap_anchors_in_object_tags(replace_urls_with_anchors(content))
+          res = Sanitize.fragment(html_text,
+            elements: ["img", "p", "object", "a"],
+            attributes: {"img" => ["alt", "src", "title"], "a" => ["href"]})
+          res.gsub(prefix_emoji[0], "") if prefix_emoji
+        end
+
         def raw_content
           res = Sanitize.fragment(content)
           res.gsub(prefix_emoji[0], "") if prefix_emoji
@@ -174,6 +184,24 @@ module Main
 
         private
 
+        def replace_urls_with_anchors(text)
+          url_regex = %r{(?<!<a href="|img src="|video src=")(https?://[^\s]+)(?![^<>]*(</a>|/>))}
+
+          text.gsub(url_regex) do |url|
+            %(<object><a href="#{url}">#{url}</a></object>)
+          end
+        end
+
+        def wrap_anchors_in_object_tags(text)
+          # Regular expression to match <a> tags
+          anchor_regex = /(<a\s+[^>]*>.*?<\/a>)/
+
+          # Replace the matched anchor tags with <object> wrapped anchor tags
+          text.gsub(anchor_regex) do |anchor_tag|
+            %(<object>#{anchor_tag}</object>)
+          end
+        end
+
         # e.g. geo:-37.75188,144.90417;u=35
         def geo
           loc = location.split(":")[1]
@@ -211,8 +239,8 @@ module Main
             results << "</#{tag}>"
           end
           results
-        rescue REXML::ParseException => e
-          return "<p>No excerpt</p>"
+        rescue REXML::ParseException
+          "<p>No excerpt</p>"
         end
 
         def attrs_to_s(attrs)
