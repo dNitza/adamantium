@@ -51,9 +51,9 @@ module Micropub
         def display_title
           title = name
           if prefix_emoji
-            return "#{prefix_emoji} #{title}"
+            "#{prefix_emoji} #{title}"
           else
-            return title
+            title
           end
         end
 

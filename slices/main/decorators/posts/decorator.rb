@@ -117,13 +117,12 @@ module Main
           html_text = wrap_anchors_in_object_tags(replace_urls_with_anchors(content))
           res = Sanitize.fragment(html_text,
             elements: ["img", "p", "object", "a"],
-            attributes: {"img" => ["alt", "src", "title"], "a" => ["href"]})
+            attributes: {"img" => ["alt", "src", "title"], "a" => ["href", "class"]})
           res.gsub(prefix_emoji[0], "") if prefix_emoji
         end
 
         def raw_content
-          res = Sanitize.fragment(content)
-          res.gsub(prefix_emoji[0], "") if prefix_emoji
+          rendered_content
         end
 
         def excerpt
@@ -188,7 +187,8 @@ module Main
           url_regex = %r{(?<!<a href="|img src="|video src=")(https?://[^\s]+)(?![^<>]*(</a>|/>))}
 
           text.gsub(url_regex) do |url|
-            %(<object><a href="#{url}">#{url}</a></object>)
+            clean_url = Sanitize.fragment(url).gsub(/\s/, "")
+            %(<a class="hover:underline decoration-wavy" href="#{clean_url}">#{clean_url}</a>)
           end
         end
 

@@ -10,13 +10,11 @@ module Main
   module Decorators
     module Statuses
       class Decorator < Main::Decorators::Posts::Decorator
-        REGEXP = URI::DEFAULT_PARSER.make_regexp
-
         def raw_content
           html_text = wrap_anchors_in_object_tags(replace_urls_with_anchors(content))
           res = Sanitize.fragment(html_text,
             elements: ["img", "p", "object", "a"],
-            attributes: {"img" => ["alt", "src", "title"], "a" => ["href"]})
+            attributes: {"img" => ["alt", "src", "title"], "a" => ["href", "class"]})
 
           res.gsub(prefix_emoji[0], "") if prefix_emoji
         end
@@ -27,7 +25,8 @@ module Main
           url_regex = %r{(?<!<a href="|img src="|video src=")(https?://[^\s]+)(?![^<>]*(</a>|/>))}
 
           text.gsub(url_regex) do |url|
-            %(<object><a href="#{url}">#{url}</a></object>)
+            clean_url = Sanitize.fragment(url).gsub(/\s/, "")
+            %(<a class="hover:underline decoration-wavy" href="#{clean_url}">#{clean_url}</a>)
           end
         end
 
