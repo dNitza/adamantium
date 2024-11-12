@@ -1,3 +1,5 @@
+require "tzinfo"
+
 module Main
   module Views
     module Site
